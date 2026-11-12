@@ -72,6 +72,7 @@ test('RSS 失敗完整保留快取；成功去重、保留舊集及補填 Spotif
     const output = join(dir, 'episodes.json');
     const old = parseFeed(xml([{ guid: 'old' }, { guid: 'current' }]));
     old[1].spotify_episode_url = 'https://open.spotify.com/episode/0123456789012345678901';
+    old[1].apple_episode_url = 'https://podcasts.apple.com/tw/podcast/test/id123?i=456';
     await writeFile(output, JSON.stringify(old));
     const original = await readFile(output, 'utf8');
     await assert.rejects(
@@ -93,6 +94,10 @@ test('RSS 失敗完整保留快取；成功去重、保留舊集及補填 Spotif
         new Response(xml([{ guid: 'current', title: '更新' }, { guid: 'new' }])),
     });
     assert.equal(result.length, 3);
+    assert.equal(
+      result.find((e) => e.guid === 'current').apple_episode_url,
+      old[1].apple_episode_url,
+    );
     assert.equal(
       result.find((e) => e.guid === 'current').spotify_episode_url,
       old[1].spotify_episode_url,

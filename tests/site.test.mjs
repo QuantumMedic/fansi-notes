@@ -71,6 +71,15 @@ test('正式 RSS 單集均有獨立路由、封面與收聽入口；不自動誤
     if (e.url) assert.match(html, /開啟官方單集頁/);
     if (mapping.some((m) => m.guid === e.guid)) assert.match(html, /閱讀對應文章/);
     else assert.doesNotMatch(html, /閱讀對應文章/);
+    if (e.spotify_episode_url) {
+      assert.ok(html.includes(e.spotify_episode_url));
+      assert.match(html, /在 Spotify 收聽本集/);
+      assert.doesNotMatch(html, /在 Spotify 開啟節目首頁/);
+    }
+    if (e.apple_episode_url) {
+      assert.ok(html.includes(e.apple_episode_url.replaceAll('&', '&amp;')));
+      assert.match(html, /在 Apple Podcasts 收聽本集/);
+    }
     assert.doesNotMatch(html, /<iframe/);
   }
 });

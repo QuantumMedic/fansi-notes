@@ -98,6 +98,14 @@ export const episodeSchema = z
       .string()
       .refine((v) => safeUrl(v))
       .optional(),
+    apple_episode_url: z
+      .string()
+      .refine((v) => {
+        if (!safeUrl(v, ['podcasts.apple.com'])) return false;
+        const u = new URL(v);
+        return /\/id[0-9]+$/.test(u.pathname) && /^[0-9]+$/.test(u.searchParams.get('i') || '');
+      }, '無效 Apple Podcasts 單集網址')
+      .optional(),
     spotify_episode_url: z
       .string()
       .refine((v) => !!spotifyId(v))

@@ -47,14 +47,23 @@ const article = articles.find((a) => a.data.work_id === workId);
     {!episode.spotify_episode_url && config.show_url && (
       <p>
         <a href={config.show_url} target="_blank" rel="noopener noreferrer">
-          在 Spotify 開啟《凡思聲》 ↗
+          在 Spotify 開啟節目首頁 ↗
         </a>
       </p>
     )}
-    {config.apple_show_url && (
-      <p><a class="button" href={config.apple_show_url} target="_blank" rel="noopener noreferrer">
-        在 Apple Podcasts 開啟《凡思聲》 ↗
-      </a></p>
+    {(episode.apple_episode_url || config.apple_show_url) && (
+      <p>
+        <a
+          class="button"
+          href={episode.apple_episode_url || config.apple_show_url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {episode.apple_episode_url
+            ? '在 Apple Podcasts 收聽本集 ↗'
+            : '在 Apple Podcasts 開啟節目首頁 ↗'}
+        </a>
+      </p>
     )}
     {article && (
       <section class="empty">
