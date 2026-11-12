@@ -56,3 +56,11 @@
 - Spotify RSS：https://support.spotify.com/creators/article/finding-and-enabling-your-rss-feed/
 - Spotify Embeds：https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed
 - GitHub Actions schedule：https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+
+## M3 使用與驗收
+
+- [每週更新網站](docs/每週更新網站.md)
+- [M3 測試與桌機／手機畫面](docs/review/m3/README.md)
+- [開發接續紀錄](docs/開發進度.md)
+
+已設定作者提供的正式 RSS 與 Spotify 節目網址；文章仍為合成測試資料。每日讀取僅輸出審閱 artifact，沒有部署或自動回寫。
