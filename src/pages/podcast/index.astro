@@ -1,4 +1,88 @@
 ---
 import Main from '../../layouts/Main.astro';
+import EpisodeCard from '../../components/EpisodeCard.astro';
+import { catalog } from '../../lib/catalog';
+import { topics } from '../../data/site';
+import config from '../../data/podcast-config.json';
+const { episodes, articles, mapping } = await catalog();
 ---
-<Main title="凡思聲"><section class="page-heading"><p class="eyebrow">聲音的房間</p><h1>凡思聲</h1><p>節目介紹與正式收聽網址待作者提供。此階段不載入播放器。</p><p class="muted">M0–M2 原型 · 正式內容尚未匯入</p></section></Main>
+
+<Main title="凡思聲" description="凡思聲 Podcast 單集列表與收聽入口。">
+  <section class="page-heading">
+    <p class="eyebrow">聲音的房間</p>
+    <h1>凡思聲</h1>
+    <p class="muted">單集資料來自作者提供的公開 RSS；節目介紹待作者核准。</p>
+    {config.show_url && (
+      <a class="button" href={config.show_url} target="_blank" rel="noopener noreferrer">
+        在 Spotify 收聽節目 ↗
+      </a>
+    )}
+  </section>
+  <section class="section">
+    <form class="filters" role="search">
+      <label>
+        搜尋單集
+        <input id="episode-search" type="search" name="q" placeholder="單集標題或介紹" />
+      </label>
+      <label>
+        關聯主題
+        <select id="episode-topic">
+          <option value="">全部單集</option>
+          {topics.map((t) => (
+            <option value={t.slug}>{t.name}</option>
+          ))}
+        </select>
+      </label>
+      <button type="reset">清除篩選</button>
+    </form>
+    <p class="muted">主題僅由已確認關聯的文章提供；未配對單集仍列在「全部單集」。</p>
+    <p id="episode-count" role="status">
+      共 {episodes.length} 集
+    </p>
+    <div>
+      {episodes.map((e) => {
+        const id = mapping.find((m) => m.guid === e.guid)?.work_id;
+        const article = articles.find((a) => a.data.work_id === id);
+        return (
+          <div
+            data-episode
+            data-search={`${e.title} ${e.description}`}
+            data-topics={article?.data.topics.join(' ') || ''}
+          >
+            <EpisodeCard episode={e} />
+          </div>
+        );
+      })}
+    </div>
+    <p id="episode-empty" hidden>
+      沒有符合的單集，請清除篩選。
+    </p>
+  </section>
+</Main>
+<script>
+  const form = document.querySelector('form')!;
+  const input = document.querySelector<HTMLInputElement>('#episode-search')!;
+  const topic = document.querySelector<HTMLSelectElement>('#episode-topic')!;
+  function filter() {
+    let n = 0;
+    document.querySelectorAll<HTMLElement>('[data-episode]').forEach((el) => {
+      el.hidden = !(
+        input.value
+          .trim()
+          .toLowerCase()
+          .split(/\s+/)
+          .every((t) => el.dataset.search!.toLowerCase().includes(t)) &&
+        (!topic.value || el.dataset.topics!.split(' ').includes(topic.value))
+      );
+      if (!el.hidden) n++;
+    });
+    document.querySelector('#episode-count')!.textContent = `共 ${n} 集`;
+    document.querySelector<HTMLElement>('#episode-empty')!.hidden = n > 0;
+  }
+  form.addEventListener('input', filter);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    filter();
+  });
+  form.addEventListener('reset', () => setTimeout(filter));
+</script>

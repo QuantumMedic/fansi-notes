@@ -1,0 +1,85 @@
+---
+import Main from '../../layouts/Main.astro';
+import PodcastPlayer from '../../components/PodcastPlayer.astro';
+import EpisodeCard from '../../components/EpisodeCard.astro';
+import { catalog, displayDate } from '../../lib/catalog';
+import { url } from '../../data/site';
+import config from '../../data/podcast-config.json';
+export async function getStaticPaths() {
+  return (await catalog()).episodes.map((episode) => ({
+    params: { slug: episode.slug },
+    props: { episode },
+  }));
+}
+const { episode } = Astro.props;
+const { articles, episodes, mapping } = await catalog();
+const workId = mapping.find((m) => m.guid === episode.guid)?.work_id;
+const article = articles.find((a) => a.data.work_id === workId);
+---
+
+<Main title={episode.title} description={episode.description.slice(0, 160)}>
+  <article class="reading">
+    <a href={url('podcast/')}>← 所有單集</a>
+    <p class="eyebrow">凡思聲 · {episode.synthetic ? '示意單集' : '公開單集'}</p>
+    <h1>{episode.title}</h1>
+    <p class="muted">
+      <time datetime={episode.published_at}>{displayDate(episode.published_at)}</time>
+    </p>
+    {episode.cover_image && (
+      <img
+        class="episode-cover"
+        src={episode.cover_image}
+        alt={`${episode.title} 單集封面`}
+        width="400"
+        height="400"
+        referrerpolicy="no-referrer"
+      />
+    )}
+    <p class="description">{episode.description}</p>
+    <PodcastPlayer url={episode.spotify_episode_url} title={episode.title} />
+    {episode.url && (
+      <p>
+        <a class="button" href={episode.url} target="_blank" rel="noopener noreferrer">
+          開啟官方單集頁 ↗
+        </a>
+      </p>
+    )}
+    {!episode.spotify_episode_url && config.show_url && (
+      <p>
+        <a href={config.show_url} target="_blank" rel="noopener noreferrer">
+          在 Spotify 開啟《凡思聲》 ↗
+        </a>
+      </p>
+    )}
+    {article && (
+      <section class="empty">
+        <h2>閱讀對應文章</h2>
+        <a href={url(`articles/${article.data.slug}/`)}>{article.data.title} ↗</a>
+      </section>
+    )}
+    <section class="empty">
+      <h2>繼續聆聽</h2>
+      {episodes
+        .filter((e) => e.guid !== episode.guid)
+        .slice(0, 2)
+        .map((e) => (
+          <EpisodeCard episode={e} />
+        ))}
+    </section>
+  </article>
+</Main>
+<style>
+  .reading h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  .episode-cover {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 30px auto;
+  }
+  .description {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
+</style>

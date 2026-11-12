@@ -1,0 +1,60 @@
+---
+import { spotifyId } from '../lib/model.mjs';
+interface Props {
+  url?: string;
+  title: string;
+}
+const { url, title } = Astro.props;
+const id = url ? spotifyId(url) : null;
+---
+
+{id && (
+  <section class="player" data-spotify-id={id} data-title={title}>
+    <p>載入播放器會連線至 Spotify，並適用其隱私政策。你也可以直接開啟收聽連結。</p>
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      在 Spotify 收聽 ↗
+    </a>
+    <button type="button" hidden>
+      載入 Spotify 播放器
+    </button>
+    <div class="player-slot"></div>
+  </section>
+)}
+<script>
+  document.querySelectorAll<HTMLElement>('.player').forEach((root) => {
+    const button = root.querySelector('button')!;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const id = root.dataset.spotifyId;
+      if (!id || !/^[A-Za-z0-9]{22}$/.test(id)) return;
+      const frame = document.createElement('iframe');
+      frame.src = `https://open.spotify.com/embed/episode/${id}`;
+      frame.title = `Spotify：${root.dataset.title}`;
+      frame.width = '100%';
+      frame.height = '352';
+      frame.loading = 'lazy';
+      frame.allow = 'encrypted-media; fullscreen; picture-in-picture';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      root.querySelector('.player-slot')!.replaceChildren(frame);
+      button.hidden = true;
+    });
+  });
+</script>
+<style>
+  .player {
+    border-top: 1px solid var(--line);
+    padding: 25px 0;
+    margin-top: 30px;
+  }
+  .player p {
+    font-size: 13px !important;
+  }
+  .player button {
+    display: block;
+  }
+  .player-slot :global(iframe) {
+    border: 0;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+</style>
