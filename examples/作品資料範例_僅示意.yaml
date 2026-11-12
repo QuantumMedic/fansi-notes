@@ -1,0 +1,25 @@
+# 注意：全部為虛構示意，請勿當作正式上線文章，也不要將未發表全文補到公開 repo。
+# 這是資料契約的示意，Codex 可按 Astro Content Collections 設計調整實際儲存格式。
+work_id: example-story-001
+slug: example-story-001
+title: "示意文章標題"
+subtitle: "僅供介面測試"
+public_author_name: "作者署名待確認"
+content_type: longform                # fansiwei / longform / fiction / book
+topics: [books, psychology]         # slug 由受控標籤表定義
+summary: "此篇為開發用假資料，不是已公開作品。"
+site_status: synthetic_test_only    # 真實資料只能在作者核准公開後進公開 repo
+site_published_at: null
+approved_revision: null
+cover_image: null
+interior_images: []
+written_master_ref: "SYNTHETIC_ONLY"
+podcast_master_public: false
+podcast:
+  title: null
+  episode_guid: null
+  spotify_episode_url: null
+instagram_url: null
+vocus_url: null
+related_work_ids: []
+sources: []
