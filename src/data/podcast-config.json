@@ -1,6 +1,9 @@
 {
   "feed_url": "https://anchor.fm/s/10712e2bc/podcast/rss",
-  "show_url": "https://open.spotify.com/show/1OTO4ceuRIblBy9JbUNJM2",
+  "show_url": "https://open.spotify.com/show/1OT04ceuRlblBy9JbUNJM2",
   "description": null,
-  "allowed_feed_hosts": ["anchor.fm"]
+  "allowed_feed_hosts": [
+    "anchor.fm"
+  ],
+  "apple_show_url": "https://podcasts.apple.com/tw/podcast/凡思聲/id1833423613"
 }

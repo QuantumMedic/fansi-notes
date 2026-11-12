@@ -51,6 +51,11 @@ const article = articles.find((a) => a.data.work_id === workId);
         </a>
       </p>
     )}
+    {config.apple_show_url && (
+      <p><a class="button" href={config.apple_show_url} target="_blank" rel="noopener noreferrer">
+        在 Apple Podcasts 開啟《凡思聲》 ↗
+      </a></p>
+    )}
     {article && (
       <section class="empty">
         <h2>閱讀對應文章</h2>
