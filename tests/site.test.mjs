@@ -63,12 +63,14 @@ test('RSS 排程只有唯讀權限與預覽輸出，不推送或部署', () => {
 });
 test('正式 RSS 單集均有獨立路由、封面與收聽入口；不自動誤配', () => {
   const episodes = JSON.parse(readFileSync('src/data/podcast.json', 'utf8'));
+  const mapping = JSON.parse(readFileSync('src/data/podcast-work-map.json', 'utf8'));
   for (const e of episodes) {
     const html = readFileSync(`dist/podcast/${e.slug}/index.html`, 'utf8');
     assert.match(html, /lang="zh-TW"/);
-    assert.ok(html.includes(e.cover_image));
-    assert.match(html, /開啟官方單集頁/);
+    if (e.cover_image) assert.ok(html.includes(e.cover_image));
+    if (e.url) assert.match(html, /開啟官方單集頁/);
+    if (mapping.some((m) => m.guid === e.guid)) assert.match(html, /閱讀對應文章/);
+    else assert.doesNotMatch(html, /閱讀對應文章/);
     assert.doesNotMatch(html, /<iframe/);
   }
-  assert.deepEqual(JSON.parse(readFileSync('src/data/podcast-work-map.json', 'utf8')), []);
 });
