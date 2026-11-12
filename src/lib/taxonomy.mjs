@@ -17,4 +17,9 @@ export const classificationSchema = makeClassificationSchema();
 export const seriesName = (id) => series.find((x) => x.slug === id)?.name || '系列待確認';
 export const topicName = (id) => topics.find((x) => x.slug === id)?.name || id;
 export const statusName = (status) =>
-  ({ proposed: '分類建議・待審核', confirmed: '分類已確認', pending: '分類待確認' })[status];
+  ({
+    demo: '合成測試分類',
+    proposed: '分類建議・待審核',
+    confirmed: '分類已確認',
+    pending: '分類待確認',
+  })[status];

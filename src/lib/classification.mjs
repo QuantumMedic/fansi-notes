@@ -44,7 +44,7 @@ export function resolveClassifications(articles, episodes, mapping, raw) {
             content_type: source.content_type,
             topics: source.topics,
             keywords: source.keywords || [],
-            status: article ? 'confirmed' : own.status,
+            status: article ? (article.synthetic ? 'demo' : 'confirmed') : own.status,
             source: article ? 'work' : 'episode',
           }
         : { content_type: '', topics: [], keywords: [], status: 'pending', source: 'none' },
@@ -64,7 +64,7 @@ export function buildWorks(articles, episodes) {
           content_type: a.data.content_type,
           topics: a.data.topics,
           keywords: a.data.keywords,
-          status: 'confirmed',
+          status: a.data.synthetic ? 'demo' : 'confirmed',
         },
         article: a,
         episodes: [],

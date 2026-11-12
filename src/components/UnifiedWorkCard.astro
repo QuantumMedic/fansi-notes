@@ -6,7 +6,11 @@ const { work: w } = Astro.props;
 
 <article class="unified-work" data-work-id={w.work_id}>
   <p class="eyebrow">
-    {w.article ? '網站文章' : 'Podcast 作品・尚無網站全文'}
+    {w.article
+      ? w.article.data.synthetic
+        ? '網站文章・合成測試'
+        : '網站文章'
+      : 'Podcast 作品・尚無網站全文'}
     {w.article && w.episodes.length > 0 ? ' ＋ Podcast' : ''}
   </p>
   <h2>{w.title}</h2>
