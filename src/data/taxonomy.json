@@ -1,0 +1,54 @@
+{
+  "series": [
+    {
+      "slug": "fansiwei",
+      "name": "凡思維"
+    },
+    {
+      "slug": "longform",
+      "name": "深度內容"
+    },
+    {
+      "slug": "special",
+      "name": "特別篇"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "psychology",
+      "name": "心理與行為"
+    },
+    {
+      "slug": "medicine",
+      "name": "醫學與生命"
+    },
+    {
+      "slug": "science",
+      "name": "科學與科技"
+    },
+    {
+      "slug": "philosophy",
+      "name": "哲學與人生"
+    },
+    {
+      "slug": "society",
+      "name": "歷史與社會"
+    },
+    {
+      "slug": "literature",
+      "name": "書籍與文學"
+    },
+    {
+      "slug": "screen",
+      "name": "影視與動畫"
+    },
+    {
+      "slug": "faith",
+      "name": "信仰與神學"
+    },
+    {
+      "slug": "creation",
+      "name": "個人與創作"
+    }
+  ]
+}

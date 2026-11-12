@@ -1,25 +1,20 @@
 ---
 import Main from '../../layouts/Main.astro';
-import WorkCard from '../../components/WorkCard.astro';
-import { topics } from '../../data/site';
+import WorkExplorer from '../../components/WorkExplorer.astro';
+import { topics } from '../../lib/taxonomy.mjs';
 import { catalog } from '../../lib/catalog';
 export function getStaticPaths() {
   return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
 }
 const { topic } = Astro.props;
-const articles = (await catalog()).articles.filter((a) =>
-  a.data.topics.some((t) => t === topic.slug),
-);
+const { works } = await catalog();
 ---
 
 <Main title={topic.name}>
   <section class="page-heading">
-    <p class="eyebrow">主題 · 測試資料</p>
+    <p class="eyebrow">主題分類</p>
     <h1>{topic.name}</h1>
+    <p>沿著同一個主題，探索文字與聲音。</p>
   </section>
-  <section class="section cards">
-    {articles.map((a) => (
-      <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
-    ))}
-  </section>
+  <WorkExplorer works={works} initialTopic={topic.slug} />
 </Main>

@@ -2,7 +2,7 @@
 import Main from '../../layouts/Main.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import { catalog } from '../../lib/catalog';
-import { topics } from '../../data/site';
+import { topics, series } from '../../data/site';
 const articles = (await catalog()).articles;
 ---
 
@@ -20,11 +20,12 @@ const articles = (await catalog()).articles;
         <input type="search" name="q" id="query" placeholder="輸入關鍵字" />
       </label>
       <label>
-        內容類型
+        作品系列
         <select id="type" name="type">
           <option value="">全部文章</option>
-          <option value="fansiwei">凡思維</option>
-          <option value="longform">深度文章</option>
+          {series.map((s) => (
+            <option value={s.slug}>{s.name}</option>
+          ))}
         </select>
       </label>
       <label>
@@ -55,7 +56,7 @@ const articles = (await catalog()).articles;
           data-date={a.data.published_at}
           data-type={a.data.content_type}
           data-topics={a.data.topics.join(' ')}
-          data-search={`${a.data.title} ${a.data.summary} ${a.body || ''}`}
+          data-search={`${a.data.title} ${a.data.summary} ${a.body || ''} ${a.data.keywords.join(' ')}`}
         >
           <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
         </div>

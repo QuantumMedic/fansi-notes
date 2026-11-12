@@ -18,8 +18,8 @@ test('M1 路由全部輸出，原型禁止索引', () => {
     'contact/',
     'privacy/',
     'topics/',
-    'topics/thinking/',
-    'topics/reading/',
+    'topics/psychology/',
+    'topics/literature/',
   ]) {
     const html = readFileSync(`dist/${p}index.html`, 'utf8');
     assert.match(html, /lang="zh-TW"/);

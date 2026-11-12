@@ -1,4 +1,5 @@
 ---
+import { seriesName } from '../lib/taxonomy.mjs';
 import { url } from '../data/site';
 interface Props {
   id: string;
@@ -19,7 +20,7 @@ const { id, title, summary, type, published_at, synthetic = true } = Astro.props
       <small>示意插畫</small>
     </div>
     <p class="eyebrow">
-      {type === 'fansiwei' ? '凡思維' : '深度文章'} · {synthetic ? '測試資料' : '公開文章'}
+      {seriesName(type)} · {synthetic ? '測試資料' : '公開文章'}
     </p>
     <p class="muted">{published_at?.slice(0, 10)}</p>
     <h3>

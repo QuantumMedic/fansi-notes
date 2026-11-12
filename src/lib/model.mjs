@@ -1,8 +1,6 @@
 import { z } from 'zod';
-export const topics = [
-  { slug: 'thinking', name: '思考' },
-  { slug: 'reading', name: '閱讀' },
-];
+import { classificationSchema } from './taxonomy.mjs';
+export { topics, series } from './taxonomy.mjs';
 export const slugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 export function safeUrl(value, hosts = []) {
   try {
@@ -44,8 +42,7 @@ export const articleSchema = z
     title: z.string().min(1),
     subtitle: z.string().optional(),
     summary: z.string().min(1),
-    content_type: z.enum(['fansiwei', 'longform']),
-    topics: z.array(z.enum(['thinking', 'reading'])).min(1),
+    ...classificationSchema.shape,
     related_work_ids: z.array(slugSchema).default([]),
     aliases: z.array(slugSchema).default([]),
     featured_order: z.number().int().nonnegative().optional(),

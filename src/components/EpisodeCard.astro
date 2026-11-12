@@ -1,4 +1,5 @@
 ---
+import ClassificationBadge from './ClassificationBadge.astro';
 import { url } from '../data/site';
 import { displayDate } from '../lib/catalog';
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
     published_at: string;
     synthetic: boolean;
     cover_image?: string;
+    classification?: any;
   };
 }
 const { episode: e } = Astro.props;
@@ -39,6 +41,7 @@ const { episode: e } = Astro.props;
       <p class="episode-summary">{e.description}</p>
     </div>
   </a>
+  <ClassificationBadge classification={e.classification} />
 </article>
 <style>
   .episode-card {

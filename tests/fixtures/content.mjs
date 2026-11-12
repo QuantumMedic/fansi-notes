@@ -6,7 +6,7 @@ export const article = (overrides = {}) =>
     title: '合成文章',
     summary: '僅供測試',
     content_type: 'fansiwei',
-    topics: ['thinking'],
+    topics: ['psychology'],
     synthetic: true,
     publication_status: 'demo',
     website_approved: true,

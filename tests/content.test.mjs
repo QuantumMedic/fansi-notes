@@ -71,18 +71,18 @@ test('GUID 明確配對，不靠同名；拒絕重複與未知映射', () => {
 });
 test('作者指定推薦優先，日期排序與正文／主題交叉搜尋', () => {
   const a = article({ related_work_ids: ['demo-b'] });
-  const b = article({ work_id: 'demo-b', slug: 'b', topics: ['reading'] });
+  const b = article({ work_id: 'demo-b', slug: 'b', topics: ['literature'] });
   const c = article({ work_id: 'demo-c', slug: 'c', published_at: '2026-01-03T00:00:00Z' });
   assert.equal(relatedArticles(a, [a, b, c])[0].work_id, 'demo-b');
   assert.equal(newest([a, c])[0].work_id, 'demo-c');
   assert.ok(
-    matchesSearch('標題 正文中的 ABC 詞句', ['thinking'], 'fansiwei', {
+    matchesSearch('標題 正文中的 ABC 詞句', ['psychology'], 'fansiwei', {
       q: '正文 abc',
-      topic: 'thinking',
+      topic: 'psychology',
     }),
   );
   assert.equal(
-    matchesSearch('正文', ['reading'], 'longform', { q: '正文', topic: 'thinking' }),
+    matchesSearch('正文', ['literature'], 'longform', { q: '正文', topic: 'psychology' }),
     false,
   );
 });

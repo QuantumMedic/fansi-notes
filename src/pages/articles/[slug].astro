@@ -1,4 +1,5 @@
 ---
+import { seriesName } from '../../lib/taxonomy.mjs';
 import Main from '../../layouts/Main.astro';
 import ServiceState from '../../components/ServiceState.astro';
 import { render } from 'astro:content';
@@ -36,7 +37,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
     <div class="article-title">
       <a href={url('articles/')}>← 探索文章</a>
       <p class="eyebrow">
-        {longform ? '深度文章' : '凡思維'} ·{' '}
+        {seriesName(article.data.content_type)} ·{' '}
         {article.data.synthetic ? '虛構測試資料' : article.data.public_author_name}
       </p>
       <h1>{article.data.title}</h1>

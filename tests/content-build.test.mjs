@@ -45,8 +45,10 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     write(data);
     build();
     assert.match(html('articles/index.html'), /海邊的紅色信箱/);
-    assert.match(html('topics/thinking/index.html'), /新增合成文章/);
+    assert.match(html('topics/psychology/index.html'), /新增合成文章/);
     assert.match(html('index.html'), /新增合成文章/);
+    assert.match(html('series/fansiwei/index.html'), /新增合成文章/);
+    assert.match(html('series/fansiwei/index.html'), /一盆植物延長生命/);
     assert.doesNotMatch(html('articles/demo-new/index.html'), /觀看 Instagram|data-spotify-id/);
     const e = {
       guid: 'fixture-unique-guid',
@@ -71,7 +73,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       aliases: ['demo-new'],
       title: '改名合成文章',
       content_type: 'longform',
-      topics: ['reading'],
+      topics: ['literature'],
       platform_urls: {
         instagram_url: 'https://www.instagram.com/p/fixture/',
         vocus_url: 'https://vocus.cc/article/fixture',
@@ -90,11 +92,30 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(detail, /紙上花園/);
     assert.match(html('articles/demo-new/index.html'), /http-equiv="refresh"/);
     assert.match(html('articles/demo-new/index.html'), /articles\/demo-renamed\//);
-    assert.doesNotMatch(html('topics/thinking/index.html'), /改名合成文章/);
-    assert.match(html('topics/reading/index.html'), /改名合成文章/);
+    assert.match(
+      html('topics/psychology/index.html'),
+      /hidden[^>]*data-work-result[^>]*data-topics="literature"/,
+    );
+    assert.match(html('topics/literature/index.html'), /改名合成文章/);
     assert.match(html('podcast/fixture-episode/index.html'), /閱讀對應文章/);
     assert.doesNotMatch(html('podcast/unpaired-episode/index.html'), /閱讀對應文章/);
     assert.ok(existsSync(join(root, 'dist/podcast/unpaired-episode/index.html')));
+    assert.match(html('podcast/unpaired-episode/index.html'), /分類待確認/);
+    assert.match(html('podcast/fixture-episode/index.html'), /主要：書籍與文學/);
+    assert.equal((html('series/longform/index.html').match(/data-work-id="demo-new"/g)||[]).length,1);
+    // Extending and renaming the central dictionary changes every route/filter at build time.
+    const taxFile=join(root,'src/data/taxonomy.json');
+    const tax=JSON.parse(readFileSync(taxFile,'utf8'));
+    tax.topics.push({slug:'new-topic',name:'合成新主題'});
+    tax.topics.find(t=>t.slug==='psychology').name='合成重新命名';
+    writeFileSync(taxFile,JSON.stringify(tax));
+    write({...data,content_type:'special',topics:['new-topic']});
+    build();
+    assert.match(html('topics/new-topic/index.html'),/改名合成文章/);
+    assert.match(html('articles/index.html'),/合成重新命名/);
+    assert.match(html('podcast/fixture-episode/index.html'),/主要：合成新主題/);
+    assert.match(html('series/special/index.html'),/data-work-id="demo-new"/);
+
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

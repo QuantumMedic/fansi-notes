@@ -1,0 +1,10 @@
+---
+import Main from '../../layouts/Main.astro';
+import { catalog } from '../../lib/catalog';
+import { seriesName, topicName, statusName } from '../../lib/taxonomy.mjs';
+import { url } from '../../data/site';
+const { episodes } = await catalog();
+---
+<Main title="分類建議審閱"><section class="page-heading"><p class="eyebrow">M3 審閱預覽</p><h1>單集分類建議</h1><p>以下分類尚待作者最終確認；預覽與資料提交不代表正式核准，也不代表網站公開授權。</p><a href={url('podcast/')}>返回凡思聲 ↗</a></section>
+<section class="section"><div class="review-table"><table><thead><tr><th>單集</th><th>作品系列</th><th>主要主題</th><th>次要主題</th><th>狀態</th></tr></thead><tbody>{episodes.map(e=><tr><td><a href={url(`podcast/${e.slug}/`)}>{e.title}</a><small>{e.guid}</small></td><td>{seriesName(e.classification.content_type)}</td><td>{topicName(e.classification.topics[0]) || '待確認'}</td><td>{topicName(e.classification.topics[1]) || '—'}</td><td>{statusName(e.classification.status)}</td></tr>)}</tbody></table></div></section></Main>
+<style>.review-table{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:700px}th,td{border-bottom:1px solid var(--line);padding:16px;text-align:left;vertical-align:top}td:first-child{width:45%}small{display:block;color:var(--muted);font-size:10px;overflow-wrap:anywhere}</style>

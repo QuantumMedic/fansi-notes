@@ -1,0 +1,95 @@
+---
+import { series, topics } from '../lib/taxonomy.mjs';
+import UnifiedWorkCard from './UnifiedWorkCard.astro';
+const { works, initialSeries = '', initialTopic = '' } = Astro.props;
+const visible = (w: any) =>
+  (!initialSeries || w.classification.content_type === initialSeries) &&
+  (!initialTopic || w.classification.topics.includes(initialTopic));
+---
+
+<section class="section" data-work-explorer>
+  <form class="filters" role="search">
+    <label for="work-q">
+      搜尋作品
+      <input id="work-q" name="q" type="search" placeholder="標題、介紹或關鍵字" />
+    </label>
+    <label for="work-series">
+      作品系列
+      <select id="work-series" name="series">
+        <option value="">全部系列</option>
+        {series.map((s) => (
+          <option value={s.slug} selected={s.slug === initialSeries}>
+            {s.name}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label for="work-topic">
+      主題分類
+      <select id="work-topic" name="topic">
+        <option value="">全部主題</option>
+        {topics.map((t) => (
+          <option value={t.slug} selected={t.slug === initialTopic}>
+            {t.name}
+          </option>
+        ))}
+      </select>
+    </label>
+    <button type="reset">清除篩選</button>
+  </form>
+  <p class="muted">
+    本次預覽包含待作者審核的分類建議，標示為「分類建議・待審核」。文章與聲音版本以作品 ID 合併呈現。
+  </p>
+  <p role="status" data-work-count>
+    共 {works.filter(visible).length} 個作品
+  </p>
+  {works.map((w: any) => (
+    <div
+      hidden={!visible(w)}
+      data-work-result
+      data-series={w.classification.content_type}
+      data-topics={w.classification.topics.join(' ')}
+      data-search={`${w.title} ${w.summary} ${w.classification.keywords.join(' ')} ${w.article?.body || ''}`}
+    >
+      <UnifiedWorkCard work={w} />
+    </div>
+  ))}
+  <p data-work-empty hidden>
+    沒有符合的作品，請調整篩選。
+  </p>
+</section>
+<script>
+  import { matchesSearch } from '../lib/search.mjs';
+  const root = document.querySelector<HTMLElement>('[data-work-explorer]')!;
+  const form = root.querySelector('form')!;
+  const q = root.querySelector<HTMLInputElement>('#work-q')!;
+  const series = root.querySelector<HTMLSelectElement>('#work-series')!;
+  const topic = root.querySelector<HTMLSelectElement>('#work-topic')!;
+  function filter() {
+    let n = 0;
+    root.querySelectorAll<HTMLElement>('[data-work-result]').forEach((el) => {
+      el.hidden = !matchesSearch(
+        el.dataset.search!,
+        el.dataset.topics!.split(' '),
+        el.dataset.series!,
+        { q: q.value, topic: topic.value, contentType: series.value },
+      );
+      if (!el.hidden) n++;
+    });
+    root.querySelector('[data-work-count]')!.textContent = `共 ${n} 個作品`;
+    root.querySelector<HTMLElement>('[data-work-empty]')!.hidden = n > 0;
+  }
+  form.addEventListener('input', filter);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    filter();
+  });
+  form.addEventListener('reset', () =>
+    setTimeout(() => {
+      series.value = '';
+      topic.value = '';
+      filter();
+    }),
+  );
+  filter();
+</script>
