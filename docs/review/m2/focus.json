@@ -1,0 +1,22 @@
+[
+  {
+    "outline": "solid",
+    "target": "garden"
+  },
+  {
+    "outline": "solid",
+    "target": "sound"
+  },
+  {
+    "outline": "solid",
+    "target": "corridor"
+  },
+  {
+    "outline": "solid",
+    "target": "kingdom"
+  },
+  {
+    "outline": "solid",
+    "target": "desk"
+  }
+]
