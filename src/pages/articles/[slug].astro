@@ -1,0 +1,9 @@
+---
+import Main from '../../layouts/Main.astro';
+import ServiceState from '../../components/ServiceState.astro';
+import {getCollection,render} from 'astro:content';
+import {url} from '../../data/site';
+export async function getStaticPaths(){return (await getCollection('articles')).map(article=>({params:{slug:article.id},props:{article}}));}
+const {article}=Astro.props;const {Content}=await render(article);
+---
+<Main title={article.data.title} description={article.data.summary}><article class="reading"><a href={url('articles/')}>← 探索文章</a><p class="eyebrow">{article.data.content_type==='fansiwei'?'凡思維':'深度文章'} · 虛構測試資料</p><h1>{article.data.title}</h1><p class="lede">{article.data.summary}</p><hr/><Content/><ServiceState kind="comments"/></article></Main>
