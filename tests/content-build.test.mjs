@@ -9,6 +9,8 @@ import {
   readFileSync,
   rmSync,
   existsSync,
+  mkdirSync,
+  readdirSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -43,7 +45,37 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       featured_order: 0,
     });
     write(data);
+    // A stale review build and proposed-only keyword must never survive a public build.
+    const reviewDir = join(root, 'dist/review/classifications');
+    mkdirSync(reviewDir, { recursive: true });
+    writeFileSync(join(reviewDir, 'index.html'), 'STALE-REVIEW-SECRET');
+    const classificationsFile = join(root, 'src/data/podcast-classifications.json');
+    const classifications = JSON.parse(readFileSync(classificationsFile, 'utf8'));
+    classifications[0].keywords = ['PROPOSED-SEARCH-SECRET'];
+    const before = JSON.stringify(classifications);
+    writeFileSync(classificationsFile, before);
     build();
+    assert.equal(readFileSync(classificationsFile, 'utf8'), before);
+    assert.equal(existsSync(join(root, 'dist/review/classifications/index.html')), false);
+    const inspect = (dir) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const path = join(dir, entry.name);
+        if (entry.isDirectory()) {
+          inspect(path);
+          continue;
+        }
+        if (/\.(html|js|json|xml|txt)$/.test(path))
+          assert.doesNotMatch(
+            readFileSync(path, 'utf8'),
+            /review\/classifications|PROPOSED-SEARCH-SECRET|STALE-REVIEW-SECRET|分類建議・待審核/,
+          );
+      }
+    };
+    inspect(join(root, 'dist'));
+    const realEpisodes = JSON.parse(readFileSync(join(root, 'src/data/podcast.json'), 'utf8'));
+    for (const ep of realEpisodes)
+      assert.match(html(`podcast/${ep.slug}/index.html`), /分類待確認/);
+
     assert.match(html('articles/index.html'), /海邊的紅色信箱/);
     assert.match(html('topics/psychology/index.html'), /新增合成文章/);
     assert.match(html('index.html'), /新增合成文章/);
@@ -102,20 +134,22 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.ok(existsSync(join(root, 'dist/podcast/unpaired-episode/index.html')));
     assert.match(html('podcast/unpaired-episode/index.html'), /分類待確認/);
     assert.match(html('podcast/fixture-episode/index.html'), /主要：書籍與文學/);
-    assert.equal((html('series/longform/index.html').match(/data-work-id="demo-new"/g)||[]).length,1);
+    assert.equal(
+      (html('series/longform/index.html').match(/data-work-id="demo-new"/g) || []).length,
+      1,
+    );
     // Extending and renaming the central dictionary changes every route/filter at build time.
-    const taxFile=join(root,'src/data/taxonomy.json');
-    const tax=JSON.parse(readFileSync(taxFile,'utf8'));
-    tax.topics.push({slug:'new-topic',name:'合成新主題'});
-    tax.topics.find(t=>t.slug==='psychology').name='合成重新命名';
-    writeFileSync(taxFile,JSON.stringify(tax));
-    write({...data,content_type:'special',topics:['new-topic']});
+    const taxFile = join(root, 'src/data/taxonomy.json');
+    const tax = JSON.parse(readFileSync(taxFile, 'utf8'));
+    tax.topics.push({ slug: 'new-topic', name: '合成新主題' });
+    tax.topics.find((t) => t.slug === 'psychology').name = '合成重新命名';
+    writeFileSync(taxFile, JSON.stringify(tax));
+    write({ ...data, content_type: 'special', topics: ['new-topic'] });
     build();
-    assert.match(html('topics/new-topic/index.html'),/改名合成文章/);
-    assert.match(html('articles/index.html'),/合成重新命名/);
-    assert.match(html('podcast/fixture-episode/index.html'),/主要：合成新主題/);
-    assert.match(html('series/special/index.html'),/data-work-id="demo-new"/);
-
+    assert.match(html('topics/new-topic/index.html'), /改名合成文章/);
+    assert.match(html('articles/index.html'), /合成重新命名/);
+    assert.match(html('podcast/fixture-episode/index.html'), /主要：合成新主題/);
+    assert.match(html('series/special/index.html'), /data-work-id="demo-new"/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

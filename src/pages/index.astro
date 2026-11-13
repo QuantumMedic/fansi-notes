@@ -1,4 +1,5 @@
 ---
+import { reviewMode } from '../lib/review-mode.mjs';
 import Main from '../layouts/Main.astro';
 import Storybook from '../components/Storybook.astro';
 import EpisodeCard from '../components/EpisodeCard.astro';
@@ -38,7 +39,11 @@ const featured = articles
         <a href={url(`topics/${t.slug}/`)}>{t.name} ↗</a>
       ))}
     </div>
-    <p class="muted">主題包含文字與聲音作品；單集分類建議仍待作者審核。</p>
+    <p class="muted">
+      {reviewMode
+        ? '主題包含文字與聲音作品；單集分類建議仍待作者審核。'
+        : '依已確認的主題，探索文字與聲音作品。'}
+    </p>
   </section>
   <section class="section">
     <div class="section-heading">

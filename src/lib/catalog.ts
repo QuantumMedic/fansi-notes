@@ -1,3 +1,4 @@
+import { reviewMode } from './review-mode.mjs';
 import type { z } from 'zod';
 import { getCollection } from 'astro:content';
 import rawEpisodes from '../data/podcast.json';
@@ -32,6 +33,7 @@ export async function catalog() {
     episodes,
     mapping,
     classifications,
+    { includeProposed: reviewMode },
   );
   return {
     articles,

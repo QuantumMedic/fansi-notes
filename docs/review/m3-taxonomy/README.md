@@ -19,3 +19,17 @@
 
 ![桌機系列頁](desktop.jpg)
 ![手機篩選](mobile.jpg)
+
+
+## 上線前隔離補強（2026-11-13）
+
+本節取代前述 50 頁／24 項測試的舊結果。審閱頁移至 src/review，由 Astro dev 專用 integration 註冊；build／preview／sync 均不註冊。本機仍可看 25 筆 proposed，正式建置不輸出其系列、主題或關鍵字。
+
+- Astro check：0 errors、0 warnings、0 hints；正式建置 49 頁；27 項測試全部通過。
+- 整合測試先放入過期審閱 HTML，再建置並確認檔案已清除；遞迴掃描 HTML、JS、JSON、XML、TXT，不含審閱路徑、入口、建議標記與 proposed 搜尋哨兵字串。
+- 驗證安全預設排除 proposed、confirmed 保留、原始分類檔未改、work_id 穩定，25 集單集頁均存在。
+- HTTP：本機 dev 審閱頁 200；正式 build 的本機 preview 審閱頁 404，Podcast 頁 200。
+- 瀏覽器確認正式 Podcast 顯示「共 25 集」、「分類待確認」，無審閱入口。截圖如下。
+- 25 筆建議與既有雙平台單集連結均未修改。此處排除的是網站產物；GitHub 原始資料依要求保留。
+
+![正式建置 Podcast 頁](public-build.jpg)

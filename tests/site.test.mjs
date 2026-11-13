@@ -83,3 +83,14 @@ test('正式 RSS 單集均有獨立路由、封面與收聽入口；不自動誤
     assert.doesNotMatch(html, /<iframe/);
   }
 });
+test('正式 dist 無分類審閱路由、入口、proposed 標籤或審閱搜尋／網站地圖資料', () => {
+  assert.equal(existsSync('dist/review/classifications/index.html'), false);
+  for (const file of walk('dist').filter((f) => /\.(html|js|json|xml|txt)$/.test(f))) {
+    assert.doesNotMatch(
+      readFileSync(file, 'utf8'),
+      /review\/classifications|分類建議・待審核|檢視分類建議/,
+    );
+  }
+  const episodes = JSON.parse(readFileSync('src/data/podcast.json', 'utf8'));
+  for (const ep of episodes) assert.ok(existsSync(`dist/podcast/${ep.slug}/index.html`));
+});

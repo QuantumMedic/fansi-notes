@@ -1,4 +1,5 @@
 ---
+import { reviewMode } from '../lib/review-mode.mjs';
 import { series, topics } from '../lib/taxonomy.mjs';
 import UnifiedWorkCard from './UnifiedWorkCard.astro';
 const { works, initialSeries = '', initialTopic = '' } = Astro.props;
@@ -38,7 +39,8 @@ const visible = (w: any) =>
     <button type="reset">清除篩選</button>
   </form>
   <p class="muted">
-    本次預覽包含待作者審核的分類建議，標示為「分類建議・待審核」。文章與聲音版本以作品 ID 合併呈現。
+    {reviewMode ? '本機審閱包含待作者審核的分類建議。' : '僅使用已確認的作品分類。'}
+    文章與聲音版本以作品 ID 合併呈現。
   </p>
   <p role="status" data-work-count>
     共 {works.filter(visible).length} 個作品

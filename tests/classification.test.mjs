@@ -56,7 +56,9 @@ test('主要必填、至多兩個不同主題；分類字典擴充只需一處',
   assert.equal(standaloneSchema.safeParse(record({ status: 'confirmed' })).success, false);
 });
 test('Podcast-only 凡思維、未分類單集保留；proposed 不冒充核准', () => {
-  const es = resolveClassifications([], [episode(), episode('new')], [], [record()]);
+  const es = resolveClassifications([], [episode(), episode('new')], [], [record()], {
+    includeProposed: true,
+  });
   assert.equal(es[0].classification.status, 'proposed');
   assert.equal(es[0].classification.content_type, 'fansiwei');
   assert.equal(es[1].classification.status, 'pending');
@@ -86,7 +88,9 @@ test('GUID 分類不受 RSS 順序／標題變動影響，不修改人工資料'
   const records = [record()];
   const before = JSON.stringify(records);
   const updated = { ...episode(), title: 'RSS 更新標題' };
-  const es = resolveClassifications([], [episode('new'), updated], [], records);
+  const es = resolveClassifications([], [episode('new'), updated], [], records, {
+    includeProposed: true,
+  });
   assert.equal(es[1].classification.content_type, 'fansiwei');
   assert.equal(JSON.stringify(records), before);
   assert.throws(() => resolveClassifications([], [], [], [record(), record()]));
@@ -100,4 +104,37 @@ test('人工分類資料的 GUID 唯一且存在；允許後續作者核准與�
     assert.ok(es.some((e) => e.guid === r.guid));
     standaloneSchema.parse(r);
   }
+});
+
+test('正式資料預設排除 proposed 標籤和關鍵字；confirmed 與未分類單集保留', () => {
+  const raw = [
+    record(),
+    record({
+      guid: 'confirmed',
+      work_id: 'confirmed-work',
+      status: 'confirmed',
+      reviewed_by: 'test',
+      reviewed_at: '2026-01-01T00:00:00Z',
+    }),
+  ];
+  const before = JSON.stringify(raw);
+  const publicEpisodes = resolveClassifications(
+    [],
+    [episode(), episode('confirmed'), episode('new')],
+    [],
+    raw,
+  );
+  assert.equal(publicEpisodes.length, 3);
+  assert.deepEqual(publicEpisodes[0].classification, {
+    content_type: '',
+    topics: [],
+    keywords: [],
+    status: 'pending',
+    source: 'none',
+  });
+  assert.equal(publicEpisodes[0].work_id, 'audio-a');
+  assert.equal(publicEpisodes[1].classification.status, 'confirmed');
+  assert.deepEqual(publicEpisodes[1].classification.topics, ['psychology', 'science']);
+  assert.equal(publicEpisodes[2].classification.status, 'pending');
+  assert.equal(JSON.stringify(raw), before);
 });

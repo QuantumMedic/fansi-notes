@@ -15,7 +15,13 @@ export const standaloneSchema = z
     if (v.status === 'confirmed' && (!v.reviewed_by || !v.reviewed_at))
       ctx.addIssue({ code: 'custom', message: '正式分類需核准者與時間' });
   });
-export function resolveClassifications(articles, episodes, mapping, raw) {
+export function resolveClassifications(
+  articles,
+  episodes,
+  mapping,
+  raw,
+  { includeProposed = false } = {},
+) {
   const records = raw.map((r) => standaloneSchema.parse(r));
   const byGuid = new Map();
   const definitions = new Map();
@@ -35,7 +41,7 @@ export function resolveClassifications(articles, episodes, mapping, raw) {
     const match = mapping.find((m) => m.guid === e.guid && m.approved === true);
     const article = match && articles.find((a) => a.work_id === match.work_id);
     const own = byGuid.get(e.guid);
-    const source = article || own;
+    const source = article || (own && (own.status === 'confirmed' || includeProposed) ? own : null);
     return {
       ...e,
       work_id: article?.work_id || own?.work_id || `podcast-${e.slug}`,

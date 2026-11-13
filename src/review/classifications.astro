@@ -1,8 +1,8 @@
 ---
-import Main from '../../layouts/Main.astro';
-import { catalog } from '../../lib/catalog';
-import { seriesName, topicName, statusName } from '../../lib/taxonomy.mjs';
-import { url } from '../../data/site';
+import Main from '../layouts/Main.astro';
+import { catalog } from '../lib/catalog';
+import { seriesName, topicName, statusName } from '../lib/taxonomy.mjs';
+import { url } from '../data/site';
 const { episodes } = await catalog();
 ---
 
