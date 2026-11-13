@@ -1,0 +1,3 @@
+[
+ {"work_id":"demo-paper-city","slug":"demo-paper-city","title":"紙城・合成作品示範","publication_kind":"series","synthetic":true,"website_approved":true,"approved_by":"synthetic-fixture","approved_revision":"demo-v1","summary":"僅供書架與作品世界版面測試，並非作者作品。","theme":"sage","series":"合成示範系列","order":1,"excerpt":"這是合成試讀測試文字，並非作者原文。","world":{"approved":true,"intro":"合成世界資料，僅供版面驗證。","entries":[{"kind":"地點","name":"紙上廣場（合成）","description":"此處示範地點介紹的閱讀版面。"}]}}
+]

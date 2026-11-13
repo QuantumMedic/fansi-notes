@@ -1,4 +1,7 @@
 ---
 import Main from '../../layouts/Main.astro';
+import Bookshelf from '../../components/Bookshelf.astro';
+import {kinds} from '../../lib/publications.mjs';
 ---
-<Main title="小說與出版"><section class="page-heading"><p class="eyebrow">想像的國度</p><h1>小說與出版</h1><p>真實書封、出版資料與作品介紹待作者核准；此階段僅保留書架入口。</p><p class="muted">M0–M2 原型 · 正式內容尚未匯入</p></section></Main>
+<Main title="小說與出版"><section class="page-heading"><p class="eyebrow">想像的國度</p><h1>小說與出版</h1><p>收藏故事，走進每一部作品的世界。</p><p class="muted">目前展示合成作品；真實書封、簡介與出版資料待作者核准。</p></section><section class="section"><label for="book-kind">作品狀態</label><select id="book-kind"><option value="">全部作品</option>{Object.entries(kinds).map(([k,v])=><option value={k}>{v}</option>)}</select><p role="status" id="shelf-empty" hidden>此類作品尚未上架，請選擇其他類型。</p><Bookshelf/></section></Main>
+<script>const select=document.querySelector<HTMLSelectElement>('#book-kind')!;select.addEventListener('change',()=>{let count=0;document.querySelectorAll<HTMLElement>('[data-book-kind]').forEach(el=>{el.hidden=!!select.value&&el.dataset.bookKind!==select.value;if(!el.hidden)count++;});document.querySelector<HTMLElement>('#shelf-empty')!.hidden=count>0;});</script>

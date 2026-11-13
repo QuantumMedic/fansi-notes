@@ -57,8 +57,8 @@ const visible = (w: any) =>
       <UnifiedWorkCard work={w} />
     </div>
   ))}
-  <p data-work-empty hidden>
-    沒有符合的作品，請調整篩選。
+  <p data-work-empty hidden={scopedWorks.filter(visible).length > 0}>
+    {scopedWorks.filter(visible).length === 0 ? '這個分類目前尚無已確認的作品。你仍可前往凡思聲收聽全部單集。' : '沒有符合的作品，請調整篩選。'}
   </p>
 </section>
 <script>

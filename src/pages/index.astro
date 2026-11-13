@@ -1,4 +1,6 @@
 ---
+import {author} from '../lib/author';
+import Bookshelf from '../components/Bookshelf.astro';
 import { reviewMode } from '../lib/review-mode.mjs';
 import Main from '../layouts/Main.astro';
 import Storybook from '../components/Storybook.astro';
@@ -95,23 +97,12 @@ const featured = articles
         小說與出版 ↗
       </a>
     </div>
-    <div class="shelf-preview">
-      <div class="blank-books" aria-hidden="true">
-        <span>書封待提供</span>
-        <span>作品示意</span>
-        <span>尚未定版</span>
-      </div>
-      <p>
-        真實書封與出版資料，
-        <br />
-        將在作者核准後與你見面。
-      </p>
-    </div>
+    <Bookshelf />
   </section>
   <section class="section author-note">
     <p class="eyebrow">書頁背後</p>
     <h2>關於寫下這些文字的人</h2>
-    <p>作者公開署名與簡介待確認。</p>
+    <p>{author.approved && author.bio ? author.bio : '作者公開署名與簡介待確認。'}</p>
     <a class="text-link" href={url('about/')}>
       走近作者的書桌 ↗
     </a>
