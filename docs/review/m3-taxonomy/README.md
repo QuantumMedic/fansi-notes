@@ -33,3 +33,15 @@
 - 25 筆建議與既有雙平台單集連結均未修改。此處排除的是網站產物；GitHub 原始資料依要求保留。
 
 ![正式建置 Podcast 頁](public-build.jpg)
+
+
+## 固定系列頁驗收
+
+凡思維、深度內容、特別篇只輸出所屬作品，不顯示系列選單；清除篩選仍限制原系列。閱讀入口加強，Podcast-only 標示聲音版本；凡思聲保留完整系列／主題／搜尋。
+
+27 項測試通過，check 零錯誤，build 49 頁。瀏覽器桌機 1440、手機 390 驗證：凡思維醫學篩選 2 個、清除 6 個，搜尋植物 1 個；凡思聲凡思維＋醫學 2 集、清除 25 集、搜尋植物 1 集。手機 scrollWidth 375，無水平溢出。截圖為本機 proposed 審閱模式，未核准分類不會因此公開。
+
+![凡思維桌機](fansiwei-desktop.jpg)
+![凡思聲桌機](fansisheng-desktop.jpg)
+![凡思維手機](fansiwei-mobile.jpg)
+![凡思聲手機](fansisheng-mobile.jpg)

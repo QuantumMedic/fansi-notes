@@ -3,18 +3,19 @@ import { reviewMode } from '../lib/review-mode.mjs';
 import { series, topics } from '../lib/taxonomy.mjs';
 import UnifiedWorkCard from './UnifiedWorkCard.astro';
 const { works, initialSeries = '', initialTopic = '' } = Astro.props;
+const scopedWorks = initialSeries ? works.filter((w: any) => w.classification.content_type === initialSeries) : works;
 const visible = (w: any) =>
   (!initialSeries || w.classification.content_type === initialSeries) &&
   (!initialTopic || w.classification.topics.includes(initialTopic));
 ---
 
-<section class="section" data-work-explorer>
+<section class="section" data-work-explorer data-fixed-series={initialSeries}>
   <form class="filters" role="search">
     <label for="work-q">
       搜尋作品
       <input id="work-q" name="q" type="search" placeholder="標題、介紹或關鍵字" />
     </label>
-    <label for="work-series">
+    {!initialSeries && <label for="work-series">
       作品系列
       <select id="work-series" name="series">
         <option value="">全部系列</option>
@@ -24,7 +25,7 @@ const visible = (w: any) =>
           </option>
         ))}
       </select>
-    </label>
+    </label>}
     <label for="work-topic">
       主題分類
       <select id="work-topic" name="topic">
@@ -43,9 +44,9 @@ const visible = (w: any) =>
     文章與聲音版本以作品 ID 合併呈現。
   </p>
   <p role="status" data-work-count>
-    共 {works.filter(visible).length} 個作品
+    共 {scopedWorks.filter(visible).length} 個作品
   </p>
-  {works.map((w: any) => (
+  {scopedWorks.map((w: any) => (
     <div
       hidden={!visible(w)}
       data-work-result
@@ -74,7 +75,7 @@ const visible = (w: any) =>
         el.dataset.search!,
         el.dataset.topics!.split(' '),
         el.dataset.series!,
-        { q: q.value, topic: topic.value, contentType: series.value },
+        { q: q.value, topic: topic.value, contentType: root.dataset.fixedSeries || series?.value || '' },
       );
       if (!el.hidden) n++;
     });
@@ -88,7 +89,7 @@ const visible = (w: any) =>
   });
   form.addEventListener('reset', () =>
     setTimeout(() => {
-      series.value = '';
+      if (series) series.value = '';
       topic.value = '';
       filter();
     }),

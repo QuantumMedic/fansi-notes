@@ -80,7 +80,9 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(html('topics/psychology/index.html'), /新增合成文章/);
     assert.match(html('index.html'), /新增合成文章/);
     assert.match(html('series/fansiwei/index.html'), /新增合成文章/);
-    assert.match(html('series/fansiwei/index.html'), /一盆植物延長生命/);
+    assert.doesNotMatch(html('series/fansiwei/index.html'), /一盆植物延長生命/);
+    assert.doesNotMatch(html('series/fansiwei/index.html'), /id="work-series"/);
+    assert.match(html('series/fansiwei/index.html'), /data-fixed-series="fansiwei"/);
     assert.doesNotMatch(html('articles/demo-new/index.html'), /觀看 Instagram|data-spotify-id/);
     const e = {
       guid: 'fixture-unique-guid',
