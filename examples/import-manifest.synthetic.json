@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "kind": "article",
+      "metadata": {
+        "work_id": "demo-batch-article",
+        "slug": "demo-batch-article",
+        "title": "合成文章",
+        "summary": "僅供測試",
+        "content_type": "fansiwei",
+        "topics": [
+          "psychology"
+        ],
+        "keywords": [],
+        "related_work_ids": [],
+        "aliases": [],
+        "synthetic": true,
+        "publication_status": "demo",
+        "approved_revision": "synthetic-v1",
+        "website_approved": true,
+        "approved_by": "synthetic-fixture",
+        "approved_at": "2026-01-01T00:00:00+08:00",
+        "published_at": "2026-01-02T00:00:00+08:00",
+        "written_master": "ig-vocus",
+        "platform_urls": {},
+        "sources": []
+      },
+      "body": "合成測試全文，並非作者作品。",
+      "public_authorization": true
+    },
+    {
+      "kind": "publication",
+      "metadata": {
+        "work_id": "demo-paper-city",
+        "slug": "demo-paper-city",
+        "title": "紙城・合成作品示範",
+        "synthetic": true,
+        "website_approved": true,
+        "approved_by": "synthetic-fixture",
+        "approved_revision": "demo-v1",
+        "summary": "僅供書架與作品世界版面測試，並非作者作品。",
+        "theme": "sage",
+        "series": "合成示範系列",
+        "order": 1,
+        "excerpt": "這是合成試讀測試文字，並非作者原文。",
+        "world": {
+          "approved": true,
+          "intro": "合成世界資料，僅供版面驗證。",
+          "entries": [
+            {
+              "kind": "地點",
+              "name": "紙上廣場（合成）",
+              "description": "此處示範地點介紹的閱讀版面。"
+            }
+          ]
+        },
+        "publication_status": "unpublished",
+        "work_form": "novel"
+      },
+      "public_authorization": true
+    }
+  ]
+}

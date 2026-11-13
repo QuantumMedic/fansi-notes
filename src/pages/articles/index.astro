@@ -68,43 +68,28 @@ const articles = (await catalog()).articles;
   </section>
 </Main>
 <script>
-  import { matchesSearch } from '../../lib/search.mjs';
-  const form = document.querySelector('form')!;
-  const query = document.querySelector<HTMLInputElement>('#query')!;
-  const type = document.querySelector<HTMLSelectElement>('#type')!;
-  const topic = document.querySelector<HTMLSelectElement>('#topic')!;
-  const sort = document.querySelector<HTMLSelectElement>('#sort')!;
-  const params = new URLSearchParams(location.search);
-  type.value = params.get('type') || '';
-  query.value = params.get('q') || '';
-  topic.value = params.get('topic') || '';
-  function filter() {
-    const list = document.querySelector('#article-results')!;
-    [...document.querySelectorAll<HTMLElement>('[data-result]')]
-      .sort(
-        (a, b) =>
-          (Date.parse(b.dataset.date!) - Date.parse(a.dataset.date!)) *
-          (sort.value === 'oldest' ? -1 : 1),
-      )
-      .forEach((el) => list.append(el));
-    let count = 0;
-    document.querySelectorAll<HTMLElement>('[data-result]').forEach((el) => {
-      el.hidden = !matchesSearch(
-        el.dataset.search!,
-        el.dataset.topics!.split(' '),
-        el.dataset.type!,
-        { q: query.value, topic: topic.value, contentType: type.value },
-      );
-      if (!el.hidden) count++;
-    });
-    document.querySelector('#results')!.textContent = `共 ${count} 篇測試文章`;
-    document.querySelector<HTMLElement>('#no-results')!.hidden = count > 0;
-  }
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    filter();
-  });
-  form.addEventListener('input', filter);
-  form.addEventListener('reset', () => setTimeout(filter));
-  filter();
+ import {prepareSearch,matchesPrepared} from '../../lib/search.mjs';
+ const form=document.querySelector<HTMLFormElement>('#search form')!;
+ const query=document.querySelector<HTMLInputElement>('#query')!;
+ const type=document.querySelector<HTMLSelectElement>('#type')!;
+ const topic=document.querySelector<HTMLSelectElement>('#topic')!;
+ const sort=document.querySelector<HTMLSelectElement>('#sort')!;
+ const list=document.querySelector('#article-results')!;
+ const rows=[...list.querySelectorAll<HTMLElement>('[data-result]')].map(el=>({el,date:Date.parse(el.dataset.date!),record:prepareSearch(el.dataset.search!,el.dataset.topics!.split(' '),el.dataset.type!)}));
+ const params=new URLSearchParams(location.search);
+ for(const [select,key] of [[type,'type'],[topic,'topic'],[sort,'sort']] as const){const value=params.get(key);if(value&&[...select.options].some(o=>o.value===value))select.value=value;}
+ query.value=params.get('q')||'';
+ let lastSort='',timer:ReturnType<typeof setTimeout>,composing=false;
+ function filter(){clearTimeout(timer);if(sort.value!==lastSort){rows.sort((a,b)=>(b.date-a.date)*(sort.value==='oldest'?-1:1));list.append(...rows.map(r=>r.el));lastSort=sort.value;}
+ let count=0;for(const row of rows){row.el.hidden=!matchesPrepared(row.record,{q:query.value,topic:topic.value,contentType:type.value});if(!row.el.hidden)count++;}
+ document.querySelector('#results')!.textContent=`共 ${count} 篇文章`;
+ document.querySelector<HTMLElement>('#no-results')!.hidden=count>0;
+ }
+ query.addEventListener('compositionstart',()=>{composing=true;clearTimeout(timer)});
+ query.addEventListener('compositionend',()=>{composing=false;filter()});
+ query.addEventListener('input',()=>{clearTimeout(timer);if(!composing)timer=setTimeout(filter,120)});
+ form.addEventListener('change',filter);
+ form.addEventListener('submit',e=>{e.preventDefault();filter()});
+ form.addEventListener('reset',()=>{clearTimeout(timer);setTimeout(filter)});
+ filter();
 </script>
