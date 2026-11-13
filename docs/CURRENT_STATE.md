@@ -12,7 +12,7 @@
 
 開始時已查核 GitHub：PR #1–#5 均 open、未 merged。
 
-main ← #1 codex/m0-m1-foundation ← #2 codex/m2-storybook ← #3 codex/m3-content ← #4 codex/m3-taxonomy ← #5 codex/m4-publications ← 本次 codex/m5a-readiness。
+main ← #1 codex/m0-m1-foundation ← #2 codex/m2-storybook ← #3 codex/m3-content ← #4 codex/m3-taxonomy ← #5 codex/m4-publications ← #6 codex/m5a-readiness。
 
 M4 基底 fd9f431f4747f28ec89e94289a4f7c0055343885。新 PR 指向 M4，不將未合併的歷史功能混作新增功能。合併順序需由作者批准，之後逐份重定基底及驗證。
 
@@ -38,4 +38,4 @@ ChatGPT SOP 不會自行寫入 GitHub。必須作者明確要求同步，再由�
 
 ## 最新驗收
 
-M5-A：33項測試通過、check零錯誤／警告／提示、51頁建置及RSS／sitemap完成。桌機與手機實測見 [驗收紀錄](review/m5a/README.md)。待作者審閱新PR；不自動合併。
+M5-A：33項測試通過、check零錯誤／警告／提示、51頁建置及RSS／sitemap完成。桌機與手機實測見 [驗收紀錄](review/m5a/README.md)。待作者審閱 [PR #6](https://github.com/QuantumMedic/fansi-notes/pull/6)；不自動合併。
