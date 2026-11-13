@@ -24,3 +24,6 @@
 ![桌機聯絡](contact-desktop.jpg)
 ![手機聯絡](contact-mobile.jpg)
 ![手機小說三軸](books-mobile.jpg)
+
+
+最後內容範圍驗收：34 tests 通過、check 零錯誤／警告／提示、build 51 頁。新增 website-original 與短篇全文獨立核准驗證；詳見 docs/M5A_最後驗收與交接.md。沒有新增真實作品或核准 Podcast 分類。

@@ -38,4 +38,18 @@ ChatGPT SOP 不會自行寫入 GitHub。必須作者明確要求同步，再由�
 
 ## 最新驗收
 
-M5-A：33項測試通過、check零錯誤／警告／提示、51頁建置及RSS／sitemap完成。桌機與手機實測見 [驗收紀錄](review/m5a/README.md)。待作者審閱 [PR #6](https://github.com/QuantumMedic/fansi-notes/pull/6)；不自動合併。
+M5-A 初次：33項測試通過、check零錯誤／警告／提示、51頁建置及RSS／sitemap完成。桌機與手機實測見 [驗收紀錄](review/m5a/README.md)。待作者審閱 [PR #6](https://github.com/QuantumMedic/fansi-notes/pull/6)；不自動合併。
+
+
+## M5-A 最後驗收：作品公開範圍
+
+- 凡思維、深度文章與其他文字創作可以只有網站全文，沒有 Podcast、IG 或 Vocus；三者連結均選填。小故事、隨筆與短文由作者選既有作品系列與主題，不新增分類、不強迫錄音。
+- `written_master: website-original` 表示獨立網站書面定稿；既有 IG／Vocus 共用稿維持 `ig-vocus`。這是來源辨識，不改雙母稿創作順序；兩者都需明確網站公開授權。
+- 小說與出版定位為作者作品館。預設只有書封、簡介、出版資訊、購買連結，試讀／番外／世界觀均選填，不預設公開小說全文。
+- 已公開且另行授權全文的短篇小說可使用 `work_form: short`、`publication_status: published` 與 `full_text: {approved:true, approved_by, approved_revision, text}`。沒有 full_text 不顯示全文；未核准、未公開或長篇小說使用此欄位會驗證失敗。全文以跳脫文字與段落呈現，不執行 HTML。
+- 歷史作品一次性批次匯入；未來作品經既有 SOP 確認後逐篇同步。完成 SOP 不等於公開授權，工具操作才會寫入 GitHub。未授權稿件不能先放公開 Repo 再用欄位隱藏。
+
+最新操作、合併計畫與 M5-B 補件清單：[最後驗收與交接](M5A_最後驗收與交接.md)。
+
+
+最後內容範圍驗收：34 tests 通過、check 零錯誤／警告／提示、build 51 頁。新增 website-original 與短篇全文獨立核准驗證；詳見 docs/M5A_最後驗收與交接.md。沒有新增真實作品或核准 Podcast 分類。
