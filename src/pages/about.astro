@@ -1,4 +1,7 @@
 ---
 import Main from '../layouts/Main.astro';
+import {author} from '../lib/author';
+import {site,url} from '../data/site';
+import Bookshelf from '../components/Bookshelf.astro';
 ---
-<Main title="關於作者"><section class="page-heading"><p class="eyebrow">作者的書桌</p><h1>關於作者</h1><p>作者公開署名、照片、簡介與年表待提供。</p><p class="muted">M0–M2 原型 · 正式內容尚未匯入</p></section></Main>
+<Main title="關於作者"><section class="page-heading"><p class="eyebrow">作者的書桌</p><h1>{author.approved&&author.name?author.name:'關於作者'}</h1>{author.approved&&author.photo&&<img src={author.photo} alt="作者核准照片"/>}<p>{author.approved&&author.bio?author.bio:'公開署名與作者簡介整理中。先從文字、聲音與故事，認識這裡的創作。'}</p></section><section class="section"><h2>創作歷程</h2>{author.approved && author.timeline.length ? <ol>{author.timeline.map(x=><li><strong>{x.year}</strong> {x.event}</li>)}</ol> : <p>正式年表待作者提供與核准。</p>}<h2>故事與出版</h2><Bookshelf/><h2>繼續探索</h2><p><a href={url('articles/')}>閱讀文章 →</a> · <a href={url('podcast/')}>收聽凡思聲 →</a></p>{site.socialLinks.map(x=><p><a href={x.url}>{x.label} ↗</a></p>)}<p><a href={url('contact/')}>來信與合作 →</a></p></section></Main>

@@ -1,0 +1,9 @@
+---
+import Main from '../../../layouts/Main.astro';
+import {publications} from '../../../lib/publications.ts';
+import {url} from '../../../data/site';
+export function getStaticPaths(){return publications.filter(b=>b.world?.approved).map(book=>({params:{slug:book.slug},props:{book}}));}
+interface Props { book: import('../../../lib/publications.ts').Publication }
+const {book:b}=Astro.props;
+---
+<Main title={`${b.title}・作品世界`}><section class="page-heading" style={`border-bottom:6px solid var(--${b.theme})`}><a href={url(`works/${b.slug}/`)}>← 返回作品介紹</a><p class="eyebrow">作品世界{b.synthetic?'・合成示範':''}</p><h1>{b.title}</h1><p>{b.world!.intro}</p></section><section class="section">{b.world!.entries.map(x=><article><p class="eyebrow">{x.kind}</p><h2>{x.name}</h2><p>{x.description}</p></article>)}</section></Main>

@@ -1,0 +1,7 @@
+---
+import {publications} from '../lib/publications.ts';
+import {kinds} from '../lib/publications.mjs';
+import {url} from '../data/site';
+---
+<div class="shelf">{publications.map(b=><article data-book-kind={b.publication_kind}><a href={url(`works/${b.slug}/`)}>{b.cover ? <img src={b.cover} alt={`${b.title}書封`} loading="lazy"/> : <div class="book-cover"><span>占位書封</span><strong>{b.title}</strong></div>}<h2>{b.title}</h2></a><p>{kinds[b.publication_kind]}{b.synthetic ? ' · 合成測試資料' : ''}</p><p>{b.summary}</p></article>)}</div>
+<style>.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px}.shelf article{max-width:380px;border-bottom:8px solid var(--parchment);padding-bottom:24px}.book-cover{aspect-ratio:2/3;background:var(--sage);padding:32px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 10px 0 #0002}.book-cover strong{font-size:2rem}img{width:100%;aspect-ratio:2/3;object-fit:contain}.shelf a{display:block}.shelf a:hover,.shelf a:focus-visible{transform:translateY(-4px)}@media(prefers-reduced-motion:reduce){.shelf a:hover,.shelf a:focus-visible{transform:none}}</style>

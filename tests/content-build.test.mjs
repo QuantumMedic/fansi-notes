@@ -45,6 +45,13 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       featured_order: 0,
     });
     write(data);
+    const booksFile=join(root,'src/data/publications.json');
+    const books=JSON.parse(readFileSync(booksFile,'utf8'));
+    books[0].title='更新合成書名';
+    books[0].cover='https://example.com/approved-cover.jpg';
+    books[0].links=[{label:'合成購書入口',url:'https://example.com/book'}];
+    delete books[0].world;
+    writeFileSync(booksFile,JSON.stringify(books));
     // A stale review build and proposed-only keyword must never survive a public build.
     const reviewDir = join(root, 'dist/review/classifications');
     mkdirSync(reviewDir, { recursive: true });
@@ -72,6 +79,12 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       }
     };
     inspect(join(root, 'dist'));
+    for(const page of ['index.html','works/index.html','about/index.html']) {
+      assert.match(html(page),/更新合成書名/);
+      assert.match(html(page),/approved-cover.jpg/);
+    }
+    assert.match(html('works/demo-paper-city/index.html'),/https:\/\/example.com\/book/);
+    assert.equal(existsSync(join(root,'dist/works/demo-paper-city/world/index.html')),false);
     const realEpisodes = JSON.parse(readFileSync(join(root, 'src/data/podcast.json'), 'utf8'));
     for (const ep of realEpisodes)
       assert.match(html(`podcast/${ep.slug}/index.html`), /分類待確認/);

@@ -1,0 +1,11 @@
+---
+import Main from '../../../layouts/Main.astro';
+import {publications} from '../../../lib/publications.ts';
+import {kinds} from '../../../lib/publications.mjs';
+import {url} from '../../../data/site';
+export function getStaticPaths(){return publications.map(book=>({params:{slug:book.slug},props:{book}}));}
+interface Props { book: import('../../../lib/publications.ts').Publication }
+const {book:b}=Astro.props;
+const siblings=publications.filter(x=>b.series&&x.series===b.series).sort((a,b)=>(a.order||0)-(b.order||0));
+---
+<Main title={b.title}><section class="page-heading" style={`border-bottom:6px solid var(--${b.theme})`}><a href={url('works/')}>← 回到書架</a><p class="eyebrow">{kinds[b.publication_kind]}{b.synthetic?' · 合成測試資料':''}</p><h1>{b.title}</h1><p>{b.summary}</p></section><article class="section" style="max-width:760px;margin:auto">{b.cover&&<img src={b.cover} alt={`${b.title}書封`} width="320"/>}<dl>{b.author&&<><dt>作者</dt><dd>{b.author}</dd></>}{b.publisher&&<><dt>出版社</dt><dd>{b.publisher}</dd></>}{b.year&&<><dt>出版年份</dt><dd>{b.year}</dd></>}</dl>{b.excerpt?<section><h2>試讀{b.synthetic?'・合成示範':''}</h2><p style="white-space:pre-wrap">{b.excerpt}</p></section>:<p>本作品目前未提供公開試讀。</p>}{b.world&&<p><a href={url(`works/${b.slug}/world/`)}>走進作品世界 →</a></p>}{siblings.length>0&&<section><h2>系列閱讀順序</h2><ol>{siblings.map(x=><li><a href={url(`works/${x.slug}/`)}>{x.title}</a></li>)}</ol></section>}{b.links.map(x=><p><a href={x.url} rel="noopener noreferrer">{x.label} ↗</a></p>)}<p class="muted">留言功能準備中。</p></article></Main>

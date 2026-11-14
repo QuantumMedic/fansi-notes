@@ -1,6 +1,7 @@
+import {author} from '../lib/author';
 export const site = {
   name: '凡思筆記',
-  author: '作者署名待確認',
+  author: author.approved && author.name ? author.name : '作者署名待確認',
   description: '在文字、聲音與想像之間，展開一頁新的風景。',
   socialLinks: [] as { label: string; url: string }[],
   comments: { provider: null },
