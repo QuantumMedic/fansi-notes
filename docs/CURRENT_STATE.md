@@ -1,3 +1,15 @@
+# PR #8 最新補充：統一文章閱讀入口
+
+本輪僅更新 PR #8 `codex/m5b-first-articles` 的介面與呈現。三篇原文、分類、work_id、已確認metadata及GUID映射不變。探索文章／凡思維／文章與故事共用 ArticleBrowser，正式計數3／1／2，不含Podcast-only；後者仍在凡思聲。固定系列清除篩選留在該系列，舊longform／special路由導向文章與故事。
+
+一般列表、首頁、推薦及正式建置排除synthetic文章與出版作品；工程檔案保留供隔離測試，無正式小說資料時顯示待上架。開頭摘錄不重複出現在全文頁首，SEO description保留；可選summary_kind=independent供未來作者確認的獨立摘要。圖片標記仍保留在正文，閱讀介面隱藏占位，圖說／來源連結可讀可點。
+
+標題旁依platform_urls顯示Vocus／Instagram；只有approved GUID配對才顯示收聽入口及相關Podcast（正式標題、Spotify、可用Apple單集網址與選擇載入播放器），單集反向連文章。三篇目前只有Vocus入口，不增加正式配對。
+
+40項測試通過、check零問題、build50頁；[驗收與十二張桌機手機截圖](review/m5b-first-articles/README.md)。[PR #8](https://github.com/QuantumMedic/fansi-notes/pull/8)等待作者最終確認。不合併、不部署、不啟用服務、不新增內容或進入下一階段。以下先前紀錄供追溯，與本節不一致時以本節為準。
+
+---
+
 # 最新有效狀態：M5-B 首批全文匯入（2026-11-14）
 
 本節優先於下方歷史階段限制。PR #1–#7 已合併；本輪從 main `c019985` 建立 `codex/m5b-first-articles`，不合併、不部署。

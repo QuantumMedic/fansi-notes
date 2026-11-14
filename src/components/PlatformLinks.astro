@@ -5,13 +5,12 @@ interface Props {
 }
 const links = platformsSchema.parse(Astro.props.links);
 const entries = [
-  ['instagram_url', '觀看 Instagram'],
-  ['vocus_url', '閱讀 Vocus'],
-  ['spotify_episode_url', 'Spotify 收聽'],
+  ['instagram_url', 'Instagram 貼文'],
+  ['vocus_url', 'Vocus 原文'],
 ] as const;
 ---
 
-{Object.keys(links).length > 0 && (
+{entries.some(([key]) => links[key]) && (
   <nav class="topic-links" aria-label="其他平台">
     {entries.map(
       ([key, label]) =>

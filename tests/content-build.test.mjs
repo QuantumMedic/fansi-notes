@@ -43,16 +43,21 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       slug: 'demo-new',
       title: '新增合成文章',
       featured_order: 0,
+      synthetic: false, publication_status: 'published', public_author_name: '隔離測試署名',
     });
     write(data);
     const booksFile=join(root,'src/data/publications.json');
     const books=JSON.parse(readFileSync(booksFile,'utf8'));
     books[0].title='更新合成書名';
+    books[0].synthetic=false; // Public-state fixture exists only inside this temporary build.
     books[0].work_form='short';books[0].publication_status='published';books[0].full_text={approved:true,approved_by:'synthetic-fixture',approved_revision:'demo-v1',text:'獨立授權的合成短篇全文。'};
     books[0].cover='https://example.com/approved-cover.jpg';
     books[0].links=[{label:'合成購書入口',url:'https://example.com/book'}];
     delete books[0].world;
     writeFileSync(booksFile,JSON.stringify(books));
+    writeFileSync(join(root, 'src/data/publication-relations.json'), JSON.stringify([
+      {article_work_id: data.work_id, publication_work_id: books[0].work_id, approved:true}
+    ]));
     // A stale review build and proposed-only keyword must never survive a public build.
     const reviewDir = join(root, 'dist/review/classifications');
     mkdirSync(reviewDir, { recursive: true });
@@ -98,7 +103,9 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.doesNotMatch(html('series/fansiwei/index.html'), /一盆植物延長生命/);
     assert.doesNotMatch(html('series/fansiwei/index.html'), /id="work-series"/);
     assert.match(html('series/fansiwei/index.html'), /data-fixed-series="fansiwei"/);
-    assert.doesNotMatch(html('articles/demo-new/index.html'), /觀看 Instagram|data-spotify-id/);
+    assert.doesNotMatch(html('articles/demo-new/index.html'), /Instagram 貼文|data-spotify-id|相關 Podcast/);
+    assert.match(html('articles/demo-new/index.html'), /works\/demo-paper-city\//);
+    assert.match(html('works/demo-paper-city/index.html'), /articles\/demo-new\//);
     const e = {
       guid: 'fixture-unique-guid',
       slug: 'fixture-episode',
@@ -107,6 +114,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       published_at: data.published_at,
       synthetic: true,
       spotify_episode_url: 'https://open.spotify.com/episode/0123456789012345678901',
+      apple_episode_url: 'https://podcasts.apple.com/tw/podcast/test/id123?i=456',
     };
     writeFileSync(
       join(root, 'src/data/podcast.json'),
@@ -133,12 +141,17 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     build();
     const detail = html('articles/demo-renamed/index.html');
     assert.match(detail, /文章目錄/);
-    assert.match(detail, /觀看 Instagram/);
-    assert.match(detail, /閱讀 Vocus/);
+    assert.match(detail, /Instagram 貼文/);
+    assert.match(detail, /Vocus 原文/);
     assert.match(detail, /和文章不同名的單集/);
     assert.match(detail, /data-spotify-id/);
     assert.doesNotMatch(detail, /<iframe/);
-    assert.match(detail, /紙上花園/);
+    assert.doesNotMatch(detail, /紙上花園/);
+    assert.match(detail, /相關 Podcast/);
+    assert.match(detail, /在 Apple Podcasts 收聽本集/);
+    assert.match(detail, /href="#related-podcast"/);
+    assert.ok(detail.indexOf('Vocus 原文') < detail.indexOf('class="reading article-body"'));
+    assert.equal((detail.match(/Vocus 原文/g)||[]).length,1);
     assert.match(html('articles/demo-new/index.html'), /http-equiv="refresh"/);
     assert.match(html('articles/demo-new/index.html'), /articles\/demo-renamed\//);
     assert.match(

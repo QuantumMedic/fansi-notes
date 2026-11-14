@@ -26,7 +26,7 @@ const featured = articles
         探索全部文章 ↗
       </a>
     </div>
-    <p class="muted">收錄作者授權的公開文章；合成版面示例均另有標示。</p>
+    <p class="muted">收錄作者授權的完整文章。</p>
     <div class="cards">
       {articles.slice(0, 4).map((a) => (
         <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
@@ -47,17 +47,17 @@ const featured = articles
         : '依已確認的主題，探索文字與聲音作品。'}
     </p>
   </section>
-  <section class="section">
+  {featured.length > 0 && <section class="section">
     <div class="section-heading">
       <h2>值得停留的篇章</h2>
-      <span>精選順序示意</span>
+
     </div>
     <div class="cards">
       {featured.map((a) => (
         <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
       ))}
     </div>
-  </section>
+  </section>}
   <section class="podcast-strip">
     <div class="podcast-art" aria-hidden="true">
       <span>凡思聲</span>

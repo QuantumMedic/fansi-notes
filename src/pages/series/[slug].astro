@@ -1,22 +1,15 @@
 ---
 import {url} from '../../data/site';
 import Main from '../../layouts/Main.astro';
-import WorkExplorer from '../../components/WorkExplorer.astro';
+import ArticleBrowser from '../../components/ArticleBrowser.astro';
 import { publicSeries, series, publicSeriesSlug } from '../../lib/taxonomy.mjs';
-import { catalog } from '../../lib/catalog';
 export function getStaticPaths() {
   return [...publicSeries, ...series.filter(s => publicSeriesSlug(s.slug) !== s.slug)].map((s) => ({ params: { slug: s.slug }, props: { series: s } }));
 }
 const { series: s } = Astro.props;
 if (publicSeriesSlug(s.slug) !== s.slug) return Astro.redirect(url(`series/${publicSeriesSlug(s.slug)}/`), 301);
-const { works } = await catalog();
 ---
 
 <Main title={s.name}>
-  <section class="page-heading">
-    <p class="eyebrow">作品系列</p>
-    <h1>{s.name}</h1>
-    <p>閱讀或收聽同一系列的作品。只有聲音版本的作品，也能從這裡開始。</p>
-  </section>
-  <WorkExplorer works={works} initialSeries={s.slug} />
+  <ArticleBrowser title={s.name} fixedSeries={s.slug} />
 </Main>

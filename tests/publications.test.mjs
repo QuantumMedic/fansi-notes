@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { validatePublications } from '../src/lib/publications.mjs';
 const data = JSON.parse(readFileSync('src/data/publications.json', 'utf8'));
 test('出版資料拒絕未核准、重複識別與不安全網址，世界資料需獨立核准', () => {
@@ -23,11 +23,12 @@ test('出版資料拒絕未核准、重複識別與不安全網址，世界資�
   assert.equal(b.world, undefined);
   assert.equal(b.links.length, 1);
 });
-test('書架、作者頁與首頁共用作品；試讀與世界具明確合成標記', () => {
+test('正式書架、作者頁及首頁不輸出合成小說，示範詳頁與世界頁不建置', () => {
   for (const page of ['index', 'works/index', 'about/index'])
-    assert.match(readFileSync(`dist/${page}.html`, 'utf8'), /紙城・合成作品示範/);
-  assert.match(readFileSync('dist/works/demo-paper-city/index.html', 'utf8'), /合成試讀測試文字/);
-  assert.match(readFileSync('dist/works/demo-paper-city/world/index.html', 'utf8'), /合成世界資料/);
+    assert.doesNotMatch(readFileSync(`dist/${page}.html`, 'utf8'), /紙城・合成作品示範|demo-paper-city/);
+  assert.equal(existsSync('dist/works/demo-paper-city/index.html'), false);
+  assert.equal(existsSync('dist/works/demo-paper-city/world/index.html'), false);
+  assert.match(readFileSync('dist/works/index.html', 'utf8'), /作品資料整理中/);
 });
 
 import { validatePublicationRelations } from '../src/lib/publication-relations.mjs';
@@ -36,12 +37,4 @@ test('文章與出版關聯只接受核准的存在 ID，拒絕重複且雙向�
   assert.equal(validatePublicationRelations([r], [{ work_id: 'a' }], [{ work_id: 'b' }]).length, 1);
   for (const rows of [[{ ...r, approved: false }], [{ ...r, article_work_id: 'missing' }], [r, r]])
     assert.throws(() => validatePublicationRelations(rows, [{ work_id: 'a' }], [{ work_id: 'b' }]));
-  assert.match(
-    readFileSync('dist/articles/paper-garden/index.html', 'utf8'),
-    /href="\/fansi-notes\/works\/demo-paper-city\/"/,
-  );
-  assert.match(
-    readFileSync('dist/works/demo-paper-city/index.html', 'utf8'),
-    /href="\/fansi-notes\/articles\/paper-garden\/"/,
-  );
 });

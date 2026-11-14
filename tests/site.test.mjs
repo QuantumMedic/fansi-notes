@@ -10,8 +10,8 @@ test('M1 路由全部輸出，原型禁止索引', () => {
   for (const p of [
     '',
     'articles/',
-    'articles/paper-garden/',
-    'articles/reading-window/',
+    'articles/willpower-and-habits/',
+    'articles/antifragile-life/',
     'podcast/',
     'works/',
     'about/',
