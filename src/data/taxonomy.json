@@ -67,5 +67,10 @@
         "special"
       ]
     }
-  ]
+  ],
+  "topic_aliases": {
+    "history_society": "society",
+    "books": "literature",
+    "personal": "creation"
+  }
 }

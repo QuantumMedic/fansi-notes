@@ -78,7 +78,7 @@ const articles = (await catalog()).articles.filter((a) =>
   </section>
 </div>
 <script>
-  import { publicSeriesSlug } from '../lib/taxonomy.mjs';
+  import { publicSeriesSlug, canonicalTopic } from '../lib/taxonomy.mjs';
   import { prepareSearch, matchesPrepared } from '../lib/search.mjs';
   const form = document.querySelector<HTMLFormElement>('#search form')!;
   const query = document.querySelector<HTMLInputElement>('#query')!;
@@ -100,7 +100,7 @@ const articles = (await catalog()).articles.filter((a) =>
     [sort, 'sort'],
   ] as const) {
     const raw = params.get(key);
-    const value = key === 'type' && raw ? publicSeriesSlug(raw) : raw;
+    const value = raw ? (key === 'type' ? publicSeriesSlug(raw) : key === 'topic' ? canonicalTopic(raw) : raw) : raw;
     if (select && value && [...select.options].some((o) => o.value === value)) select.value = value;
   }
   query.value = params.get('q') || '';
