@@ -1,19 +1,19 @@
 ---
+import PlatformButton from './PlatformButton.astro';
 import { spotifyId } from '../lib/model.mjs';
 interface Props {
   url?: string;
   title: string;
+  showLink?: boolean;
 }
-const { url, title } = Astro.props;
+const { url, title, showLink = true } = Astro.props;
 const id = url ? spotifyId(url) : null;
 ---
 
 {id && (
   <section class="player" data-spotify-id={id} data-title={title}>
     <p>載入播放器會連線至 Spotify，並適用其隱私政策。你也可以直接開啟收聽連結。</p>
-    <a href={url} target="_blank" rel="noopener noreferrer">
-      在 Spotify 收聽本集 ↗
-    </a>
+    {showLink && <PlatformButton platform="spotify" href={url!} />}
     <button type="button" hidden>
       載入 Spotify 播放器
     </button>

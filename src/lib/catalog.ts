@@ -18,16 +18,17 @@ export type ClassifiedEpisode = z.infer<typeof episodeSchema> & {
   classification: Classification;
 };
 export async function catalog() {
-  const articles = (await getCollection('articles')).sort(
+  const allArticles = (await getCollection('articles')).sort(
     (a, b) => Date.parse(b.data.published_at) - Date.parse(a.data.published_at),
   );
   const episodes = newest(rawEpisodes.map((e) => episodeSchema.parse(e)));
   const mapping = mapSchema.parse(rawMapping);
   validateCatalog(
-    articles.map((a) => a.data),
+    allArticles.map((a) => a.data),
     episodes,
     mapping,
   );
+  const articles = allArticles.filter(a => !a.data.synthetic && a.data.publication_status === "published");
   const classifiedEpisodes: ClassifiedEpisode[] = resolveClassifications(
     articles.map((a) => a.data),
     episodes,
@@ -37,6 +38,7 @@ export async function catalog() {
   );
   return {
     articles,
+    allArticles,
     episodes: classifiedEpisodes,
     mapping,
     works: buildWorks(articles, classifiedEpisodes),

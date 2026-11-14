@@ -1,4 +1,5 @@
 ---
+import { showArticleSummary } from '../../lib/article-presentation.mjs';
 import { seriesName } from '../../lib/taxonomy.mjs';
 import Main from '../../layouts/Main.astro';
 import PublicationRelations from '../../components/PublicationRelations.astro';
@@ -6,8 +7,8 @@ import ServiceState from '../../components/ServiceState.astro';
 import { render } from 'astro:content';
 import { catalog, displayDate } from '../../lib/catalog';
 import { relatedArticles } from '../../lib/model.mjs';
-import PlatformLinks from '../../components/PlatformLinks.astro';
-import PodcastPlayer from '../../components/PodcastPlayer.astro';
+import ArticlePlatforms from '../../components/ArticlePlatforms.astro';
+import { importedListeningPresentation, listeningDestination } from '../../lib/listening-presentation.mjs';
 import { url, topics } from '../../data/site';
 export async function getStaticPaths() {
   return (await catalog()).articles.flatMap((article) =>
@@ -25,12 +26,17 @@ const episodes = all.episodes.filter((e) =>
   all.mapping.some((m) => m.guid === e.guid && m.work_id === article.data.work_id),
 );
 const { Content, headings } = await render(article);
+const presentation = importedListeningPresentation(article.body, episodes);
+const sourceLinks = presentation.links.map(link => ({ ...link,
+  title: all.episodes.find(e => [e.spotify_episode_url, e.apple_episode_url]
+    .some(href => href && listeningDestination(href)?.key === link.key))?.title,
+}));
 const longform = article.data.content_type === 'longform';
 const related = relatedArticles(
   article.data,
   all.articles.map((a) => a.data),
 );
-const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
+const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '').length / 400));
 ---
 
 <Main title={article.data.title} description={article.data.summary}>
@@ -42,7 +48,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
         {article.data.synthetic ? '虛構測試資料' : article.data.public_author_name}
       </p>
       <h1>{article.data.title}</h1>
-      <p class="lede">{article.data.summary}</p>
+      {showArticleSummary(article.data.summary, article.body, article.data.summary_kind) && <p class="lede">{article.data.summary}</p>}
       <p class="muted">
         閱讀約 {minutes} 分鐘 · {article.data.synthetic ? '示意日期' : '發布日期'}{' '}
         {displayDate(article.data.published_at)}
@@ -60,7 +66,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
     {article.data.cover_image ? (
       <img class="real-cover" src={url(article.data.cover_image)} alt={article.data.cover_alt} />
     ) : (
-      longform && (
+      longform && article.data.synthetic && (
         <div class="article-illustration" aria-hidden="true">
           <div class="arch"></div>
           <span>封面插畫示意</span>
@@ -77,7 +83,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
         ))}
       </nav>
     )}
-    <Content />
+    {presentation.html === null ? <Content /> : <Fragment set:html={presentation.html} />}
     {article.data.sources.length > 0 && (
       <section class="empty">
         <h2>研究與參考資料</h2>
@@ -90,14 +96,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
         ))}
       </section>
     )}
-    <PlatformLinks links={article.data.platform_urls} />
-    {episodes.map((e) => (
-      <section class="empty">
-        <h2>用聲音繼續閱讀</h2>
-        <a href={url(`podcast/${e.slug}/`)}>{e.title} ↗</a>
-        <PodcastPlayer url={e.spotify_episode_url} title={e.title} />
-      </section>
-    ))}
+    <ArticlePlatforms platforms={article.data.platform_urls} episodes={episodes} sourceLinks={sourceLinks} />
     <section class="empty">
       <h2>繼續閱讀</h2>
       {related.length ? (
@@ -215,4 +214,8 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
       font-size: 2.6rem;
     }
   }
+</style>
+
+<style>
+.article-body :global(.imported-original){overflow-wrap:anywhere}.article-body :global(.imported-original h3){font-size:1.45rem;line-height:1.65;margin:2.3em 0 1em}.article-body :global(.imported-original p:empty),.article-body :global(.imported-original h2:empty){display:none}.article-body :global(.source-image-placeholder){margin:0;padding:0;border:0}.article-body :global(.source-image-placeholder:not(:has(figcaption:not([hidden])))){display:none}.article-body :global(.image-position){display:none}.article-body :global(figcaption){font-size:13px;margin:1em 0;color:var(--muted)}.article-header.immersive:has(.article-title:only-child){display:block}.article-header.immersive:has(.article-title:only-child) .article-title{max-width:760px}
 </style>

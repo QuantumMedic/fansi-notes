@@ -50,5 +50,22 @@
       "slug": "creation",
       "name": "個人與創作"
     }
+  ],
+  "public_series": [
+    {
+      "slug": "fansiwei",
+      "name": "凡思維",
+      "types": [
+        "fansiwei"
+      ]
+    },
+    {
+      "slug": "stories",
+      "name": "文章與故事",
+      "types": [
+        "longform",
+        "special"
+      ]
+    }
   ]
 }

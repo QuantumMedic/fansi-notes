@@ -9,7 +9,7 @@ export const site = {
 };
 export const url = (path = '') =>
   `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
-export { topics, series } from '../lib/model.mjs';
+export { topics, publicSeries as series } from '../lib/taxonomy.mjs';
 export const nav = [
   ['', '首頁'],
   ['articles/', '探索文章'],

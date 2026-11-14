@@ -2,15 +2,16 @@
 import raw from '../data/publication-relations.json';
 import { validatePublicationRelations } from '../lib/publication-relations.mjs';
 import { catalog } from '../lib/catalog';
-import { publications } from '../lib/publications.ts';
+import { publications, allPublications } from '../lib/publications.ts';
 import { url } from '../data/site';
 interface Props {
   workId: string;
   kind: 'article' | 'publication';
 }
 const { workId, kind } = Astro.props;
-const articles = (await catalog()).articles.map((a) => a.data);
-const relations: typeof raw = validatePublicationRelations(raw, articles, publications);
+const all = await catalog();
+const articles = all.articles.map((a) => a.data);
+const relations: typeof raw = validatePublicationRelations(raw, all.allArticles.map(a => a.data), allPublications);
 const linked =
   kind === 'article'
     ? publications

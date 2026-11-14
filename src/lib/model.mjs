@@ -42,6 +42,7 @@ export const articleSchema = z
     title: z.string().min(1),
     subtitle: z.string().optional(),
     summary: z.string().min(1),
+    summary_kind: z.enum(['auto', 'excerpt', 'independent']).default('auto'),
     ...classificationSchema.shape,
     related_work_ids: z.array(slugSchema).default([]),
     aliases: z.array(slugSchema).default([]),

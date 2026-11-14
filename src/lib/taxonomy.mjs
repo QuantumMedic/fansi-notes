@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import taxonomy from '../data/taxonomy.json' with { type: 'json' };
-export const { series, topics } = taxonomy;
+export const { series, topics, public_series: publicSeries } = taxonomy;
+export const publicSeriesSlug = (type) => publicSeries.find(s => s.types.includes(type) || s.slug === type)?.slug || type;
+export const matchesSeries = (type, selected) => !selected || (publicSeries.find(s => s.slug === selected)?.types.includes(type) ?? type === selected);
 export const makeClassificationSchema = (registry = taxonomy) =>
   z.object({
     content_type: z
@@ -14,7 +16,7 @@ export const makeClassificationSchema = (registry = taxonomy) =>
     keywords: z.array(z.string().min(1)).default([]),
   });
 export const classificationSchema = makeClassificationSchema();
-export const seriesName = (id) => series.find((x) => x.slug === id)?.name || '系列待確認';
+export const seriesName = (id) => publicSeries.find((x) => x.slug === publicSeriesSlug(id))?.name || '系列待確認';
 export const topicName = (id) => topics.find((x) => x.slug === id)?.name || id;
 export const statusName = (status) =>
   ({

@@ -1,0 +1,18 @@
+---
+import Main from '../layouts/Main.astro';
+import ArticlePlatforms from '../components/ArticlePlatforms.astro';
+---
+<Main title="隔離平台按鈕測試">
+  <article class="reading">
+    <h1>隔離測試：四種平台</h1>
+    <p>僅供工程驗收，並非作者作品；以下網址不可作為正式內容使用。</p>
+    <ArticlePlatforms
+      platforms={{vocus_url:'https://vocus.cc/article/fixture',instagram_url:'https://www.instagram.com/p/fixture/'}}
+      episodes={[]}
+      sourceLinks={[
+        {key:'spotify:fixture',href:'https://open.spotify.com/episode/0123456789012345678901',label:'Spotify',title:'合成單集：平台按鈕驗收'},
+        {key:'apple:fixture',href:'https://podcasts.apple.com/tw/podcast/fixture/id123?i=456',label:'Apple'},
+      ]}
+    />
+  </article>
+</Main>

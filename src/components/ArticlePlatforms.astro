@@ -1,0 +1,49 @@
+---
+import PlatformButton from './PlatformButton.astro';
+import PlatformLinks from './PlatformLinks.astro';
+import PodcastPlayer from './PodcastPlayer.astro';
+import { url } from '../data/site';
+import type { ClassifiedEpisode } from '../lib/catalog';
+interface Props {
+  platforms: { vocus_url?: string; instagram_url?: string };
+  episodes: ClassifiedEpisode[];
+  sourceLinks: { key: string; label: string; href: string; title?: string }[];
+}
+const { platforms, episodes, sourceLinks } = Astro.props;
+const playable = episodes.filter(e => e.spotify_episode_url || e.apple_episode_url);
+---
+{(playable.length > 0 || sourceLinks.length > 0) && (
+  <section class="article-platform-section" id="article-listening" aria-labelledby="listening-title">
+    <h2 id="listening-title">聆聽這篇文章</h2>
+    {playable.map(e => <div class="episode">
+      <p class="eyebrow">凡思聲</p>
+      <h3><a href={url(`podcast/${e.slug}/`)}>{e.title}</a></h3>
+      <div class="listening-links">
+        {e.spotify_episode_url && <PlatformButton platform="spotify" href={e.spotify_episode_url} />}
+        {e.apple_episode_url && <PlatformButton platform="apple" href={e.apple_episode_url} />}
+      </div>
+      <PodcastPlayer url={e.spotify_episode_url} title={e.title} showLink={false} />
+    </div>)}
+    {sourceLinks.length > 0 && <div class="source-listening">
+      {[...new Set(sourceLinks.map(link => link.title).filter(Boolean))].map(title => <h3>{title}</h3>)}
+      <div class="listening-links">
+        {sourceLinks.map(link => <PlatformButton platform={link.key.startsWith('spotify:') ? 'spotify' : 'apple'} href={link.href} />)}
+      </div>
+    </div>}
+  </section>
+)}
+{(platforms.vocus_url || platforms.instagram_url) && (
+  <section class="article-platform-section" aria-labelledby="reading-platforms-title">
+    <h2 id="reading-platforms-title">在其他平台閱讀</h2>
+    <PlatformLinks links={platforms} />
+  </section>
+)}
+<style>
+  .article-platform-section { border-top: 1px solid var(--parchment); margin-top: 48px; padding: 32px 0 8px; }
+  .article-platform-section h2 { font-size: 1.6rem; margin: 0 0 24px; }
+  .episode h3, .source-listening h3 { font-size: 1.2rem; line-height: 1.8; }
+  .listening-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .listening-links a { font-size: 1rem; }
+  .source-listening > p { font-size: 1rem; }
+  @media (max-width:760px) { .article-platform-section { margin-top:36px; padding-top:28px; } }
+</style>

@@ -1,25 +1,25 @@
 ---
+import PlatformButton from './PlatformButton.astro';
 import { platformsSchema } from '../lib/model.mjs';
 interface Props {
   links: unknown;
 }
 const links = platformsSchema.parse(Astro.props.links);
 const entries = [
-  ['instagram_url', '觀看 Instagram'],
-  ['vocus_url', '閱讀 Vocus'],
-  ['spotify_episode_url', 'Spotify 收聽'],
+  ['instagram_url', 'instagram'],
+  ['vocus_url', 'vocus'],
 ] as const;
 ---
 
-{Object.keys(links).length > 0 && (
-  <nav class="topic-links" aria-label="其他平台">
+{entries.some(([key]) => links[key]) && (
+  <nav class="platform-links" aria-label="其他平台">
     {entries.map(
       ([key, label]) =>
         links[key] && (
-          <a href={links[key]} target="_blank" rel="noopener noreferrer">
-            {label} ↗
-          </a>
+          <PlatformButton platform={label} href={links[key]} />
         ),
     )}
   </nav>
 )}
+
+<style>.platform-links{display:flex;flex-wrap:wrap;gap:12px}</style>

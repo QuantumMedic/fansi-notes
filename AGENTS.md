@@ -1,4 +1,4 @@
-> Current authorization: M5-A development/testing/import preparation. Read [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) first. Earlier M0–M2-only instructions are historical; all privacy/publication safeguards remain binding. No merge, deployment, paid service activation, M5-B or M6.
+> Current authorization: M5-B first batch, limited to the three explicitly authorized Vocus article texts listed in docs/CURRENT_STATE.md and necessary public-series display changes. No images, other works, merge, deployment, paid services or M6. Preserve all privacy/publication safeguards.
 
 # Codex Agent Instructions — Fansi Notes
 
