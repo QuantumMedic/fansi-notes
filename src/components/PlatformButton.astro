@@ -1,0 +1,21 @@
+---
+interface Props { platform: 'spotify' | 'apple' | 'vocus' | 'instagram'; href: string }
+const { platform, href } = Astro.props;
+const names = { spotify:'Spotify 收聽', apple:'Apple Podcasts', vocus:'Vocus 原文', instagram:'Instagram 圖文' };
+// Consistent monochrome symbols, not representations of official brand trademarks.
+---
+<a class="platform-button" data-platform={platform} href={href} target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    {platform === 'spotify' && <><circle cx="12" cy="12" r="9"/><path d="M6.5 9q5.5-3 11 0M7.5 12q4.5-2.5 9 0M8.5 15q3.5-2 7 0"/></>}
+    {platform === 'apple' && <><circle cx="12" cy="9" r="2"/><path d="M10 14q2-2 4 0l-1 7h-2zM7 16a8 8 0 1 1 10 0M8 12a5 5 0 1 1 8 0"/></>}
+    {platform === 'vocus' && <><path d="M4 4h6q2 0 2 2v15q-1-2-3-2H4zM20 4h-6q-2 0-2 2v15q1-2 3-2h5zM7 8h2M15 8h2M7 12h2M15 12h2"/></>}
+    {platform === 'instagram' && <><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none"/></>}
+  </svg>
+  <span>{names[platform]}</span>
+</a>
+<style>
+  a.platform-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; box-sizing:border-box; padding:10px 16px; border:1px solid var(--bronze); border-radius:5px; font-size:14px; font-weight:400; line-height:22px; color:var(--ink); background:transparent; text-decoration:none !important; max-width:100%; }
+  .platform-button svg { flex:none; }
+  .platform-button:hover { background:var(--parchment); }
+  .platform-button:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+</style>

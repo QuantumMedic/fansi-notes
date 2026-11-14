@@ -23,6 +23,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     for (const path of ['src', 'public', 'astro.config.mjs', 'tsconfig.json', 'package.json'])
       cpSync(join(repo, path), join(root, path), { recursive: true });
     symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
+    cpSync(join(repo,'tests/fixtures/platforms.astro.txt'),join(root,'src/pages/platform-fixture.astro'));
     const file = join(root, 'src/content/articles/demo-new.md');
     const write = (data) =>
       writeFileSync(
@@ -68,6 +69,10 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     const before = JSON.stringify(classifications);
     writeFileSync(classificationsFile, before);
     build();
+    const showcase=html('platform-fixture/index.html');
+    for(const platform of ['spotify','apple','vocus','instagram']) assert.match(showcase,new RegExp(`data-platform="${platform}"`));
+    assert.equal((showcase.match(/class="platform-button"/g)||[]).length,4);
+    assert.match(showcase,/Instagram 圖文/);assert.match(showcase,/Spotify 收聽/);
     assert.equal(readFileSync(classificationsFile, 'utf8'), before);
     assert.equal(existsSync(join(root, 'dist/review/classifications/index.html')), false);
     const inspect = (dir) => {
@@ -103,7 +108,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.doesNotMatch(html('series/fansiwei/index.html'), /一盆植物延長生命/);
     assert.doesNotMatch(html('series/fansiwei/index.html'), /id="work-series"/);
     assert.match(html('series/fansiwei/index.html'), /data-fixed-series="fansiwei"/);
-    assert.doesNotMatch(html('articles/demo-new/index.html'), /Instagram 貼文|data-spotify-id|相關 Podcast/);
+    assert.doesNotMatch(html('articles/demo-new/index.html'), /Instagram 圖文|data-spotify-id|相關 Podcast/);
     assert.match(html('articles/demo-new/index.html'), /works\/demo-paper-city\//);
     assert.match(html('works/demo-paper-city/index.html'), /articles\/demo-new\//);
     const e = {
@@ -141,16 +146,16 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     build();
     const detail = html('articles/demo-renamed/index.html');
     assert.match(detail, /文章目錄/);
-    assert.match(detail, /Instagram 貼文/);
+    assert.match(detail, /Instagram 圖文/);
     assert.match(detail, /Vocus 原文/);
     assert.match(detail, /和文章不同名的單集/);
     assert.match(detail, /data-spotify-id/);
     assert.doesNotMatch(detail, /<iframe/);
     assert.doesNotMatch(detail, /紙上花園/);
-    assert.match(detail, /相關 Podcast/);
-    assert.match(detail, /在 Apple Podcasts 收聽本集/);
-    assert.match(detail, /href="#related-podcast"/);
-    assert.ok(detail.indexOf('Vocus 原文') < detail.indexOf('class="reading article-body"'));
+    assert.match(detail, /聆聽這篇文章/);
+    assert.match(detail, /Apple Podcasts/);
+    assert.match(detail, /id="article-listening"/);
+    assert.ok(detail.indexOf('Vocus 原文') > detail.indexOf('class="reading article-body"'));
     assert.equal((detail.match(/Vocus 原文/g)||[]).length,1);
     assert.match(html('articles/demo-new/index.html'), /http-equiv="refresh"/);
     assert.match(html('articles/demo-new/index.html'), /articles\/demo-renamed\//);

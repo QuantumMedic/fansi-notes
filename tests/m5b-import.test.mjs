@@ -61,7 +61,7 @@ test('開頭摘錄僅用於卡片及SEO，獨立摘要可顯示；圖片標記�
   assert.doesNotMatch(page,/<p class="lede"|本次僅匯入文字/);
   assert.match(page,/<meta name="description" content="[^"]+/);
   assert.equal((page.match(/Vocus 原文/g)||[]).length,1);
-  assert.ok(page.indexOf('Vocus 原文')<page.indexOf('class="reading article-body"'));
-  assert.doesNotMatch(page,/Instagram 貼文|href="#related-podcast"|aria-label="相關 Podcast"/);
+  assert.ok(page.indexOf('Vocus 原文')>page.indexOf('class="reading article-body"'));
+  assert.doesNotMatch(page,/Instagram 圖文|href="#related-podcast"|aria-label="相關 Podcast"/);
  }
 });

@@ -7,8 +7,8 @@ import ServiceState from '../../components/ServiceState.astro';
 import { render } from 'astro:content';
 import { catalog, displayDate } from '../../lib/catalog';
 import { relatedArticles } from '../../lib/model.mjs';
-import PlatformLinks from '../../components/PlatformLinks.astro';
-import PodcastPlayer from '../../components/PodcastPlayer.astro';
+import ArticlePlatforms from '../../components/ArticlePlatforms.astro';
+import { importedListeningPresentation, listeningDestination } from '../../lib/listening-presentation.mjs';
 import { url, topics } from '../../data/site';
 export async function getStaticPaths() {
   return (await catalog()).articles.flatMap((article) =>
@@ -26,6 +26,11 @@ const episodes = all.episodes.filter((e) =>
   all.mapping.some((m) => m.guid === e.guid && m.work_id === article.data.work_id),
 );
 const { Content, headings } = await render(article);
+const presentation = importedListeningPresentation(article.body, episodes);
+const sourceLinks = presentation.links.map(link => ({ ...link,
+  title: all.episodes.find(e => [e.spotify_episode_url, e.apple_episode_url]
+    .some(href => href && listeningDestination(href)?.key === link.key))?.title,
+}));
 const longform = article.data.content_type === 'longform';
 const related = relatedArticles(
   article.data,
@@ -52,8 +57,6 @@ const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '
         {article.data.subtitle}
         {article.data.updated_at && ` · 更新：${displayDate(article.data.updated_at)}`}
       </p>
-      <PlatformLinks links={article.data.platform_urls} />
-      {episodes.length > 0 && <a class="text-link" href="#related-podcast">收聽 Podcast →</a>}
       <nav aria-label="文章主題" class="topic-links">
         {article.data.topics.map((t) => (
           <a href={url(`topics/${t}/`)}>{topics.find((x) => x.slug === t)?.name}</a>
@@ -80,7 +83,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '
         ))}
       </nav>
     )}
-    <Content />
+    {presentation.html === null ? <Content /> : <Fragment set:html={presentation.html} />}
     {article.data.sources.length > 0 && (
       <section class="empty">
         <h2>研究與參考資料</h2>
@@ -93,16 +96,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '
         ))}
       </section>
     )}
-    {episodes.length > 0 && <section id="related-podcast" aria-label="相關 Podcast">
-    <h2>相關 Podcast</h2>
-    {episodes.map((e) => (
-      <section class="empty">
-        <a href={url(`podcast/${e.slug}/`)}>{e.title} ↗</a>
-        {e.apple_episode_url && <p><a href={e.apple_episode_url} target="_blank" rel="noopener noreferrer">在 Apple Podcasts 收聽本集 ↗</a></p>}
-        <PodcastPlayer url={e.spotify_episode_url} title={e.title} />
-      </section>
-    ))}
-    </section>}
+    <ArticlePlatforms platforms={article.data.platform_urls} episodes={episodes} sourceLinks={sourceLinks} />
     <section class="empty">
       <h2>繼續閱讀</h2>
       {related.length ? (
@@ -223,5 +217,5 @@ const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '
 </style>
 
 <style>
-.article-body :global(.imported-original){overflow-wrap:anywhere}.article-body :global(.imported-original h3){font-size:1.45rem;line-height:1.65;margin:2.3em 0 1em}.article-body :global(.imported-original p:empty),.article-body :global(.imported-original h2:empty){display:none}.article-body :global(.source-image-placeholder){margin:0;padding:0;border:0}.article-body :global(.source-image-placeholder:not(:has(figcaption))){display:none}.article-body :global(.image-position){display:none}.article-body :global(figcaption){font-size:13px;margin:1em 0;color:var(--muted)}.article-header.immersive:has(.article-title:only-child){display:block}.article-header.immersive:has(.article-title:only-child) .article-title{max-width:760px}
+.article-body :global(.imported-original){overflow-wrap:anywhere}.article-body :global(.imported-original h3){font-size:1.45rem;line-height:1.65;margin:2.3em 0 1em}.article-body :global(.imported-original p:empty),.article-body :global(.imported-original h2:empty){display:none}.article-body :global(.source-image-placeholder){margin:0;padding:0;border:0}.article-body :global(.source-image-placeholder:not(:has(figcaption:not([hidden])))){display:none}.article-body :global(.image-position){display:none}.article-body :global(figcaption){font-size:13px;margin:1em 0;color:var(--muted)}.article-header.immersive:has(.article-title:only-child){display:block}.article-header.immersive:has(.article-title:only-child) .article-title{max-width:760px}
 </style>

@@ -1,3 +1,13 @@
+# PR #8 最新狀態：文末跨平台介面完成
+
+文末統一為「聆聽這篇文章」與「在其他平台閱讀」。Spotify／Apple Podcasts／Vocus／Instagram共用小圖示細框按鈕；平台入口已從標題旁移除。來源Podcast宣傳連結在呈現層集中與去重，原文與來源URL保留；不顯示醒目的內部狀態標題。精確單集URL可提供既有單集名稱，但不等同GUID核准，不建立反向文章關聯。核准關聯仍使用既有映射表。
+
+三篇原文、分類、作品ID及metadata無變更；沒有新文章、圖片或小說。42項測試、check零問題、build50頁；[最新六張文末與四平台隔離測試截圖](review/m5b-first-articles/README.md)。[PR #8](https://github.com/QuantumMedic/fansi-notes/pull/8)等待作者驗收，不合併、不部署、不進下一階段。
+
+下一階段匯入規格：核准橫幅插畫保持比例、優先Vocus作者正式摘要（自動摘錄另處理）、IG逐篇核實留空允許、核准Podcast雙向關聯、圖片依原文順序且不重複整套IG文字圖卡。本輪只記錄，不執行素材下載或內容匯入。
+
+---
+
 # PR #8 最新補充：統一文章閱讀入口
 
 本輪僅更新 PR #8 `codex/m5b-first-articles` 的介面與呈現。三篇原文、分類、work_id、已確認metadata及GUID映射不變。探索文章／凡思維／文章與故事共用 ArticleBrowser，正式計數3／1／2，不含Podcast-only；後者仍在凡思聲。固定系列清除篩選留在該系列，舊longform／special路由導向文章與故事。
