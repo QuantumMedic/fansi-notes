@@ -27,3 +27,11 @@ M0／M1：設計系統、基本路由、資料 schema、標題／摘要搜尋骨
 待作者確認：署名、Logo、正式分層插畫、文章／書封公開授權、社群網址、留言及聯絡服務。無世界觀核准資料時不建立世界頁；無真實單集與書籍時不建立虛構正式資料。
 
 技術核對來源：[Astro 安裝](https://docs.astro.build/en/install-and-setup/)、[Content Collections](https://docs.astro.build/en/guides/content-collections/)、[GitHub Pages base](https://docs.astro.build/en/guides/deploy/github/)。依 npm 實際可安裝版本與 lockfile 固定依賴。
+
+## M2 視覺與互動審閱
+
+完整畫面與測試紀錄見 [M2 驗收](docs/review/M2.md)。首頁分層 SVG 位於 `src/assets/storybook.svg`，入口及動態邏輯在 `src/components/Storybook.astro`。預設尊重系統減少動態，也可在首頁手動關閉。五個連結始終是靜態 HTML，手機不依賴 hover。全部自動檢查共 7 項；Lighthouse、實機觸控及螢幕閱讀器尚未量測。
+
+M0–M2 完成後等待視覺確認，請勿直接匯入私稿、啟用部署或開始後續內容同步。
+
+macOS 也可雙擊 `開啟本機預覽.command`。有 Node 與依賴時會啟動本機伺服器；本次交付的本機環境另附已忽略、不提交 Git 的 `.local-runtime/`。其他電腦請先安裝 `.nvmrc` 的 Node 版本。按 Control+C 結束預覽。
