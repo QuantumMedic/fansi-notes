@@ -1,11 +1,11 @@
 ---
 import { reviewMode } from '../lib/review-mode.mjs';
-import { series, topics } from '../lib/taxonomy.mjs';
+import { publicSeries as series, topics, matchesSeries } from '../lib/taxonomy.mjs';
 import UnifiedWorkCard from './UnifiedWorkCard.astro';
 const { works, initialSeries = '', initialTopic = '' } = Astro.props;
-const scopedWorks = initialSeries ? works.filter((w: any) => w.classification.content_type === initialSeries) : works;
+const scopedWorks = initialSeries ? works.filter((w: any) => matchesSeries(w.classification.content_type, initialSeries)) : works;
 const visible = (w: any) =>
-  (!initialSeries || w.classification.content_type === initialSeries) &&
+  (!initialSeries || matchesSeries(w.classification.content_type, initialSeries)) &&
   (!initialTopic || w.classification.topics.includes(initialTopic));
 ---
 

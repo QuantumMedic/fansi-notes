@@ -26,7 +26,7 @@ const featured = articles
         探索全部文章 ↗
       </a>
     </div>
-    <p class="muted">以下為虛構測試資料，並非已發表作品。</p>
+    <p class="muted">收錄作者授權的公開文章；合成版面示例均另有標示。</p>
     <div class="cards">
       {articles.slice(0, 4).map((a) => (
         <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />

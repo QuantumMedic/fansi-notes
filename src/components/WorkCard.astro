@@ -14,11 +14,11 @@ const { id, title, summary, type, published_at, synthetic = true } = Astro.props
 
 <article class="work-card">
   <a href={url(`articles/${id}/`)}>
-    <div class:list={['cover', type]} aria-hidden="true">
+    {synthetic && <div class:list={['cover', type]} aria-hidden="true">
       <span class="cover-orbit"></span>
       <span class="cover-window"></span>
       <small>示意插畫</small>
-    </div>
+    </div>}
     <p class="eyebrow">
       {seriesName(type)} · {synthetic ? '測試資料' : '公開文章'}
     </p>

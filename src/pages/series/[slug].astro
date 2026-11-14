@@ -1,12 +1,14 @@
 ---
+import {url} from '../../data/site';
 import Main from '../../layouts/Main.astro';
 import WorkExplorer from '../../components/WorkExplorer.astro';
-import { series } from '../../lib/taxonomy.mjs';
+import { publicSeries, series, publicSeriesSlug } from '../../lib/taxonomy.mjs';
 import { catalog } from '../../lib/catalog';
 export function getStaticPaths() {
-  return series.map((s) => ({ params: { slug: s.slug }, props: { series: s } }));
+  return [...publicSeries, ...series.filter(s => publicSeriesSlug(s.slug) !== s.slug)].map((s) => ({ params: { slug: s.slug }, props: { series: s } }));
 }
 const { series: s } = Astro.props;
+if (publicSeriesSlug(s.slug) !== s.slug) return Astro.redirect(url(`series/${publicSeriesSlug(s.slug)}/`), 301);
 const { works } = await catalog();
 ---
 

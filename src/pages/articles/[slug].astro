@@ -30,7 +30,7 @@ const related = relatedArticles(
   article.data,
   all.articles.map((a) => a.data),
 );
-const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
+const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '').length / 400));
 ---
 
 <Main title={article.data.title} description={article.data.summary}>
@@ -60,7 +60,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
     {article.data.cover_image ? (
       <img class="real-cover" src={url(article.data.cover_image)} alt={article.data.cover_alt} />
     ) : (
-      longform && (
+      longform && article.data.synthetic && (
         <div class="article-illustration" aria-hidden="true">
           <div class="arch"></div>
           <span>封面插畫示意</span>
@@ -215,4 +215,8 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
       font-size: 2.6rem;
     }
   }
+</style>
+
+<style>
+.article-body :global(.imported-original){overflow-wrap:anywhere}.article-body :global(.imported-original h3){font-size:1.45rem;line-height:1.65;margin:2.3em 0 1em}.article-body :global(.imported-original p:empty){display:none}.article-body :global(.source-image-placeholder){margin:30px 0;padding:16px 0;border-top:1px solid var(--parchment);border-bottom:1px solid var(--parchment)}.article-body :global(.image-position)::before{content:'原文圖片位置・本次僅匯入文字';font-size:12px;color:var(--muted)}.article-body :global(figcaption){font-size:13px;margin-top:10px}.article-header.immersive:has(.article-title:only-child){display:block}.article-header.immersive:has(.article-title:only-child) .article-title{max-width:760px}
 </style>

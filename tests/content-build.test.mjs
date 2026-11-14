@@ -152,7 +152,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(html('podcast/unpaired-episode/index.html'), /分類待確認/);
     assert.match(html('podcast/fixture-episode/index.html'), /主要：書籍與文學/);
     assert.equal(
-      (html('series/longform/index.html').match(/data-work-id="demo-new"/g) || []).length,
+      (html('series/stories/index.html').match(/data-work-id="demo-new"/g) || []).length,
       1,
     );
     // Extending and renaming the central dictionary changes every route/filter at build time.
@@ -166,7 +166,8 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(html('topics/new-topic/index.html'), /改名合成文章/);
     assert.match(html('articles/index.html'), /合成重新命名/);
     assert.match(html('podcast/fixture-episode/index.html'), /主要：合成新主題/);
-    assert.match(html('series/special/index.html'), /data-work-id="demo-new"/);
+    assert.match(html('series/stories/index.html'), /data-work-id="demo-new"/);
+    for(const old of ['longform','special']) assert.match(html(`series/${old}/index.html`), /series\/stories\//);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

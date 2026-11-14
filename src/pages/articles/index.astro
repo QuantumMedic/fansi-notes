@@ -11,7 +11,7 @@ const articles = (await catalog()).articles;
     <p class="eyebrow">文字的入口</p>
     <h1>探索文章</h1>
     <p>在這裡，找一個想繼續想下去的問題。</p>
-    <p class="muted">目前僅提供虛構測試資料，可搜尋標題、摘要與完整正文。</p>
+    <p class="muted">可搜尋標題與完整正文；合成版面示例均另有標示。</p>
   </section>
   <section class="section" id="search">
     <form class="filters" role="search">
@@ -47,7 +47,7 @@ const articles = (await catalog()).articles;
       <button type="reset">清除篩選</button>
     </form>
     <p id="results" role="status">
-      共 {articles.length} 篇測試文章
+      共 {articles.length} 篇文章
     </p>
     <div class="cards" id="article-results">
       {articles.map((a) => (
@@ -68,6 +68,7 @@ const articles = (await catalog()).articles;
   </section>
 </Main>
 <script>
+ import {publicSeriesSlug} from '../../lib/taxonomy.mjs';
  import {prepareSearch,matchesPrepared} from '../../lib/search.mjs';
  const form=document.querySelector<HTMLFormElement>('#search form')!;
  const query=document.querySelector<HTMLInputElement>('#query')!;
@@ -77,7 +78,7 @@ const articles = (await catalog()).articles;
  const list=document.querySelector('#article-results')!;
  const rows=[...list.querySelectorAll<HTMLElement>('[data-result]')].map(el=>({el,date:Date.parse(el.dataset.date!),record:prepareSearch(el.dataset.search!,el.dataset.topics!.split(' '),el.dataset.type!)}));
  const params=new URLSearchParams(location.search);
- for(const [select,key] of [[type,'type'],[topic,'topic'],[sort,'sort']] as const){const value=params.get(key);if(value&&[...select.options].some(o=>o.value===value))select.value=value;}
+ for(const [select,key] of [[type,'type'],[topic,'topic'],[sort,'sort']] as const){const raw=params.get(key);const value=key==='type'&&raw?publicSeriesSlug(raw):raw;if(value&&[...select.options].some(o=>o.value===value))select.value=value;}
  query.value=params.get('q')||'';
  let lastSort='',timer:ReturnType<typeof setTimeout>,composing=false;
  function filter(){clearTimeout(timer);if(sort.value!==lastSort){rows.sort((a,b)=>(b.date-a.date)*(sort.value==='oldest'?-1:1));list.append(...rows.map(r=>r.el));lastSort=sort.value;}

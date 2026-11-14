@@ -1,0 +1,64 @@
+[
+  {
+    "slug": "willpower-and-habits",
+    "work_id": "vocus-68b418fdfd89780001979cd8",
+    "source": "https://vocus.cc/article/68b418fdfd89780001979cd8",
+    "title": "別讓意志力透支！從「餅乾與蘿蔔實驗」看如何有效達成目標",
+    "source_author": "凡思筆記",
+    "source_published_at": "2025-08-31T09:48:58.448Z",
+    "source_updated_at": "2025-08-31T09:48:59.555Z",
+    "normalized_text_sha256": "af2edc793d84411aafa6e4a66741bf27f5836f8a47cbcff5f54a9445b33f31e5",
+    "text_characters": 877,
+    "image_positions": 4,
+    "external_link_evidence": [
+      {
+        "label": "凡思維",
+        "url": "https://open.spotify.com/episode/4PUiVwj1jnTto8KRDx2pk8?si=srLKiBAoRpOjRCjAWRzCiA"
+      },
+      {
+        "label": "研究出處：Ego Depletion: Is the Active Self a Limited Resource? ",
+        "url": "https://faculty.washington.edu/jdb/345/345%20Articles/Baumeister%20et%20al.%20%281998%29.pdf?utm_source"
+      }
+    ],
+    "comparison": "lexical文字與來源渲染HTML文字一致；空白正規化後逐字相同",
+    "podcast_mapping_approved": false,
+    "images_authorized": false
+  },
+  {
+    "slug": "antifragile-life",
+    "work_id": "vocus-6947fbe2fd89780001bd1dbb",
+    "source": "https://vocus.cc/article/6947fbe2fd89780001bd1dbb",
+    "title": "從《反脆弱》看人生設計：擁抱不確定性，在衝擊中持續成長",
+    "source_author": "凡思筆記",
+    "source_published_at": "2025-12-21T14:02:05.152Z",
+    "source_updated_at": "2025-12-21T14:02:05.893Z",
+    "normalized_text_sha256": "713484b007e74707b3ac0b4deda0755b206697dfda18016218dde5b781be3e42",
+    "text_characters": 2175,
+    "image_positions": 2,
+    "external_link_evidence": [
+      {
+        "label": "收聽Podcast全集",
+        "url": "https://podcasts.apple.com/tw/podcast/%E5%87%A1%E6%80%9D%E8%81%B2/id1833423613?i=1000742186607"
+      }
+    ],
+    "comparison": "lexical文字與來源渲染HTML文字一致；空白正規化後逐字相同",
+    "podcast_mapping_approved": false,
+    "images_authorized": false
+  },
+  {
+    "slug": "talking-shadow",
+    "work_id": "vocus-674fcdeffd89780001b93c49",
+    "source": "https://vocus.cc/article/674fcdeffd89780001b93c49",
+    "title": "會說話的影子",
+    "source_author": "凡思筆記",
+    "source_published_at": "2024-12-04T03:50:42.311Z",
+    "source_updated_at": "2024-12-12T01:58:56.428Z",
+    "normalized_text_sha256": "0228b99ce2b451baeb3fc5c55ae96aefb5f8da66844f0dbadf55fc959f9aca00",
+    "text_characters": 2042,
+    "image_positions": 2,
+    "external_link_evidence": [],
+    "comparison": "lexical文字與來源渲染HTML文字一致；空白正規化後逐字相同",
+    "podcast_mapping_approved": false,
+    "images_authorized": false
+  }
+]

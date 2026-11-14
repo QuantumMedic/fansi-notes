@@ -9,5 +9,5 @@ const {title=site.name,description=site.description}=Astro.props;
 <a class="skip" href="#main">跳至主要內容</a>
 <header class="header"><a class="brand" href={url()}><span class="seal" aria-hidden="true">凡</span><span>凡思筆記<small>作者個人品牌 · 署名待確認</small></span></a><nav class="desktop-nav" aria-label="主要導覽">{nav.map(([p,n])=><a href={url(p)} aria-current={Astro.url.pathname===url(p)?'page':undefined}>{n}</a>)}</nav><a class="search-link" href={url('articles/#search')}>搜尋 ↗</a><details class="mobile-menu"><summary>選單</summary><nav aria-label="手機導覽">{nav.map(([p,n])=><a href={url(p)}>{n}</a>)}<a href={url('contact/')}>聯絡</a></nav></details></header>
 <main id="main"><slot/></main>
-<footer><div><a class="footer-brand" href={url()}>凡思筆記</a><p>文字 · 聲音 · 想像</p></div><div><a href={url('topics/')}>探索主題</a><a href={url('contact/')}>來信與合作</a><a href={url('privacy/')}>隱私說明</a></div><p class="muted">開發預覽 · 文章與插畫為示意，Podcast 為公開 RSS 資料<br/>Instagram／Vocus 入口待提供</p></footer>
+<footer><div><a class="footer-brand" href={url()}>凡思筆記</a><p>文字 · 聲音 · 想像</p></div><div><a href={url('topics/')}>探索主題</a><a href={url('contact/')}>來信與合作</a><a href={url('privacy/')}>隱私說明</a></div><p class="muted">開發預覽 · 含作者授權文章與明示合成範例<br/>Podcast 為公開 RSS 資料</p></footer>
 </body></html>

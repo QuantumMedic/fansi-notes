@@ -80,6 +80,7 @@ const { episodes } = await catalog();
   </section>
 </Main>
 <script>
+  import {matchesSeries} from "../../lib/taxonomy.mjs";
   const form = document.querySelector('form')!;
   const input = document.querySelector<HTMLInputElement>('#episode-search')!;
   const topic = document.querySelector<HTMLSelectElement>('#episode-topic')!;
@@ -94,7 +95,7 @@ const { episodes } = await catalog();
           .split(/\s+/)
           .every((t) => el.dataset.search!.toLowerCase().includes(t)) &&
         (!topic.value || el.dataset.topics!.split(' ').includes(topic.value)) &&
-        (!series.value || el.dataset.series === series.value)
+        matchesSeries(el.dataset.series || "", series.value)
       );
       if (!el.hidden) n++;
     });

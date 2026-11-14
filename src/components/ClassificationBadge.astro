@@ -1,12 +1,12 @@
 ---
-import { seriesName, topicName, statusName } from '../lib/taxonomy.mjs';
+import { seriesName, publicSeriesSlug, topicName, statusName } from '../lib/taxonomy.mjs';
 import { url } from '../data/site';
 const { classification: c } = Astro.props;
 ---
 
 {c && (
   <div class="classification">
-    {c.content_type && <a href={url(`series/${c.content_type}/`)}>{seriesName(c.content_type)}</a>}
+    {c.content_type && <a href={url(`series/${publicSeriesSlug(c.content_type)}/`)}>{seriesName(c.content_type)}</a>}
     {c.topics.map((id: string, i: number) => (
       <a href={url(`topics/${id}/`)}>
         {i === 0 ? '主要' : '次要'}：{topicName(id)}
