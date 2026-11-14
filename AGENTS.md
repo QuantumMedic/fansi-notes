@@ -1,3 +1,5 @@
+> Current authorization: M5-A development/testing/import preparation. Read [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) first. Earlier M0–M2-only instructions are historical; all privacy/publication safeguards remain binding. No merge, deployment, paid service activation, M5-B or M6.
+
 # Codex Agent Instructions — Fansi Notes
 
 This is a Traditional Chinese author/podcast portfolio site. Read `README_從這裡開始.md` then every `docs/*.md` document before implementation. Follow the author's latest instruction over the documents. The `reference/` material is historical only.

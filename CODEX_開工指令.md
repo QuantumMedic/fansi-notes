@@ -1,3 +1,5 @@
+> Current authorization: M5-A development/testing/import preparation. Read [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) first. Earlier M0–M2-only instructions are historical; all privacy/publication safeguards remain binding. No merge, deployment, paid service activation, M5-B or M6.
+
 # 給 Codex 的正式開工指令｜凡思筆記網站 v1.0
 
 請在我已授權的 GitHub Repository **`QuantumMedic/fansi-notes`** 中開發《凡思筆記 × 作者個人品牌》網站。先讀取本交接包的 `README_從這裡開始.md` 及 `docs/01` 到 `docs/08`，並將它們視為這次工作的主要產品規格；`reference/` 是舊設計討論，若有矛盾，以 v1.0 與作者最新指令為準。

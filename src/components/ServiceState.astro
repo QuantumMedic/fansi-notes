@@ -1,5 +1,13 @@
 ---
+import {url} from '../data/site';
 interface Props {kind:'comments'|'contact'}
 const {kind}=Astro.props;
 ---
-<section class="empty"><h2>{kind==='comments'?'留言功能準備中':'來信與合作'}</h2><p>{kind==='comments'?'留言服務尚未設定；未提供提交、作者回覆或通知功能。':'讀者來信與合作邀約服務尚未設定，目前不收集姓名、Email 或訊息。'}</p><p class="muted">服務將於作者確認提供者後接入。</p></section>
+<section class="empty" aria-label={kind==='contact'?'私人來信':'讀者留言'}>
+<h2>{kind==='comments'?'讀者留言':'來信與合作'}</h2>
+<p>{kind==='comments'?'留言服務準備中，尚未開放發表與作者回覆。':'私人來信服務尚未啟用；目前不會送出或儲存你輸入的資料。'}</p>
+{kind==='contact'?<form data-contact-preview><fieldset disabled><label>來信類別<select name="category"><option>讀者來信</option><option>合作邀約</option></select></label><label>暱稱（選填）<input name="name" autocomplete="off" maxlength="80"/></label><label>回覆 Email<input name="email" type="email" required autocomplete="off"/></label><label>訊息<textarea name="message" required maxlength="5000" rows="6"></textarea></label><p>請勿填寫病歷、證件或其他敏感資料。</p><button type="button" data-check>檢查欄位（不送出）</button><button type="reset">清除內容</button><p role="status" data-status></p><noscript>服務尚未啟用，表單不提供送出功能。</noscript></fieldset></form>:<><p>公開留言將與私人來信分開；啟用前會公布登入方式、審核及資料處理說明。</p><a href={url('contact/')}>查看私人來信與合作入口 →</a></>}
+<p><a href={url('privacy/')}>閱讀隱私說明 →</a></p>
+</section>
+<style>textarea{display:block;width:100%;font:inherit;color:inherit;background:transparent;border:1px solid #8d8b81;padding:12px;resize:vertical}label{margin:16px 0}textarea:focus-visible{outline:3px solid #725035;outline-offset:4px}</style>
+<script>document.querySelectorAll<HTMLFormElement>('[data-contact-preview]').forEach(form=>{form.querySelector('fieldset')!.disabled=false;const status=form.querySelector('[data-status]')!;form.addEventListener('submit',e=>e.preventDefault());form.querySelector('[data-check]')!.addEventListener('click',()=>{status.textContent=form.reportValidity()?'欄位格式正確；服務尚未啟用，沒有送出或儲存。':'請補齊 Email 與訊息。'});form.addEventListener('reset',()=>status.textContent='內容已清除。');});</script>

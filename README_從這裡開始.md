@@ -1,3 +1,5 @@
+> Current authorization: M5-A development/testing/import preparation. Read [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) first. Earlier M0–M2-only instructions are historical; all privacy/publication safeguards remain binding. No merge, deployment, paid service activation, M5-B or M6.
+
 # 凡思筆記 × 作者個人品牌｜Codex 開發交接包 v1.0
 
 **交接日期：2026-11-12（Asia/Taipei）**  

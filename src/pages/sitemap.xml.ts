@@ -1,0 +1,4 @@
+import {catalog} from '../lib/catalog';
+import {publications} from '../lib/publications.ts';
+import {escapeXml as xml} from '../lib/xml.mjs';
+export async function GET({site}:{site:URL}) {const {articles,episodes}=await catalog();const paths=['','articles/','podcast/','works/','about/',...articles.filter(a=>!a.data.synthetic).map(a=>`articles/${a.data.slug}/`),...episodes.filter(e=>!e.synthetic).map(e=>`podcast/${e.slug}/`),...publications.filter(b=>!b.synthetic).flatMap(b=>[`works/${b.slug}/`,...(b.world?[`works/${b.slug}/world/`]:[])])];const base=new URL(import.meta.env.BASE_URL.replace(/\/$/,'')+'/',site);return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths.map(p=>`<url><loc>${xml(new URL(p,base).href)}</loc></url>`).join('')}</urlset>`,{headers:{'Content-Type':'application/xml'}});}

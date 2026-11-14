@@ -55,7 +55,7 @@ export const articleSchema = z
     published_at: date,
     updated_at: date.optional(),
     public_author_name: z.string().optional(),
-    written_master: z.literal('ig-vocus'),
+    written_master: z.enum(['ig-vocus', 'website-original']),
     platform_urls: platformsSchema.default({}),
     sources: z
       .array(z.object({ title: z.string().min(1), url: z.string().refine((v) => safeUrl(v)) }))
