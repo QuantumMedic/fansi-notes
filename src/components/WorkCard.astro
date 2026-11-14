@@ -1,0 +1,6 @@
+---
+import {url} from '../data/site';
+interface Props {id:string;title:string;summary:string;type?:string;}
+const {id,title,summary,type}=Astro.props;
+---
+<article class="work-card"><a href={url(`articles/${id}/`)}><div class:list={['cover',type]} aria-hidden="true"><span class="cover-orbit"></span><span class="cover-window"></span><small>示意插畫</small></div><p class="eyebrow">{type==='fansiwei'?'凡思維':'深度文章'} · 測試資料</p><h3>{title}<span>↗</span></h3><p>{summary}</p></a></article>

@@ -1,0 +1,5 @@
+---
+interface Props {kind:'comments'|'contact'}
+const {kind}=Astro.props;
+---
+<section class="empty"><h2>{kind==='comments'?'留言功能準備中':'來信與合作'}</h2><p>{kind==='comments'?'留言服務尚未設定；未提供提交、作者回覆或通知功能。':'讀者來信與合作邀約服務尚未設定，目前不收集姓名、Email 或訊息。'}</p><p class="muted">服務將於作者確認提供者後接入。</p></section>

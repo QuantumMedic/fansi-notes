@@ -1,0 +1,4 @@
+---
+import Main from '../layouts/Main.astro';import {url} from '../data/site';
+---
+<Main title="找不到這一頁"><section class="page-heading"><p class="eyebrow">404</p><h1>這一頁，還沒翻到。</h1><p>可以回首頁，或搜尋其他文章。</p><form action={url('articles/')} role="search"><label>搜尋文章<input type="search" name="q"/></label><button>搜尋</button></form><a class="button" href={url()}>回首頁</a></section></Main>

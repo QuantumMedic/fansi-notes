@@ -1,0 +1,8 @@
+---
+import Main from '../layouts/Main.astro';
+import WorkCard from '../components/WorkCard.astro';
+import {getCollection} from 'astro:content';
+import {url} from '../data/site';
+const articles=await getCollection('articles');
+---
+<Main><section class="page-heading"><p class="eyebrow">凡思筆記 × 作者個人品牌</p><h1>從一頁文字，<br/>走進不同的世界。</h1><p>文字、聲音與想像，在這裡相遇。</p><a class="button" href={url('articles/')}>探索文章 ↗</a></section><section class="section"><div class="section-heading"><h2>最新文章</h2><span>虛構測試資料</span></div><div class="cards">{articles.map(a=><WorkCard id={a.id} {...a.data} type={a.data.content_type}/>)}</div></section></Main>
