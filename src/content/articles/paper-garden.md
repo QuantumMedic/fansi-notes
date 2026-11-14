@@ -9,7 +9,7 @@ work_id: demo-paper-garden
 title: 紙上花園
 summary: 凡思維版面測試；這裡會放置經作者核准的研究短篇摘要。
 content_type: fansiwei
-topics: [thinking]
+topics: [psychology]
 synthetic: true
 publication_status: demo
 approved_revision: synthetic-v1

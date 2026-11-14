@@ -8,10 +8,11 @@ export const site = {
 };
 export const url = (path = '') =>
   `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
-export { topics } from '../lib/model.mjs';
+export { topics, series } from '../lib/model.mjs';
 export const nav = [
   ['', '首頁'],
   ['articles/', '探索文章'],
+  ['series/fansiwei/', '凡思維'],
   ['podcast/', '凡思聲'],
   ['works/', '小說與出版'],
   ['about/', '關於作者'],

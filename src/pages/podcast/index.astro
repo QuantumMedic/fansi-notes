@@ -1,16 +1,18 @@
 ---
+import { reviewMode } from '../../lib/review-mode.mjs';
 import Main from '../../layouts/Main.astro';
 import EpisodeCard from '../../components/EpisodeCard.astro';
 import { catalog } from '../../lib/catalog';
-import { topics } from '../../data/site';
+import { topics, series, url } from '../../data/site';
 import config from '../../data/podcast-config.json';
-const { episodes, articles, mapping } = await catalog();
+const { episodes } = await catalog();
 ---
 
 <Main title="凡思聲" description="凡思聲 Podcast 單集列表與收聽入口。">
   <section class="page-heading">
     <p class="eyebrow">聲音的房間</p>
     <h1>凡思聲</h1>
+    {reviewMode && <a href={url('review/classifications/')}>檢視分類建議 ↗</a>}
     <p class="muted">單集資料來自作者提供的公開 RSS；節目介紹待作者核准。</p>
     {config.show_url && (
       <a class="button" href={config.show_url} target="_blank" rel="noopener noreferrer">
@@ -18,9 +20,11 @@ const { episodes, articles, mapping } = await catalog();
       </a>
     )}
     {config.apple_show_url && (
-      <p><a class="button" href={config.apple_show_url} target="_blank" rel="noopener noreferrer">
-        在 Apple Podcasts 開啟《凡思聲》 ↗
-      </a></p>
+      <p>
+        <a class="button" href={config.apple_show_url} target="_blank" rel="noopener noreferrer">
+          在 Apple Podcasts 開啟《凡思聲》 ↗
+        </a>
+      </p>
     )}
   </section>
   <section class="section">
@@ -30,7 +34,7 @@ const { episodes, articles, mapping } = await catalog();
         <input id="episode-search" type="search" name="q" placeholder="單集標題或介紹" />
       </label>
       <label>
-        關聯主題
+        主題分類
         <select id="episode-topic">
           <option value="">全部單集</option>
           {topics.map((t) => (
@@ -38,21 +42,32 @@ const { episodes, articles, mapping } = await catalog();
           ))}
         </select>
       </label>
+      <label for="episode-series">
+        作品系列
+        <select id="episode-series">
+          <option value="">全部系列</option>
+          {series.map((s) => (
+            <option value={s.slug}>{s.name}</option>
+          ))}
+        </select>
+      </label>
       <button type="reset">清除篩選</button>
     </form>
-    <p class="muted">主題僅由已確認關聯的文章提供；未配對單集仍列在「全部單集」。</p>
+    <p class="muted">
+      {reviewMode ? '本機審閱包含待審核分類建議。' : '僅使用已確認的作品分類。'}未分類單集仍列在全部
+      Podcast，標示「分類待確認」。
+    </p>
     <p id="episode-count" role="status">
       共 {episodes.length} 集
     </p>
     <div>
       {episodes.map((e) => {
-        const id = mapping.find((m) => m.guid === e.guid)?.work_id;
-        const article = articles.find((a) => a.data.work_id === id);
         return (
           <div
             data-episode
-            data-search={`${e.title} ${e.description}`}
-            data-topics={article?.data.topics.join(' ') || ''}
+            data-search={`${e.title} ${e.description} ${e.classification.keywords.join(' ')}`}
+            data-series={e.classification.content_type}
+            data-topics={e.classification.topics.join(' ')}
           >
             <EpisodeCard episode={e} />
           </div>
@@ -68,6 +83,7 @@ const { episodes, articles, mapping } = await catalog();
   const form = document.querySelector('form')!;
   const input = document.querySelector<HTMLInputElement>('#episode-search')!;
   const topic = document.querySelector<HTMLSelectElement>('#episode-topic')!;
+  const series = document.querySelector<HTMLSelectElement>('#episode-series')!;
   function filter() {
     let n = 0;
     document.querySelectorAll<HTMLElement>('[data-episode]').forEach((el) => {
@@ -77,7 +93,8 @@ const { episodes, articles, mapping } = await catalog();
           .toLowerCase()
           .split(/\s+/)
           .every((t) => el.dataset.search!.toLowerCase().includes(t)) &&
-        (!topic.value || el.dataset.topics!.split(' ').includes(topic.value))
+        (!topic.value || el.dataset.topics!.split(' ').includes(topic.value)) &&
+        (!series.value || el.dataset.series === series.value)
       );
       if (!el.hidden) n++;
     });

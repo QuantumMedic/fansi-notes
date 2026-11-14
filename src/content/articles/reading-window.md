@@ -12,7 +12,7 @@ work_id: demo-reading-window
 title: 閱讀之窗
 summary: 深度文章版面測試；此處僅展示封面、標題與摘要的閱讀層次。
 content_type: longform
-topics: [reading]
+topics: [literature]
 synthetic: true
 publication_status: demo
 approved_revision: synthetic-v1

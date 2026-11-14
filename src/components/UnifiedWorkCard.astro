@@ -1,0 +1,56 @@
+---
+import { url } from '../data/site';
+import ClassificationBadge from './ClassificationBadge.astro';
+const { work: w } = Astro.props;
+---
+
+<article class="unified-work" data-work-id={w.work_id}>
+  <p class="eyebrow">
+    {w.article
+      ? w.article.data.synthetic
+        ? '網站文章・合成測試'
+        : '網站文章'
+      : '聲音版本・尚無網站全文'}
+    {w.article && w.episodes.length > 0 ? ' ＋ Podcast' : ''}
+  </p>
+  <h2>{w.title}</h2>
+  <ClassificationBadge classification={w.classification} />
+  <p class="summary">{w.summary}</p>
+  <div class:list={['media-links', { 'has-article': !!w.article }]}>
+    {w.article && <a href={url(`articles/${w.article.data.slug}/`)}>閱讀全文 ↗</a>}
+    {w.episodes.map((e: any) => (
+      <a href={url(`podcast/${e.slug}/`)}>收聽單集 ↗</a>
+    ))}
+  </div>
+</article>
+<style>
+  .unified-work {
+    border-top: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  .unified-work h2 {
+    font-size: 1.55rem;
+  }
+  .summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--muted);
+  }
+  .media-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .has-article a:first-child {
+    font-weight: 700;
+    padding: 8px 16px;
+    border: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .media-links { align-items: center; }
+  .media-links a {
+    text-decoration: underline;
+  }
+</style>

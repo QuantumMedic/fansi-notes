@@ -1,4 +1,5 @@
 ---
+import ClassificationBadge from '../../components/ClassificationBadge.astro';
 import Main from '../../layouts/Main.astro';
 import PodcastPlayer from '../../components/PodcastPlayer.astro';
 import EpisodeCard from '../../components/EpisodeCard.astro';
@@ -22,6 +23,7 @@ const article = articles.find((a) => a.data.work_id === workId);
     <a href={url('podcast/')}>← 所有單集</a>
     <p class="eyebrow">凡思聲 · {episode.synthetic ? '示意單集' : '公開單集'}</p>
     <h1>{episode.title}</h1>
+    <ClassificationBadge classification={episode.classification} />
     <p class="muted">
       <time datetime={episode.published_at}>{displayDate(episode.published_at)}</time>
     </p>
