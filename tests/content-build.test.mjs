@@ -44,8 +44,10 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       slug: 'demo-new',
       title: '新增合成文章',
       featured_order: 0,
+      cover_image: 'assets/test-banner.svg', cover_alt: '隔離合成橫幅',
       synthetic: false, publication_status: 'published', public_author_name: '隔離測試署名',
     });
+    writeFileSync(join(root,'public/assets/test-banner.svg'), '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400"><rect width="1200" height="400" fill="#82978b"/><text x="80" y="210" font-size="48">Synthetic banner 3:1</text></svg>');
     write(data);
     const booksFile=join(root,'src/data/publications.json');
     const books=JSON.parse(readFileSync(booksFile,'utf8'));
@@ -69,6 +71,13 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     const before = JSON.stringify(classifications);
     writeFileSync(classificationsFile, before);
     build();
+    for (const page of ['index.html','articles/index.html','series/fansiwei/index.html']) {
+      assert.match(html(page), /class="article-banner"[^>]*src="[^"]*assets\/test-banner.svg"[^>]*alt="隔離合成橫幅"/);
+    }
+    for (const [alias, canonical] of [['books','literature'],['personal','creation'],['history_society','society']]) {
+      assert.match(html(`topics/${alias}/index.html`), new RegExp(`topics/${canonical}/`));
+      assert.match(html(`topics/${alias}/index.html`), /http-equiv="refresh"/);
+    }
     const showcase=html('platform-fixture/index.html');
     for(const platform of ['spotify','apple','vocus','instagram']) assert.match(showcase,new RegExp(`data-platform="${platform}"`));
     assert.equal((showcase.match(/class="platform-button"/g)||[]).length,4);
@@ -135,7 +144,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       aliases: ['demo-new'],
       title: '改名合成文章',
       content_type: 'longform',
-      topics: ['literature'],
+      topics: ['books'],
       platform_urls: {
         instagram_url: 'https://www.instagram.com/p/fixture/',
         vocus_url: 'https://vocus.cc/article/fixture',
