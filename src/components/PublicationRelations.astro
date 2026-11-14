@@ -1,0 +1,52 @@
+---
+import raw from '../data/publication-relations.json';
+import { validatePublicationRelations } from '../lib/publication-relations.mjs';
+import { catalog } from '../lib/catalog';
+import { publications } from '../lib/publications.ts';
+import { url } from '../data/site';
+interface Props {
+  workId: string;
+  kind: 'article' | 'publication';
+}
+const { workId, kind } = Astro.props;
+const articles = (await catalog()).articles.map((a) => a.data);
+const relations: typeof raw = validatePublicationRelations(raw, articles, publications);
+const linked =
+  kind === 'article'
+    ? publications
+        .filter((b) =>
+          relations.some(
+            (r) => r.article_work_id === workId && r.publication_work_id === b.work_id,
+          ),
+        )
+        .map((b) => ({ title: b.title, href: url(`works/${b.slug}/`) }))
+    : articles
+        .filter((a) =>
+          relations.some(
+            (r) => r.publication_work_id === workId && r.article_work_id === a.work_id,
+          ),
+        )
+        .map((a) => ({ title: a.title, href: url(`articles/${a.slug}/`) }));
+---
+
+{linked.length > 0 && (
+  <section class="related-publications">
+    <p class="eyebrow">故事之間</p>
+    <h2>{kind === 'article' ? '書架上的相關作品' : '與這部作品一起閱讀'}</h2>
+    {linked.map((x) => (
+      <p>
+        <a href={x.href}>{x.title} →</a>
+      </p>
+    ))}
+  </section>
+)}
+<style>
+  .related-publications {
+    border-top: 1px solid var(--parchment);
+    padding: 28px 0;
+    margin-top: 32px;
+  }
+  .related-publications h2 {
+    font-size: 1.35rem;
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import { seriesName } from '../../lib/taxonomy.mjs';
 import Main from '../../layouts/Main.astro';
+import PublicationRelations from '../../components/PublicationRelations.astro';
 import ServiceState from '../../components/ServiceState.astro';
 import { render } from 'astro:content';
 import { catalog, displayDate } from '../../lib/catalog';
@@ -109,6 +110,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
         <p class="muted">尚無相同主題的其他作品。</p>
       )}
     </section>
+    <PublicationRelations workId={article.data.work_id} kind="article" />
     <ServiceState kind="comments" />
   </article>
 </Main>

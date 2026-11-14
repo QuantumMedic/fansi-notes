@@ -1,7 +1,127 @@
 ---
-import {publications} from '../lib/publications.ts';
-import {kinds,forms} from '../lib/publications.mjs';
-import {url} from '../data/site';
+import { publications, type Publication } from '../lib/publications.ts';
+import { kinds, forms } from '../lib/publications.mjs';
+import { url } from '../data/site';
+import BookCover from './BookCover.astro';
+interface Props {
+  books?: Publication[];
+}
+const { books = publications } = Astro.props;
 ---
-<div class="shelf">{publications.map(b=><article data-book-kind={b.publication_status} data-book-form={b.work_form} data-book-series={b.series || ''}><a href={url(`works/${b.slug}/`)}>{b.cover ? <img src={b.cover} alt={`${b.title}書封`} loading="lazy"/> : <div class="book-cover"><span>占位書封</span><strong>{b.title}</strong></div>}<h2>{b.title}</h2></a><p>{kinds[b.publication_status]} · {forms[b.work_form]}{b.synthetic ? ' · 合成測試資料' : ''}</p><p>{b.summary}</p></article>)}</div>
-<style>.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px}.shelf article{max-width:380px;border-bottom:8px solid var(--parchment);padding-bottom:24px}.book-cover{aspect-ratio:2/3;background:var(--sage);padding:32px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 10px 0 #0002}.book-cover strong{font-size:2rem}img{width:100%;aspect-ratio:2/3;object-fit:contain}.shelf a{display:block}.shelf a:hover,.shelf a:focus-visible{transform:translateY(-4px)}@media(prefers-reduced-motion:reduce){.shelf a:hover,.shelf a:focus-visible{transform:none}}</style>
+
+<div class="shelf">
+  {books.map((b) => (
+    <article
+      data-book-kind={b.publication_status}
+      data-book-form={b.work_form}
+      data-book-series={b.series || ''}
+    >
+      <a class="book-link" href={url(`works/${b.slug}/`)}>
+        <div class="book-object">
+          <BookCover book={b} />
+        </div>
+        <h2>{b.title}</h2>
+      </a>
+      <p class="book-meta">
+        {kinds[b.publication_status]} · {forms[b.work_form]}
+      </p>
+      {b.synthetic && <p class="sample">合成測試資料</p>}
+      <p class="summary">{b.summary}</p>
+    </article>
+  ))}
+</div>
+<style>
+  .shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 38px 30px;
+    padding-top: 24px;
+    border-top: 1px solid var(--parchment);
+  }
+  article {
+    min-width: 0;
+    max-width: 260px;
+  }
+  .book-object {
+    padding: 12px 24px 22px;
+    border-bottom: 7px solid var(--parchment);
+    background: linear-gradient(0deg, #d8c5a620, transparent 45%);
+    position: relative;
+  }
+  .book-object::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;
+    height: 5px;
+    background: linear-gradient(#373a3914, transparent);
+  }
+  .book-object :global(.publication-cover) {
+    max-width: 176px;
+    margin: auto;
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease;
+    transform-origin: bottom left;
+  }
+  .book-link {
+    display: block;
+    text-decoration: none;
+  }
+  .book-link h2 {
+    font-size: 1.18rem;
+    line-height: 1.65;
+    margin: 24px 0 8px;
+    font-weight: 500;
+  }
+  .book-meta,
+  .sample {
+    font-size: 12px;
+    margin: 6px 0;
+  }
+  .sample {
+    color: var(--ink);
+    opacity: 0.75;
+  }
+  .summary {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 12px;
+  }
+  .book-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 6px;
+  }
+  @media (hover: hover) {
+    .book-link:hover :global(.publication-cover) {
+      transform: translateY(-6px) rotate(-2deg);
+      box-shadow: 8px 12px 16px #373a3928;
+    }
+  }
+  @media (max-width: 760px) {
+    .shelf {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 18px;
+    }
+    .book-object {
+      padding: 10px 10px 16px;
+    }
+    .book-link h2 {
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+    .summary {
+      font-size: 13px;
+    }
+    .book-meta {
+      font-size: 11px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book-object :global(.publication-cover) {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>
