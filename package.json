@@ -1,1 +1,30 @@
-{"name":"fansi-notes","version":"0.1.0","private":true,"type":"module","engines":{"node":">=24.22.3"},"scripts":{"dev":"astro dev","build":"astro build","preview":"astro preview","check":"astro check","test":"node --test tests/*.test.mjs"},"dependencies":{"@astrojs/check":"0.9.12","astro":"7.4.11","typescript":"6.0.3"}}
+{
+  "name": "fansi-notes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.22.3"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "node --test tests/*.test.mjs",
+    "sync:podcast": "node scripts/sync-podcast.mjs",
+    "format": "prettier --write src scripts tests"
+  },
+  "dependencies": {
+    "@astrojs/check": "0.9.12",
+    "astro": "7.4.11",
+    "fast-xml-parser": "5.12.0",
+    "fast-xml-validator": "1.4.2",
+    "typescript": "6.0.3",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "prettier": "3.10.1",
+    "prettier-plugin-astro": "1.1.2"
+  }
+}

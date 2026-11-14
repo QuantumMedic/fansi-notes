@@ -1,4 +1,10 @@
 ---
+slug: paper-garden
+website_approved: true
+approved_by: synthetic-fixture
+approved_at: "2026-01-01T09:00:00+08:00"
+published_at: "2026-01-02T09:00:00+08:00"
+written_master: ig-vocus
 work_id: demo-paper-garden
 title: 紙上花園
 summary: 凡思維版面測試；這裡會放置經作者核准的研究短篇摘要。

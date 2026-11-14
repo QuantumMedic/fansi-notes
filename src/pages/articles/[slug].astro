@@ -1,9 +1,215 @@
 ---
 import Main from '../../layouts/Main.astro';
 import ServiceState from '../../components/ServiceState.astro';
-import {getCollection,render} from 'astro:content';
-import {url} from '../../data/site';
-export async function getStaticPaths(){return (await getCollection('articles')).map(article=>({params:{slug:article.id},props:{article}}));}
-const {article}=Astro.props;const {Content}=await render(article);
+import { render } from 'astro:content';
+import { catalog, displayDate } from '../../lib/catalog';
+import { relatedArticles } from '../../lib/model.mjs';
+import PlatformLinks from '../../components/PlatformLinks.astro';
+import PodcastPlayer from '../../components/PodcastPlayer.astro';
+import { url, topics } from '../../data/site';
+export async function getStaticPaths() {
+  return (await catalog()).articles.flatMap((article) =>
+    [article.data.slug, ...article.data.aliases].map((slug) => ({
+      params: { slug },
+      props: { article },
+    })),
+  );
+}
+const { article } = Astro.props;
+if (Astro.params.slug !== article.data.slug)
+  return Astro.redirect(url(`articles/${article.data.slug}/`), 301);
+const all = await catalog();
+const episodes = all.episodes.filter((e) =>
+  all.mapping.some((m) => m.guid === e.guid && m.work_id === article.data.work_id),
+);
+const { Content, headings } = await render(article);
+const longform = article.data.content_type === 'longform';
+const related = relatedArticles(
+  article.data,
+  all.articles.map((a) => a.data),
+);
+const minutes = Math.max(1, Math.ceil((article.body || '').length / 400));
 ---
-<Main title={article.data.title} description={article.data.summary}><article class="reading"><a href={url('articles/')}>← 探索文章</a><p class="eyebrow">{article.data.content_type==='fansiwei'?'凡思維':'深度文章'} · 虛構測試資料</p><h1>{article.data.title}</h1><p class="lede">{article.data.summary}</p><hr/><Content/><ServiceState kind="comments"/></article></Main>
+
+<Main title={article.data.title} description={article.data.summary}>
+  <header class:list={['article-header', { immersive: longform }]}>
+    <div class="article-title">
+      <a href={url('articles/')}>← 探索文章</a>
+      <p class="eyebrow">
+        {longform ? '深度文章' : '凡思維'} ·{' '}
+        {article.data.synthetic ? '虛構測試資料' : article.data.public_author_name}
+      </p>
+      <h1>{article.data.title}</h1>
+      <p class="lede">{article.data.summary}</p>
+      <p class="muted">
+        閱讀約 {minutes} 分鐘 · {article.data.synthetic ? '示意日期' : '發布日期'}{' '}
+        {displayDate(article.data.published_at)}
+      </p>
+      <p class="muted">
+        {article.data.subtitle}
+        {article.data.updated_at && ` · 更新：${displayDate(article.data.updated_at)}`}
+      </p>
+      <nav aria-label="文章主題" class="topic-links">
+        {article.data.topics.map((t) => (
+          <a href={url(`topics/${t}/`)}>{topics.find((x) => x.slug === t)?.name}</a>
+        ))}
+      </nav>
+    </div>
+    {article.data.cover_image ? (
+      <img class="real-cover" src={url(article.data.cover_image)} alt={article.data.cover_alt} />
+    ) : (
+      longform && (
+        <div class="article-illustration" aria-hidden="true">
+          <div class="arch"></div>
+          <span>封面插畫示意</span>
+        </div>
+      )
+    )}
+  </header>
+  <article class="reading article-body">
+    {longform && headings.length > 0 && (
+      <nav aria-label="文章目錄" class="contents">
+        <p class="eyebrow">本篇目錄</p>
+        {headings.map((h) => (
+          <a href={`#${h.slug}`}>{h.text}</a>
+        ))}
+      </nav>
+    )}
+    <Content />
+    {article.data.sources.length > 0 && (
+      <section class="empty">
+        <h2>研究與參考資料</h2>
+        {article.data.sources.map((source) => (
+          <p>
+            <a href={source.url} rel="noopener noreferrer" target="_blank">
+              {source.title}
+            </a>
+          </p>
+        ))}
+      </section>
+    )}
+    <PlatformLinks links={article.data.platform_urls} />
+    {episodes.map((e) => (
+      <section class="empty">
+        <h2>用聲音繼續閱讀</h2>
+        <a href={url(`podcast/${e.slug}/`)}>{e.title} ↗</a>
+        <PodcastPlayer url={e.spotify_episode_url} title={e.title} />
+      </section>
+    ))}
+    <section class="empty">
+      <h2>繼續閱讀</h2>
+      {related.length ? (
+        related.map((a) => (
+          <p>
+            <a href={url(`articles/${a.slug}/`)}>{a.title} ↗</a>
+          </p>
+        ))
+      ) : (
+        <p class="muted">尚無相同主題的其他作品。</p>
+      )}
+    </section>
+    <ServiceState kind="comments" />
+  </article>
+</Main>
+<style>
+  .real-cover {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+  }
+  .article-header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 32px 20px;
+  }
+  .article-title {
+    max-width: 720px;
+    margin: auto;
+  }
+  .article-title h1 {
+    font-size: clamp(2.5rem, 5vw, 4.4rem);
+  }
+  .immersive {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 65px;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 70px;
+  }
+  .article-illustration {
+    height: 380px;
+    background: #bec6b5;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .arch {
+    width: 160px;
+    height: 250px;
+    border: 18px solid #939e87;
+    border-bottom: 0;
+    border-radius: 90px 90px 0 0;
+    background: #ece3cf;
+    box-shadow: 26px 16px 0 #a8b19b;
+    transform: translateY(40px);
+  }
+  .article-illustration span {
+    position: absolute;
+    bottom: 12px;
+    left: 18px;
+    font-size: 11px;
+  }
+  .article-body {
+    padding-top: 30px;
+  }
+  .contents {
+    padding: 20px 24px;
+    background: #eae5d9;
+    margin-bottom: 40px;
+  }
+  .contents a {
+    display: block;
+    padding: 6px 0;
+  }
+  .article-body :global(h2) {
+    scroll-margin-top: 25px;
+  }
+  .article-body :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  .article-body :global(blockquote) {
+    border-left: 3px solid var(--bronze);
+    padding-left: 25px;
+    margin: 30px 0;
+  }
+  .article-body :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+  .article-body :global(pre) {
+    overflow-x: auto;
+  }
+  @media (max-width: 760px) {
+    .article-header {
+      padding: 40px 24px 10px;
+    }
+    .immersive {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .article-illustration {
+      height: 240px;
+    }
+    .arch {
+      height: 200px;
+      width: 130px;
+    }
+    .article-title h1 {
+      font-size: 2.6rem;
+    }
+  }
+</style>

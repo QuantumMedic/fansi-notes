@@ -1,5 +1,25 @@
 ---
-import Main from '../../layouts/Main.astro';import WorkCard from '../../components/WorkCard.astro';import {topics} from '../../data/site';import {getCollection} from 'astro:content';
-export function getStaticPaths(){return topics.map(topic=>({params:{slug:topic.slug},props:{topic}}))};const {topic}=Astro.props;const articles=(await getCollection('articles')).filter(a=>a.data.topics.includes(topic.slug));
+import Main from '../../layouts/Main.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { topics } from '../../data/site';
+import { catalog } from '../../lib/catalog';
+export function getStaticPaths() {
+  return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+const { topic } = Astro.props;
+const articles = (await catalog()).articles.filter((a) =>
+  a.data.topics.some((t) => t === topic.slug),
+);
 ---
-<Main title={topic.name}><section class="page-heading"><p class="eyebrow">主題 · 測試資料</p><h1>{topic.name}</h1></section><section class="section cards">{articles.map(a=><WorkCard id={a.id} {...a.data} type={a.data.content_type}/>)}</section></Main>
+
+<Main title={topic.name}>
+  <section class="page-heading">
+    <p class="eyebrow">主題 · 測試資料</p>
+    <h1>{topic.name}</h1>
+  </section>
+  <section class="section cards">
+    {articles.map((a) => (
+      <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
+    ))}
+  </section>
+</Main>
