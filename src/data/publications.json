@@ -25,5 +25,44 @@
     },
     "publication_status": "unpublished",
     "work_form": "novel"
+  },
+  {
+    "work_id": "demo-tide-room",
+    "slug": "demo-tide-room",
+    "title": "潮汐房間・合成示範",
+    "synthetic": true,
+    "website_approved": true,
+    "approved_by": "synthetic-fixture",
+    "approved_revision": "visual-v1",
+    "summary": "僅供多本藏書排列與閱讀版面測試，並非作者作品或出版紀錄。",
+    "theme": "bronze",
+    "publication_status": "serialized",
+    "work_form": "novel"
+  },
+  {
+    "work_id": "demo-night-letter",
+    "slug": "demo-night-letter",
+    "title": "夜裡的信・合成示範",
+    "synthetic": true,
+    "website_approved": true,
+    "approved_by": "synthetic-fixture",
+    "approved_revision": "visual-v1",
+    "summary": "僅供多本藏書排列與閱讀版面測試，並非作者作品或出版紀錄。",
+    "theme": "sage",
+    "publication_status": "published",
+    "work_form": "short"
+  },
+  {
+    "work_id": "demo-small-islands",
+    "slug": "demo-small-islands",
+    "title": "小島集・合成示範",
+    "synthetic": true,
+    "website_approved": true,
+    "approved_by": "synthetic-fixture",
+    "approved_revision": "visual-v1",
+    "summary": "僅供多本藏書排列與閱讀版面測試，並非作者作品或出版紀錄。",
+    "theme": "bronze",
+    "publication_status": "published",
+    "work_form": "collection"
   }
 ]

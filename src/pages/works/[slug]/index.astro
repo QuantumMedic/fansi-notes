@@ -1,14 +1,259 @@
 ---
 import ServiceState from '../../../components/ServiceState.astro';
 import Main from '../../../layouts/Main.astro';
-import {publications} from '../../../lib/publications.ts';
-import {kinds,forms} from '../../../lib/publications.mjs';
-import {url} from '../../../data/site';
-export function getStaticPaths(){return publications.map(book=>({params:{slug:book.slug},props:{book}}));}
-interface Props { book: import('../../../lib/publications.ts').Publication }
-const {book:b}=Astro.props;
-const siblings=publications.filter(x=>b.series&&x.series===b.series).sort((a,b)=>(a.order||0)-(b.order||0));
----
-<Main title={b.title}><section class="page-heading" style={`border-bottom:6px solid var(--${b.theme})`}><a href={url('works/')}>← 回到書架</a><p class="eyebrow">{kinds[b.publication_status]} · {forms[b.work_form]}{b.synthetic?' · 合成測試資料':''}</p><h1>{b.title}</h1><p>{b.summary}</p></section><article class="section" style="max-width:760px;margin:auto">{b.cover&&<img src={b.cover} alt={`${b.title}書封`} width="320"/>}<dl>{b.author&&<><dt>作者</dt><dd>{b.author}</dd></>}{b.publisher&&<><dt>出版社</dt><dd>{b.publisher}</dd></>}{b.year&&<><dt>出版年份</dt><dd>{b.year}</dd></>}</dl><!-- Full text is independently authorized and never inferred from a book listing. -->{b.full_text&&<section aria-label="授權短篇全文"><h2>全文閱讀{b.synthetic?'・合成示範':''}</h2><div class="fiction-fulltext">{b.full_text.text.split(/\n\s*\n/).map(paragraph=><p>{paragraph}</p>)}</div></section>}{b.excerpt?<section><h2>試讀{b.synthetic?'・合成示範':''}</h2><p style="white-space:pre-wrap">{b.excerpt}</p></section>:<p>本作品目前未提供公開試讀。</p>}{b.world&&<p><a href={url(`works/${b.slug}/world/`)}>走進作品世界 →</a></p>}{siblings.length>0&&<section><h2>系列閱讀順序</h2><ol>{siblings.map(x=><li><a href={url(`works/${x.slug}/`)}>{x.title}</a></li>)}</ol></section>}{b.links.map(x=><p><a href={x.url} rel="noopener noreferrer">{x.label} ↗</a></p>)}<ServiceState kind="comments"/></article></Main>
+import { publications } from '../../../lib/publications.ts';
+import { kinds, forms } from '../../../lib/publications.mjs';
+import { url } from '../../../data/site';
+export function getStaticPaths() {
+  return publications.map((book) => ({ params: { slug: book.slug }, props: { book } }));
+}
+interface Props {
+  book: import('../../../lib/publications.ts').Publication;
+}
+const { book: b } = Astro.props;
+const siblings = publications
+  .filter((x) => b.series && x.series === b.series)
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
 
-<style>.fiction-fulltext{font-size:18px;line-height:2.1;overflow-wrap:anywhere}.fiction-fulltext p{white-space:pre-wrap}</style>
+import BookCover from '../../../components/BookCover.astro';
+import PublicationRelations from '../../../components/PublicationRelations.astro';
+---
+
+<Main title={b.title} description={b.summary}>
+  <article class="book-page" style={`--book-tone:var(--${b.theme})`}>
+    <a class="back" href={url('works/')}>
+      ← 回到書架
+    </a>
+    <div class="book-opening">
+      <div class="cover-display">
+        <BookCover book={b} />
+        <p>{b.synthetic ? '合成測試資料・非作者作品' : '作品書封'}</p>
+      </div>
+      <div class="book-introduction">
+        <p class="eyebrow">
+          {kinds[b.publication_status]} · {forms[b.work_form]}
+        </p>
+        <h1>{b.title}</h1>
+        <p class="synopsis">{b.summary}</p>
+        <dl>
+          <div>
+            <dt>作品形式</dt>
+            <dd>{forms[b.work_form]}</dd>
+          </div>
+          <div>
+            <dt>出版狀態</dt>
+            <dd>{kinds[b.publication_status]}</dd>
+          </div>
+          {b.author && (
+            <div>
+              <dt>作者</dt>
+              <dd>{b.author}</dd>
+            </div>
+          )}
+          {b.publisher && (
+            <div>
+              <dt>出版社</dt>
+              <dd>{b.publisher}</dd>
+            </div>
+          )}
+          {b.year && (
+            <div>
+              <dt>出版年份</dt>
+              <dd>{b.year}</dd>
+            </div>
+          )}
+          {b.series && (
+            <div>
+              <dt>所屬系列</dt>
+              <dd>{b.series}</dd>
+            </div>
+          )}
+        </dl>
+        {b.links.length > 0 && (
+          <nav class="purchase-links" aria-label="出版與購書連結">
+            {b.links.map((x) => (
+              <a href={x.url} rel="noopener noreferrer">
+                {x.label} ↗
+              </a>
+            ))}
+          </nav>
+        )}
+        {b.world && (
+          <a class="world-door" href={url(`works/${b.slug}/world/`)}>
+            <span>作品世界</span>
+            <strong>走進故事的另一側 →</strong>
+          </a>
+        )}
+      </div>
+    </div>
+    <div class="book-reading">
+      {b.full_text && (
+        <section aria-label="授權短篇全文">
+          <h2>全文閱讀{b.synthetic ? '・合成示範' : ''}</h2>
+          <div class="fiction-fulltext">
+            {b.full_text.text.split(/\n\s*\n/).map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )}
+      {b.excerpt && (
+        <section class="excerpt">
+          <p class="eyebrow">翻開一頁</p>
+          <h2>試讀{b.synthetic ? '・合成示範' : ''}</h2>
+          <p style="white-space:pre-wrap">{b.excerpt}</p>
+        </section>
+      )}
+      {siblings.length > 1 && (
+        <section>
+          <h2>系列閱讀順序</h2>
+          <ol>
+            {siblings.map((x) => (
+              <li>
+                <a
+                  href={url(`works/${x.slug}/`)}
+                  aria-current={x.work_id === b.work_id ? 'page' : undefined}
+                >
+                  {x.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+      <PublicationRelations workId={b.work_id} kind="publication" />
+      <ServiceState kind="comments" />
+    </div>
+  </article>
+</Main>
+<style>
+  .book-page {
+    max-width: 1120px;
+    margin: auto;
+    padding: 52px 32px 80px;
+  }
+  .back {
+    font-size: 14px;
+  }
+  .book-opening {
+    display: grid;
+    grid-template-columns: minmax(220px, 330px) minmax(0, 1fr);
+    gap: 76px;
+    padding: 48px 0 56px;
+    border-bottom: 1px solid var(--parchment);
+    align-items: start;
+  }
+  .cover-display {
+    padding: 32px 40px 20px;
+    background: linear-gradient(145deg, #d8c5a638, #d8c5a60a);
+    border-bottom: 8px solid var(--parchment);
+  }
+  .cover-display :global(.publication-cover) {
+    max-width: 250px;
+    margin: auto;
+  }
+  .cover-display p {
+    text-align: center;
+    font-size: 11px;
+    margin: 24px 0 0;
+  }
+  .book-introduction h1 {
+    font-size: clamp(2rem, 3.3vw, 3rem);
+    line-height: 1.4;
+    margin: 18px 0 24px;
+  }
+  .synopsis {
+    font-size: 18px;
+    line-height: 1.95;
+  }
+  dl {
+    font-size: 14px;
+    border-top: 1px solid var(--parchment);
+    padding-top: 20px;
+    margin-top: 28px;
+  }
+  dl > div {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    padding: 6px 0;
+  }
+  dt {
+    opacity: 0.7;
+  }
+  dd {
+    margin: 0;
+  }
+  .purchase-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .purchase-links a {
+    border: 1px solid var(--bronze);
+    padding: 12px 18px;
+  }
+  .world-door {
+    display: block;
+    padding: 20px 24px;
+    margin-top: 30px;
+    border-left: 3px solid var(--book-tone);
+    background: #d8c5a626;
+  }
+  .world-door span {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .world-door strong {
+    font-weight: 500;
+  }
+  .book-reading {
+    max-width: 720px;
+    margin: 40px auto 0;
+  }
+  .book-reading h2 {
+    font-size: 1.45rem;
+  }
+  .excerpt {
+    padding: 22px 28px;
+    background: #d8c5a61c;
+    border-left: 2px solid var(--book-tone);
+  }
+  .fiction-fulltext {
+    font-size: 18px;
+    line-height: 2.1;
+    overflow-wrap: anywhere;
+  }
+  .fiction-fulltext p {
+    white-space: pre-wrap;
+  }
+  @media (max-width: 760px) {
+    .book-page {
+      padding: 30px 24px 60px;
+    }
+    .book-opening {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 30px 0;
+    }
+    .cover-display {
+      width: 224px;
+      padding: 24px 24px 16px;
+      margin: auto;
+    }
+    .book-introduction h1 {
+      font-size: 2rem;
+    }
+    .synopsis {
+      font-size: 17px;
+    }
+    .book-reading {
+      margin-top: 30px;
+    }
+    .excerpt {
+      padding: 18px;
+    }
+  }
+</style>

@@ -1,12 +1,106 @@
 ---
 import Main from '../../layouts/Main.astro';
 import Bookshelf from '../../components/Bookshelf.astro';
-import {publications} from '../../lib/publications.ts';
-import {kinds,forms} from '../../lib/publications.mjs';
+import { publications } from '../../lib/publications.ts';
+import { kinds, forms } from '../../lib/publications.mjs';
 ---
-<Main title="小說與出版"><section class="page-heading"><p class="eyebrow">想像的國度</p><h1>小說與出版</h1><p>收藏故事，走進每一部作品的世界。</p><p class="muted">目前展示合成作品；真實書封、簡介與出版資料待作者核准。</p></section><section class="section"><label for="book-kind">作品狀態</label><select id="book-kind"><option value="">全部作品</option>{Object.entries(kinds).map(([k,v])=><option value={k}>{v}</option>)}</select><label for="book-form">作品形式</label><select id="book-form"><option value="">全部形式</option>{Object.entries(forms).map(([k,v])=><option value={k}>{v}</option>)}</select><label for="book-series">所屬系列</label><select id="book-series"><option value="">全部系列</option>{[...new Set(publications.map(b=>b.series).filter(Boolean))].map(s=><option value={s}>{s}</option>)}</select><p role="status" id="shelf-empty" hidden>此類作品尚未上架，請選擇其他類型。</p><Bookshelf/></section></Main>
+
+<Main title="小說與出版">
+  <section class="page-heading">
+    <p class="eyebrow">想像的國度</p>
+    <h1>小說與出版</h1>
+    <p>收藏故事，走進每一部作品的世界。</p>
+    <p class="muted">目前展示合成作品；真實書封、簡介與出版資料待作者核准。</p>
+  </section>
+  <section class="section">
+    <div class="shelf-filters">
+      <div>
+        <label for="book-kind">作品狀態</label>
+        <select id="book-kind">
+          <option value="">全部作品</option>
+          {Object.entries(kinds).map(([k, v]) => (
+            <option value={k}>{v}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label for="book-form">作品形式</label>
+        <select id="book-form">
+          <option value="">全部形式</option>
+          {Object.entries(forms).map(([k, v]) => (
+            <option value={k}>{v}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label for="book-series">所屬系列</label>
+        <select id="book-series">
+          <option value="">全部系列</option>
+          {[...new Set(publications.map((b) => b.series).filter(Boolean))].map((s) => (
+            <option value={s}>{s}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+    <p role="status" id="shelf-empty" hidden>
+      此類作品尚未上架，請選擇其他類型。
+    </p>
+    <Bookshelf />
+  </section>
+</Main>
 <script>
-const controls=['book-kind','book-form','book-series'].map(id=>document.getElementById(id) as HTMLSelectElement);
-function filter(){let count=0;document.querySelectorAll<HTMLElement>('[data-book-kind]').forEach(el=>{el.hidden=controls.some((c,i)=>c.value&&c.value!==[el.dataset.bookKind,el.dataset.bookForm,el.dataset.bookSeries][i]);if(!el.hidden)count++});document.querySelector<HTMLElement>('#shelf-empty')!.hidden=count>0;}
-controls.forEach(c=>c.addEventListener('change',filter));
+  const controls = ['book-kind', 'book-form', 'book-series'].map(
+    (id) => document.getElementById(id) as HTMLSelectElement,
+  );
+  function filter() {
+    let count = 0;
+    document.querySelectorAll<HTMLElement>('[data-book-kind]').forEach((el) => {
+      el.hidden = controls.some(
+        (c, i) =>
+          c.value &&
+          c.value !== [el.dataset.bookKind, el.dataset.bookForm, el.dataset.bookSeries][i],
+      );
+      if (!el.hidden) count++;
+    });
+    document.querySelector<HTMLElement>('#shelf-empty')!.hidden = count > 0;
+  }
+  controls.forEach((c) => c.addEventListener('change', filter));
 </script>
+
+<style>
+.page-heading{padding-bottom:20px}.section{padding-top:18px}
+
+  .shelf-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 800px;
+    margin-bottom: 30px;
+  }
+  .shelf-filters label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .shelf-filters select {
+    width: 100%;
+    min-height: 44px;
+    margin: 0;
+    background: transparent;
+    border: 1px solid var(--parchment);
+  }
+  @media (max-width: 760px) {
+    .shelf-filters {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .shelf-filters > div {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      align-items: center;
+    }
+    .shelf-filters label {
+      margin: 0;
+    }
+  }
+</style>
