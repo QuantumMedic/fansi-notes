@@ -4,6 +4,8 @@
 
 > **PR #19 工作分支狀態（2026-11-15；未合併／未 UI 驗收）**：已從作者已公開 IG 的書面文字補建 **9 篇網站文章**，連同原 48 篇共 **57 篇文章**；25 集 Podcast 的 **25 組 GUID↔work_id 配對**均已寫入工作分支；25 集 Spotify／Apple 單集 URL、九篇 IG URL 均已核對。新資料的人氣排序為 56 篇有 IG 名次＋1 篇 `null`。舊有「9 集 Podcast-only」「48 篇＋9 音訊卡」僅反映 **main／PR #15 舊基準**；PR #19 合併後不再適用。**唯一下一步 Codex 指令**：`docs/review/m5d/FINAL_ARTICLE_PODCAST_CODEX_HANDOFF_2026-11-15.md`。圖片採既有原文定位符號回填、有疑慮或失效則省略；圖片不阻擋 M5-D 文字配對與功能驗收。**目前尚未完成網站 UI、圖片接入、CI 與桌手機驗收。**
 
+> **PR #19 CI 實測（2026-11-15）**：`npm run check`、`npm run build` 成功並生成107頁；`npm test` 58項中52項通過、6項失敗，原因為舊測試仍以48篇文章／16組Podcast映射／舊排名／分類待確認為固定預期。不得倒退正式資料或刪除原48篇完整性驗證；Codex在唯一M5-D批次依 `FINAL_ARTICLE_PODCAST_CODEX_HANDOFF_2026-11-15.md` 修正測試並回歸全部頁面。PR尚未合併或作者驗收。
+
 ## 權威來源
 作者最新明確要求 ＞ 創作 SOP v4.1／分類與網站同步規範 v1.0（原文、分類、授權） ＞ `docs/WEBSITE_COMPLETION_SOP.md`（網站規格） ＞ 本檔（進度） ＞ `docs/review/m5c/`（候選及核准紀錄） ＞ 歷史材料。
 
