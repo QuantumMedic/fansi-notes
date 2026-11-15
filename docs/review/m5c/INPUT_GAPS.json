@@ -8,7 +8,8 @@
     "All numeric likes/plays are null until evidence supplied; null means unknown, NOT zero.",
     "Article and Podcast links/pairings are only approved when author confirms same work_id/GUID; title similarity is not approval.",
     "Image position count is provenance, not authorization to download or reuse. No private Canva IDs or analytics have been included.",
-    "All 48 series and topic fields are now grounded in the existing published article frontmatter or batch verification, not reclassified."
+    "All 48 series and topic fields are now grounded in the existing published article frontmatter or batch verification, not reclassified.",
+    "IG public profile is already known; do not ask the author to resupply their IG handle. Specific post permalinks and like counts remain unavailable."
   ],
   "counts": {
     "articles": 48,
@@ -1474,5 +1475,10 @@
       ],
       "status": "requires_author_choice"
     }
-  ]
+  ],
+  "public_social_accounts": {
+    "instagram_profile": "https://www.instagram.com/sci_fang2000/",
+    "source": "author-public Vocus reader-submission notice (historical source inventory)",
+    "note": "Verified profile only. Not a verified link to any specific IG article."
+  }
 }
