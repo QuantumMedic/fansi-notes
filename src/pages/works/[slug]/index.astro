@@ -52,8 +52,7 @@ import PublicationRelations from '../../../components/PublicationRelations.astro
     <div class="book-reading">
       {b.description.length>0 && <section class="description"><h2>{b.description_scope==='whole_work' ? '整部作品介紹' : '故事介紹'}</h2>{b.description.map(p=><p>{p}</p>)}</section>}
       {(b.endorsements.length>0 || b.recommendation_credits.length>0) && <section class="endorsements"><h2>{b.description_scope==='whole_work'?'整部作品推薦':'推薦摘句'}</h2>
-        {b.endorsements.slice(0,2).map(e=><Endorsement endorsement={e} />)}
-        {b.endorsements.length>2 && <details><summary>閱讀其餘 {b.endorsements.length-2} 則推薦</summary>{b.endorsements.slice(2).map(e=><Endorsement endorsement={e}/>)}</details>}
+        <div class="endorsement-grid">{b.endorsements.map(e=><Endorsement endorsement={e} />)}</div>
         {b.recommendation_credits.length>0 && <p class="credits">共同推薦：{b.recommendation_credits.join('、')}</p>}
       </section>}
       {b.full_text && (
@@ -113,7 +112,8 @@ import PublicationRelations from '../../../components/PublicationRelations.astro
   .book-reading > section { margin-bottom:36px; }
   .description p { font-size:18px; line-height:2; }
   .endorsements { border-top:1px solid var(--parchment); padding-top:24px; }
-  .endorsements summary { cursor:pointer; padding:12px 0; }
+  .endorsement-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:20px; }
+  @media(max-width:760px) { .endorsement-grid { grid-template-columns:1fr; } }
   .credits { font-size:14px; line-height:1.9; }
   .purchase-links a { font-size:14px; text-decoration:none; overflow-wrap:anywhere; }
   dd { overflow-wrap:anywhere; }

@@ -3,9 +3,9 @@ import type { Publication } from '../lib/publications';
 interface Props {endorsement:Publication['endorsements'][number];}
 const {endorsement:e}=Astro.props;
 ---
-<blockquote><p>{e.quote}</p><footer>— {e.by}<cite><a href={e.source_url}>{e.source_label}{e.source_page ? `，第${e.source_page}頁`:''} ↗</a></cite></footer></blockquote>
+<blockquote><p>{e.quote}</p><div class="endorsement-attribution">— {e.by}<cite><a href={e.source_url}>{e.source_label}{e.source_page ? `，第${e.source_page}頁`:''} ↗</a></cite></div></blockquote>
 <style>
-blockquote{margin:24px 0;padding:12px 24px;border-left:2px solid var(--bronze);background:#d8c5a614}
+blockquote{margin:0;min-width:0;overflow-wrap:anywhere;padding:12px 24px;border-left:2px solid var(--bronze);background:#d8c5a614}
 blockquote p{font-family:var(--serif);font-size:18px;line-height:1.9;margin:0 0 12px}
-footer{font-size:14px}cite{display:block;font-style:normal;font-size:12px;margin-top:8px;line-height:1.8}
+.endorsement-attribution{font-size:14px;line-height:1.8}cite{display:block;font-style:normal;font-size:12px;margin-top:8px;line-height:1.8}
 </style>

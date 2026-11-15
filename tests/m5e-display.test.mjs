@@ -10,6 +10,8 @@ const books=validatePublications(json('src/data/publications.json'));
 const html=slug=>readFileSync(`dist/works/${slug}/index.html`,'utf8');
 const clean=s=>s.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
 test('M5-E 七筆展示忠於輸入；26入口、6封面、順序與無全文授權',()=>{
+ assert.deepEqual(books.map(b=>b.endorsements.length),[3,4,5,4,4,0,0]);
+ assert.ok(books.every(b=>b.description.length===4));
  assert.equal(books.length,7);assert.equal(books.flatMap(b=>b.links).length,26);assert.equal(books.filter(b=>b.cover).length,6);
  for(const [i,b] of books.entries()){
   const source=input.publications[i];
@@ -20,10 +22,25 @@ test('M5-E 七筆展示忠於輸入；26入口、6封面、順序與無全文授
   const page=html(b.slug),text=clean(page);
   for(const paragraph of b.description)assert.ok(text.includes(paragraph));
   for(const e of b.endorsements){assert.ok(text.includes(e.quote));assert.ok(text.includes(e.by));assert.ok(page.includes(e.source_url.replaceAll('&','&amp;')));}
-  for(const l of b.links)assert.ok(page.includes(`href="${l.url}"`));
+  assert.equal(new Set(b.links.map(l=>l.url)).size,b.links.length);
+  for(const l of b.links){assert.equal([...page.matchAll(/<nav class="purchase-links"[^>]*>([\s\S]*?)<\/nav>/g)].map(m=>m[1]).join('').split(`href="${l.url}"`).length-1,1,`${b.work_id} platform ${l.url}`);}
+  for(const group of ['print','ebook','read']){const label={print:'紙本購書',ebook:'電子書',read:'線上閱讀'}[group];const nav=page.match(new RegExp(`<nav[^>]*aria-label="${label}"[^>]*>([\\s\\S]*?)<\\/nav>`))?.[1];const links=b.links.filter(l=>l.group===group);if(links.length){assert.ok(nav);for(const l of links)assert.ok(nav.includes(`href="${l.url}"`));}else assert.equal(nav,undefined);}
   assert.doesNotMatch(page,/class="fiction-fulltext"|授權短篇全文|作品世界|合成測試/);
-  if(b.endorsements.length>2)assert.match(page,/<details[^>]*>\s*<summary/);
-  else assert.doesNotMatch(page,/閱讀其餘/);
+  assert.doesNotMatch(page,/閱讀其餘/);
+  const description=page.match(/<section class="description"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(description);assert.equal((description.match(/<p[ >]/g)||[]).length,4);
+  for(const paragraph of b.description)assert.ok(clean(description).includes(paragraph));
+  const section=page.match(/<section class="endorsements"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  if(b.endorsements.length){
+    assert.ok(section);assert.doesNotMatch(section,/<details|<summary|<footer|hidden/);
+    const cards=[...section.matchAll(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/g)].map(m=>m[1]);
+    assert.equal(cards.length,b.endorsements.length);
+    cards.forEach((card,i)=>{
+      const e=b.endorsements[i];assert.ok(clean(card).includes(e.quote));assert.ok(clean(card).includes(e.by));
+      assert.equal((card.match(/<a /g)||[]).length,1);
+      assert.match(card,/<cite[^>]*><a /);assert.match(card,/class="endorsement-attribution"/);
+    });
+  }else assert.equal(section,undefined);
   for(const sibling of books.filter(x=>x.series&&x.series===b.series))assert.ok(page.includes(`/fansi-notes/works/${sibling.slug}/`));
  }
 });
