@@ -9,8 +9,8 @@ const input=json('docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json');
 const books=validatePublications(json('src/data/publications.json'));
 const html=slug=>readFileSync(`dist/works/${slug}/index.html`,'utf8');
 const clean=s=>s.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
-test('M5-E 七筆展示忠於輸入；18入口、6封面、順序與無全文授權',()=>{
- assert.equal(books.length,7);assert.equal(books.flatMap(b=>b.links).length,18);assert.equal(books.filter(b=>b.cover).length,6);
+test('M5-E 七筆展示忠於輸入；26入口、6封面、順序與無全文授權',()=>{
+ assert.equal(books.length,7);assert.equal(books.flatMap(b=>b.links).length,26);assert.equal(books.filter(b=>b.cover).length,6);
  for(const [i,b] of books.entries()){
   const source=input.publications[i];
   for(const key of ['work_id','slug','title','author','summary','description','endorsements','publication_status','completion_status','display_order'])assert.deepEqual(b[key],source[key],`${b.work_id} ${key}`);
@@ -35,7 +35,22 @@ test('M5-E 狀態、整部作品說明、分組與已知平台例外不造資料
  assert.equal(short.links[0].url,legacyReadingUrl);
  assert.throws(()=>validatePublications([{...short,work_id:'wrong-work'}]));
  assert.throws(()=>validatePublications([{...short,links:[{...short.links[0],url:'http://example.com/'}]}]));
- assert.ok(books.every(b=>b.links.every(l=>!l.url.includes('books.com.tw')&&!l.url.includes('readmoo.com'))));
+ const expectedBooks = {
+   'publication-tianqi-1': [['print','0010823413'],['ebook','E050049457']],
+   'publication-tianqi-2': [['print','0010827312'],['ebook','E050051653']],
+   'publication-tianqi-3': [['print','0010864898'],['ebook','E050073570']],
+   'publication-singularity-1': [['ebook','E050240249']],
+   'publication-singularity-2': [['ebook','E050240250']]
+ };
+ for(const [workId,products] of Object.entries(expectedBooks)){
+   const book=books.find(b=>b.work_id===workId);
+   for(const [group,id] of products){
+     const matches=book.links.filter(l=>new URL(l.url).host==='www.books.com.tw'&&new URL(l.url).pathname==='/products/'+id);
+     assert.equal(matches.length,1,workId+' '+id);
+     assert.equal(matches[0].group,group);
+   }
+ }
+ assert.ok(books.every(b=>b.links.every(l=>!l.url.includes('readmoo.com'))));
  assert.ok(input.external_exceptions.some(e=>e.id==='books-direct'&&e.status==='not_fully_verified'));
  assert.ok(input.external_exceptions.some(e=>e.id==='readmoo-direct'&&e.status==='not_fully_verified'));
 });
