@@ -13,3 +13,10 @@ test('分頁數字保留首尾與相鄰頁，大量頁面收合不溢出',()=>{
  assert.deepEqual(pageNumbers(5,10),[1,'…',4,5,6,'…',10]);
  assert.deepEqual(pageNumbers(1,1),[1]);
 });
+
+test('主題每頁12作品，新增作品自動增加頁數，縮小結果回有效頁',()=>{
+ assert.equal(pageSlice(12,12).pages,1);
+ assert.deepEqual(pageSlice(13,12,2),{page:2,pages:2,start:12,end:13});
+ assert.deepEqual(pageSlice(25,12,3),{page:3,pages:3,start:24,end:25});
+ assert.equal(pageSlice(3,12,3).page,1);
+});

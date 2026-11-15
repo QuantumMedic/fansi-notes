@@ -111,3 +111,12 @@
 
 ![桌機分頁](pagination-desktop.jpg)
 ![手機分頁](pagination-mobile.jpg)
+
+
+## 作者追加：九大主題分頁
+WorkExplorer沿用同一Pagination與控制器，每頁12個作品，保留單欄與固定主題。依完整分類結果計算頁數，之後新增作品且重新建置即可自動增加頁碼；搜尋／系列／清除回第一頁，不跳出當前主題。無JS保留全部作品。
+
+實際心理與行為23作品為12/11；搜尋植物1個結果時隱藏頁碼，清除恢復23且URL維持原主題。1440px／390px截圖、手機無溢出、Enter翻頁通過。67/67測試，check零問題，build107頁；原文、分類、配對、圖片與人氣資料未改。
+
+![主題桌機分頁](topic-pagination-desktop.jpg)
+![主題手機分頁](topic-pagination-mobile.jpg)
