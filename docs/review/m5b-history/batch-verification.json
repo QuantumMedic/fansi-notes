@@ -1518,6 +1518,52 @@
       "summary_source": "vocus.abstract",
       "summary_authorship": "平台欄位，尚未確認是否作者手動設定",
       "podcast_mapping_approved": false
+    },
+    {
+      "vocus_id": "675b90a6fd89780001cc0f65",
+      "slug": "vocus-675b90a6fd89780001cc0f65",
+      "source": "https://vocus.cc/article/675b90a6fd89780001cc0f65",
+      "title": "藏在平凡中的生命意義｜從《進擊的巨人》吉克·葉卡的一生看愛與意義",
+      "content_type": "longform",
+      "topics": [
+        "screen",
+        "philosophy"
+      ],
+      "source_updated_at": "2024-12-13T07:41:09.868Z",
+      "normalized_text_sha256": "830488a6f3b9d6758886348b3a5dd8bf9a22b6af556817b6df1fb612e26afb81",
+      "images": [
+        {
+          "position": 1,
+          "source": "https://images.vocus.cc/6c325eb1-1de3-48e1-9a78-cc4d265976ad.jpg",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 2,
+          "source": "https://images.vocus.cc/c704d229-aaf9-4557-9b47-5b35c4dee5aa.jpg",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 3,
+          "source": "https://images.vocus.cc/b2fa242a-03dc-418a-8bf7-b3d70dd986c8.jpg",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 4,
+          "source": "https://images.vocus.cc/8f2cf5ca-7c48-4cf3-8e6f-cbf541f39c3f.jpg",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 5,
+          "source": "https://images.vocus.cc/ab25ead3-a02a-490c-9f94-c28e926f514f.jpg",
+          "alt": "轉自：木棉花fb"
+        }
+      ],
+      "external_links": [
+        "https://www.facebook.com/story.php?story_fbid=985986536897349&id=100064580356697&rdid=KIIQRQr8t6lIL66R"
+      ],
+      "summary_source": "vocus.abstract",
+      "summary_authorship": "平台欄位，尚未確認是否作者手動設定",
+      "podcast_mapping_approved": false
     }
   ],
   "skipped": [
@@ -1535,11 +1581,6 @@
       "id": "6764e586fd89780001056594",
       "title": "抹除文字的鋼筆",
       "reason": "小說全文／投稿說明或受限來源，需另確認本批授權適用範圍"
-    },
-    {
-      "id": "675b90a6fd89780001cc0f65",
-      "title": "藏在平凡中的生命意義｜從《進擊的巨人》吉克·葉卡的一生看愛與意義",
-      "reason": "附件網址ID不在既有清冊，尚無可驗證對應"
     }
   ]
 }
