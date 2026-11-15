@@ -114,8 +114,10 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     const realEpisodes = JSON.parse(readFileSync(join(root, 'src/data/podcast.json'), 'utf8'));
     for (const ep of realEpisodes) {
       const page=html(`podcast/${ep.slug}/index.html`);
-      if(ep.guid===proposedGuid) assert.match(page,/分類待確認/);
-      else assert.doesNotMatch(page,/分類待確認/);
+      const primaryBadge=page.match(/<div class="classification"[^>]*>[\s\S]*?<\/div>/)?.[0];
+      assert.ok(primaryBadge,ep.guid);
+      if(ep.guid===proposedGuid) assert.match(primaryBadge,/分類待確認/);
+      else assert.match(primaryBadge,/分類已確認/); // 其他「繼續聆聽」推薦卡可能包含暫定測試資料
     }
 
     assert.match(html('articles/index.html'), /海邊的紅色信箱/);
