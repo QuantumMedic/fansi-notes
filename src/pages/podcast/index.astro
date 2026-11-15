@@ -3,6 +3,7 @@ import { popularityRank } from '../../lib/popularity.mjs';
 import { reviewMode } from '../../lib/review-mode.mjs';
 import Main from '../../layouts/Main.astro';
 import EpisodeCard from '../../components/EpisodeCard.astro';
+import Pagination from '../../components/Pagination.astro';
 import { catalog } from '../../lib/catalog';
 import { topics, series, url } from '../../data/site';
 import config from '../../data/podcast-config.json';
@@ -66,7 +67,7 @@ const unconfirmedCount = episodes.filter(e => e.classification.status !== 'confi
     <p id="episode-count" role="status">
       共 {episodes.length} 集
     </p>
-    <div>
+    <div id="episode-results">
       {episodes.map((e) => {
         return (
           <div
@@ -83,12 +84,14 @@ const unconfirmedCount = episodes.filter(e => e.classification.status !== 'confi
         );
       })}
     </div>
+    <Pagination />
     <p id="episode-empty" hidden>
       沒有符合的單集，請清除篩選。
     </p>
   </section>
 </Main>
 <script>
+  import {listPagination} from '../../lib/list-pagination';
   import {compareBrowse} from '../../lib/browse-sort.mjs';
   import {matchesSeries} from "../../lib/taxonomy.mjs";
   const form = document.querySelector('form')!;
@@ -97,6 +100,7 @@ const unconfirmedCount = episodes.filter(e => e.classification.status !== 'confi
   const series = document.querySelector<HTMLSelectElement>('#episode-series')!;
   const sort=document.querySelector<HTMLSelectElement>('#episode-sort')!;
   const rows=[...document.querySelectorAll<HTMLElement>('[data-episode]')].map(el=>({el,id:el.dataset.id!,date:Date.parse(el.dataset.date!),rank:el.dataset.rank?Number(el.dataset.rank):null}));
+  const pager=listPagination(document.querySelector<HTMLElement>('[data-pagination]')!,document.querySelector<HTMLElement>('#episode-results')!,document.querySelector<HTMLElement>('#episode-count')!,15);
   function filter() {
     rows.sort((a,b)=>compareBrowse(a,b,sort.value));
     if(rows.length)rows[0].el.parentElement!.append(...rows.map(r=>r.el));
@@ -115,6 +119,7 @@ const unconfirmedCount = episodes.filter(e => e.classification.status !== 'confi
     });
     document.querySelector('#episode-count')!.textContent = `共 ${n} 集`;
     document.querySelector<HTMLElement>('#episode-empty')!.hidden = n > 0;
+    pager.update();
   }
   form.addEventListener('input', filter);
   form.addEventListener('submit', (e) => {
@@ -122,4 +127,5 @@ const unconfirmedCount = episodes.filter(e => e.classification.status !== 'confi
     filter();
   });
   form.addEventListener('reset', () => setTimeout(filter));
+  filter();
 </script>

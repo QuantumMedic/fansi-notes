@@ -2,6 +2,7 @@
 import { articleBrowseWorks, articleBrowseRank } from '../lib/article-browser.mjs';
 import UnifiedWorkCard from './UnifiedWorkCard.astro';
 import WorkCard from './WorkCard.astro';
+import Pagination from './Pagination.astro';
 import { catalog } from '../lib/catalog';
 import { topics, series } from '../data/site';
 interface Props {
@@ -76,12 +77,14 @@ const unit = fixedSeries === 'fansiwei' ? '個作品' : '篇文章';
         </div>
       ))}
     </div>
+    <Pagination />
     <p id="no-results" hidden>
       沒有符合的作品，請清除篩選再試一次。
     </p>
   </section>
 </div>
 <script>
+  import { listPagination } from '../lib/list-pagination';
   import {compareBrowse} from '../lib/browse-sort.mjs';
   import { publicSeriesSlug, canonicalTopic } from '../lib/taxonomy.mjs';
   import { prepareSearch, matchesPrepared } from '../lib/search.mjs';
@@ -98,6 +101,7 @@ const unit = fixedSeries === 'fansiwei' ? '個作品' : '篇文章';
     date: Date.parse(el.dataset.date!),
     record: prepareSearch(el.dataset.search!, el.dataset.topics!.split(' '), el.dataset.type!),
   }));
+  const pager = listPagination(document.querySelector<HTMLElement>('[data-pagination]')!, list as HTMLElement, document.querySelector<HTMLElement>('#results')!, 20);
   const params = new URLSearchParams(location.search);
   for (const [select, key] of [
     [type, 'type'],
@@ -130,6 +134,7 @@ const unit = fixedSeries === 'fansiwei' ? '個作品' : '篇文章';
     }
     document.querySelector('#results')!.textContent = `共 ${count} ${fixedSeries === 'fansiwei' ? '個作品' : '篇文章'}`;
     document.querySelector<HTMLElement>('#no-results')!.hidden = count > 0;
+    pager.update();
   }
   query.addEventListener('compositionstart', () => {
     composing = true;
