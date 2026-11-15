@@ -4,6 +4,11 @@
 
 This is a Traditional Chinese author/podcast portfolio site. At task start read `docs/CURRENT_STATE.md`, `docs/WEBSITE_COMPLETION_SOP.md`, and only the files or approved references directly relevant to the requested work. Consult `README_從這裡開始.md` when architecture/context is actually needed. Do NOT reread every `docs/*.md` or all historical articles by default. Follow the author's latest instruction over the documents. The `reference/` material is historical only.
 
+## Required source hierarchy and fast workflow
+Latest explicit author request > creator SOP v4.1 and taxonomy/sync spec v1.0 for content rights/classification > docs/WEBSITE_COMPLETION_SOP.md for website implementation > docs/CURRENT_STATE.md for current progress > docs/review/m5c/DECISION_GATE.md and INPUT_GAPS.json for pending data > legacy documents only for specific context. Old M5/M6 numbering is historical: current M6=deployment; legacy M6 private studio=M7 optional.
+
+Only read current-stage files and necessary source indices; avoid rereading 48 article bodies, long archive docs or Canva designs. Review manifests do not grant approval. Docs-only changes need no visual screenshots; one cross-site regression at M5-F. No reader experience requiring GitHub login as the only comment path.
+
 ## Non-negotiable safeguards
 - Work ONLY in `QuantumMedic/fansi-notes`; do not alter other repositories or Canva designs.
 - **Never commit unpublished manuscripts, podcast scripts, unpublished Canva assets, passwords or private contact data to this PUBLIC repository — including feature branches and pull requests.** Use obviously synthetic development fixtures instead.

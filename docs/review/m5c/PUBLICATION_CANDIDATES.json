@@ -1,0 +1,85 @@
+{
+  "schema": "fansi-m5c-publication-candidates-v1",
+  "source": "作者先前提供的《凡思筆記_作品盤點_編輯審閱報告_2026-11-14.md》",
+  "status": "public-source leads only; neither approved book frontmatter nor artwork rights",
+  "items": [
+    {
+      "title": "天啟Ⅰ：末世訊號",
+      "series": "天啟",
+      "volume": 1,
+      "source_url": "https://store.showwe.tw/books.aspx?b=121977",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    },
+    {
+      "title": "天啟Ⅱ：始皇印記",
+      "series": "天啟",
+      "volume": 2,
+      "source_url": "https://store.showwe.tw/books.aspx?b=122283",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    },
+    {
+      "title": "天啟Ⅲ：創始之體",
+      "series": "天啟",
+      "volume": 3,
+      "source_url": "https://store.showwe.tw/books.aspx?b=127170",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    },
+    {
+      "title": "智慧奇點（上）",
+      "series": "智慧奇點",
+      "volume": 1,
+      "source_url": "https://www.kadokado.com.tw/book/26481",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    },
+    {
+      "title": "智慧奇點（下）",
+      "series": "智慧奇點",
+      "volume": 2,
+      "source_url": "https://www.kadokado.com.tw/book/26481",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    },
+    {
+      "title": "心靈倒影",
+      "series": null,
+      "volume": null,
+      "source_url": "https://www.mirrorfiction.com/member/211204",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    },
+    {
+      "title": "數據風暴",
+      "series": null,
+      "volume": null,
+      "source_url": "https://www.mirrorfiction.com/member/211204",
+      "publication_facts_status": "requires_author_verification",
+      "cover_rights_status": "unapproved",
+      "official_description": null,
+      "direct_read_or_purchase_url": null,
+      "website_publish_approved": false
+    }
+  ],
+  "note": "Creator profile or generic listing is not a direct work page; author approval must precede replacing demo publications. No manuscripts or private file IDs here."
+}
