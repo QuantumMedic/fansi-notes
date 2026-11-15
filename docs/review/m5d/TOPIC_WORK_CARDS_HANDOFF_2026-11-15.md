@@ -1,3 +1,5 @@
+> **此文件為 PR #15 的歷史批次指令，已由 PR #19 的九篇 IG 書面補入及 25 組 GUID 配對取代。** 下一次 Codex 請只使用 `docs/review/m5d/FINAL_ARTICLE_PODCAST_CODEX_HANDOFF_2026-11-15.md`；不得按本文舊版重新產生 9 個 Podcast-only 卡片、或把 48＋9 當成仍缺文章。
+
 # M5-D 下一批｜主題、文章＋Podcast 統一作品卡與凡思維系列（2026-11-15）
 
 > **M5-C 最新資料查核補註：** 九集原先稱「Podcast-only」的音訊，已於私人來源找到相應書面設計；這只是「目前 48 篇網站文章中尚無對應全文」的**網站技術狀態**，不能宣稱作者只有音訊。另確認〈過度努力的陷阱〉已有 Vocus 全文但尚未匯入這 48 篇。公開索引與圖片初篩見 `docs/review/m5c/PRE_CODEX_SOURCE_AND_IMAGE_AUDIT_2026-11-15.md`。**不得從私有 Canva 擅自新增公開文章，需作者對新增網站書面作品另行授權。**
