@@ -1,6 +1,6 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-更新：2026-11-15（PR #9／#10／#11／#13／#14 已合併；Podcast 25集分類及16集配對已經作者委託定案，待本批 PR 合併驗證）。本檔記錄最新可執行事實；規格看 `docs/WEBSITE_COMPLETION_SOP.md`，歷史另存 `docs/history/`，勿以舊聊天、舊 ZIP 或尚未更新的審核 seed 取代當前程式。
+更新：2026-11-15（PR #9／#10／#11／#13／#14／#15 均已合併至 `main`；Podcast 25 集分類與 16 組作品配對已生效，網站仍未部署）。本檔記錄最新可執行事實；規格看 `docs/WEBSITE_COMPLETION_SOP.md`，歷史另存 `docs/history/`，勿以舊聊天、舊 ZIP 或尚未更新的審核 seed 取代當前程式。
 
 ## 權威來源
 作者最新明確要求 ＞ 創作 SOP v4.1／分類與網站同步規範 v1.0（原文、分類、授權） ＞ `docs/WEBSITE_COMPLETION_SOP.md`（網站規格） ＞ 本檔（進度） ＞ `docs/review/m5c/`（候選及核准紀錄） ＞ 歷史材料。
@@ -12,6 +12,7 @@
 - **PR #10**：`AGENTS.md` 新增任務前現況查證、階段分類、獨立方案決策、交接完整性、平行開發及完成驗證規則。
 - **PR #13**：15 筆精確連結與 25 集分類候選查核完成，已保存審核歷史。
 - **PR #14**：已修復主題頁清除篩選跳出原本主題的問題，保留主題單欄與文章清單雙欄。
+- **PR #15**：25 集 Podcast 正式分類 confirmed，16 組同作品 GUID ↔ work_id 映射已核准寫入執行資料；9 集 Podcast-only。為新的分類及映射補齊資料／回歸測試，check、build、CI 通過。
 - 以上 PR 均已合併 `main`；**沒有正式網站部署、沒有啟用服務**。合併 GitHub 程式碼不等於核准公開上線。
 
 ## 階段看板
@@ -29,7 +30,7 @@
 - 文章正式正文及分類：`src/content/articles/`；Podcast 25 集公開 RSS：`src/data/podcast.json`。
 - 正式人氣名次：`src/data/popularity.json`；文章 IG 連結：各篇 frontmatter `platform_urls`；公開交接原始 JSON 與雜湊：`docs/review/m5d/inputs/`、`docs/review/m5d/data-import.json`；16 項測試及桌手機截圖：`docs/review/m5d/README.md`。
 - 原文已有單集外連的轉址證據：`src/data/listening-redirects.json`。**這些是外連證據，不能自動升格成雙向 GUID 映射**。
-- **正式 Podcast 分類／文章映射**：`src/data/podcast-classifications.json` 25 集全數已依作者委託改為 confirmed，`src/data/podcast-work-map.json` 有 16 組唯一 GUID ↔ work_id；9 集 Podcast-only。14 集有精確單集 URL、2 集以相同敘事核對並由受託編輯判斷；沒有偽稱 URL 證據。詳見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。本批變更隨 PR 合併後才成為 `main` 版本。
+- **正式 Podcast 分類／文章映射**：`src/data/podcast-classifications.json` 25 集全數已依作者委託改為 confirmed，`src/data/podcast-work-map.json` 有 16 組唯一 GUID ↔ work_id；9 集 Podcast-only。14 集有精確單集 URL、2 集以相同敘事核對並由受託編輯判斷；沒有偽稱 URL 證據。詳見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。以上正式映射現已合併至 `main`，不再是審核候選。
 - `docs/review/m5c/INPUT_GAPS.json` 是前期審核 seed，IG／人氣空欄與 11 筆初期音訊配對候選均**已過時**；本次正式 Podcast 結論以 `PODCAST_MAPPING_APPROVAL_2026-11-15.md` 和執行檔為準，不能再重問分類或重爬資料。
 - `docs/review/m5c/IMAGE_TRIAGE.json`：新匯入 45 篇的 151 筆 Vocus 圖片候選位置；原三篇另有 8 個位置數，未全部取得來源或重刊權。圖片存在不等於網站有使用授權；不得批量爬取、直接重刊第三方圖片或匯入 IG 文字圖卡。
 - `docs/review/m5c/DECISION_GATE.md` 是集中作者決策入口；`docs/review/m5c/PUBLICATION_CANDIDATES.json` 的七筆出版線索尚未核准。私人原始分析、Canva 私有素材與聯絡資料不放公開 repo。
