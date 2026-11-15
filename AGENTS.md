@@ -1,4 +1,4 @@
-> Current status: PR #9 contains all 48 author-authorized, previously published Vocus articles, pending author review/merge. For remaining website work, follow docs/WEBSITE_COMPLETION_SOP.md and the latest docs/CURRENT_STATE.md. No implicit permission to merge, deploy, publish new works, import images, or enable paid services.
+> For the authoritative **current** website status and active PRs, always read `docs/CURRENT_STATE.md` and inspect the latest GitHub refs. Do not freeze transient PR numbers or completion claims in this file. No implicit permission to merge, deploy, publish new works, import images, or enable paid services.
 
 # Codex Agent Instructions — Fansi Notes
 
