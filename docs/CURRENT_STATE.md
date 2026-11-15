@@ -23,8 +23,8 @@
 | 階段 | 最新狀態 | 尚需完成／驗收 |
 |---|---|---|
 | M5-B 正文 | **已完成並合併** | 不重做 |
-| M5-C 資料／權利／配對 | **公開作品身份／分類已由作者委託定案並在本批 PR 實作**：IG／熱門與 Podcast 資料備齊 | 封面及內文圖素材的權利審核／接入；後續書籍作者資料 |
-| M5-D 文章／Podcast UI | **第一批已合併並經作者試用，主題清除缺陷已修；全階段未結案** | 本批正式映射進入後，抽查文章＋Podcast 統一卡片／雙向入口；補 Podcast-only 凡思維系列聚合；圖片審核後接入圖文，最後針對性驗收 |
+| M5-C 資料／權利／配對 | **已在 PR #19 分支補完九篇 IG 正文及 25 組正式配對，待合併與測試**；原有48篇不變 | 圖片按作者最新指示，適合且已公開者按原位置使用，其餘省略不阻擋；書籍資料留 M5-E |
+| M5-D 文章／Podcast UI | **第一批已合併並試用；PR #19 已備57篇文字／25集音訊／25組配對，但全階段未結案** | Codex單批完成凡思維與統一卡片、可用圖片按原位置接入、雙欄與單欄、相關連結、測試6項舊預期修正、桌手機驗收 |
 | M5-E 正式小說／出版／作者／首頁／互動 | 待開始 | 真實書目、作者資料、留言／聯絡／分析服務選型及實作 |
 | M5-F 全站驗收 | 待開始 | 一次性功能、圖文、權利、連結、手機桌機、無障礙、回歸 QA |
 | M6 正式部署與同步 | **未授權** | 作者另行核准部署、SEO、RSS 更新與回退 |
@@ -34,12 +34,12 @@
 - 文章正式正文及分類：`src/content/articles/`；Podcast 25 集公開 RSS：`src/data/podcast.json`。
 - 正式人氣名次：`src/data/popularity.json`；文章 IG 連結：各篇 frontmatter `platform_urls`；公開交接原始 JSON 與雜湊：`docs/review/m5d/inputs/`、`docs/review/m5d/data-import.json`；16 項測試及桌手機截圖：`docs/review/m5d/README.md`。
 - 原文已有單集外連的轉址證據：`src/data/listening-redirects.json`。**這些是外連證據，不能自動升格成雙向 GUID 映射**。
-- **正式 Podcast 分類／文章映射**：`src/data/podcast-classifications.json` 25 集全數已依作者委託改為 confirmed，`src/data/podcast-work-map.json` 有 16 組唯一 GUID ↔ work_id；9 集 Podcast-only。14 集有精確單集 URL、2 集以相同敘事核對並由受託編輯判斷；沒有偽稱 URL 證據。詳見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。以上正式映射現已合併至 `main`，不再是審核候選。
+- **正式 Podcast 分類／文章映射**：`src/data/podcast-classifications.json` 25 集全數已依作者委託改為 confirmed，`src/data/podcast-work-map.json` 在 main 的 PR #15 歷史基準為 16 組唯一 GUID ↔ work_id、9集尚未配對；PR #19 工作分支已新增9篇及映射，合計25組。原16組有14集精確單集 URL、2 集以相同敘事核對並由受託編輯判斷；沒有偽稱 URL 證據。詳見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。以上正式映射現已合併至 `main`，不再是審核候選。
 - `docs/review/m5c/INPUT_GAPS.json` 是前期審核 seed，IG／人氣空欄與 11 筆初期音訊配對候選均**已過時**；本次正式 Podcast 結論以 `PODCAST_MAPPING_APPROVAL_2026-11-15.md` 和執行檔為準，不能再重問分類或重爬資料。
 - `docs/review/m5c/IMAGE_TRIAGE.json`：新匯入 45 篇的 151 筆 Vocus 圖片候選位置；原三篇另有 8 個位置數，未全部取得來源或重刊權。圖片存在不等於網站有使用授權；不得批量爬取、直接重刊第三方圖片或匯入 IG 文字圖卡。
-- **2026-11-15 M5-C 補充查核（PR #18 已合併）**：原九集 Podcast 目前只是未配到已匯入的 48 篇網站文章，已在私人已連結的設計來源中核對到相應書面內容；為保護未公開素材，私有設計 ID／內容未存入公開 GitHub。已另查到一篇明確公開 Vocus 文章〈過度努力的陷阱〉（`vocus-689ed09bfd897800015571de`）不在 48 篇匯入清單，須作者另行核准新增網站全文，不能當成無書面作品。詳見 `docs/review/m5c/PRE_CODEX_SOURCE_AND_IMAGE_AUDIT_2026-11-15.md`。
-- **2026-11-15 IG 補查（PR #19 待審）**：原九集每一集都已由作者提供的 Meta 年度匯出工作簿找回精確 IG 單篇 permalink（9/9），已寫入 `docs/review/m5c/WRITTEN_VERSION_PUBLIC_SOURCE_GAPS_2026-11-15.json`。僅〈過度努力的陷阱〉另有本批核實的 Vocus 直達 URL；其餘八篇本批公開查找無法核實直達網址，屬待補證據，**不得誤標成沒有 IG 或沒有書面稿，也不可猜造 Vocus 網址**。此 PR 只有公開安全的對照 metadata，未新增網站文章或改動 16 組正式映射。
-- **圖片初篩**：151 筆已有逐位置安全行動表 `docs/review/m5c/IMAGE_ACTION_LEDGER_2026-11-15.json`，15 筆為 Podcast 宣傳圖建議不搬正文、136 筆仍待視覺身分／來源及使用權核對；尚未因此取得任何圖片重刊核准。
+- **2026-11-15 M5-C 補充查核（PR #18 已合併）**：原九集 Podcast 目前只是未配到已匯入的 48 篇網站文章，已在私人已連結的設計來源中核對到相應書面內容；為保護未公開素材，私有設計 ID／內容未存入公開 GitHub。另查到一篇明確公開 Vocus 文章〈過度努力的陷阱〉（`vocus-689ed09bfd897800015571de`）原不在48篇匯入清單，**現已獲作者明確准許使用已公開IG書面原文並在PR #19補建該網站文章**，保留既有Vocus直達連結。詳見 `docs/review/m5c/PRE_CODEX_SOURCE_AND_IMAGE_AUDIT_2026-11-15.md`。
+- **2026-11-15 IG 補查（PR #19 待審）**：原九集每一集都已由作者提供的 Meta 年度匯出工作簿找回精確 IG 單篇 permalink（9/9），已寫入 `docs/review/m5c/WRITTEN_VERSION_PUBLIC_SOURCE_GAPS_2026-11-15.json`。僅〈過度努力的陷阱〉另有本批核實的 Vocus 直達 URL；其餘八篇本批公開查找無法核實直達網址，屬待補證據，**不得誤標成沒有 IG 或沒有書面稿，也不可猜造 Vocus 網址**。此 PR 已含9篇新的正式網站 Markdown 書面文章，原16組正式映射保持內容不變，新增9組為總計25組；另同步更新56篇有IG貼文之人氣名次，並保留1筆null。
+- **圖片初篩（歷史清冊）**：151筆已有原文圖片位置定位與安全行動表 `docs/review/m5c/IMAGE_ACTION_LEDGER_2026-11-15.json`；作者最新決定是直接用已公開、合適且可正常載入的圖片按位置呈現，宣傳圖與來源疑慮圖略過，無圖正常排版。此項不再阻擋 M5-D 完工。
 - `docs/review/m5c/DECISION_GATE.md` 是集中作者決策入口；`docs/review/m5c/PUBLICATION_CANDIDATES.json` 的七筆出版線索尚未核准。私人原始分析、Canva 私有素材與聯絡資料不放公開 repo。
 
 ## PR #19 接下來的唯一工程批次
