@@ -1,5 +1,6 @@
 ---
 import { popularityRank } from '../lib/popularity.mjs';
+import UnifiedWorkCard from './UnifiedWorkCard.astro';
 import WorkCard from './WorkCard.astro';
 import { catalog } from '../lib/catalog';
 import { topics, series } from '../data/site';
@@ -9,7 +10,8 @@ interface Props {
   fixedSeries?: string;
 }
 const { title = '探索文章', fixedSeries = '' } = Astro.props;
-const articles = (await catalog()).articles.filter((a) =>
+const all = await catalog();
+const articles = all.articles.filter((a) =>
   matchesSeries(a.data.content_type, fixedSeries),
 );
 ---
@@ -72,7 +74,7 @@ const articles = (await catalog()).articles.filter((a) =>
           data-topics={a.data.topics.join(' ')}
           data-search={`${a.data.title} ${a.data.summary} ${a.body || ''} ${a.data.keywords.join(' ')}`}
         >
-          <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
+          {fixedSeries === 'fansiwei' ? <UnifiedWorkCard work={all.works.find(w => w.work_id === a.data.work_id)} /> : <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} episodes={all.works.find(w => w.work_id === a.data.work_id)?.episodes || []} />}
         </div>
       ))}
     </div>

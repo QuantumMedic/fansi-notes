@@ -116,7 +116,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       const page=html(`podcast/${ep.slug}/index.html`);
       const primaryBadge=page.match(/<div class="classification"[^>]*>[\s\S]*?<\/div>/)?.[0];
       assert.ok(primaryBadge,ep.guid);
-      if(ep.guid===proposedGuid) assert.match(primaryBadge,/分類待確認/);
+      if(ep.guid===proposedGuid) assert.match(primaryBadge,/分類已確認/); // 已核准文章映射優先於獨立單集 proposed fixture
       else assert.match(primaryBadge,/分類已確認/); // 其他「繼續聆聽」推薦卡可能包含暫定測試資料
     }
 
@@ -124,7 +124,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(html('topics/psychology/index.html'), /新增合成文章/);
     assert.match(html('index.html'), /新增合成文章/);
     assert.match(html('series/fansiwei/index.html'), /新增合成文章/);
-    assert.doesNotMatch(html('series/fansiwei/index.html'), /一盆植物延長生命/);
+    assert.match(html('series/fansiwei/index.html'), /一盆植物延長生命/);
     assert.doesNotMatch(html('series/fansiwei/index.html'), /id="work-series"/);
     assert.match(html('series/fansiwei/index.html'), /data-fixed-series="fansiwei"/);
     assert.doesNotMatch(html('articles/demo-new/index.html'), /Instagram 圖文|data-spotify-id|相關 Podcast/);

@@ -7,8 +7,7 @@ const load=(path)=>JSON.parse(readFileSync(path,'utf8'));
 const episodes=load('src/data/podcast.json');
 const raw=load('src/data/podcast-classifications.json');
 const mapping=load('src/data/podcast-work-map.json');
-const index=load('docs/review/m5c/INPUT_GAPS.json');
-const articles=new Map(index.articles.map(a=>[a.work_id,a]));
+const articles=new Map(load('docs/review/m5d/final/approved-baseline.json').articles.map(a=>[a.work_id,a]));
 const byGuid=new Map(episodes.map(e=>[e.guid,e]));
 const byClass=new Map(raw.map(r=>[r.guid,r]));
 
@@ -25,11 +24,11 @@ test('25集分類均已按作者委託核准，保留穩定GUID且有有效的�
   assert.ok(r.topics.length>=1 && r.topics.length<=2);
  }
 });
-test('16集有正式文章身分；其他9集保持Podcast-only且不創造虛構文章',()=>{
+test('25集均有正式文章身分，57個作品不重複',()=>{
  mapSchema.parse(mapping);
- assert.equal(mapping.length,16);
- assert.equal(new Set(mapping.map(x=>x.guid)).size,16);
- assert.equal(new Set(mapping.map(x=>x.work_id)).size,16);
+ assert.equal(mapping.length,25);
+ assert.equal(new Set(mapping.map(x=>x.guid)).size,25);
+ assert.equal(new Set(mapping.map(x=>x.work_id)).size,25);
  for(const m of mapping){
   assert.ok(m.approved);
   assert.ok(byGuid.has(m.guid));
@@ -41,7 +40,7 @@ test('16集有正式文章身分；其他9集保持Podcast-only且不創造虛�
   assert.deepEqual(classified.topics,a.topics);
  }
  const uniqueWorkIds=new Set([...articles.keys(),...raw.map(x=>x.work_id)]);
- assert.equal(articles.size,48);
+ assert.equal(articles.size,57);
  assert.equal(uniqueWorkIds.size,57);
  const linked=new Set(mapping.map(x=>x.guid));
  for(const c of raw.filter(x=>!linked.has(x.guid)))assert.equal(c.work_id,`podcast-${c.guid}`);

@@ -3,6 +3,7 @@ import { seriesName, topicName } from '../lib/taxonomy.mjs';
 import { url } from '../data/site';
 interface Props {
   id: string;
+  episodes?: {slug:string}[];
   topics?: string[];
   title: string;
   summary: string;
@@ -12,7 +13,7 @@ interface Props {
   cover_image?: string;
   cover_alt?: string;
 }
-const { id, title, summary, type, published_at, synthetic = true, cover_image, cover_alt, topics = [] } = Astro.props;
+const { id, title, summary, type, published_at, synthetic = true, cover_image, cover_alt, topics = [], episodes = [] } = Astro.props;
 ---
 
 <article class="work-card">
@@ -35,6 +36,7 @@ const { id, title, summary, type, published_at, synthetic = true, cover_image, c
     </h3>
     <p class="card-summary">{summary}</p>
     <a href={url(`articles/${id}/`)} aria-label={`Read more：${title}`}>Read more ↗</a>
+{episodes.map(e => <a href={url(`podcast/${e.slug}/`)}>收聽單集 ↗</a>)}
 </article>
 
 <style>
