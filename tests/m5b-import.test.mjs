@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {publicSeries,seriesName,matchesSeries} from '../src/lib/taxonomy.mjs';
 import {prepareSearch,matchesPrepared} from '../src/lib/search.mjs';
 const audit=JSON.parse(readFileSync('docs/review/m5b-first-articles/source-verification.json','utf8'));
+const batch=JSON.parse(readFileSync('docs/review/m5b-history/batch-verification.json','utf8')).imported;
 const html=p=>readFileSync(`dist/${p}/index.html`,'utf8');
 const text=s=>s.replace(/<[^>]*>/g,'').replace(/&#x([0-9a-f]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16))).replace(/&#([0-9]+);/g,(_,n)=>String.fromCodePoint(+n)).replace(/&(amp|lt|gt|quot|apos|nbsp);/g,(_,n)=>({amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' '}[n])).replace(/\s/g,'');
 test('三篇授權來源的完整文字逐字雜湊一致，無圖片或自動播放器',()=>{
@@ -16,7 +17,7 @@ test('三篇授權來源的完整文字逐字雜湊一致，無圖片或自動�
   assert.doesNotMatch(body,/<img|<iframe|<script|<picture/);assert.doesNotMatch(page,/data-spotify-id|封面插畫示意/);
   assert.ok(page.includes(a.source));assert.ok(page.includes(a.title));assert.ok(page.includes('凡思筆記'));
  }
- const real=readdirSync('src/content/articles').filter(f=>/synthetic: false/.test(readFileSync(`src/content/articles/${f}`,'utf8')));assert.equal(real.length,3);
+ const real=readdirSync('src/content/articles').filter(f=>/synthetic: false/.test(readFileSync(`src/content/articles/${f}`,'utf8')));assert.equal(real.length,3+batch.length);
  assert.deepEqual(JSON.parse(readFileSync('src/data/podcast-work-map.json','utf8')),[]);
 });
 test('兩個前台系列不重複，文章與故事收錄longform與special並保留舊路由',()=>{
@@ -35,7 +36,7 @@ test('合併系列可與正文搜尋及主要／次要主題交叉篩選',()=>{
 import {existsSync} from 'node:fs';
 import {showArticleSummary} from '../src/lib/article-presentation.mjs';
 test('三個入口共用正式全文列表，固定系列不包含其他系列或聲音版本',()=>{
- for(const [path,count] of [['articles',3],['series/fansiwei',1],['series/stories',2]]) {
+ for(const [path,count] of [['articles',3+batch.length],['series/fansiwei',1+batch.filter(a=>a.content_type==='fansiwei').length],['series/stories',2+batch.filter(a=>a.content_type!=='fansiwei').length]]) {
   const page=html(path);
   assert.match(page,/data-article-browser/);
   assert.equal((page.match(/data-result/g)||[]).length,count);
@@ -65,3 +66,5 @@ test('開頭摘錄僅用於卡片及SEO，獨立摘要可顯示；圖片標記�
   assert.doesNotMatch(page,/Instagram 圖文|href="#related-podcast"|aria-label="相關 Podcast"/);
  }
 });
+
+test('歷史批次全文雜湊與來源一致，無圖片資源及未核准映射',()=>{for(const a of batch){const raw=readFileSync(`src/content/articles/${a.slug}.md`,'utf8').split('---')[2];assert.equal(createHash('sha256').update(text(raw)).digest('hex'),a.normalized_text_sha256,a.slug);assert.doesNotMatch(raw,/<img|<iframe|<script/);assert.ok(html(`articles/${a.slug}`).includes(a.source));}});
