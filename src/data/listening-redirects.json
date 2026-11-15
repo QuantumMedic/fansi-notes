@@ -1,0 +1,34 @@
+[
+  {
+    "source_url": "https://spotifycreators-web.app.link/e/nNGt86BXoXb",
+    "redirect_url": "https://creators.spotify.com/pod/profile/27gcuat3o78/episodes/-e39dlvc",
+    "episode_source_url": "https://podcasters.spotify.com/pod/show/27gcuat3o78/episodes/ep-e39dlvc",
+    "spotify_episode_url": "https://open.spotify.com/episode/1cklu6OfwFHfjeivIisyrf",
+    "apple_episode_url": "https://podcasts.apple.com/tw/podcast/%E5%BE%9E%E7%90%86%E6%99%BA%E5%88%B0%E7%98%8B%E7%8B%82%E5%8F%AA%E5%B7%AE%E4%B8%80%E5%BC%B5%E6%A8%99%E7%B1%A4-%E7%BE%85%E6%A3%AE%E6%BC%A2%E7%B2%BE%E7%A5%9E%E7%97%85%E9%99%A2%E5%AF%A6%E9%A9%97/id1833423613?i=1000731432091",
+    "evidence": "HTTP redirect episode identifier equals existing RSS episode URL identifier; not an approved work/GUID mapping"
+  },
+  {
+    "source_url": "https://spotifycreators-web.app.link/e/mjb8LAqF90b",
+    "redirect_url": "https://creators.spotify.com/pod/profile/27gcuat3o78/episodes/Punch-e3fp85k",
+    "episode_source_url": "https://podcasters.spotify.com/pod/show/27gcuat3o78/episodes/Punch-e3fp85k",
+    "spotify_episode_url": "https://open.spotify.com/episode/7D6xHSxU2UG4qIIGrin62X",
+    "apple_episode_url": "https://podcasts.apple.com/tw/podcast/%E6%92%95%E4%B8%8B-%E5%A5%BD%E5%8F%AF%E6%86%90-%E7%9A%84%E6%A8%99%E7%B1%A4-%E5%BE%9Epunch%E7%9C%8B%E6%88%91%E5%80%91%E8%A2%AB%E5%89%9D%E5%A5%AA%E7%9A%84-%E5%8F%97%E5%82%B7%E6%AC%8A%E5%88%A9/id1833423613?i=1000752316037",
+    "evidence": "HTTP redirect episode identifier equals existing RSS episode URL identifier; not an approved work/GUID mapping"
+  },
+  {
+    "source_url": "https://spotifycreators-web.app.link/e/gXPzZguN6Zb",
+    "redirect_url": "https://creators.spotify.com/pod/profile/27gcuat3o78/episodes/-e3dvmna",
+    "episode_source_url": "https://podcasters.spotify.com/pod/show/27gcuat3o78/episodes/ep-e3dvmna",
+    "spotify_episode_url": "https://open.spotify.com/episode/793ZZpT7fStipPVWdABS3b",
+    "apple_episode_url": "https://podcasts.apple.com/tw/podcast/%E9%9B%B7-%E9%BB%91%E7%99%BD%E5%A4%A7%E5%BB%9A-%E6%B1%BA%E8%B3%BD-%E9%82%A3%E9%81%93%E4%B8%8D%E7%82%BA%E8%AA%B0%E8%80%8C%E5%81%9A%E7%9A%84%E6%96%99%E7%90%86/id1833423613?i=1000746042868",
+    "evidence": "HTTP redirect episode identifier equals existing RSS episode URL identifier; not an approved work/GUID mapping"
+  },
+  {
+    "source_url": "https://spotifycreators-web.app.link/e/S846T8iwmZb",
+    "redirect_url": "https://creators.spotify.com/pod/profile/27gcuat3o78/episodes/-e3cperh",
+    "episode_source_url": "https://podcasters.spotify.com/pod/show/27gcuat3o78/episodes/ep-e3cperh",
+    "spotify_episode_url": "https://open.spotify.com/episode/0oQyHvOZFq0CME6oZNoFIn",
+    "apple_episode_url": "https://podcasts.apple.com/tw/podcast/%E7%A9%BF%E8%B6%8A%E5%85%A9%E5%8D%83%E5%B9%B4%E7%9A%84%E5%B9%B3%E5%AE%89%E5%A4%9C-%E5%BE%9E%E6%9C%80%E5%8B%95%E7%9B%AA%E7%9A%84%E5%A4%9C%E6%99%9A%E9%96%8B%E5%A7%8B%E7%9A%84%E5%B9%B3%E5%AE%89/id1833423613?i=1000742602544",
+    "evidence": "HTTP redirect episode identifier equals existing RSS episode URL identifier; not an approved work/GUID mapping"
+  }
+]

@@ -5,7 +5,7 @@ import PodcastPlayer from './PodcastPlayer.astro';
 import { url } from '../data/site';
 import type { ClassifiedEpisode } from '../lib/catalog';
 interface Props {
-  platforms: { vocus_url?: string; instagram_url?: string };
+  platforms: { vocus_url?: string; instagram_url?: string; related_instagram_urls?: string[] };
   episodes: ClassifiedEpisode[];
   sourceLinks: { key: string; label: string; href: string; title?: string }[];
 }
@@ -32,7 +32,7 @@ const playable = episodes.filter(e => e.spotify_episode_url || e.apple_episode_u
     </div>}
   </section>
 )}
-{(platforms.vocus_url || platforms.instagram_url) && (
+{(platforms.vocus_url || platforms.instagram_url || platforms.related_instagram_urls?.length) && (
   <section class="article-platform-section" aria-labelledby="reading-platforms-title">
     <h2 id="reading-platforms-title">在其他平台閱讀</h2>
     <PlatformLinks links={platforms} />

@@ -1,4 +1,5 @@
 ---
+import { popularityRank } from '../../lib/popularity.mjs';
 import { reviewMode } from '../../lib/review-mode.mjs';
 import Main from '../../layouts/Main.astro';
 import EpisodeCard from '../../components/EpisodeCard.astro';
@@ -51,12 +52,14 @@ const { episodes } = await catalog();
           ))}
         </select>
       </label>
+      <label>排序<select id="episode-sort"><option value="newest">最新</option><option value="oldest">最早</option><option value="popular">熱門</option></select></label>
       <button type="reset">清除篩選</button>
     </form>
     <p class="muted">
       {reviewMode ? '本機審閱包含待審核分類建議。' : '僅使用已確認的作品分類。'}未分類單集仍列在全部
       Podcast，標示「分類待確認」。
     </p>
+    <p class="muted">熱門依發布後首7天播放與下載總數的核准順位（非即時）；精確快照日期未提供。未知順位列於最後。</p>
     <p id="episode-count" role="status">
       共 {episodes.length} 集
     </p>
@@ -65,6 +68,9 @@ const { episodes } = await catalog();
         return (
           <div
             data-episode
+            data-id={e.guid}
+            data-date={e.published_at}
+            data-rank={popularityRank('podcast',e.guid) ?? ''}
             data-search={`${e.title} ${e.description} ${e.classification.keywords.join(' ')}`}
             data-series={e.classification.content_type}
             data-topics={e.classification.topics.join(' ')}
@@ -80,12 +86,17 @@ const { episodes } = await catalog();
   </section>
 </Main>
 <script>
+  import {compareBrowse} from '../../lib/browse-sort.mjs';
   import {matchesSeries} from "../../lib/taxonomy.mjs";
   const form = document.querySelector('form')!;
   const input = document.querySelector<HTMLInputElement>('#episode-search')!;
   const topic = document.querySelector<HTMLSelectElement>('#episode-topic')!;
   const series = document.querySelector<HTMLSelectElement>('#episode-series')!;
+  const sort=document.querySelector<HTMLSelectElement>('#episode-sort')!;
+  const rows=[...document.querySelectorAll<HTMLElement>('[data-episode]')].map(el=>({el,id:el.dataset.id!,date:Date.parse(el.dataset.date!),rank:el.dataset.rank?Number(el.dataset.rank):null}));
   function filter() {
+    rows.sort((a,b)=>compareBrowse(a,b,sort.value));
+    if(rows.length)rows[0].el.parentElement!.append(...rows.map(r=>r.el));
     let n = 0;
     document.querySelectorAll<HTMLElement>('[data-episode]').forEach((el) => {
       el.hidden = !(

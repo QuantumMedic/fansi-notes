@@ -1,8 +1,9 @@
 ---
-import { seriesName } from '../lib/taxonomy.mjs';
+import { seriesName, topicName } from '../lib/taxonomy.mjs';
 import { url } from '../data/site';
 interface Props {
   id: string;
+  topics?: string[];
   title: string;
   summary: string;
   type?: string;
@@ -11,27 +12,29 @@ interface Props {
   cover_image?: string;
   cover_alt?: string;
 }
-const { id, title, summary, type, published_at, synthetic = true, cover_image, cover_alt } = Astro.props;
+const { id, title, summary, type, published_at, synthetic = true, cover_image, cover_alt, topics = [] } = Astro.props;
 ---
 
 <article class="work-card">
-  <a href={url(`articles/${id}/`)}>
+  <p class="eyebrow">{seriesName(type)}</p>
+  <p class="muted">{topics.map((t, i) => <span>{i === 0 ? '主要：' : ' · 次要：'}{topicName(t)}</span>)}</p>
+  {(cover_image || synthetic) && <a href={url(`articles/${id}/`)} aria-label={`閱讀 ${title}`}>
     {cover_image && <img class="article-banner" src={url(cover_image)} alt={cover_alt || ''} loading="lazy" decoding="async" />}
     {!cover_image && synthetic && <div class:list={['cover', type]} aria-hidden="true">
       <span class="cover-orbit"></span>
       <span class="cover-window"></span>
       <small>示意插畫</small>
     </div>}
+  </a>}
     <p class="eyebrow">
-      {seriesName(type)} · {synthetic ? '測試資料' : '公開文章'}
+      {synthetic ? '測試資料' : '公開文章'}
     </p>
     <p class="muted">{published_at?.slice(0, 10)}</p>
     <h3>
-      {title}
-      <span>↗</span>
+      <a href={url(`articles/${id}/`)}>{title}<span>↗</span></a>
     </h3>
-    <p>{summary}</p>
-  </a>
+    <p class="card-summary">{summary}</p>
+    <a href={url(`articles/${id}/`)} aria-label={`Read more：${title}`}>Read more ↗</a>
 </article>
 
 <style>
