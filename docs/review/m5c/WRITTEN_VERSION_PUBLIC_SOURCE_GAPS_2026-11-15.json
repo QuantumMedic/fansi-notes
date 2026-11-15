@@ -1,0 +1,92 @@
+{
+  "schema": "fansi-m5c-written-version-public-leads-v1",
+  "as_of": "2026-11-15",
+  "source": "public podcast RSS + direct public Vocus verification only",
+  "notes": [
+    "There are 25 valid podcast episodes, 16 mapped to one of 48 imported website articles; the other 9 are currently unpaired, not proof of no written version.",
+    "Connected private writing/designs were reviewed separately. Their IDs, URLs, unpublished text, and Canva assets are intentionally excluded from this public repository.",
+    "One matching public Vocus full article was independently verified and is absent from the imported 48. Do not use website-publication approval based solely on Vocus being public.",
+    "The 16 already confirmed GUID/work_id mappings and 25 existing classifications are unchanged."
+  ],
+  "totals": {
+    "podcasts": 25,
+    "website_articles_existing": 48,
+    "unmatched_to_imported_articles": 9,
+    "verified_public_vocus_articles_missing": 1,
+    "import_approved_new_articles": 0
+  },
+  "episodes_pending_written_import": [
+    {
+      "guid": "8dfe039a-7fb5-4bdf-9134-9fcdf76bb2e0",
+      "episode_title": "為什麼我們逃向複雜？揭穿焦慮的盔甲，找回減法的勇氣",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "d973015a-d1d4-42a4-b959-d1f61c691397",
+      "episode_title": "若世界完美，你將不存在：從物理學的不完美看生命的裂隙",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "9a81d6cd-3cd1-4fae-bb71-378c78371b64",
+      "episode_title": "2025推薦書單＆人生回顧",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "58adc2d4-72c6-444d-8fe6-770296c843f1",
+      "episode_title": "【凡思維】一盆植物延長生命？ 當人仍然能為生活作出決定",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "bf20ddce-f482-4556-b2fd-daa3833b33dc",
+      "episode_title": "《阿凡達3》觀後感： 我們都渴望與更大的世界連結",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "bd111a66-7431-41fa-92ad-fb1952112c70",
+      "episode_title": "當我們停止思考，惡便悄悄開始了：米爾格倫服從實驗",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "d0b432c1-36da-4863-9b71-4068dd941dae",
+      "episode_title": "巴菲特的最後一封股東信：在隨機的世界裡，守住不變的價值",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "53c18650-7819-41b2-b019-284617749502",
+      "episode_title": "《活出意義來》： 當人被奪走一切，還能選擇什麼？",
+      "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
+      "published_article_url": null,
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    },
+    {
+      "guid": "6f85e22a-f8a9-43fc-891c-cea514725480",
+      "episode_title": "過度努力的陷阱：當你越努力，反而越走不動",
+      "public_written_source_audit": "verified_public_vocus_article_missing_from_imported_48",
+      "published_article_url": "https://vocus.cc/article/689ed09bfd897800015571de",
+      "website_article_import_approved": false,
+      "do_not_create_article_automatically": true
+    }
+  ]
+}
