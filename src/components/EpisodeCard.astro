@@ -38,9 +38,11 @@ const { episode: e } = Astro.props;
         <time datetime={e.published_at}>{displayDate(e.published_at)}</time>
       </p>
       <h3>{e.title}</h3>
-      <p class="episode-summary">{e.description}</p>
+
     </div>
   </a>
+  <p class="episode-summary">{e.description}</p>
+  <a href={url(`podcast/${e.slug}/`)}>單集詳情 ↗</a>
   <ClassificationBadge classification={e.classification} />
 </article>
 <style>

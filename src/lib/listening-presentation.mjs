@@ -13,7 +13,7 @@ export function listeningDestination(href) {
     : null;
 }
 
-// Only the imported HTML's standalone image-caption links are relocated.
+// Relocate standalone episode captions and clearly labelled promotional paragraphs only.
 // Source Markdown is untouched; original caption words and URL stay at their position
 // as hidden provenance, while the actionable link is rendered once in the footer.
 export function importedListeningPresentation(body = '', episodes = []) {
@@ -30,13 +30,21 @@ export function importedListeningPresentation(body = '', episodes = []) {
       return safeUrl(decoded, ['spotifycreators-web.app.link']) && body.includes(`href="${encodedUrl}"`)
         ? `<a href="${encodedUrl}"${attrs}>${opening}${encodedUrl}${closing}</a>` : original;
     });
-  const html = repaired.replace(/<figcaption><a href="([^"]+)"(?:\s[^>]*)?>([^<]*)<\/a><\/figcaption>/g,
+  let html = repaired.replace(/<figcaption><a href="([^"]+)"(?:\s[^>]*)?>([^<]*)<\/a><\/figcaption>/g,
     (original, encodedHref, text) => {
       const href = encodedHref.replaceAll('&amp;', '&');
       const destination = listeningDestination(href);
       if (!destination) return original;
       if (!confirmed.has(destination.key)) links.set(destination.key, links.get(destination.key) || destination);
       return `<figcaption hidden data-original-podcast-link="${encodedHref}">${text}</figcaption>`;
+    });
+  html = html.replace(/<(p|div)><a href="([^"]+)"(?:\s[^>]*)?>(?:<span>)?([^<]*)(?:<\/span>)?<\/a><\/\1>/g,
+    (original, tag, encodedHref, text) => {
+      if (!/^(?:收聽|聆聽|Podcast|Spotify|Apple Podcasts|https:\/\/)/i.test(text.trim())) return original;
+      const destination = listeningDestination(encodedHref.replaceAll('&amp;', '&'));
+      if (!destination) return original;
+      if (!confirmed.has(destination.key)) links.set(destination.key, links.get(destination.key) || destination);
+      return `<${tag} hidden data-original-podcast-link="${encodedHref}">${text}</${tag}>`;
     });
   return { html, links: [...links.values()] };
 }

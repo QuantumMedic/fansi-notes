@@ -25,6 +25,7 @@ export function spotifyId(value) {
 export const platformsSchema = z
   .object({
     instagram_url: platform(['www.instagram.com', 'instagram.com']).optional(),
+    related_instagram_urls: z.array(z.string().refine(v => safeUrl(v, ['www.instagram.com','instagram.com']) && /^\/(p|reel)\/[^/]+\/?$/.test(new URL(v).pathname))).optional(),
     vocus_url: platform(['vocus.cc', 'www.vocus.cc']).optional(),
     spotify_episode_url: z
       .string()

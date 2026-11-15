@@ -43,3 +43,14 @@ test('修正原文失效Podcast網址只限同文已有完整網址證據，來�
  const withoutEvidence=`<div class="imported-original"><a href="https://">${url}</a></div>`;
  assert.equal(importedListeningPresentation(withoutEvidence).html,withoutEvidence);
 });
+
+
+test('獨立Podcast宣傳段落合併文末並保留原始位置與文字，研究引文不受影響',()=>{
+ const source=`<div class="imported-original"><p><a href="${spotify}">收聽這一集</a></p>${figure(spotify)}<p><a href="${spotify}">一般研究引文</a></p></div>`;
+ const result=importedListeningPresentation(source);
+ assert.equal(result.links.length,1);
+ assert.match(result.html,/<p hidden data-original-podcast-link=/);
+ assert.match(result.html,/>收聽這一集<\/p>/);
+ assert.match(result.html,/>一般研究引文<\/a>/);
+ assert.equal(importedListeningPresentation(source,[{spotify_episode_url:spotify}]).links.length,0);
+});
