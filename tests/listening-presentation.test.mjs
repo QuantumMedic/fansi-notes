@@ -18,12 +18,14 @@ test('只搬移單集圖說連結，保留原文與來源證據並以單集識�
 });
 test('兩篇文末有清楚單集入口且只有一個可點連結，研究來源不搬移；無聲音時整區省略',()=>{
  const audit=JSON.parse(readFileSync('docs/review/m5b-first-articles/source-verification.json','utf8'));
+ const confirmedMapping=JSON.parse(readFileSync('src/data/podcast-work-map.json','utf8'));
  for(const article of audit){
   const html=readFileSync(`dist/articles/${article.slug}/index.html`,'utf8');
   const header=html.split('</header>')[0];assert.doesNotMatch(header,/Vocus 原文|Instagram 貼文/);
   assert.match(html,/在其他平台閱讀/);
   const links=article.external_link_evidence.filter(e=>listeningDestination(e.url));
-  if(!links.length){assert.doesNotMatch(html,/id="article-listening"/);continue;}
+  const mapped=confirmedMapping.some(m=>m.work_id===article.work_id);
+  if(!links.length && !mapped){assert.doesNotMatch(html,/id="article-listening"/);continue;}
   assert.match(html,/聆聽這篇文章/);assert.doesNotMatch(html,/>原文附帶收聽連結</);
   for(const link of links){
    const escaped=link.url.replaceAll('&','&amp;');
@@ -31,7 +33,8 @@ test('兩篇文末有清楚單集入口且只有一個可點連結，研究來�
    assert.ok(html.includes(`data-original-podcast-link="${escaped}"`));
   }
   assert.doesNotMatch(html,/<a[^>]*>收聽Podcast全集<\/a>/);
-  assert.doesNotMatch(html,/data-spotify-id|<iframe/);
+  assert.doesNotMatch(html,/<iframe/); // 只顯示延後載入的播放器，沒有預先嵌入 iframe
+  if(mapped)assert.match(html,/data-spotify-id/); // 正式同作品音訊可提供按需載入的播放入口
  }
 });
 
