@@ -1,6 +1,6 @@
-# M5-C 唯一作者決策表｜目前不代表核准
+# M5-C 唯一作者決策表｜剩餘待核准事項
 
-此清單對應 [INPUT_GAPS.json](INPUT_GAPS.json)、[IMAGE_TRIAGE.json](IMAGE_TRIAGE.json)、[PUBLICATION_CANDIDATES.json](PUBLICATION_CANDIDATES.json)。已核准的 48 篇文章分類及全文不可重新提案。
+此清單對應 [INPUT_GAPS.json](INPUT_GAPS.json)、[IMAGE_TRIAGE.json](IMAGE_TRIAGE.json)、[PUBLICATION_CANDIDATES.json](PUBLICATION_CANDIDATES.json)。已核准的 48 篇文章分類及全文不可重新提案。INPUT_GAPS 的 IG／人氣空欄是**歷史 seed**，實際接線請查 `src/content/articles/`、`src/data/popularity.json` 及 `docs/review/m5d/`。本表其餘待審項仍是候選，不能當作核准。
 
 ## 可直接使用、Codex 不必再蒐集
 - 48 篇正式文章、Vocus ID／URL、系列、主次主題及原文校驗：正式 frontmatter、M5-B batch-verification。
@@ -11,7 +11,7 @@
 
 ## 作者集中核准：M5-C 收件閘門
 1. **音訊分類與配對**：一次核准或修訂 25 集 proposed 系列／主次主題，以及有證據的 GUID ↔ work_id。多篇對同一集需明確決定網站顯示策略。證據不足者保持 pending。
-2. **IG 與社群熱門**：實際存在的單篇 IG URL、同一擷取日期的讚數快照；無 IG 版本註記 absent，未知註記 pending。熱門文章標題預設標成「熱門文章（依 IG 讚數）」；熱門 Podcast 使用作者提供的 Spotify Plays 快照與一致日期／統計期間。不同來源不直接加總。
+2. **IG 與社群熱門（第一批已接入）**：PR #11 已按固定 work_id 接入 47 篇 IG 主貼文、2 則同作品相關貼文及 47 篇文章人氣名次；另有 1 篇 IG 狀態未知。25 集 Podcast 人氣名次也已接入，統計口徑是**發布後首 7 天播放＋下載總數**，不可稱 Spotify-only Plays。精確擷取時間未知維持 null，不把名次推算成原始數值。上述資料不必重新索取；後續只審核新作品或明確缺口。
 3. **圖片**：每篇選定封面無字原圖及可公開來源；每張內文圖決定採用／不採用、圖說、權利和可存放的網站素材路徑。Vocus 與 Canva 的「存在」本身都不是重刊權證據；來源不明不下載。Podcast 宣傳圖片改走統一收聽元件。
 4. **摘要**：作者獨立摘要優先，平台 auto 摘要可作卡片／SEO；若不合作者風格，改採作者核准的原文開頭摘錄，網站不擅自改寫敘事。
 5. **正式出版與作者頁**：七筆來源候選，確認實際書目／系列／封面權利／出版與試讀購買直達 URL；正式作者署名、簡介、可公開照片、品牌素材。
