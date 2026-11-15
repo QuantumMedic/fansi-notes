@@ -1,0 +1,1395 @@
+{
+  "schema": "fansi-m5c-image-triage-v1",
+  "source": "docs/review/m5b-history/batch-verification.json",
+  "notes": [
+    "Metadata only; no image download or republication consent. Heuristic groups describe captions, not image content or ownership.",
+    "Vocus generic caption does not identify image ownership. All images are pending editorial selection and use-rights review.",
+    "Original three articles have only counts of image positions in existing source-verification; do not invent exact URLs or call all eight approved.",
+    "Podcast promotions should be represented by normalized episode buttons rather than recycled as research images.",
+    "Cover images require independent approved, ideally wordless, original art rather than full IG carousel cards."
+  ],
+  "images": [
+    {
+      "work_id": "vocus-69a000cbfd897800012961e9",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/c03c7d11-2463-492c-8aad-daabfef1497a.jpg",
+      "source_caption": "圖片來源",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69a000cbfd897800012961e9",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/50c1f3f1-ed4d-425d-8d03-e46890c1a2b6.png",
+      "source_caption": "Podcast完整連結",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-698894aefd89780001f66c54",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/3c00905f-8cb2-4dc0-aa77-947d65269c72.png",
+      "source_caption": "完整內容歡迎收聽Podcast",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6970c532fd89780001c4568c",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/ba4fbdde-12ac-47b1-bd5e-552a03ac15fa.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6970c532fd89780001c4568c",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/22707cb1-9da3-48fd-aad0-c28ff390fc16.png",
+      "source_caption": "收聽Podcast全集",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-694bff7dfd8978000124d7ab",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/1abcd6c9-e12b-4a44-bc2f-edc860a21fa0.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-694bff7dfd8978000124d7ab",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/5548a653-3bc3-42c1-b2a7-14c0c6fd307f.png",
+      "source_caption": "耶穌出生在馬槽中",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-694bff7dfd8978000124d7ab",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/b793b729-116e-46fa-b006-79db90cbead6.png",
+      "source_caption": "歡迎收聽完整Podcast",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69340950fd89780001659d42",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/ca138b59-c72c-4ee3-982b-5b9fc6b89a80.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69340950fd89780001659d42",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/e9704c8b-df4a-47b4-9cec-aa0a93e6ab11.png",
+      "source_caption": "Podcasts收聽",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69189f7afd89780001197b3c",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/43ff46cd-e13a-46dc-9e84-dfb7509a0acd.jpg",
+      "source_caption": "圖源：《間諜家家酒》第三季",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69189f7afd89780001197b3c",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/d92cd3bb-603f-4de6-ab6b-d7b62c23a566.jpg",
+      "source_caption": "圖源：《間諜家家酒》第三季",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69189f7afd89780001197b3c",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/c393ab8f-2ac8-462a-86f4-e01cef0156bb.jpg",
+      "source_caption": "圖源：《間諜家家酒》",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-69189f7afd89780001197b3c",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/28207abe-b445-4c2a-bf5f-362c75c67127.png",
+      "source_caption": "歡迎至Podcast收聽全集",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68fee256fd89780001139f49",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/da3164e6-79db-4e11-bac4-f734bc288b94.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68fee256fd89780001139f49",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/e7c9809a-ca24-4a75-ac4b-b7ddeea1638b.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68fee256fd89780001139f49",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/f10dc984-8291-4bde-ae8d-9697c928357e.png",
+      "source_caption": "收聽podcast全集",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68f48228fd89780001595841",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/e841e930-1c25-438a-8c94-35f2c7b9c3ce.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68f48228fd89780001595841",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/73cdbe7b-bb1c-465d-b82b-0377a8f9d6d3.png",
+      "source_caption": "Podcast全平台可收聽",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68eb6d09fd89780001833a2d",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/92a2dd92-56cc-47a7-ae2a-1a9d2f5cd700.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68eb6d09fd89780001833a2d",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/9ad843de-6cb5-40e4-aeed-dbd1433dfdb8.png",
+      "source_caption": "Spotify, Apple Podcast 全平台可收聽",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/ac5faad7-3f4f-4016-9057-e22909607605.png",
+      "source_caption": "光復車站現場擁擠的人潮",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/61f8daf1-c112-4ba2-bd19-5365027c9577.jpg",
+      "source_caption": "水災後的現場",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/47f59218-cd63-4fd0-8269-eb9bab3b163d.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/f1bae852-9cd9-4edb-8dae-54d721e8f626.png",
+      "source_caption": "Spotify收聽連結",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68ce7959fd89780001e796dd",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/1d5ecaca-1c5a-468e-a777-61af4b591112.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68ce7959fd89780001e796dd",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/ee7957d8-b5b2-40c3-8edd-369a8cbe163c.jpg",
+      "source_caption": "動機式晤談的基本概念",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68ce7959fd89780001e796dd",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/40118a98-91a9-4647-9a4a-1577f8d977d6.png",
+      "source_caption": "歡迎至Podcast收聽全集",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68c650cafd89780001ee563f",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/6677cc59-e969-42df-b6a6-da568c76d395.jpg",
+      "source_caption": "悲慘世界",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68c650cafd89780001ee563f",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/5387678f-a7b4-4fd3-8d65-c86aaefacb51.jpg",
+      "source_caption": "圖源：中央社",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68c650cafd89780001ee563f",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/12aff2d8-4cd2-490e-8713-89e7e2d2370f.png",
+      "source_caption": "歡迎至Podcast收聽完整內容",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68bc309afd89780001643aa5",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/0898ea44-9023-455f-ae29-ee5bce8f7f23.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68bc309afd89780001643aa5",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/55b24567-a6e5-4b8a-b25c-74836edcdbdb.png",
+      "source_caption": "Podcast收聽全集",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68b1cc52fd89780001138a4f",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/58904233-02ca-49a4-88ee-268ba83327b7.jpg",
+      "source_caption": "圖源：鬼滅之刃",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68b1cc52fd89780001138a4f",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/87533af5-de01-47d9-b625-c56cc5a03c11.jpg",
+      "source_caption": "圖源：鬼滅之刃",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68b1cc52fd89780001138a4f",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/96b6fd2c-4c41-4bbc-9ab9-b25db5ebb430.jpg",
+      "source_caption": "圖源：鬼滅之刃",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68b1cc52fd89780001138a4f",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/32e99624-d790-4959-8d02-796dbeb792ee.png",
+      "source_caption": "「凡思聲」Podcast收聽完整節目",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/94bd7c71-2161-4d40-ae4a-c280ee8f2bad.png",
+      "source_caption": "圖源",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/bad20639-866f-4f53-8b5b-365a86765309.png",
+      "source_caption": "胡蝶忍",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/35cbec3b-9170-4a7e-bc24-56bb5d192bf0.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/424882b9-7b47-4b25-af75-047f09267675.png",
+      "source_caption": "完整內容歡迎收聽「凡思聲」Podcast",
+      "heuristic_group": "podcast_promo_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6859655dfd89780001378815",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/146ebdcb-7b97-4c4a-b28a-ae061bbb3a95.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6859655dfd89780001378815",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/ee8206b1-7845-4bbf-84cb-e53678decab2.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-683f025efd8978000114ddd9",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/e536fcf2-7ad1-44e2-b1db-1b5138467ca5.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-683f025efd8978000114ddd9",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/1e6c7f0e-b0aa-4936-8a6b-1fa71cc61f44.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-682f1f7ffd89780001cc2d60",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/5a203143-fbd5-4494-bb41-09d2bf54aade.jpg",
+      "source_caption": "搞笑諾貝爾經濟學講研究「Talent vs Luck, 天才對運氣」」",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-682f1f7ffd89780001cc2d60",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/ca38f027-23f4-4afe-a0e3-27637162865d.jpg",
+      "source_caption": "提出幸運四大要素的李察·韋斯曼，圖源來自連結",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-682f1f7ffd89780001cc2d60",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/8992b0df-53cf-44c8-9e6b-f12f8078daf8.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68245605fd897800019da7d0",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/4618f683-ca6e-4ae7-9cb5-bf281bd35bb7.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68245605fd897800019da7d0",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/603797a1-43c7-412f-b534-c5e95b7daf02.png",
+      "source_caption": "很多時候我們需要的是一段安靜的時間",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68245605fd897800019da7d0",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/ad701247-08fc-4ceb-a661-130407d731dc.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68245605fd897800019da7d0",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/a226ce8a-3aea-40bb-b7fc-7e56987a42a5.jpg",
+      "source_caption": "黃仁勳的演講（圖片取自閱讀前哨戰）",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68201950fd89780001848e30",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/de808756-a9cb-47fd-b4e1-1096afd2d0f6.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68201950fd89780001848e30",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/884f807f-ef3a-43dd-bd64-b85d9f0e46eb.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68201950fd89780001848e30",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/e9ab95af-db8a-4cfd-ad90-36798f744348.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-681c4b69fd897800017ddff5",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/74a60f75-610e-46bf-a6ef-c07ae1c1e3c4.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-681c4b69fd897800017ddff5",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/f130810e-d805-4bce-90a3-5748d0e51655.png",
+      "source_caption": "這個母親節好好陪媽媽吧！",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68199d76fd897800011df871",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/a86bfdcf-d518-460c-a23b-26de5dcc33dd.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68199d76fd897800011df871",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/aa239692-a158-43da-9ca0-25a9b5884cda.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68199d76fd897800011df871",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/cb2ea41b-70be-4b8c-b737-c81dd16f443f.jpg",
+      "source_caption": "來源：反正我很閒",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-681050d6fd8978000167fa4e",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/397eccce-0abd-45d0-bfc5-a53933b6a512.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-681050d6fd8978000167fa4e",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/c10576f8-2d58-4099-a2cc-d4bde7083504.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68086c27fd897800011e9a4f",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/656d11fd-1662-49ef-b04f-233a336e10db.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68086c27fd897800011e9a4f",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/6062cf5d-4202-418a-8f30-a33c650d38e5.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68086c27fd897800011e9a4f",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/02441f81-21fe-48f3-9bd3-471e7f73bcb4.jpg",
+      "source_caption": "生物圈二號",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-68086c27fd897800011e9a4f",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/019b7d46-fdc6-449e-8eab-5d3a7f101204.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67f7cc40fd8978000135d2fc",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/aa8ec549-90f2-4529-822b-092254905364.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67f7cc40fd8978000135d2fc",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/4eb4eb5a-d4e8-449c-aea3-b1b0ce0a6bb1.jpg",
+      "source_caption": "我這輩子只在乎能不能六點下班！",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67ee69c9fd89780001777985",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/6173f756-5de5-4d4f-b11a-b143bb80c198.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67ee69c9fd89780001777985",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/cfacb055-1f8e-4e3b-b7db-2283a2a7b7f3.png",
+      "source_caption": "拿著半世紀以來第一幅畫的奶奶",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67e24412fd89780001f9a032",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/6fd2c542-bee4-4e0a-a490-75c87a8a364b.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67e24412fd89780001f9a032",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/3da8a392-9064-47b4-a339-826cdfca8abc.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3bb68fd89780001334866",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/63a1008c-16ca-4aae-b8b3-24656a29eda5.jpg",
+      "source_caption": "在夜裡行淫被當場逮的婦人，和理應一併受罰卻無人在意的男子",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3bb68fd89780001334866",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/876ca67a-b5e9-409a-a38c-2f421bbf8db5.png",
+      "source_caption": "犯罪的婦女被帶到聖殿，法利賽人要求耶穌作出裁決",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3bb68fd89780001334866",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/de60d216-e8ed-4222-bf30-79f59a4727ab.jpg",
+      "source_caption": "眾人離開後，耶穌也不定罪婦人，讓她自行離開",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3bb68fd89780001334866",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/8c1e02ea-40e2-4ea5-8e21-aef36e59bda5.jpg",
+      "source_caption": "劫後餘生的女人，獲得嶄新的生命和機會",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3cc10fd8978000137eb22",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/cc2875ed-8122-4a65-ada6-b7222aff61f6.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3cc10fd8978000137eb22",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/a26e71e9-deed-4d79-b12f-d6ddcebdb308.png",
+      "source_caption": "驕傲地展示自己家人照片的伯伯",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67d3cc10fd8978000137eb22",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/61a0cce5-a8a4-4bcd-92c3-28c58106c7d3.jpg",
+      "source_caption": "麥克阿瑟名言：「老兵不死，只是凋零」",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67c79b0ffd89780001c2f452",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/dcac1692-f355-4a2d-8614-1b0df9d941f5.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67c79b0ffd89780001c2f452",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/9a247397-ac2f-4fc5-a382-c1d8c3b54ddb.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67c5192dfd89780001396083",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/e65c8a1d-8fb9-4bdc-809e-9e47a0e2e510.jpg",
+      "source_caption": "燃燒著孤傲之火的尼采，與耶穌在時空之外的曠野相遇",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67c5192dfd89780001396083",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/3cded543-2aa0-4a66-ae0f-5a2c8d01484d.jpg",
+      "source_caption": "傲立於深淵之上的尼采，與站立於柔和晨光中的耶穌",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67c5192dfd89780001396083",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/d237417e-7aac-41e5-9565-35ad9f737805.jpg",
+      "source_caption": "在曠野中，對話未完的兩人⋯⋯",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67b7cc0ffd89780001a12b84",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/1dd54657-4da1-4826-a77d-86a63a3bb8ec.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67b7cc0ffd89780001a12b84",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/67385166-3abd-407b-9795-074eb9f06992.png",
+      "source_caption": "面對女兒被殺，莎夏的父親選擇原諒兇手，只為了讓孩子走出仇恨的森林",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67b7cc0ffd89780001a12b84",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/f150c3d0-92c1-48e8-ae97-7e9f795fa44a.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6790393efd89780001cb26b2",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/660f3db8-a2db-4514-801f-84f2648c7304.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6790393efd89780001cb26b2",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/ce19f408-25aa-4fec-95d5-17cec2d39311.png",
+      "source_caption": "成為自由的奴隸的艾連",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6790393efd89780001cb26b2",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/66156c93-754b-48a8-a775-583e13198eea.png",
+      "source_caption": "掙脫愛的枷鎖的尤米爾",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6790393efd89780001cb26b2",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/7b955fd1-d8f8-4a56-b482-20c821df583b.jpg",
+      "source_caption": "象徵歷史再度輪迴的巨樹？",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/47388fb9-e111-43f3-ab45-9aa614b50c7a.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/d21f63af-dae5-4b24-85d8-f6d345def2d7.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/cdfd3259-db3e-49d6-b596-7ed2b6c932fb.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/aac49adc-c1dc-4218-ad6f-30dc9671677b.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/f9389131-8334-4393-a537-4415eb212f95.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 6,
+      "original_url": "https://images.vocus.cc/6cc3eb11-e516-4639-8ea0-7b3758433bf9.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 7,
+      "original_url": "https://images.vocus.cc/8b4e374b-3422-43e6-95ea-ffa8ffac9570.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "source_position": 8,
+      "original_url": "https://images.vocus.cc/d4bf9dda-bcf2-46e6-ad5c-18c503e056b6.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-676a6484fd89780001995dcf",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/5ef13a62-6625-4c70-926e-c682926d3498.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-676a6484fd89780001995dcf",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/832b1ff1-6143-487f-87aa-0b3267dc01c1.jpg",
+      "source_caption": "許多人幻想中的精神病院",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-676a6484fd89780001995dcf",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/afbb86a1-a432-46ab-8adf-9d6f020b9162.png",
+      "source_caption": "躁鬱症類型的簡單介紹",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-676a6484fd89780001995dcf",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/817e3bc2-c566-46e1-b03a-0fce12963b35.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6744890cfd89780001e70aa9",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/918d95ad-402f-48c9-a576-8db6e16babf7.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6744890cfd89780001e70aa9",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/ffa27c83-9729-4a76-b6b7-6e79259f1f23.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6744890cfd89780001e70aa9",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/77498ccf-23ed-49b1-a65d-85cf9d80a0f0.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6744890cfd89780001e70aa9",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/3fa83b32-6f96-44fe-9912-e58e10518b64.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6744890cfd89780001e70aa9",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/4ee06230-54ed-4cab-8f01-9968a57c478f.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/fa5b735c-f8dc-4cbf-80cd-24d9bf0aaa1f.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/2415eb69-c960-495f-8763-7cd65b8c2357.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/4ae24caf-230f-4079-8a1c-4bdf49956424.jpg",
+      "source_caption": "《哈囉掰掰，我是鬼媽媽》劇照｜Netflix 提供",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/a1dc5abd-b41b-4672-a745-d30a587491c9.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/c0a28dc6-155d-4141-bdae-cca57d9eba2e.jpg",
+      "source_caption": "選擇愛運動 官網",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "source_position": 6,
+      "original_url": "https://images.vocus.cc/b19f62bb-2e16-4343-b089-d9f0af96defe.jpg",
+      "source_caption": "《智慧奇點》書籍",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6733f8a4fd897800019465a6",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/75561ed2-42e2-40a3-af8a-ae3541c061a5.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6733f8a4fd897800019465a6",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/f70a5cf1-2122-41cc-800b-5fdb240efb5d.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6733f8a4fd897800019465a6",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/f69e742b-91ec-424d-b882-877d69e2d233.jpg",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6733f8a4fd897800019465a6",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/d159103d-92c3-4566-8cdf-570abe3b0ed5.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6732b6b1fd89780001936027",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/e1f3866c-3260-4765-b456-d2da2aa5a6f2.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6732b6b1fd89780001936027",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/8fcaeb15-f647-416b-96c0-17f6e83c47fe.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6732b6b1fd89780001936027",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/92985b21-01b6-499c-98fe-480ff7d8861e.jpg",
+      "source_caption": "圖源：愛奇藝《流金歲月》劇照",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6732b6b1fd89780001936027",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/4362a95e-8159-4962-9f04-ad8338b0351a.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6732b6b1fd89780001936027",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/02c37d4d-9508-4ef1-889d-e429d5f90e25.png",
+      "source_caption": "國中時期的創作累積",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6729aba2fd89780001d5b97a",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/298dddcb-9a1e-4b79-949c-e7dcafcc0495.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6729aba2fd89780001d5b97a",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/999c7ce0-27c2-4813-bf1e-04d5f64a8840.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6729aba2fd89780001d5b97a",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/34a9fa17-ee28-4004-b53b-4be8d1ecb07d.jpg",
+      "source_caption": "轉自 看見希望：泛視神經脊髓炎NMOSD 粉專",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6729aba2fd89780001d5b97a",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/41fe24e5-1010-428c-a40c-637affa1a76c.png",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6729aba2fd89780001d5b97a",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/6bf2a475-59b8-4753-af22-e07591ae5830.png",
+      "source_caption": "圖源：Pexels",
+      "heuristic_group": "source_rights_review",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/aca3e689-8ce7-42b3-bded-7a525db58ab7.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/f6b3d80c-57bf-469e-9079-413631720d57.png",
+      "source_caption": "一切的起源⋯⋯一本國中聯絡簿？",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/522b6edb-f296-4a75-9fa9-c2ad2f4c68b7.png",
+      "source_caption": "國中時跟損友們（？）的合照",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/2748c06a-0239-401c-ba6a-4ed271bbbc77.png",
+      "source_caption": "因為有趣，開始認真撰寫聯絡簿 也逐漸培養出寫作興趣",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/7ff3eeb8-2b83-465e-9d51-833503277e52.png",
+      "source_caption": "從聯絡簿作為起點，開始逐漸累積更多的創作",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "source_position": 6,
+      "original_url": "https://images.vocus.cc/0295b365-7e3a-4b18-bdd6-e521cdfdae6f.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-675b90a6fd89780001cc0f65",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/6c325eb1-1de3-48e1-9a78-cc4d265976ad.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-675b90a6fd89780001cc0f65",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/c704d229-aaf9-4557-9b47-5b35c4dee5aa.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-675b90a6fd89780001cc0f65",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/b2fa242a-03dc-418a-8bf7-b3d70dd986c8.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-675b90a6fd89780001cc0f65",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/8f2cf5ca-7c48-4cf3-8e6f-cbf541f39c3f.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-675b90a6fd89780001cc0f65",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/ab25ead3-a02a-490c-9f94-c28e926f514f.jpg",
+      "source_caption": "轉自：木棉花fb",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67bfdd7ffd8978000116e6ec",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/9a072323-790c-4551-8e3f-d6f1b56dbc19.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67bfdd7ffd8978000116e6ec",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/e633a11e-f421-474d-a661-71ef842fc2b1.png",
+      "source_caption": "在未來世界，一切語言都被冰冷的文字取代⋯⋯",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67bfdd7ffd8978000116e6ec",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/3ccdf755-33b6-4f05-b663-78c1f214cabe.png",
+      "source_caption": "隱藏在歷史陰影處的反抗組織，企圖恢復「古語」",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67bfdd7ffd8978000116e6ec",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/18c871be-6758-4573-b5ce-4344349d0e3f.png",
+      "source_caption": "語言生成器的真實身份曝光——他是末日核戰倖存者的意識，不是為了控制人類，目的而是想守護人類",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-67bfdd7ffd8978000116e6ec",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/833373c0-f167-47fa-a1f1-6f957a0e3540.png",
+      "source_caption": "最終，林做出了選擇...",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6780770dfd89780001b10de5",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/7bef5ef6-3707-40d2-9cc8-e8bb4b24afd5.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6780770dfd89780001b10de5",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/74c73138-ed0b-48e3-997c-9df264966bb9.png",
+      "source_caption": "堆積如山的謊言垃圾場",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6780770dfd89780001b10de5",
+      "source_position": 3,
+      "original_url": "https://images.vocus.cc/e6e69b6a-86ce-4d17-9a68-3a5cb592719b.jpg",
+      "source_caption": "瀰漫霧氣的謊言地下城",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6780770dfd89780001b10de5",
+      "source_position": 4,
+      "original_url": "https://images.vocus.cc/f35535ca-d82f-40c4-9ff8-e2edf6b882ce.jpg",
+      "source_caption": "無比巨大的謊言核心",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6780770dfd89780001b10de5",
+      "source_position": 5,
+      "original_url": "https://images.vocus.cc/c02b55a6-25d0-44f4-b3fb-f9109d84c95d.jpg",
+      "source_caption": "被謊言籠罩的城市",
+      "heuristic_group": "editorial_image_candidate",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6764e586fd89780001056594",
+      "source_position": 1,
+      "original_url": "https://images.vocus.cc/18d774f6-b2d0-4ec6-92b0-6f5c1f5d9569.png",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    },
+    {
+      "work_id": "vocus-6764e586fd89780001056594",
+      "source_position": 2,
+      "original_url": "https://images.vocus.cc/305b6a2b-a314-4ff7-a8e8-29e1b517aff0.jpg",
+      "source_caption": "vocus｜新世代的創作平台",
+      "heuristic_group": "unidentified_vocus_caption",
+      "site_use": "pending_author_and_rights_review",
+      "cover_candidate": false
+    }
+  ],
+  "early_3_articles": [
+    {
+      "work_id": "vocus-68b418fdfd89780001979cd8",
+      "source": "https://vocus.cc/article/68b418fdfd89780001979cd8",
+      "image_positions": 4,
+      "source_urls_status": "not_in_current_audit",
+      "editorial_status": "pending"
+    },
+    {
+      "work_id": "vocus-6947fbe2fd89780001bd1dbb",
+      "source": "https://vocus.cc/article/6947fbe2fd89780001bd1dbb",
+      "image_positions": 2,
+      "source_urls_status": "not_in_current_audit",
+      "editorial_status": "pending"
+    },
+    {
+      "work_id": "vocus-674fcdeffd89780001b93c49",
+      "source": "https://vocus.cc/article/674fcdeffd89780001b93c49",
+      "image_positions": 2,
+      "source_urls_status": "not_in_current_audit",
+      "editorial_status": "pending"
+    }
+  ]
+}

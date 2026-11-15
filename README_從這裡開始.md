@@ -1,4 +1,4 @@
-> Current authorization: M5-A development/testing/import preparation. Read [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) first. Earlier M0–M2-only instructions are historical; all privacy/publication safeguards remain binding. No merge, deployment, paid service activation, M5-B or M6.
+> **歷史交接包**：本檔 2026-11-12 初始階段敘述已被後續開發取代。現行狀態先看 [CURRENT_STATE](docs/CURRENT_STATE.md)，網站完工流程看 [WEBSITE_COMPLETION_SOP](docs/WEBSITE_COMPLETION_SOP.md)。PR #9 已有 48 篇作者授權全文但待合併，沒有部署／付費服務許可；不能以本檔過時的 M5-A 限制或舊 M6 指令代替現行核准。
 
 # 凡思筆記 × 作者個人品牌｜Codex 開發交接包 v1.0
 

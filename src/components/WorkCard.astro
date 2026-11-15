@@ -8,13 +8,16 @@ interface Props {
   type?: string;
   published_at?: string;
   synthetic?: boolean;
+  cover_image?: string;
+  cover_alt?: string;
 }
-const { id, title, summary, type, published_at, synthetic = true } = Astro.props;
+const { id, title, summary, type, published_at, synthetic = true, cover_image, cover_alt } = Astro.props;
 ---
 
 <article class="work-card">
   <a href={url(`articles/${id}/`)}>
-    {synthetic && <div class:list={['cover', type]} aria-hidden="true">
+    {cover_image && <img class="article-banner" src={url(cover_image)} alt={cover_alt || ''} loading="lazy" decoding="async" />}
+    {!cover_image && synthetic && <div class:list={['cover', type]} aria-hidden="true">
       <span class="cover-orbit"></span>
       <span class="cover-window"></span>
       <small>示意插畫</small>
@@ -30,3 +33,12 @@ const { id, title, summary, type, published_at, synthetic = true } = Astro.props
     <p>{summary}</p>
   </a>
 </article>
+
+<style>
+  .article-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+</style>

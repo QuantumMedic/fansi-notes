@@ -34,3 +34,12 @@ test('兩篇文末有清楚單集入口且只有一個可點連結，研究來�
   assert.doesNotMatch(html,/data-spotify-id|<iframe/);
  }
 });
+
+test('修正原文失效Podcast網址只限同文已有完整網址證據，來源不變',()=>{
+ const url='https://spotifycreators-web.app.link/e/mjb8LAqF90b';
+ const source=`<div class="imported-original"><p><a href="https://"><span>${url}</span></a></p><a href="${url}">Podcast完整連結</a></div>`;
+ const result=importedListeningPresentation(source);
+ assert.ok(!result.html.includes('href="https://"'));assert.ok(source.includes('href="https://"'));assert.deepEqual(result.links,[]);
+ const withoutEvidence=`<div class="imported-original"><a href="https://">${url}</a></div>`;
+ assert.equal(importedListeningPresentation(withoutEvidence).html,withoutEvidence);
+});

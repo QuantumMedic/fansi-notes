@@ -1,0 +1,29 @@
+[
+  {
+    "work_id": "vocus-68b418fdfd89780001979cd8",
+    "source": "https://vocus.cc/article/68b418fdfd89780001979cd8",
+    "website_path": "/fansi-notes/articles/willpower-and-habits/",
+    "checked_at": "2026-11-14T14:18:25.763444+00:00",
+    "source_updated_at": "2025-08-31T09:48:59.555Z",
+    "normalized_text_sha256": "af2edc793d84411aafa6e4a66741bf27f5836f8a47cbcff5f54a9445b33f31e5",
+    "matches_approved_source": true
+  },
+  {
+    "work_id": "vocus-6947fbe2fd89780001bd1dbb",
+    "source": "https://vocus.cc/article/6947fbe2fd89780001bd1dbb",
+    "website_path": "/fansi-notes/articles/antifragile-life/",
+    "checked_at": "2026-11-14T14:18:24.770416+00:00",
+    "source_updated_at": "2025-12-21T14:02:05.893Z",
+    "normalized_text_sha256": "713484b007e74707b3ac0b4deda0755b206697dfda18016218dde5b781be3e42",
+    "matches_approved_source": true
+  },
+  {
+    "work_id": "vocus-674fcdeffd89780001b93c49",
+    "source": "https://vocus.cc/article/674fcdeffd89780001b93c49",
+    "website_path": "/fansi-notes/articles/talking-shadow/",
+    "checked_at": "2026-11-14T14:18:25.714628+00:00",
+    "source_updated_at": "2024-12-12T01:58:56.428Z",
+    "normalized_text_sha256": "0228b99ce2b451baeb3fc5c55ae96aefb5f8da66844f0dbadf55fc959f9aca00",
+    "matches_approved_source": true
+  }
+]

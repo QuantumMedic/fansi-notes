@@ -22,7 +22,15 @@ export function importedListeningPresentation(body = '', episodes = []) {
   const links = new Map();
   const confirmed = new Set(episodes.flatMap(e => [e.spotify_episode_url, e.apple_episode_url])
     .filter(Boolean).map(href => listeningDestination(href)?.key).filter(Boolean));
-  const html = body.replace(/<figcaption><a href="([^"]+)"(?:\s[^>]*)?>([^<]*)<\/a><\/figcaption>/g,
+  // Repair only a broken promotional link whose visible URL is independently
+  // present as a complete href in this same source. Never infer a GUID or title.
+  const repaired = body.replace(/<a href="https:\/\/"([^>]*)>(<span>)?(https:\/\/spotifycreators-web\.app\.link\/[^<\s]+)(<\/span>)?<\/a>/g,
+    (original, attrs, opening = '', encodedUrl, closing = '') => {
+      const decoded = encodedUrl.replaceAll('&amp;', '&');
+      return safeUrl(decoded, ['spotifycreators-web.app.link']) && body.includes(`href="${encodedUrl}"`)
+        ? `<a href="${encodedUrl}"${attrs}>${opening}${encodedUrl}${closing}</a>` : original;
+    });
+  const html = repaired.replace(/<figcaption><a href="([^"]+)"(?:\s[^>]*)?>([^<]*)<\/a><\/figcaption>/g,
     (original, encodedHref, text) => {
       const href = encodedHref.replaceAll('&amp;', '&');
       const destination = listeningDestination(href);
