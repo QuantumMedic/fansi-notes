@@ -59,7 +59,7 @@ const { episodes } = await catalog();
       {reviewMode ? '本機審閱包含待審核分類建議。' : '僅使用已確認的作品分類。'}未分類單集仍列在全部
       Podcast，標示「分類待確認」。
     </p>
-    <p class="muted">熱門依發布後首7天播放與下載總數；尚無核准排名時維持日期順序，不代表熱門程度。</p>
+    <p class="muted">熱門依發布後首7天播放與下載總數的核准順位（非即時）；精確快照日期未提供。未知順位列於最後。</p>
     <p id="episode-count" role="status">
       共 {episodes.length} 集
     </p>

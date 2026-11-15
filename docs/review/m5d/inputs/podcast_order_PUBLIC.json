@@ -1,0 +1,109 @@
+{
+  "schema": "fansi-m5d-public-podcast-rank-v1",
+  "description": "只含25集GUID與熱門順位，避免將Spotify for Creators私人分析原始計數上傳公開GitHub。",
+  "metric": "first 7 days plays plus downloads (all reported destinations); NOT Spotify-only Plays",
+  "snapshot_exact_timestamp": null,
+  "ties": "Rank uses author-provided source workbook ranking; treat tied counts as shared rank where present",
+  "rows": [
+    {
+      "guid": "8f469193-9dc5-44ea-b8b2-3398d62dcd48",
+      "popularity_rank": 1
+    },
+    {
+      "guid": "3268a23e-ccaf-4f70-83d8-40550f3603e5",
+      "popularity_rank": 2
+    },
+    {
+      "guid": "6f377651-fae5-42e0-919f-3f54ffb734b5",
+      "popularity_rank": 3
+    },
+    {
+      "guid": "77d6725e-0918-40f1-8c01-e3b995325b0a",
+      "popularity_rank": 4
+    },
+    {
+      "guid": "d0b432c1-36da-4863-9b71-4068dd941dae",
+      "popularity_rank": 5
+    },
+    {
+      "guid": "53c18650-7819-41b2-b019-284617749502",
+      "popularity_rank": 5
+    },
+    {
+      "guid": "1f20def0-6228-4434-80fb-a33ddaf06745",
+      "popularity_rank": 7
+    },
+    {
+      "guid": "12b8d2fe-824f-4682-b8f2-4e8512f89cde",
+      "popularity_rank": 8
+    },
+    {
+      "guid": "c2fc0ec4-1e7a-4808-828a-2681658b0fb7",
+      "popularity_rank": 9
+    },
+    {
+      "guid": "bd111a66-7431-41fa-92ad-fb1952112c70",
+      "popularity_rank": 9
+    },
+    {
+      "guid": "bf20ddce-f482-4556-b2fd-daa3833b33dc",
+      "popularity_rank": 11
+    },
+    {
+      "guid": "d973015a-d1d4-42a4-b959-d1f61c691397",
+      "popularity_rank": 12
+    },
+    {
+      "guid": "9a81d6cd-3cd1-4fae-bb71-378c78371b64",
+      "popularity_rank": 13
+    },
+    {
+      "guid": "a760b308-7f28-407d-aff6-e149a6a869b7",
+      "popularity_rank": 14
+    },
+    {
+      "guid": "8dfe039a-7fb5-4bdf-9134-9fcdf76bb2e0",
+      "popularity_rank": 15
+    },
+    {
+      "guid": "9dff92e9-3858-4519-87e6-bc9274205613",
+      "popularity_rank": 15
+    },
+    {
+      "guid": "e63a007f-52d8-4438-a5e5-246acb6386e5",
+      "popularity_rank": 17
+    },
+    {
+      "guid": "d3f5858d-d8f6-45a1-804a-57d28d3fdbbe",
+      "popularity_rank": 18
+    },
+    {
+      "guid": "58adc2d4-72c6-444d-8fe6-770296c843f1",
+      "popularity_rank": 19
+    },
+    {
+      "guid": "6810ebe2-da67-4283-bfc8-630c68e595c1",
+      "popularity_rank": 20
+    },
+    {
+      "guid": "84443006-34d4-406b-bcd4-104ce64a4582",
+      "popularity_rank": 21
+    },
+    {
+      "guid": "05b69613-4296-4c7a-a205-5937639fb559",
+      "popularity_rank": 22
+    },
+    {
+      "guid": "6f85e22a-f8a9-43fc-891c-cea514725480",
+      "popularity_rank": 23
+    },
+    {
+      "guid": "9f6dca71-4870-4684-8076-b853de0c41e6",
+      "popularity_rank": 24
+    },
+    {
+      "guid": "0fa86973-54d7-4bd5-a64b-255b5afd9da2",
+      "popularity_rank": 25
+    }
+  ]
+}

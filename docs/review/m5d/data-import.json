@@ -1,0 +1,17 @@
+{
+  "source": "M5-D author supplied PUBLIC JSON handoff",
+  "files_sha256": {
+    "ig_links_and_order_PUBLIC.json": "62ade105d692ad22b200d8b41a591570f73450f8c78aaf302f9ab9b45b2073a8",
+    "podcast_order_PUBLIC.json": "e5222fbcab72dc49ab1bec373cd039ae678406806a0ae847ea6e4e13e827491d"
+  },
+  "articles": 48,
+  "instagram_primary": 47,
+  "instagram_related": 2,
+  "article_ranks": 47,
+  "podcast_ranks": 25,
+  "snapshot_exact_timestamp": null,
+  "missing_instagram": [
+    "vocus-6764e586fd89780001056594"
+  ],
+  "approved_guid_mappings_added": 0
+}

@@ -15,7 +15,7 @@ published_at: "2025-08-31T09:48:58.448Z"
 updated_at: "2025-08-31T09:48:59.555Z"
 public_author_name: "凡思筆記"
 written_master: "ig-vocus"
-platform_urls: {"vocus_url": "https://vocus.cc/article/68b418fdfd89780001979cd8"}
+platform_urls: {"vocus_url": "https://vocus.cc/article/68b418fdfd89780001979cd8", "instagram_url": "https://www.instagram.com/p/DOA-5-jk3I3/"}
 ---
 
 <div class="imported-original">

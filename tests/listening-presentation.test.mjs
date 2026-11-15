@@ -39,7 +39,7 @@ test('修正原文失效Podcast網址只限同文已有完整網址證據，來�
  const url='https://spotifycreators-web.app.link/e/mjb8LAqF90b';
  const source=`<div class="imported-original"><p><a href="https://"><span>${url}</span></a></p><a href="${url}">Podcast完整連結</a></div>`;
  const result=importedListeningPresentation(source);
- assert.ok(!result.html.includes('href="https://"'));assert.ok(source.includes('href="https://"'));assert.deepEqual(result.links,[]);
+ assert.ok(!result.html.includes('href="https://"'));assert.ok(source.includes('href="https://"'));assert.equal(result.links.length,2);assert.match(result.links[0].href,/open.spotify.com\/episode\//);
  const withoutEvidence=`<div class="imported-original"><a href="https://">${url}</a></div>`;
  assert.equal(importedListeningPresentation(withoutEvidence).html,withoutEvidence);
 });

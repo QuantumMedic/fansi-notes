@@ -19,7 +19,7 @@ const entries = [
           <PlatformButton platform={label} href={links[key]} />
         ),
     )}
-    {[...new Set(links.related_instagram_urls || [])].filter(href => href !== links.instagram_url).map(href => <PlatformButton platform="instagram" href={href} />)}
+    {[...new Set(links.related_instagram_urls || [])].filter(href => href !== links.instagram_url).map((href, i) => <PlatformButton platform="instagram" href={href} label={`Instagram 圖文・相關 ${i + 1}`} />)}
   </nav>
 )}
 
