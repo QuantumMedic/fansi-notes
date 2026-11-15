@@ -33,13 +33,15 @@
 - **正式 Podcast 分類／文章映射**：`src/data/podcast-classifications.json` 25 集全數已依作者委託改為 confirmed，`src/data/podcast-work-map.json` 有 16 組唯一 GUID ↔ work_id；9 集 Podcast-only。14 集有精確單集 URL、2 集以相同敘事核對並由受託編輯判斷；沒有偽稱 URL 證據。詳見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。以上正式映射現已合併至 `main`，不再是審核候選。
 - `docs/review/m5c/INPUT_GAPS.json` 是前期審核 seed，IG／人氣空欄與 11 筆初期音訊配對候選均**已過時**；本次正式 Podcast 結論以 `PODCAST_MAPPING_APPROVAL_2026-11-15.md` 和執行檔為準，不能再重問分類或重爬資料。
 - `docs/review/m5c/IMAGE_TRIAGE.json`：新匯入 45 篇的 151 筆 Vocus 圖片候選位置；原三篇另有 8 個位置數，未全部取得來源或重刊權。圖片存在不等於網站有使用授權；不得批量爬取、直接重刊第三方圖片或匯入 IG 文字圖卡。
+- **2026-11-15 M5-C 補充查核（文件 PR 待合併）**：原九集 Podcast 目前只是未配到已匯入的 48 篇網站文章，已在私人已連結的設計來源中核對到相應書面內容；為保護未公開素材，私有設計 ID／內容未存入公開 GitHub。已另查到一篇明確公開 Vocus 文章〈過度努力的陷阱〉（`vocus-689ed09bfd897800015571de`）不在 48 篇匯入清單，須作者另行核准新增網站全文，不能當成無書面作品。詳見 `docs/review/m5c/PRE_CODEX_SOURCE_AND_IMAGE_AUDIT_2026-11-15.md`。
+- **圖片初篩**：151 筆已有逐位置安全行動表 `docs/review/m5c/IMAGE_ACTION_LEDGER_2026-11-15.json`，15 筆為 Podcast 宣傳圖建議不搬正文、136 筆仍待視覺身分／來源及使用權核對；尚未因此取得任何圖片重刊核准。
 - `docs/review/m5c/DECISION_GATE.md` 是集中作者決策入口；`docs/review/m5c/PUBLICATION_CANDIDATES.json` 的七筆出版線索尚未核准。私人原始分析、Canva 私有素材與聯絡資料不放公開 repo。
 
 ## 下一個合理批次（按依賴與既定階段）
 
-1. **M5-D 核准映射展示抽查**：確認 16 集已配對 Podcast 在主題頁的單欄統一作品卡僅出現一筆（同卡書面＋聲音），未配對 9 集保留 Podcast-only，全部 48 篇正式文章與 25 集音訊仍可找到；《鬼滅》兩篇書面作品皆保留。主題清除篩選應不跳出當前主題。
+1. **M5-D 核准映射展示抽查**：確認 16 集已配對 Podcast 在主題頁的單欄統一作品卡僅出現一筆（同卡書面＋聲音），另 9 集在新書面網站版獲核准匯入前暫保留「只有音訊的網站卡片」，全部 48 篇正式文章與 25 集音訊仍可找到；《鬼滅》兩篇書面作品皆保留。主題清除篩選應不跳出當前主題。
 2. **M5-D 凡思維系列補完**：既有 `/series/fansiwei/` 仍只用 `ArticleBrowser` 呈現文章，需要在系列探索入口整合已確認的 Podcast-only 凡思維單集，不要在 `/articles/` 製造假文章。Codex 修改最少需要的系列頁與 UI。
-3. **M5-C 圖片權利與用途**：由 ChatGPT 先分揀 151 筆 Vocus 圖像候選及原三篇 8 處位置，來源與重刊權不足時保留缺圖狀態；真正核准圖片後才交 Codex 做 M5-D 接入。
+3. **M5-C 圖片權利與用途**：151 筆 Vocus 圖片用途初篩已存檔（15 筆宣傳圖建議省略，136 筆仍需真實圖片／權利核對），原三篇 8 處仍需來源。真正核准圖片後才交 Codex 做 M5-D 接入；來源或權利不足時保留無圖狀態。
 4. **下一階段**：M5-D 完成後進 M5-E 正式小說／出版／作者／互動，然後 M5-F 一次性全站驗收；M6 部署仍需另一授權。
 
 ## 並行與授權

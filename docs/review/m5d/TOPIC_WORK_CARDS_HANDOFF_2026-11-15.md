@@ -1,11 +1,13 @@
 # M5-D 下一批｜主題、文章＋Podcast 統一作品卡與凡思維系列（2026-11-15）
 
+> **M5-C 最新資料查核補註：** 九集原先稱「Podcast-only」的音訊，已於私人來源找到相應書面設計；這只是「目前 48 篇網站文章中尚無對應全文」的**網站技術狀態**，不能宣稱作者只有音訊。另確認〈過度努力的陷阱〉已有 Vocus 全文但尚未匯入這 48 篇。公開索引與圖片初篩見 `docs/review/m5c/PRE_CODEX_SOURCE_AND_IMAGE_AUDIT_2026-11-15.md`。**不得從私有 Canva 擅自新增公開文章，需作者對新增網站書面作品另行授權。**
+
 **這是 Codex 唯一可直接執行的後續工作清單。所有已核准作品分類、配對、人氣、IG 連結、原文和主題重設修復均已合併至 GitHub `main`。開工前仍需重新查最新 `AGENTS.md`、`docs/CURRENT_STATE.md` 及實際分支／PR。不得重做已完成資料。**
 
 ## A｜目前已完成且應沿用（不再做資料研究）
 
 - **48 篇核准網站文章**：正文、主次主題、原文與 work_id 不改。
-- **25 集 Podcast 分類 confirmed**：`src/data/podcast-classifications.json`；**16 集**與書面同作品、**9 集 Podcast-only**。映射在 `src/data/podcast-work-map.json`，都已按作者委託分類決定、資料測試及 CI 通過。正式證據與決策見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。
+- **25 集 Podcast 分類 confirmed**：`src/data/podcast-classifications.json`；**16 集**與書面同作品、**9 集現階段尚無已核准網站書面全文的單集**。映射在 `src/data/podcast-work-map.json`，都已按作者委託分類決定、資料測試及 CI 通過。正式證據與決策見 `docs/review/m5c/PODCAST_MAPPING_APPROVAL_2026-11-15.md`。
 - **預期 57 個獨立作品**＝48 篇文章 + 9 個 Podcast-only；25 集音訊與 48 篇文章各自仍完整可讀。這是作品總數，非「57 篇文章」。
 - **PR #14 主題頁 reset 已修**：`src/components/WorkExplorer.astro` 已固定 `initialTopic`，清除篩選保留頁面主題；主題單欄、文章瀏覽雙欄保留。
 - **PR #11** 已做文章卡片、熱門排序、47 篇 IG 主貼文＋2 則相關 IG 及文末平台按鈕。熱門 Podcast 為發布後首 7 天播放＋下載總數，不稱 Spotify-only Plays。
@@ -15,7 +17,7 @@
 
 **1. 補齊「凡思維」的文章＋音訊系列入口（M5-D 缺陷／待辦）。**
 
-目前 `/series/fansiwei/` 仍使用 `ArticleBrowser` 只展示文章，不含已核准的 Podcast-only 凡思維。以最小差異讓此系列頁使用核准 `catalog().works` 與統一作品卡呈現：
+目前 `/series/fansiwei/` 仍使用 `ArticleBrowser` 只展示文章，不含已核准的 現階段僅有網站音訊的凡思維。以最小差異讓此系列頁使用核准 `catalog().works` 與統一作品卡呈現：
 - 有文章也有 Podcast：同一卡片，兩個入口。
 - 只有文章：閱讀入口。
 - 只有 Podcast：收聽入口，不虛構全文。
