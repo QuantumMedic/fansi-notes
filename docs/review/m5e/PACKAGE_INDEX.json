@@ -1,30 +1,16 @@
 {
-  "schema": "fansi-m5e-package-index-v1",
-  "package_filename": "FANSI_M5E_DISPLAY_PACKAGE_v1.zip",
-  "package_sha256": "ab69606fb9bab6b14c937df021dcc1cd28f55669e101110b3e87975561335fa5",
-  "base_commit": "756e7696e592df4bf0d9cd26013c73cc0ce281b1",
-  "dependency_pr": 19,
-  "state": "input_package_created_not_website_implemented",
-  "package_attachment_required": true,
-  "full_texts_included": false,
-  "input_file_after_extract": "docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json",
-  "input_sha256": "e7dbb12d8259a277c217a843c6e10f4f7fe590251b223d08ac30273220e79923",
-  "author_photo_after_extract": "public/images/author/jiang-zongfan.jpg",
-  "author_photo_sha256": "c3eddb54a26fab63a2e0db2419c51d75fd65996c4fa9deede74c8bd99e7aa79b",
-  "publications": [
-    {"work_id":"publication-tianqi-1","title":"天啟Ⅰ：末世訊號","isbn":"9789864453290","links":[{"label":"秀威書店｜紙本","url":"https://store.showwe.tw/books.aspx?b=121977","group":"print","evidence":"primary_page_text_matched"},{"label":"誠品｜紙本","url":"https://www.eslite.com/product/1001258882766855","group":"print","evidence":"primary_page_search_index_matched"},{"label":"金石堂｜電子書","url":"https://www.kingstone.com.tw/basic/2800000103134/","group":"ebook","evidence":"primary_page_search_index_matched"}],"cover_source":"https://store.showwe.tw/bookpic/9789864453290_01.jpg"},
-    {"work_id":"publication-tianqi-2","title":"天啟Ⅱ：始皇印記","isbn":"9789864453320","links":[{"label":"秀威書店｜紙本","url":"https://store.showwe.tw/books.aspx?b=122283","group":"print","evidence":"primary_page_text_matched"},{"label":"誠品｜紙本","url":"https://www.eslite.com/product/1001258882776725","group":"print","evidence":"primary_page_search_index_matched"},{"label":"金石堂｜電子書","url":"https://www.kingstone.com.tw/basic/2800000104002/","group":"ebook","evidence":"primary_page_search_index_matched"}],"cover_source":"https://store.showwe.tw/bookpic/9789864453320_01.jpg"},
-    {"work_id":"publication-tianqi-3","title":"天啟Ⅲ：創始之體","isbn":"9789864454075","links":[{"label":"秀威書店｜紙本","url":"https://store.showwe.tw/books.aspx?b=127170","group":"print","evidence":"primary_page_text_matched"},{"label":"誠品｜紙本","url":"https://www.eslite.com/product/1001258882860503","group":"print","evidence":"primary_page_search_index_matched"},{"label":"金石堂｜電子書","url":"https://www.kingstone.com.tw/basic/2800000104022/","group":"ebook","evidence":"primary_page_search_index_matched"}],"cover_source":"https://store.showwe.tw/bookpic/9789864454075_01.jpg"},
-    {"work_id":"publication-singularity-1","title":"智慧奇點（上）","isbn":"9786264009294","links":[{"label":"BOOK☆WALKER｜電子書","url":"https://www.bookwalker.com.tw/product/221464","group":"ebook","scope":"volume","evidence":"primary_page_text_matched"},{"label":"Readmoo電子書｜金石堂購買","url":"https://www.kingstone.com.tw/basic/2800000201850/","group":"ebook","scope":"volume","evidence":"primary_page_search_index_matched"},{"label":"KadoKado｜整部作品","url":"https://www.kadokado.com.tw/book/26481","group":"read","scope":"whole_work","evidence":"primary_page_title_and_author_matched"},{"label":"Kobo｜電子書","url":"https://www.kobo.com/tw/zh/ebook/hBFywpsiezKw5qPz90ISBw","group":"ebook","scope":"volume","evidence":"primary_page_search_index_matched"}],"cover_source":"https://taiwan-image.bookwalker.com.tw/product/221464/zoom_big_221464.jpg"},
-    {"work_id":"publication-singularity-2","title":"智慧奇點（下）","links":[{"label":"BOOK☆WALKER｜電子書","url":"https://www.bookwalker.com.tw/product/221465","group":"ebook","scope":"volume","evidence":"primary_page_text_matched"},{"label":"Readmoo電子書｜金石堂購買","url":"https://www.kingstone.com.tw/basic/2800000201679/","group":"ebook","scope":"volume","evidence":"primary_page_search_index_matched"},{"label":"KadoKado｜整部作品","url":"https://www.kadokado.com.tw/book/26481","group":"read","scope":"whole_work","evidence":"primary_page_title_and_author_matched"}],"cover_source":"https://taiwan-image.bookwalker.com.tw/product/221465/zoom_big_221465.jpg"},
-    {"work_id":"publication-heart-reflection","title":"心靈倒影","links":[{"label":"鏡文學｜閱讀作品","url":"https://www.mirrorfiction.com/book/32150","group":"read","scope":"whole_work","evidence":"primary_page_text_matched"}],"cover_source":"https://img-cdn.mirrorfiction.com/u/0/4/211204/bk/32150/1048369/IwSSTZcozh4hA0a5.jpg"},
-    {"work_id":"publication-data-storm","title":"數據風暴","links":[{"label":"原發表平台｜閱讀短篇","url":"http://www.wlkhds.com/wlkhds7_detail.php?id=808","group":"read","scope":"whole_work","evidence":"author_supplied_reachability_unverified"}],"cover_source":null}
-  ],
-  "known_remaining_verification": [
-    {"id":"books-direct-urls","status":"unresolved_not_absent","platform":"博客來","instruction":"逐冊以書名、作者及ISBN核對天啟三冊、智慧奇點上下冊的直接商品URL。智慧奇點已由官方作者商品列表確認收錄兩冊，但本工具未取得單冊URL。禁止猜ID、以搜尋頁替代或把擷取失敗說成沒上架。","evidence_url":"https://www.books.com.tw/web/flagfull_sbbotm/cebook_W000000001/1501/?a=%E6%B1%9F%E5%AE%97%E5%87%A1&o=1&pd=6&v=1"},
-    {"id":"readmoo-direct-urls","status":"unresolved_not_absent","platform":"Readmoo讀墨","instruction":"核實五冊的讀墨站內直接URL。已列金石堂的智慧奇點商品為Readmoo電子書通路，不得標成readmoo.com直達頁。"},
-    {"id":"cover-downloads","status":"6_source_urls_prepared_0_image_bytes_downloaded","instruction":"用素材包scripts/fetch_m5e_covers.py或瀏覽器取得六張正式封面並檢查實圖、MIME及冊次；圖片檔未包含在這個GitHub準備提交或素材包，不能冒稱已驗證載入。"},
-    {"id":"short-reading-url","status":"author_supplied_page_not_readable_in_current_tools","instruction":"測試數據風暴作者指定HTTP入口。若失效列明例外；不猜HTTPS、不換作者首頁、不上傳第一版全文。"}
-  ],
-  "completion_note": "GitHub目前保存交接索引及指令。完整介紹JSON、可讀文案、作者照片、限定來源下載程式在單一附件包；必須先確認Codex已收到附件並驗證hash，不能把ChatGPT sandbox路徑當成Codex檔案。外站檢查與正式UI尚未完成。"
+  "version": "repository-native-v2",
+  "prepared_on": "2026-11-15",
+  "requires_chat_attachment": false,
+  "requires_asset_download_script": false,
+  "requires_additional_source_research_by_codex": false,
+  "source": "docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json",
+  "input_git_blob_sha": "ce529194afa1d7fd105a13bbbed2a4f95adea8d0",
+  "handoff": "docs/review/m5e/CODEX_DISPLAY_HANDOFF.md",
+  "offline_validator": "scripts/check_m5e_inputs.py",
+  "author_photo": {"path": "public/images/author/jiang-zongfan.avif", "sha256": "3a1911f18c5ee1a3394dfed9ed5ee7cf0273362c6fb0aae9efb16c2c7bb4d0c8", "git_blob_sha": "284d3b61084a9afc0f5f7bb4128dc775ed5c280e", "width": 640, "height": 960, "bytes": 14929},
+  "counts": {"works": 7, "platform_link_records": 18, "remote_official_cover_urls": 6, "local_official_cover_files": 0, "local_author_photo_files": 1},
+  "replaces": "FANSI_M5E_DISPLAY_PACKAGE_v1.zip attachment dependency; no need to attach or unpack v1",
+  "known_external_exceptions": ["books_direct_product_urls_not_fully_verified", "readmoo_official_direct_urls_not_fully_verified", "six_remote_covers_not_render_verified", "data_storm_historical_http_reachability_unverified"],
+  "completion_boundary": "Repository inputs accessible; main display implementation and UI acceptance pending. External exceptions remain visible; no claim that every requested platform or cover is already verified."
 }
