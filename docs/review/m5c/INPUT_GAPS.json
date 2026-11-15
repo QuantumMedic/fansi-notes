@@ -14,7 +14,7 @@
     "podcast_episodes": 25,
     "imported_article_image_records": 151,
     "previous_3_image_position_counts": 8,
-    "exact_direct_episode_candidate_pairs": 0,
+    "exact_direct_episode_candidate_pairs": 11,
     "approved_podcast_mappings": 0
   },
   "articles": [
@@ -685,7 +685,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "05b69613-4296-4c7a-a205-5937639fb559"
+      ]
     },
     {
       "work_id": "vocus-68b1cc52fd89780001138a4f",
@@ -706,7 +709,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "05b69613-4296-4c7a-a205-5937639fb559"
+      ]
     },
     {
       "work_id": "vocus-68b418fdfd89780001979cd8",
@@ -724,7 +730,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "0fa86973-54d7-4bd5-a64b-255b5afd9da2"
+      ]
     },
     {
       "work_id": "vocus-68bc309afd89780001643aa5",
@@ -745,7 +754,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "77d6725e-0918-40f1-8c01-e3b995325b0a"
+      ]
     },
     {
       "work_id": "vocus-68c650cafd89780001ee563f",
@@ -766,7 +778,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "9f6dca71-4870-4684-8076-b853de0c41e6"
+      ]
     },
     {
       "work_id": "vocus-68ce7959fd89780001e796dd",
@@ -787,7 +802,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "84443006-34d4-406b-bcd4-104ce64a4582"
+      ]
     },
     {
       "work_id": "vocus-68da9638fd89780001227fe1",
@@ -808,7 +826,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "a760b308-7f28-407d-aff6-e149a6a869b7"
+      ]
     },
     {
       "work_id": "vocus-68eb6d09fd89780001833a2d",
@@ -850,7 +871,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "8f469193-9dc5-44ea-b8b2-3398d62dcd48"
+      ]
     },
     {
       "work_id": "vocus-68fee256fd89780001139f49",
@@ -871,7 +895,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "6f377651-fae5-42e0-919f-3f54ffb734b5"
+      ]
     },
     {
       "work_id": "vocus-69189f7afd89780001197b3c",
@@ -931,7 +958,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "9dff92e9-3858-4519-87e6-bc9274205613"
+      ]
     },
     {
       "work_id": "vocus-694bff7dfd8978000124d7ab",
@@ -993,7 +1023,10 @@
       "cover_status": "unreviewed",
       "in_body_images_review": "unreviewed",
       "podcast_link_review": "unreviewed",
-      "popularity_data_status": "missing"
+      "popularity_data_status": "missing",
+      "exact_podcast_guid_candidates": [
+        "3268a23e-ccaf-4f70-83d8-40550f3603e5"
+      ]
     },
     {
       "work_id": "vocus-69a000cbfd897800012961e9",
@@ -1319,7 +1352,96 @@
       "article_pairing_status": "unapproved"
     }
   ],
-  "exact_episode_candidates": [],
+  "exact_episode_candidates": [
+    {
+      "work_id": "vocus-698894aefd89780001f66c54",
+      "guid": "3268a23e-ccaf-4f70-83d8-40550f3603e5",
+      "evidence": [
+        "https://podcasts.apple.com/tw/podcast/%E5%87%A1%E6%80%9D%E8%81%B2/id1833423613?i=1000748777803"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68fee256fd89780001139f49",
+      "guid": "6f377651-fae5-42e0-919f-3f54ffb734b5",
+      "evidence": [
+        "https://podcasts.apple.com/tw/podcast/%E5%87%A1%E6%80%9D%E8%81%B2/id1833423613?i=1000733627404"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68f48228fd89780001595841",
+      "guid": "8f469193-9dc5-44ea-b8b2-3398d62dcd48",
+      "evidence": [
+        "https://podcasts.apple.com/tw/podcast/%E5%87%A1%E6%80%9D%E8%81%B2/id1833423613?i=1000732495952"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "guid": "a760b308-7f28-407d-aff6-e149a6a869b7",
+      "evidence": [
+        "https://open.spotify.com/episode/0gzPrDGzgrFnVAaBLprzrB?si=gKZ1S8w_QpWodOx8G7lLIQ"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68ce7959fd89780001e796dd",
+      "guid": "84443006-34d4-406b-bcd4-104ce64a4582",
+      "evidence": [
+        "https://open.spotify.com/episode/0Xp5DJ2i6ysi1dKHISeWhg?si=fecvVt4hRSGttyAoRXT-Yw"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68c650cafd89780001ee563f",
+      "guid": "9f6dca71-4870-4684-8076-b853de0c41e6",
+      "evidence": [
+        "https://open.spotify.com/episode/5DFw0ATOcDM6GYXloRWgAK?si=qCSx2yNSQsyT4xn6Lhv_kA"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68bc309afd89780001643aa5",
+      "guid": "77d6725e-0918-40f1-8c01-e3b995325b0a",
+      "evidence": [
+        "https://podcasts.apple.com/tw/podcast/%E5%87%A1%E6%80%9D%E8%81%B2/id1833423613?i=1000725232963"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68b1cc52fd89780001138a4f",
+      "guid": "05b69613-4296-4c7a-a205-5937639fb559",
+      "evidence": [
+        "https://open.spotify.com/episode/6PS7x6YNHVeASQFDf2gTOH?si=56Z8JhhaTPmDqqI5tjK8mw"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "guid": "05b69613-4296-4c7a-a205-5937639fb559",
+      "evidence": [
+        "https://open.spotify.com/episode/6PS7x6YNHVeASQFDf2gTOH?si=72TUPrSuTDyTAbQ1Z3vvLg"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-68b418fdfd89780001979cd8",
+      "guid": "0fa86973-54d7-4bd5-a64b-255b5afd9da2",
+      "evidence": [
+        "https://open.spotify.com/episode/4PUiVwj1jnTto8KRDx2pk8?si=srLKiBAoRpOjRCjAWRzCiA"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    },
+    {
+      "work_id": "vocus-6947fbe2fd89780001bd1dbb",
+      "guid": "9dff92e9-3858-4519-87e6-bc9274205613",
+      "evidence": [
+        "https://podcasts.apple.com/tw/podcast/%E5%87%A1%E6%80%9D%E8%81%B2/id1833423613?i=1000742186607"
+      ],
+      "status": "candidate_only_requires_author_approval"
+    }
+  ],
   "service_decisions": {
     "comment_provider": "unselected",
     "contact_provider": "unselected",
