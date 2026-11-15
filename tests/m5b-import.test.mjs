@@ -8,17 +8,18 @@ const audit=JSON.parse(readFileSync('docs/review/m5b-first-articles/source-verif
 const batch=JSON.parse(readFileSync('docs/review/m5b-history/batch-verification.json','utf8')).imported;
 const html=p=>readFileSync(`dist/${p}/index.html`,'utf8');
 const text=s=>s.replace(/<[^>]*>/g,'').replace(/&#x([0-9a-f]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16))).replace(/&#([0-9]+);/g,(_,n)=>String.fromCodePoint(+n)).replace(/&(amp|lt|gt|quot|apos|nbsp);/g,(_,n)=>({amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' '}[n])).replace(/\s/g,'');
-test('三篇授權來源的完整文字逐字雜湊一致，無圖片或自動播放器',()=>{
+test('三篇授權來源全文雜湊不變，原文內沒有未授權圖片或播放器',()=>{
  assert.equal(audit.length,3);
  for(const a of audit){
   const page=html(`articles/${a.slug}`);const body=page.match(/<div class="imported-original">([\s\S]*?)<\/div>/)?.[1];assert.ok(body);
   assert.equal(createHash('sha256').update(text(body)).digest('hex'),a.normalized_text_sha256,a.slug);
   assert.equal((body.match(/class="image-position"/g)||[]).length,a.image_positions);
-  assert.doesNotMatch(body,/<img|<iframe|<script|<picture/);assert.doesNotMatch(page,/data-spotify-id|封面插畫示意/);
+  assert.doesNotMatch(body,/<img|<iframe|<script|<picture/);assert.doesNotMatch(page,/封面插畫示意/); // 正式核准作品映射後，正文外可合法展示 Podcast 播放器
   assert.ok(page.includes(a.source));assert.ok(page.includes(a.title));assert.ok(page.includes('凡思筆記'));
  }
  const real=readdirSync('src/content/articles').filter(f=>/synthetic: false/.test(readFileSync(`src/content/articles/${f}`,'utf8')));assert.equal(real.length,3+batch.length);
- assert.deepEqual(JSON.parse(readFileSync('src/data/podcast-work-map.json','utf8')),[]);
+ const actualMapping=JSON.parse(readFileSync('src/data/podcast-work-map.json','utf8'));
+ assert.equal(actualMapping.length,16); // 作者委託定案後，不再是空的待確認映射
 });
 test('兩個前台系列不重複，文章與故事收錄longform與special並保留舊路由',()=>{
  assert.deepEqual(publicSeries.map(s=>s.name),['凡思維','文章與故事']);
@@ -67,4 +68,4 @@ test('開頭摘錄僅用於卡片及SEO，獨立摘要可顯示；圖片標記�
  }
 });
 
-test('歷史批次全文雜湊與來源一致，無圖片資源及未核准映射',()=>{for(const a of batch){const raw=readFileSync(`src/content/articles/${a.slug}.md`,'utf8').split('---')[2];assert.equal(createHash('sha256').update(text(raw)).digest('hex'),a.normalized_text_sha256,a.slug);assert.doesNotMatch(raw,/<img|<iframe|<script/);assert.ok(html(`articles/${a.slug}`).includes(a.source));}});
+test('歷史批次全文雜湊與來源一致，未在正文插入未核准圖片資源',()=>{for(const a of batch){const raw=readFileSync(`src/content/articles/${a.slug}.md`,'utf8').split('---')[2];assert.equal(createHash('sha256').update(text(raw)).digest('hex'),a.normalized_text_sha256,a.slug);assert.doesNotMatch(raw,/<img|<iframe|<script/);assert.ok(html(`articles/${a.slug}`).includes(a.source));}});
