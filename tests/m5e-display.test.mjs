@@ -51,7 +51,7 @@ test('M5-E 狀態、整部作品說明、分組與已知平台例外不造資料
    }
  }
  assert.ok(books.every(b=>b.links.every(l=>!l.url.includes('readmoo.com'))));
- assert.ok(input.external_exceptions.some(e=>e.id==='books-direct'&&e.status==='not_fully_verified'));
+ assert.ok(input.external_exceptions.some(e=>e.id==='books-direct'&&e.status==='resolved_author_supplied_eight_direct_links'));
  assert.ok(input.external_exceptions.some(e=>e.id==='readmoo-direct'&&e.status==='not_fully_verified'));
 });
 test('M5-E 作者資料共用、照片原檔、base path與未核准保護',()=>{
