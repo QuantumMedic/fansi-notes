@@ -29,7 +29,9 @@ test('兩篇文末有清楚單集入口且只有一個可點連結，研究來�
   assert.match(html,/聆聽這篇文章/);assert.doesNotMatch(html,/>原文附帶收聽連結</);
   for(const link of links){
    const escaped=link.url.replaceAll('&','&amp;');
-   assert.equal(html.split(`href="${escaped}"`).length-1,1);
+   const clickable=html.split(`href="${escaped}"`).length-1;
+   assert.ok(clickable<=1); // 已映射單集改用核准單集的規範化網址，原含 ?si 連結不必重複出現
+   if(!mapped)assert.equal(clickable,1);
    assert.ok(html.includes(`data-original-podcast-link="${escaped}"`));
   }
   assert.doesNotMatch(html,/<a[^>]*>收聽Podcast全集<\/a>/);
