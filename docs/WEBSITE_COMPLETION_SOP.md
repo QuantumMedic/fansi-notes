@@ -1,3 +1,5 @@
+> **PR #19 工作分支補充（2026-11-15，未合併）**：作者已核准以公開 IG 書面內容補足原9篇，分支已準備57篇文章與25組Podcast配對。下方提到「9集 Podcast-only」及「48篇」的是先前已合併 main 版本的歷史基線，Codex 本輪工作以 `docs/review/m5d/FINAL_ARTICLE_PODCAST_CODEX_HANDOFF_2026-11-15.md` 為準，待 CI與UI驗收後才更新完成狀態；圖片可略過，不阻擋正文與功能。
+
 > 目前實作狀態見 `docs/CURRENT_STATE.md` 與最新 `main`。PR #9（48 篇正文）、#11（M5-D 第一批及公開名次）、#10（決策防漏規則）已合併；尚未部署。Podcast 熱門指標固定為「發布後首 7 天播放＋下載總數」，不得稱 Spotify-only Plays。
 
 # 《凡思筆記》網站完工 SOP v1.3｜唯一網站工程規格
