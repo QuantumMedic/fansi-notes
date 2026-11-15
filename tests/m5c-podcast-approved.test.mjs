@@ -61,3 +61,9 @@ test('兩個以相同敘事核對的主題候選已經明確定義作品身分�
  ];
  for(const r of refs)assert.ok(mapping.some(x=>x.guid===r.guid && x.work_id===r.work_id));
 });
+
+test('Podcast列表提示與25集confirmed真實資料一致，不再固定顯示待分類文字',()=>{
+ const page=readFileSync('dist/podcast/index.html','utf8');
+ assert.match(page,/25 集均已完成系列與主題分類/);
+ assert.doesNotMatch(page,/未分類單集仍列在全部/);
+});

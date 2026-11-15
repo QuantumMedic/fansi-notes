@@ -7,6 +7,7 @@ import { catalog } from '../../lib/catalog';
 import { topics, series, url } from '../../data/site';
 import config from '../../data/podcast-config.json';
 const { episodes } = await catalog();
+const unconfirmedCount = episodes.filter(e => e.classification.status !== 'confirmed').length;
 ---
 
 <Main title="凡思聲" description="凡思聲 Podcast 單集列表與收聽入口。">
@@ -56,8 +57,10 @@ const { episodes } = await catalog();
       <button type="reset">清除篩選</button>
     </form>
     <p class="muted">
-      {reviewMode ? '本機審閱包含待審核分類建議。' : '僅使用已確認的作品分類。'}未分類單集仍列在全部
-      Podcast，標示「分類待確認」。
+      {reviewMode ? '本機審閱可檢視分類候選。' : '系列與主題依已確認的作品分類呈現。'}
+      {unconfirmedCount > 0
+        ? `仍有 ${unconfirmedCount} 集待確認分類；單集保留在全部 Podcast，不虛構主題。`
+        : `目前 ${episodes.length} 集均已完成系列與主題分類。`}
     </p>
     <p class="muted">熱門依發布後首7天播放與下載總數的核准順位（非即時）；精確快照日期未提供。未知順位列於最後。</p>
     <p id="episode-count" role="status">
