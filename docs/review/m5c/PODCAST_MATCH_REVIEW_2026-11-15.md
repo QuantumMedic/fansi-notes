@@ -1,4 +1,6 @@
-# M5-C｜Podcast ↔ 文章配對與分類審核｜2026-11-15
+# 歷史候選快照｜Podcast ↔ 文章配對與分類審核｜2026-11-15
+
+> **本檔是定案前的候選記錄，內文 pending／proposed 狀態已過時。** 作者已委託完成 25 集正式分類與 16 集作品配對；當前權威為 [PODCAST_MAPPING_APPROVAL_2026-11-15.md](PODCAST_MAPPING_APPROVAL_2026-11-15.md)、`src/data/podcast-classifications.json` 與 `src/data/podcast-work-map.json`。保留此表是為查核原始外連證據，請勿作為當前待辦。
 
 **已完成證據查核，還沒取得作者的作品關係／分類核准。本文件不是可直接上線的正式映射。**
 
