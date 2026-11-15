@@ -54,7 +54,7 @@ test('三個入口共用正式全文列表，固定系列不包含其他系列�
 test('開頭摘錄僅用於卡片及SEO，獨立摘要可顯示；圖片標記保留但無可見工程文案',()=>{
  assert.equal(showArticleSummary('原文開頭','## 章節\n\n原文開頭與後續'),false);
  assert.equal(showArticleSummary('開頭','<h3>標題</h3><p>開頭文字</p>'),false);
- assert.equal(showArticleSummary('獨立摘要','<p>正文</p>'),true);
+ assert.equal(showArticleSummary('平台摘要','<p>正文</p>'),false);
  assert.equal(showArticleSummary('開頭','<p>開頭</p>','independent'),true);
  assert.equal(showArticleSummary('任何摘錄','<p>正文</p>','excerpt'),false);
  for(const a of audit){
