@@ -31,7 +31,8 @@ test('56個正式IG順位、1個null；Podcast原始順位保持不變',()=>{
  const original=json('docs/review/m5d/inputs/podcast_order_PUBLIC.json');
  for(const row of original.rows)assert.equal(p.podcast.find(e=>e.id===row.guid).rank,row.popularity_rank);
 });
-test('11張圖片只回填指定原始位置，無圖不插圖，原始標記保留',()=>{
- const images=json('src/data/article-images.json');assert.equal(images.length,11);
+test('採用圖片只回填指定原始位置，無圖不插圖，原始11張與標記保留',()=>{
+ const images=json('src/data/article-images.json');const ledger=json('docs/review/m5c/IMAGE_ACTION_LEDGER_2026-11-15.json');assert.equal(images.length,ledger.action_records.filter(r=>r.result==='integrated').length);
+ for(const original of json('tests/fixtures/original-inline-images.json'))assert.ok(images.some(i=>i.work_id===original.work_id&&i.source_position===original.source_position&&i.original_url===original.original_url));
  for(const i of images){const marker=`<span hidden data-source-image-position="${i.source_position}"></span>`;const rendered=articleImages(`before${marker}after`,i.work_id);assert.ok(rendered.startsWith('before'+marker));assert.ok(rendered.endsWith('after'));assert.ok(rendered.includes(i.original_url));assert.equal(articleImages(marker,'unknown'),marker);}
 });

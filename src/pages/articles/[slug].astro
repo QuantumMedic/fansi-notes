@@ -222,9 +222,12 @@ const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '
 </style>
 
 <script>
- document.querySelectorAll<HTMLImageElement>('img[data-article-image]').forEach(img=>{
-  const collapse=()=>{img.style.display='none';};
-  img.addEventListener('error',collapse);
-  if(img.complete && !img.naturalWidth)collapse();
- });
+ import { bindArticleImages } from '../../lib/article-image-state.mjs';
+ bindArticleImages(document);
 </script>
+<style>
+ .article-body :global([data-image-visual]) { margin: 1.5em 0; }
+ .article-body :global([data-image-visual][hidden]), .article-body :global([data-source-image-block][hidden]), .article-body :global(img[data-article-image][hidden]) { display: none !important; }
+ .article-body :global([data-image-source]) { font-size: 13px; color: var(--muted); margin: .75em 0; }
+ .article-body :global([data-image-visual] figcaption p) { margin: 0; }
+</style>

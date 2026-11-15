@@ -13,20 +13,12 @@ interface Props {
   cover_image?: string;
   cover_alt?: string;
 }
-const { id, title, summary, type, published_at, synthetic = true, cover_image, cover_alt, topics = [], episodes = [] } = Astro.props;
+const { id, title, summary, type, published_at, synthetic = true, topics = [], episodes = [] } = Astro.props;
 ---
 
 <article class="work-card">
   <p class="eyebrow">{seriesName(type)}</p>
   <p class="muted">{topics.map((t, i) => <span>{i === 0 ? '主要：' : ' · 次要：'}{topicName(t)}</span>)}</p>
-  {(cover_image || synthetic) && <a href={url(`articles/${id}/`)} aria-label={`閱讀 ${title}`}>
-    {cover_image && <img class="article-banner" src={url(cover_image)} alt={cover_alt || ''} loading="lazy" decoding="async" />}
-    {!cover_image && synthetic && <div class:list={['cover', type]} aria-hidden="true">
-      <span class="cover-orbit"></span>
-      <span class="cover-window"></span>
-      <small>示意插畫</small>
-    </div>}
-  </a>}
     <p class="eyebrow">
       {synthetic ? '測試資料' : '公開文章'}
     </p>
@@ -38,12 +30,3 @@ const { id, title, summary, type, published_at, synthetic = true, cover_image, c
     <a href={url(`articles/${id}/`)} aria-label={`Read more：${title}`}>Read more ↗</a>
 {episodes.map(e => <a href={url(`podcast/${e.slug}/`)}>收聽單集 ↗</a>)}
 </article>
-
-<style>
-  .article-banner {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-  }
-</style>

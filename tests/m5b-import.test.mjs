@@ -36,12 +36,12 @@ test('合併系列可與正文搜尋及主要／次要主題交叉篩選',()=>{
 
 import {existsSync} from 'node:fs';
 import {showArticleSummary} from '../src/lib/article-presentation.mjs';
-test('三個入口共用正式全文列表，固定系列不包含其他系列或聲音版本',()=>{
+test('三個入口共用瀏覽介面，正式基線不混入其他系列或合成作品',()=>{
  for(const [path,count] of [['articles',57],['series/fansiwei',1+batch.filter(a=>a.content_type==='fansiwei').length+2],['series/stories',2+batch.filter(a=>a.content_type!=='fansiwei').length+7]]) {
   const page=html(path);
   assert.match(page,/data-article-browser/);
   assert.equal((page.match(/data-result/g)||[]).length,count);
-  assert.match(page,new RegExp(`共 ${count} 篇文章`));
+  assert.match(page,new RegExp(`共 ${count} ${path === 'series/fansiwei' ? '個作品' : '篇文章'}`));
   assert.doesNotMatch(page,/紙上花園|閱讀之窗|聲音版本|data-work-result/);
   assert.match(page,/id="sort"/);assert.match(page,/id="topic"/);assert.match(page,/id="query"/);
   if(path!=='articles')assert.doesNotMatch(page,/id="type"/);

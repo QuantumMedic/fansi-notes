@@ -15,7 +15,6 @@ const { work: w } = Astro.props;
   </p>
   <ClassificationBadge classification={w.classification} />
   <p class="muted">{w.article?.data.published_at?.slice(0,10) || w.episodes[0]?.published_at?.slice(0,10)}</p>
-  {w.article?.data.cover_image && <a href={url(`articles/${w.article.data.slug}/`)}><img class="article-banner" src={url(w.article.data.cover_image)} alt={w.article.data.cover_alt || ''} loading="lazy" style="width:100%;height:auto" /></a>}
   <h2><a href={url(w.article ? `articles/${w.article.data.slug}/` : `podcast/${w.episodes[0].slug}/`)}>{w.title}</a></h2>
   <p class="summary">{w.summary}</p>
   <div class:list={['media-links', { 'has-article': !!w.article }]}>

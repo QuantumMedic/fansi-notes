@@ -1,0 +1,10 @@
+---
+import Main from '../layouts/Main.astro';
+import {articleImages} from '../lib/article-images.mjs';
+const records=[1,2,3].map(n=>({work_id:'image-fixture',source_position:n,original_url:n===1?'/fansi-notes/assets/test-banner.svg':'/fansi-notes/assets/missing-image-fixture.svg',width:1200,height:400,alt:`隔離圖片測試 ${n}`}));
+const block=(n,caption)=>`<div><div><picture><span hidden data-source-image-position="${n}"></span></picture></div><div>${caption}</div></div>`;
+const content=articleImages(`<p>保留正文：圖片失敗不影響文章。</p>${block(1,'<p>成功圖片圖說</p>')}${block(2,'<p>失敗圖片專屬圖說</p>')}<p>研究正文照常保留。</p>${block(3,'<a href="https://example.com/paper">必要研究來源</a>')}<p>保留結尾。</p>`,'image-fixture',records);
+---
+<Main title="隔離圖片載入驗收"><article class="reading"><h1>圖片載入驗收</h1><Fragment set:html={content}/></article></Main>
+<script>import {bindArticleImages} from '../lib/article-image-state.mjs';bindArticleImages(document);</script>
+<style>figure{margin:1.5em 0}figcaption{font-size:13px}[hidden]{display:none!important}</style>

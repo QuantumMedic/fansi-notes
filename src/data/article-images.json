@@ -1,101 +1,962 @@
 [
   {
+    "work_id": "vocus-69a000cbfd897800012961e9",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/c03c7d11-2463-492c-8aad-daabfef1497a.jpg",
+    "source_caption": "圖片來源",
+    "alt": "抱著玩偶的小猴與新聞畫面",
+    "width": 686,
+    "height": 386,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6970c532fd89780001c4568c",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/ba4fbdde-12ac-47b1-bd5e-552a03ac15fa.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "廚師在廚房料理食物",
+    "width": 1400,
+    "height": 933,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-694bff7dfd8978000124d7ab",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/1abcd6c9-e12b-4a44-bc2f-edc860a21fa0.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "雪地中的聖誕樹與星空",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-694bff7dfd8978000124d7ab",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/5548a653-3bc3-42c1-b2a7-14c0c6fd307f.png",
+    "source_caption": "耶穌出生在馬槽中",
+    "alt": "馬槽中的嬰兒與守候的人物",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-69340950fd89780001659d42",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/ca138b59-c72c-4ee3-982b-5b9fc6b89a80.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "病房中相擁的人",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-69189f7afd89780001197b3c",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/43ff46cd-e13a-46dc-9e84-dfb7509a0acd.jpg",
+    "source_caption": "圖源：《間諜家家酒》第三季",
+    "alt": "戰後街道與站立的孩子",
+    "width": 1920,
+    "height": 1080,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-69189f7afd89780001197b3c",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/d92cd3bb-603f-4de6-ab6b-d7b62c23a566.jpg",
+    "source_caption": "圖源：《間諜家家酒》第三季",
+    "alt": "戰火中的人物近景",
+    "width": 1920,
+    "height": 1080,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-69189f7afd89780001197b3c",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/c393ab8f-2ac8-462a-86f4-e01cef0156bb.jpg",
+    "source_caption": "圖源：《間諜家家酒》",
+    "alt": "戴帽人物的動畫畫面",
+    "width": 1920,
+    "height": 1080,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68fee256fd89780001139f49",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/da3164e6-79db-4e11-bac4-f734bc288b94.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "實驗環境中的老鼠與遠方人影",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68fee256fd89780001139f49",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/e7c9809a-ca24-4a75-ac4b-b7ddeea1638b.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "被手掌托起的小鼠",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68f48228fd89780001595841",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/e841e930-1c25-438a-8c94-35f2c7b9c3ce.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "寫著三月三十日的日曆與孤立人影",
+    "width": 1308,
+    "height": 870,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68da9638fd89780001227fe1",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/ac5faad7-3f4f-4016-9057-e22909607605.png",
+    "source_caption": "光復車站現場擁擠的人潮",
+    "alt": "光復車站與月台人潮",
+    "width": 2048,
+    "height": 1258,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68da9638fd89780001227fe1",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/61f8daf1-c112-4ba2-bd19-5365027c9577.jpg",
+    "source_caption": "水災後的現場",
+    "alt": "災後街道及清理現場",
+    "width": 1206,
+    "height": 887,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68da9638fd89780001227fe1",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/47f59218-cd63-4fd0-8269-eb9bab3b163d.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "災後清理工作的照片拼貼",
+    "width": 2048,
+    "height": 2048,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68ce7959fd89780001e796dd",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/1d5ecaca-1c5a-468e-a777-61af4b591112.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "戶外坐著的人物照片",
+    "width": 2000,
+    "height": 1335,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68ce7959fd89780001e796dd",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/ee7957d8-b5b2-40c3-8edd-369a8cbe163c.jpg",
+    "source_caption": "動機式晤談的基本概念",
+    "alt": "動機式晤談四個核心概念的交集示意",
+    "width": 959,
+    "height": 684,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68c650cafd89780001ee563f",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/6677cc59-e969-42df-b6a6-da568c76d395.jpg",
+    "source_caption": "悲慘世界",
+    "alt": "悲慘世界作品海報",
+    "width": 961,
+    "height": 540,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68c650cafd89780001ee563f",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/5387678f-a7b4-4fd3-8d65-c86aaefacb51.jpg",
+    "source_caption": "圖源：中央社",
+    "alt": "悲慘世界舞台表演畫面",
+    "width": 800,
+    "height": 534,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68bc309afd89780001643aa5",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/0898ea44-9023-455f-ae29-ee5bce8f7f23.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "人在紙張堆積的空間中前行",
+    "width": 1300,
+    "height": 879,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68b1cc52fd89780001138a4f",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/58904233-02ca-49a4-88ee-268ba83327b7.jpg",
+    "source_caption": "圖源：鬼滅之刃",
+    "alt": "鬼滅之刃角色相擁的動畫畫面",
+    "width": 812,
+    "height": 422,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68b1cc52fd89780001138a4f",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/87533af5-de01-47d9-b625-c56cc5a03c11.jpg",
+    "source_caption": "圖源：鬼滅之刃",
+    "alt": "鬼滅之刃角色的近景",
+    "width": 1080,
+    "height": 1530,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68b1cc52fd89780001138a4f",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/96b6fd2c-4c41-4bbc-9ab9-b25db5ebb430.jpg",
+    "source_caption": "圖源：鬼滅之刃",
+    "alt": "鬼滅之刃角色在戶外",
+    "width": 1199,
+    "height": 671,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68aaa583fd89780001779778",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/94bd7c71-2161-4d40-ae4a-c280ee8f2bad.png",
+    "source_caption": "圖源",
+    "alt": "反脆弱書封及概念摘錄",
+    "width": 1024,
+    "height": 512,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68aaa583fd89780001779778",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/bad20639-866f-4f53-8b5b-365a86765309.png",
+    "source_caption": "胡蝶忍",
+    "alt": "胡蝶忍動畫畫面",
+    "width": 1936,
+    "height": 1082,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68aaa583fd89780001779778",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/35cbec3b-9170-4a7e-bc24-56bb5d192bf0.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "鬼滅之刃角色近景",
+    "width": 1200,
+    "height": 675,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6859655dfd89780001378815",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/ee8206b1-7845-4bbf-84cb-e53678decab2.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "執行長日記書封",
+    "width": 1000,
+    "height": 1361,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-683f025efd8978000114ddd9",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/1e6c7f0e-b0aa-4936-8a6b-1fa71cc61f44.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "男子在桌前閱讀與思考",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-682f1f7ffd89780001cc2d60",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/5a203143-fbd5-4494-bb41-09d2bf54aade.jpg",
+    "source_caption": "搞笑諾貝爾經濟學講研究「Talent vs Luck, 天才對運氣」」",
+    "alt": "Talent vs Luck研究論文首頁",
+    "width": 450,
+    "height": 212,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-682f1f7ffd89780001cc2d60",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/ca38f027-23f4-4afe-a0e3-27637162865d.jpg",
+    "source_caption": "提出幸運四大要素的李察·韋斯曼，圖源來自連結",
+    "alt": "幸運四大要素與研究者介紹投影片",
+    "width": 960,
+    "height": 720,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-682f1f7ffd89780001cc2d60",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/8992b0df-53cf-44c8-9e6b-f12f8078daf8.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "男子在書架前閱讀",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68245605fd897800019da7d0",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/4618f683-ca6e-4ae7-9cb5-bf281bd35bb7.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "站在不同人生方向指示牌前的人",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68245605fd897800019da7d0",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/603797a1-43c7-412f-b534-c5e95b7daf02.png",
+    "source_caption": "很多時候我們需要的是一段安靜的時間",
+    "alt": "坐在原野木頭上思考的人",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68245605fd897800019da7d0",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/ad701247-08fc-4ceb-a661-130407d731dc.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "穿著畢業服的女子",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68245605fd897800019da7d0",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/a226ce8a-3aea-40bb-b7fc-7e56987a42a5.jpg",
+    "source_caption": "黃仁勳的演講（圖片取自閱讀前哨戰）",
+    "alt": "黃仁勳演講引言圖",
+    "width": 1080,
+    "height": 1080,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68201950fd89780001848e30",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/de808756-a9cb-47fd-b4e1-1096afd2d0f6.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "在餐桌前休息的女子",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68201950fd89780001848e30",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/884f807f-ef3a-43dd-bd64-b85d9f0e46eb.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "母親陪孩子學習的插畫",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68201950fd89780001848e30",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/e9ab95af-db8a-4cfd-ad90-36798f744348.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "女子牽著孩子走向光線",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-681c4b69fd897800017ddff5",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/f130810e-d805-4bce-90a3-5748d0e51655.png",
+    "source_caption": "這個母親節好好陪媽媽吧！",
+    "alt": "女子在餐桌前沉思",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68199d76fd897800011df871",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/aa239692-a158-43da-9ca0-25a9b5884cda.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "三人觀看螢幕的插畫",
+    "width": 1536,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68199d76fd897800011df871",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/cb2ea41b-70be-4b8c-b737-c81dd16f443f.jpg",
+    "source_caption": "來源：反正我很閒",
+    "alt": "反正我很閒影片的訪談畫面",
+    "width": 1024,
+    "height": 576,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-681050d6fd8978000167fa4e",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/c10576f8-2d58-4099-a2cc-d4bde7083504.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "人物對話的漫畫節錄",
+    "width": 1087,
+    "height": 1016,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68086c27fd897800011e9a4f",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/6062cf5d-4202-418a-8f30-a33c650d38e5.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "健康童年三大條件的比較示意圖",
+    "width": 1342,
+    "height": 895,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-68086c27fd897800011e9a4f",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/02441f81-21fe-48f3-9bd3-471e7f73bcb4.jpg",
+    "source_caption": "生物圈二號",
+    "alt": "生物圈二號設施",
+    "width": 1111,
+    "height": 741,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67f7cc40fd8978000135d2fc",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/4eb4eb5a-d4e8-449c-aea3-b1b0ce0a6bb1.jpg",
+    "source_caption": "我這輩子只在乎能不能六點下班！",
+    "alt": "章魚哥談下班的動畫畫面",
+    "width": 1280,
+    "height": 720,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67ee69c9fd89780001777985",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/cfacb055-1f8e-4e3b-b7db-2283a2a7b7f3.png",
+    "source_caption": "拿著半世紀以來第一幅畫的奶奶",
+    "alt": "以插畫遮蔽臉部的長者展示畫作",
+    "width": 1114,
+    "height": 808,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67e24412fd89780001f9a032",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/3da8a392-9064-47b4-a339-826cdfca8abc.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "睡眠與深夜看影片的對照迷因",
+    "width": 600,
+    "height": 339,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67d3bb68fd89780001334866",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/63a1008c-16ca-4aae-b8b3-24656a29eda5.jpg",
+    "source_caption": "在夜裡行淫被當場逮的婦人，和理應一併受罰卻無人在意的男子",
+    "alt": "婦人被帶到眾人面前的敘事插畫",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67d3bb68fd89780001334866",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/876ca67a-b5e9-409a-a38c-2f421bbf8db5.png",
+    "source_caption": "犯罪的婦女被帶到聖殿，法利賽人要求耶穌作出裁決",
+    "alt": "聖殿中的裁決場景插畫",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67d3bb68fd89780001334866",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/de60d216-e8ed-4222-bf30-79f59a4727ab.jpg",
+    "source_caption": "眾人離開後，耶穌也不定罪婦人，讓她自行離開",
+    "alt": "耶穌與婦人對話的插畫",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67d3bb68fd89780001334866",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/8c1e02ea-40e2-4ea5-8e21-aef36e59bda5.jpg",
+    "source_caption": "劫後餘生的女人，獲得嶄新的生命和機會",
+    "alt": "婦人走向晨光的插畫",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67d3cc10fd8978000137eb22",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/a26e71e9-deed-4d79-b12f-d6ddcebdb308.png",
+    "source_caption": "驕傲地展示自己家人照片的伯伯",
+    "alt": "以插畫遮蔽臉部的長者展示家庭照片",
+    "width": 884,
+    "height": 704,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67d3cc10fd8978000137eb22",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/61a0cce5-a8a4-4bcd-92c3-28c58106c7d3.jpg",
+    "source_caption": "麥克阿瑟名言：「老兵不死，只是凋零」",
+    "alt": "麥克阿瑟肖像與老兵名言",
+    "width": 850,
+    "height": 400,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67c79b0ffd89780001c2f452",
+    "source_position": 1,
+    "original_url": "https://images.vocus.cc/dcac1692-f355-4a2d-8614-1b0df9d941f5.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "星空與沙漠中兩人對話",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
     "work_id": "vocus-67c5192dfd89780001396083",
     "source_position": 1,
     "original_url": "https://images.vocus.cc/e65c8a1d-8fb9-4bdc-809e-9e47a0e2e510.jpg",
     "source_caption": "燃燒著孤傲之火的尼采，與耶穌在時空之外的曠野相遇",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "尼采與耶穌在曠野相遇",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-67c5192dfd89780001396083",
     "source_position": 2,
     "original_url": "https://images.vocus.cc/3cded543-2aa0-4a66-ae0f-5a2c8d01484d.jpg",
     "source_caption": "傲立於深淵之上的尼采，與站立於柔和晨光中的耶穌",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "深淵與晨光中的兩位思想者",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-67c5192dfd89780001396083",
     "source_position": 3,
     "original_url": "https://images.vocus.cc/d237417e-7aac-41e5-9565-35ad9f737805.jpg",
     "source_caption": "在曠野中，對話未完的兩人⋯⋯",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "曠野中尚未結束的對話",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-67b7cc0ffd89780001a12b84",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/67385166-3abd-407b-9795-074eb9f06992.png",
+    "source_caption": "面對女兒被殺，莎夏的父親選擇原諒兇手，只為了讓孩子走出仇恨的森林",
+    "alt": "進擊的巨人人物對話的畫面節錄",
+    "width": 1080,
+    "height": 1350,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6790393efd89780001cb26b2",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/ce19f408-25aa-4fec-95d5-17cec2d39311.png",
+    "source_caption": "成為自由的奴隸的艾連",
+    "alt": "艾連與阿爾敏的動畫畫面",
+    "width": 1279,
+    "height": 714,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6790393efd89780001cb26b2",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/66156c93-754b-48a8-a775-583e13198eea.png",
+    "source_caption": "掙脫愛的枷鎖的尤米爾",
+    "alt": "尤米爾的動畫畫面",
+    "width": 1080,
+    "height": 1080,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6790393efd89780001cb26b2",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/7b955fd1-d8f8-4a56-b482-20c821df583b.jpg",
+    "source_caption": "象徵歷史再度輪迴的巨樹？",
+    "alt": "進擊的巨人中的巨樹",
+    "width": 644,
+    "height": 362,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-676a6484fd89780001995dcf",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/832b1ff1-6143-487f-87aa-0b3267dc01c1.jpg",
+    "source_caption": "許多人幻想中的精神病院",
+    "alt": "精神病院情境照片",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-676a6484fd89780001995dcf",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/afbb86a1-a432-46ab-8adf-9d6f020b9162.png",
+    "source_caption": "躁鬱症類型的簡單介紹",
+    "alt": "四種躁鬱症情緒曲線比較圖",
+    "width": 1024,
+    "height": 810,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-676a6484fd89780001995dcf",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/817e3bc2-c566-46e1-b03a-0fce12963b35.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "沙漠中樹木與倒影",
+    "width": 2254,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6744890cfd89780001e70aa9",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/ffa27c83-9729-4a76-b6b7-6e79259f1f23.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "急救訓練模型與胸外按壓",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6744890cfd89780001e70aa9",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/77498ccf-23ed-49b1-a65d-85cf9d80a0f0.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "醫療監測設備",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6744890cfd89780001e70aa9",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/3fa83b32-6f96-44fe-9912-e58e10518b64.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "堆積的紙本資料",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6744890cfd89780001e70aa9",
+    "source_position": 5,
+    "original_url": "https://images.vocus.cc/4ee06230-54ed-4cab-8f01-9968a57c478f.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "攀登中的人物剪影",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-673a0b99fd89780001bbb483",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/4ae24caf-230f-4079-8a1c-4bdf49956424.jpg",
+    "source_caption": "《哈囉掰掰，我是鬼媽媽》劇照｜Netflix 提供",
+    "alt": "哈囉掰掰我是鬼媽媽劇照",
+    "width": 800,
+    "height": 533,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-673a0b99fd89780001bbb483",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/a1dc5abd-b41b-4672-a745-d30a587491c9.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "雲層中的日光",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-673a0b99fd89780001bbb483",
+    "source_position": 5,
+    "original_url": "https://images.vocus.cc/c0a28dc6-155d-4141-bdae-cca57d9eba2e.jpg",
+    "source_caption": "選擇愛運動 官網",
+    "alt": "選擇愛運動所介紹的孩子照片",
+    "width": 1147,
+    "height": 643,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-673a0b99fd89780001bbb483",
+    "source_position": 6,
+    "original_url": "https://images.vocus.cc/b19f62bb-2e16-4343-b089-d9f0af96defe.jpg",
+    "source_caption": "《智慧奇點》書籍",
+    "alt": "智慧奇點書籍封面",
+    "width": 1200,
+    "height": 1200,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6733f8a4fd897800019465a6",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/f70a5cf1-2122-41cc-800b-5fdb240efb5d.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "戶外瑜伽練習",
+    "width": 2250,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6733f8a4fd897800019465a6",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/f69e742b-91ec-424d-b882-877d69e2d233.jpg",
+    "source_caption": "圖源：Pexels",
+    "alt": "夜晚的建築與庭園",
+    "width": 2265,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6733f8a4fd897800019465a6",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/d159103d-92c3-4566-8cdf-570abe3b0ed5.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "團體合照",
+    "width": 2048,
+    "height": 1365,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6732b6b1fd89780001936027",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/8fcaeb15-f647-416b-96c0-17f6e83c47fe.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "抽象色彩畫作",
+    "width": 1592,
+    "height": 1070,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6732b6b1fd89780001936027",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/92985b21-01b6-499c-98fe-480ff7d8861e.jpg",
+    "source_caption": "圖源：愛奇藝《流金歲月》劇照",
+    "alt": "流金歲月劇照",
+    "width": 800,
+    "height": 450,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6732b6b1fd89780001936027",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/4362a95e-8159-4962-9f04-ad8338b0351a.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "籃球場與棕櫚樹",
+    "width": 1574,
+    "height": 1034,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6732b6b1fd89780001936027",
+    "source_position": 5,
+    "original_url": "https://images.vocus.cc/02c37d4d-9508-4ef1-889d-e429d5f90e25.png",
+    "source_caption": "國中時期的創作累積",
+    "alt": "早期創作的手寫本及筆記本",
+    "width": 740,
+    "height": 644,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6729aba2fd89780001d5b97a",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/34a9fa17-ee28-4004-b53b-4be8d1ecb07d.jpg",
+    "source_caption": "轉自 看見希望：泛視神經脊髓炎NMOSD 粉專",
+    "alt": "多發性硬化症與視神經脊髓炎的比較圖",
+    "width": 1200,
+    "height": 1200,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6729aba2fd89780001d5b97a",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/41fe24e5-1010-428c-a40c-637affa1a76c.png",
+    "source_caption": "圖源：Pexels",
+    "alt": "手持相機的人",
+    "width": 1462,
+    "height": 966,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6729aba2fd89780001d5b97a",
+    "source_position": 5,
+    "original_url": "https://images.vocus.cc/6bf2a475-59b8-4753-af22-e07591ae5830.png",
+    "source_caption": "圖源：Pexels",
+    "alt": "握手支持的近景",
+    "width": 1736,
+    "height": 974,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-671f43ddfd89780001d85d12",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/f6b3d80c-57bf-469e-9079-413631720d57.png",
+    "source_caption": "一切的起源⋯⋯一本國中聯絡簿？",
+    "alt": "國中聯絡簿與手寫字跡",
+    "width": 1446,
+    "height": 1186,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-671f43ddfd89780001d85d12",
+    "source_position": 3,
+    "original_url": "https://images.vocus.cc/522b6edb-f296-4a75-9fa9-c2ad2f4c68b7.png",
+    "source_caption": "國中時跟損友們（？）的合照",
+    "alt": "學生手持聯絡簿的合照",
+    "width": 1396,
+    "height": 1048,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-671f43ddfd89780001d85d12",
+    "source_position": 4,
+    "original_url": "https://images.vocus.cc/2748c06a-0239-401c-ba6a-4ed271bbbc77.png",
+    "source_caption": "因為有趣，開始認真撰寫聯絡簿 也逐漸培養出寫作興趣",
+    "alt": "聯絡簿手寫頁的拼貼",
+    "width": 1412,
+    "height": 1410,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-671f43ddfd89780001d85d12",
+    "source_position": 5,
+    "original_url": "https://images.vocus.cc/7ff3eeb8-2b83-465e-9d51-833503277e52.png",
+    "source_caption": "從聯絡簿作為起點，開始逐漸累積更多的創作",
+    "alt": "逐漸累積的創作筆記本",
+    "width": 1584,
+    "height": 1378,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-671f43ddfd89780001d85d12",
+    "source_position": 6,
+    "original_url": "https://images.vocus.cc/0295b365-7e3a-4b18-bdd6-e521cdfdae6f.png",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "寬闊沙灘上的人",
+    "width": 1456,
+    "height": 970,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-675b90a6fd89780001cc0f65",
+    "source_position": 5,
+    "original_url": "https://images.vocus.cc/ab25ead3-a02a-490c-9f94-c28e926f514f.jpg",
+    "source_caption": "轉自：木棉花fb",
+    "alt": "進擊的巨人作品海報",
+    "width": 1080,
+    "height": 1534,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-67bfdd7ffd8978000116e6ec",
     "source_position": 2,
     "original_url": "https://images.vocus.cc/e633a11e-f421-474d-a661-71ef842fc2b1.png",
     "source_caption": "在未來世界，一切語言都被冰冷的文字取代⋯⋯",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "未來城市中的符號世界",
+    "width": 1024,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-67bfdd7ffd8978000116e6ec",
     "source_position": 3,
     "original_url": "https://images.vocus.cc/3ccdf755-33b6-4f05-b663-78c1f214cabe.png",
     "source_caption": "隱藏在歷史陰影處的反抗組織，企圖恢復「古語」",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "歷史陰影中的反抗組織",
+    "width": 1024,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-67bfdd7ffd8978000116e6ec",
     "source_position": 4,
     "original_url": "https://images.vocus.cc/18c871be-6758-4573-b5ce-4344349d0e3f.png",
     "source_caption": "語言生成器的真實身份曝光——他是末日核戰倖存者的意識，不是為了控制人類，目的而是想守護人類",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "語言生成器的真實身份",
+    "width": 1024,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-67bfdd7ffd8978000116e6ec",
     "source_position": 5,
     "original_url": "https://images.vocus.cc/833373c0-f167-47fa-a1f1-6f957a0e3540.png",
     "source_caption": "最終，林做出了選擇...",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "風吹過原野中的人物",
+    "width": 1024,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-6780770dfd89780001b10de5",
     "source_position": 2,
     "original_url": "https://images.vocus.cc/74c73138-ed0b-48e3-997c-9df264966bb9.png",
     "source_caption": "堆積如山的謊言垃圾場",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "堆積如山的謊言垃圾場",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-6780770dfd89780001b10de5",
     "source_position": 3,
     "original_url": "https://images.vocus.cc/e6e69b6a-86ce-4d17-9a68-3a5cb592719b.jpg",
     "source_caption": "瀰漫霧氣的謊言地下城",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "謊言地下城",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-6780770dfd89780001b10de5",
     "source_position": 4,
     "original_url": "https://images.vocus.cc/f35535ca-d82f-40c4-9ff8-e2edf6b882ce.jpg",
     "source_caption": "無比巨大的謊言核心",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "巨大的謊言核心",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
   },
   {
     "work_id": "vocus-6780770dfd89780001b10de5",
     "source_position": 5,
     "original_url": "https://images.vocus.cc/c02b55a6-25d0-44f4-b3fb-f9109d84c95d.jpg",
     "source_caption": "被謊言籠罩的城市",
-    "heuristic_group": "editorial_image_candidate",
-    "site_use": "pending_author_and_rights_review",
-    "cover_candidate": false
+    "alt": "被謊言籠罩的城市",
+    "width": 1792,
+    "height": 1024,
+    "site_use": "integrated_author_authorized_reuse"
+  },
+  {
+    "work_id": "vocus-6764e586fd89780001056594",
+    "source_position": 2,
+    "original_url": "https://images.vocus.cc/305b6a2b-a314-4ff7-a8e8-29e1b517aff0.jpg",
+    "source_caption": "vocus｜新世代的創作平台",
+    "alt": "夜晚燃燒的火堆",
+    "width": 1000,
+    "height": 1500,
+    "site_use": "integrated_author_authorized_reuse"
   }
 ]
