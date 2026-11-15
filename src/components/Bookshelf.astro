@@ -1,6 +1,6 @@
 ---
 import { publications, type Publication } from '../lib/publications.ts';
-import { kinds, forms } from '../lib/publications.mjs';
+import { publicationStatus, forms } from '../lib/publications.mjs';
 import { url } from '../data/site';
 import BookCover from './BookCover.astro';
 interface Props {
@@ -24,7 +24,7 @@ const { books = publications } = Astro.props;
         <h2>{b.title}</h2>
       </a>
       <p class="book-meta">
-        {kinds[b.publication_status]} · {forms[b.work_form]}
+        {publicationStatus(b)} · {forms[b.work_form]}{b.order && ` · 第${b.order}冊`}
       </p>
       {b.synthetic && <p class="sample">合成測試資料</p>}
       <p class="summary">{b.summary}</p>

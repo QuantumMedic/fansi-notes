@@ -7,17 +7,21 @@ const { book: b } = Astro.props;
 ---
 
 <div class="publication-cover" style={`--book-tone:var(--${b.theme})`}>
-  {b.cover ? (
-    <img src={b.cover} alt={`${b.title}書封`} loading="lazy" />
-  ) : (
-    <div class="placeholder">
-      <span>示意書封</span>
-      <div class="ornament" aria-hidden="true"></div>
-      <strong>{b.title}</strong>
-      <small>{b.synthetic ? '合成測試・非作者作品' : '正式書封待提供'}</small>
-    </div>
-  )}
+  {b.cover && <img data-publication-image src={b.cover} alt={b.cover_alt || `${b.title}書封`} loading="lazy" referrerpolicy="no-referrer" />}
+  <div class="placeholder" data-cover-fallback hidden={Boolean(b.cover)}>
+    <span>作品標籤</span>
+    <div class="ornament" aria-hidden="true"></div>
+    <strong>{b.title}</strong>
+    <small>{b.synthetic ? '合成測試・非作者作品' : b.cover ? '封面暫時無法載入' : '短篇創作'}</small>
+  </div>
 </div>
+<script>
+  document.querySelectorAll<HTMLImageElement>('[data-publication-image]').forEach(img=>{
+    const fallback=()=>{img.hidden=true;const label=img.parentElement?.querySelector<HTMLElement>('[data-cover-fallback]');if(label)label.hidden=false;};
+    img.addEventListener('error',fallback,{once:true});
+    if(img.complete && !img.naturalWidth)fallback();
+  });
+</script>
 <style>
   .publication-cover {
     width: 100%;

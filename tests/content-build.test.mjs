@@ -51,7 +51,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     writeFileSync(join(root,'public/assets/test-banner.svg'), '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400"><rect width="1200" height="400" fill="#82978b"/><text x="80" y="210" font-size="48">Synthetic banner 3:1</text></svg>');
     write(data);
     const booksFile=join(root,'src/data/publications.json');
-    const books=JSON.parse(readFileSync(booksFile,'utf8'));
+    const books=JSON.parse(readFileSync(join(repo,'tests/fixtures/publications.json'),'utf8'));
     books[0].title='更新合成書名';
     books[0].synthetic=false; // Public-state fixture exists only inside this temporary build.
     books[0].work_form='short';books[0].publication_status='published';books[0].full_text={approved:true,approved_by:'synthetic-fixture',approved_revision:'demo-v1',text:'獨立授權的合成短篇全文。'};

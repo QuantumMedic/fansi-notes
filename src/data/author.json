@@ -1,1 +1,27 @@
-{"name":null,"bio":null,"photo":null,"timeline":[],"approved":false}
+{
+  "name": "江宗凡",
+  "label": "作家、醫師",
+  "bio": "創作涵蓋科幻、心理懸疑與架空歷史，關注人在科技、制度與生活困境中的選擇。著有《天啟》三部曲、《智慧奇點》，並發表長篇小說《心靈倒影》。《智慧奇點》獲2023 KadoKado百萬小說創作大賞類型小說組首獎。經營「凡思筆記」與Podcast「凡思聲」，分享閱讀、醫療與創作中的觀察。",
+  "short_bio": "江宗凡，作家、醫師。著有《天啟》三部曲、《智慧奇點》，經營「凡思筆記」與Podcast「凡思聲」。",
+  "social_links": [
+    {
+      "label": "Instagram · @sci_fang2000",
+      "url": "https://www.instagram.com/sci_fang2000/"
+    }
+  ],
+  "photo": "images/author/jiang-zongfan.avif",
+  "photo_alt": "江宗凡手持麥克風與獎座的活動照片",
+  "timeline": [
+    {
+      "year": "2023",
+      "event": "《智慧奇點》獲KadoKado百萬小說創作大賞類型小說組首獎。",
+      "source_url": "https://www.kadokawa.com.tw/blog/posts/20240207"
+    },
+    {
+      "year": "2024",
+      "event": "《智慧奇點》上下冊電子書由台灣角川出版。",
+      "source_url": "https://www.bookwalker.com.tw/product/221464"
+    }
+  ],
+  "approved": true
+}

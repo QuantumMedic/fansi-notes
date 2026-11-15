@@ -2,7 +2,7 @@
 import ServiceState from '../../../components/ServiceState.astro';
 import Main from '../../../layouts/Main.astro';
 import { publications } from '../../../lib/publications.ts';
-import { kinds, forms } from '../../../lib/publications.mjs';
+import { forms, publicationStatus, linkGroups } from '../../../lib/publications.mjs';
 import { url } from '../../../data/site';
 export function getStaticPaths() {
   return publications.map((book) => ({ params: { slug: book.slug }, props: { book } }));
@@ -15,6 +15,7 @@ const siblings = publications
   .filter((x) => b.series && x.series === b.series)
   .sort((a, b) => (a.order || 0) - (b.order || 0));
 
+import Endorsement from '../../../components/Endorsement.astro';
 import BookCover from '../../../components/BookCover.astro';
 import PublicationRelations from '../../../components/PublicationRelations.astro';
 ---
@@ -27,57 +28,19 @@ import PublicationRelations from '../../../components/PublicationRelations.astro
     <div class="book-opening">
       <div class="cover-display">
         <BookCover book={b} />
-        <p>{b.synthetic ? '合成測試資料・非作者作品' : '作品書封'}</p>
+        <p>{b.synthetic ? '合成測試資料・非作者作品' : b.cover ? '正式作品封面' : '文字作品標籤'}</p>
       </div>
       <div class="book-introduction">
         <p class="eyebrow">
-          {kinds[b.publication_status]} · {forms[b.work_form]}
+          {publicationStatus(b)} · {forms[b.work_form]}
         </p>
         <h1>{b.title}</h1>
         <p class="synopsis">{b.summary}</p>
-        <dl>
-          <div>
-            <dt>作品形式</dt>
-            <dd>{forms[b.work_form]}</dd>
-          </div>
-          <div>
-            <dt>出版狀態</dt>
-            <dd>{kinds[b.publication_status]}</dd>
-          </div>
-          {b.author && (
-            <div>
-              <dt>作者</dt>
-              <dd>{b.author}</dd>
-            </div>
-          )}
-          {b.publisher && (
-            <div>
-              <dt>出版社</dt>
-              <dd>{b.publisher}</dd>
-            </div>
-          )}
-          {b.year && (
-            <div>
-              <dt>出版年份</dt>
-              <dd>{b.year}</dd>
-            </div>
-          )}
-          {b.series && (
-            <div>
-              <dt>所屬系列</dt>
-              <dd>{b.series}</dd>
-            </div>
-          )}
-        </dl>
-        {b.links.length > 0 && (
-          <nav class="purchase-links" aria-label="出版與購書連結">
-            {b.links.map((x) => (
-              <a href={x.url} rel="noopener noreferrer">
-                {x.label} ↗
-              </a>
-            ))}
-          </nav>
-        )}
+        {Object.entries(linkGroups).map(([group,label])=>{
+          const links=b.links.filter(x=>x.group===group);
+          return links.length>0 && <section class="link-group"><h2>{label}</h2><nav class="purchase-links" aria-label={label}>{links.map(x=><a href={x.url} rel="noopener noreferrer">{x.label} ↗</a>)}</nav></section>;
+        })}
+        {b.links.some(x=>!x.group) && <nav class="purchase-links" aria-label="出版與購書連結">{b.links.filter(x=>!x.group).map(x=><a href={x.url} rel="noopener noreferrer">{x.label} ↗</a>)}</nav>}
         {b.world && (
           <a class="world-door" href={url(`works/${b.slug}/world/`)}>
             <span>作品世界</span>
@@ -87,6 +50,12 @@ import PublicationRelations from '../../../components/PublicationRelations.astro
       </div>
     </div>
     <div class="book-reading">
+      {b.description.length>0 && <section class="description"><h2>{b.description_scope==='whole_work' ? '整部作品介紹' : '故事介紹'}</h2>{b.description.map(p=><p>{p}</p>)}</section>}
+      {(b.endorsements.length>0 || b.recommendation_credits.length>0) && <section class="endorsements"><h2>{b.description_scope==='whole_work'?'整部作品推薦':'推薦摘句'}</h2>
+        {b.endorsements.slice(0,2).map(e=><Endorsement endorsement={e} />)}
+        {b.endorsements.length>2 && <details><summary>閱讀其餘 {b.endorsements.length-2} 則推薦</summary>{b.endorsements.slice(2).map(e=><Endorsement endorsement={e}/>)}</details>}
+        {b.recommendation_credits.length>0 && <p class="credits">共同推薦：{b.recommendation_credits.join('、')}</p>}
+      </section>}
       {b.full_text && (
         <section aria-label="授權短篇全文">
           <h2>全文閱讀{b.synthetic ? '・合成示範' : ''}</h2>
@@ -121,12 +90,34 @@ import PublicationRelations from '../../../components/PublicationRelations.astro
           </ol>
         </section>
       )}
+      <section class="edition"><h2>作品與版本資訊</h2><dl>
+        <div><dt>作品形式</dt><dd>{forms[b.work_form]}</dd></div>
+        <div><dt>發表狀態</dt><dd>{publicationStatus(b)}</dd></div>
+        {b.author && <div><dt>作者</dt><dd>{b.author}</dd></div>}
+        {b.series && <div><dt>所屬系列</dt><dd>{b.series} · 第{b.order}冊</dd></div>}
+        {b.publisher && <div><dt>出版社</dt><dd>{b.publisher}</dd></div>}
+        {b.edition_date && <div><dt>版本日期</dt><dd>{b.edition_date}</dd></div>}
+        {b.edition_isbn && <div><dt>ISBN</dt><dd>{b.edition_isbn}</dd></div>}
+        {b.year && <div><dt>出版年份</dt><dd>{b.year}</dd></div>}
+      </dl>{b.date_note && <p class="muted">{b.date_note}</p>}
+      {b.award && <p><a href={b.award.source_url}>{b.award.year} {b.award.label} ↗</a></p>}
+      </section>
       <PublicationRelations workId={b.work_id} kind="publication" />
       <ServiceState kind="comments" />
     </div>
   </article>
 </Main>
 <style>
+  .link-group h2 { font-size:14px; margin:22px 0 10px; }
+  .link-group .purchase-links { margin-top:0; }
+  .book-reading > section { margin-bottom:36px; }
+  .description p { font-size:18px; line-height:2; }
+  .endorsements { border-top:1px solid var(--parchment); padding-top:24px; }
+  .endorsements summary { cursor:pointer; padding:12px 0; }
+  .credits { font-size:14px; line-height:1.9; }
+  .purchase-links a { font-size:14px; text-decoration:none; overflow-wrap:anywhere; }
+  dd { overflow-wrap:anywhere; }
+
   .book-page {
     max-width: 1120px;
     margin: auto;

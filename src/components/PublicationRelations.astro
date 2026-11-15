@@ -11,7 +11,7 @@ interface Props {
 const { workId, kind } = Astro.props;
 const all = await catalog();
 const articles = all.articles.map((a) => a.data);
-const relations: typeof raw = validatePublicationRelations(raw, all.allArticles.map(a => a.data), allPublications);
+const relations: {article_work_id:string; publication_work_id:string; approved:boolean}[] = validatePublicationRelations(raw, all.allArticles.map(a => a.data), allPublications);
 const linked =
   kind === 'article'
     ? publications

@@ -32,6 +32,11 @@ test('所有本機連結及資產遵守 Pages base 且目的地存在', () => {
     const html = readFileSync(file, 'utf8');
     for (const [, href] of html.matchAll(/(?:href|src|action)="([^"#]+)"/g)) {
       if (/^(https:|data:)/.test(href)) continue;
+      // Author-approved HTTP origin; no general relaxation of external URL safety.
+      if (href === 'http://www.wlkhds.com/wlkhds7_detail.php?id=808') {
+        assert.equal(file, 'dist/works/publication-data-storm/index.html');
+        continue;
+      }
       assert.ok(href.startsWith('/fansi-notes/'), `${file}: ${href}`);
       const path = decodeURI(href.split(/[?#]/)[0].replace('/fansi-notes/', ''));
       assert.ok(existsSync(`dist/${path}`) || existsSync(`dist/${path}/index.html`), href);
