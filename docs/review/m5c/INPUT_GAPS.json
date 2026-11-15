@@ -7,7 +7,8 @@
     "This is a review checklist, not another source of truth for article titles/classes; runtime uses existing src/content/articles and src/data/podcast.json.",
     "All numeric likes/plays are null until evidence supplied; null means unknown, NOT zero.",
     "Article and Podcast links/pairings are only approved when author confirms same work_id/GUID; title similarity is not approval.",
-    "Image position count is provenance, not authorization to download or reuse. No private Canva IDs or analytics have been included."
+    "Image position count is provenance, not authorization to download or reuse. No private Canva IDs or analytics have been included.",
+    "All 48 series and topic fields are now grounded in the existing published article frontmatter or batch verification, not reclassified."
   ],
   "counts": {
     "articles": 48,
@@ -149,8 +150,11 @@
       "slug": "talking-shadow",
       "title": "會說話的影子",
       "vocus_url": "https://vocus.cc/article/674fcdeffd89780001b93c49",
-      "series": "see_approved_article_frontmatter",
-      "topics": [],
+      "series": "special",
+      "topics": [
+        "creation",
+        "psychology"
+      ],
       "known_image_positions": 2,
       "source_record": "docs/review/m5b-first-articles/source-verification.json",
       "ig_post_url": null,
@@ -719,8 +723,11 @@
       "slug": "willpower-and-habits",
       "title": "別讓意志力透支！從「餅乾與蘿蔔實驗」看如何有效達成目標",
       "vocus_url": "https://vocus.cc/article/68b418fdfd89780001979cd8",
-      "series": "see_approved_article_frontmatter",
-      "topics": [],
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "science"
+      ],
       "known_image_positions": 4,
       "source_record": "docs/review/m5b-first-articles/source-verification.json",
       "ig_post_url": null,
@@ -947,8 +954,11 @@
       "slug": "antifragile-life",
       "title": "從《反脆弱》看人生設計：擁抱不確定性，在衝擊中持續成長",
       "vocus_url": "https://vocus.cc/article/6947fbe2fd89780001bd1dbb",
-      "series": "see_approved_article_frontmatter",
-      "topics": [],
+      "series": "longform",
+      "topics": [
+        "literature",
+        "philosophy"
+      ],
       "known_image_positions": 2,
       "source_record": "docs/review/m5b-first-articles/source-verification.json",
       "ig_post_url": null,
@@ -1454,5 +1464,15 @@
     "excluded_site_notice": 1,
     "unresolved_salon_items_approx": 11,
     "verification_status": "historical inventory note; do not infer unlisted works"
-  }
+  },
+  "multi_article_guids": [
+    {
+      "guid": "05b69613-4296-4c7a-a205-5937639fb559",
+      "work_ids": [
+        "vocus-68b1cc52fd89780001138a4f",
+        "vocus-68aaa583fd89780001779778"
+      ],
+      "status": "requires_author_choice"
+    }
+  ]
 }
