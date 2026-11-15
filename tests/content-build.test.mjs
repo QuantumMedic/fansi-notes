@@ -148,6 +148,9 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       join(root, 'src/data/podcast-work-map.json'),
       JSON.stringify([{ guid: e.guid, work_id: data.work_id, approved: true }]),
     );
+    // This synthetic RSS fixture has no connection to the 25 real, now-confirmed GUID records.
+    // Reset classifications in the temporary fixture only; production approvals stay unchanged.
+    writeFileSync(classificationsFile,JSON.stringify([]));
     data = article({
       ...data,
       slug: 'demo-renamed',
