@@ -17,7 +17,7 @@
     "official_cover_source_urls": 6,
     "local_cover_files": 0,
     "local_author_photo_files": 1,
-    "purchase_or_reading_link_records": 18
+    "purchase_or_reading_link_records": 26
   },
   "presentation": {
     "retain_existing_shelf": true,
@@ -124,12 +124,28 @@
           "evidence_level": "primary_page_search_index_matched"
         },
         {
+          "label": "博客來｜紙本",
+          "url": "https://www.books.com.tw/products/0010823413?sloc=main",
+          "group": "print",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "official_product_page_title_matched"
+        },
+        {
           "platform": "金石堂",
           "label": "金石堂｜電子書",
           "url": "https://www.kingstone.com.tw/basic/2800000103134/",
           "group": "ebook",
           "scope": "volume",
           "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050049457?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
         }
       ]
     },
@@ -220,12 +236,28 @@
           "evidence_level": "primary_page_search_index_matched"
         },
         {
+          "label": "博客來｜紙本",
+          "url": "https://www.books.com.tw/products/0010827312?sloc=main",
+          "group": "print",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        },
+        {
           "platform": "金石堂",
           "label": "金石堂｜電子書",
           "url": "https://www.kingstone.com.tw/basic/2800000104002/",
           "group": "ebook",
           "scope": "volume",
           "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050051653?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
         }
       ]
     },
@@ -324,12 +356,28 @@
           "evidence_level": "primary_page_search_index_matched"
         },
         {
+          "label": "博客來｜紙本",
+          "url": "https://www.books.com.tw/products/0010864898?sloc=main",
+          "group": "print",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        },
+        {
           "platform": "金石堂",
           "label": "金石堂｜電子書",
           "url": "https://www.kingstone.com.tw/basic/2800000104022/",
           "group": "ebook",
           "scope": "volume",
           "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050073570?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "official_product_page_title_matched"
         }
       ]
     },
@@ -444,6 +492,14 @@
           "group": "ebook",
           "scope": "volume",
           "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050240249?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "official_product_page_title_matched"
         }
       ]
     },
@@ -541,6 +597,14 @@
           "group": "ebook",
           "scope": "volume",
           "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050240250?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
         },
         {
           "platform": "KadoKado",
@@ -690,9 +754,9 @@
     {
       "id": "books-direct",
       "requirement": "博客來各冊商品直達網址",
-      "status": "not_fully_verified",
-      "evidence": "已在博客來官方作者篩選清單核實《智慧奇點》上下冊的商品存在，但五冊單冊直達網址仍無法可靠取得；《天啟》三冊未核實博客來商品頁。不得把作者分類清單或搜尋頁冒充單冊直達連結。",
-      "codex_action": "不要猜商品ID、不要無限重搜；正式頁保留現有核實出版社、誠品、BOOK☆WALKER等入口；如單冊博客來直達頁仍不可核實，明確回報此指定需求尚未完成，別生成假按鈕。"
+      "status": "resolved_author_supplied_eight_direct_links",
+      "evidence": "作者提供5冊各自的博客來直達商品網址，共8筆（天啟三冊各紙本及電子書、智慧奇點上下冊各電子書）；其中0010823413、E050073570、E050240249已獨立查到博客來商品頁標題，其他5筆來自作者提供的確切直達網址、工具仍未能獨立開啟。",
+      "codex_action": "全部8筆已在正式資料，直接接線；只做有限的點擊與正確標示驗收，不另行搜尋商品ID，不以未獨立取得的回應冒稱全8筆在線核實。"
     },
     {
       "id": "readmoo-direct",
@@ -714,5 +778,5 @@
       "codex_action": "保留指定HTTP網址，顯示為原發表平台；不猜HTTPS、不拿第一版全文替代、不偽稱外站已可用。"
     }
   ],
-  "completion_note": "完整展示文案與作者照片可直接從此分支取得，不需ZIP或額外附件。這表示工程輸入已集中，不表示全部外站要求核實、六封面實檔已下載、網站已實作或整個M5-E完成。"
+  "completion_note": "七筆作品與指定作者照片在PR #20可直接使用，八個博客來紙本／電子書單冊入口已由作者補齊；獨立開啟核驗其中三個，另五個保留作者原始直達URL。Readmoo官網單冊入口仍未全部核實。作品UI整合與作者最終視覺驗收仍需依PR最新CI。"
 }
