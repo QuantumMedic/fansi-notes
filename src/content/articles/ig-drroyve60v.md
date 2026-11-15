@@ -18,8 +18,6 @@ written_master: "ig-vocus"
 platform_urls: {"instagram_url":"https://www.instagram.com/p/DRroYV_E60V/","spotify_episode_url":"https://open.spotify.com/episode/08tgqjYybSJHmqvf1Uyk8r"}
 ---
 
-> 當我們停止思考，惡便開始了米爾格倫服從實驗
-
 ### 米爾格倫服從實驗
 
 你覺得自己是個好人嗎？那如果，有個穿著白袍、看起來專業又冷靜的人，站在你身後，語氣平靜地說：「給這位看不見的受試者電擊。」你還會拒絕嗎？1960 年代初，耶魯大學心理學家 Stanley Milgram 做了一個著名的實驗。 他想回答一個不舒服的問題：當權威下達命令時，一個普通人，能走多遠？這個問題，來自二戰後的陰影。許多納粹軍官在審判時對於自己的罪行，都辯解說：「我只是服從命令。」Milgram 想知道，這句話究竟是藉口，還是人性裡某種更深的傾向。
