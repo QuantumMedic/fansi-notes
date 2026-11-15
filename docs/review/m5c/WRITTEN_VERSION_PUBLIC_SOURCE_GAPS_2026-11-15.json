@@ -1,19 +1,23 @@
 {
   "schema": "fansi-m5c-written-version-public-leads-v1",
   "as_of": "2026-11-15",
-  "source": "public podcast RSS + direct public Vocus verification only",
+  "source": "author Meta Instagram exports/workbook (2024-2026), public podcast RSS, direct Vocus page check",
   "notes": [
-    "There are 25 valid podcast episodes, 16 mapped to one of 48 imported website articles; the other 9 are currently unpaired, not proof of no written version.",
-    "Connected private writing/designs were reviewed separately. Their IDs, URLs, unpublished text, and Canva assets are intentionally excluded from this public repository.",
-    "One matching public Vocus full article was independently verified and is absent from the imported 48. Do not use website-publication approval based solely on Vocus being public.",
-    "The 16 already confirmed GUID/work_id mappings and 25 existing classifications are unchanged."
+    "All 9 IG post permalinks are precise matches from the author-provided Meta export workbook; previously excluded as unrelated to the imported 48, not absent from Instagram.",
+    "IG and Podcast titles can differ; mappings here are grounded by topic, matched dates and the author's prior written-design review, not by arbitrary title fuzzy matching.",
+    "Of 9, one Vocus direct article URL has been verified as of this review; eight remain unverified after searches of the author's public Vocus salon and indexed pages. Unverified is not proven absent; do not fabricate links.",
+    "These 9 currently lack website written articles in the imported 48. This metadata handoff does not create/publish any article or change the 16 approved GUID→work_id mappings.",
+    "Private Canva IDs, designs, unpublished text and private Meta analytics are not committed to the public repository."
   ],
   "totals": {
     "podcasts": 25,
     "website_articles_existing": 48,
     "unmatched_to_imported_articles": 9,
     "verified_public_vocus_articles_missing": 1,
-    "import_approved_new_articles": 0
+    "import_approved_new_articles": 0,
+    "verified_instagram_permalink_matches": 9,
+    "verified_vocus_article_permalinks": 1,
+    "vocus_direct_permalink_unverified": 8
   },
   "episodes_pending_written_import": [
     {
@@ -22,7 +26,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DVnHpTok8Yt/",
+      "instagram_post_date": "2026-03-07",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "d973015a-d1d4-42a4-b959-d1f61c691397",
@@ -30,7 +39,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DVBkYQok9e_/",
+      "instagram_post_date": "2026-02-21",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "9a81d6cd-3cd1-4fae-bb71-378c78371b64",
@@ -38,7 +52,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DULRJmfk64q/",
+      "instagram_post_date": "2026-01-31",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "58adc2d4-72c6-444d-8fe6-770296c843f1",
@@ -46,7 +65,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DUDiGQeE921/",
+      "instagram_post_date": "2026-01-28",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "bf20ddce-f482-4556-b2fd-daa3833b33dc",
@@ -54,7 +78,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DTSrQJaEwQZ/",
+      "instagram_post_date": "2026-01-09",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "bd111a66-7431-41fa-92ad-fb1952112c70",
@@ -62,7 +91,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DRroYV_E60V/",
+      "instagram_post_date": "2025-11-30",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "d0b432c1-36da-4863-9b71-4068dd941dae",
@@ -70,7 +104,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DRXKarwk5mW/",
+      "instagram_post_date": "2025-11-22",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "53c18650-7819-41b2-b019-284617749502",
@@ -78,7 +117,12 @@
       "public_written_source_audit": "no_direct_public_vocus_url_verified_in_this_audit",
       "published_article_url": null,
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DQ3v8sTE0KL/",
+      "instagram_post_date": "2025-11-10",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "no_direct_url_verified_in_current_public_audit"
     },
     {
       "guid": "6f85e22a-f8a9-43fc-891c-cea514725480",
@@ -86,7 +130,13 @@
       "public_written_source_audit": "verified_public_vocus_article_missing_from_imported_48",
       "published_article_url": "https://vocus.cc/article/689ed09bfd897800015571de",
       "website_article_import_approved": false,
-      "do_not_create_article_automatically": true
+      "do_not_create_article_automatically": true,
+      "published_instagram_url": "https://www.instagram.com/p/DNXrcNyPm0w/",
+      "instagram_post_date": "2025-08-15",
+      "instagram_match_status": "verified_from_author_meta_export",
+      "written_design_located": true,
+      "vocus_article_status": "direct_public_url_verified",
+      "website_work_id_candidate": "vocus-689ed09bfd897800015571de"
     }
   ]
 }
