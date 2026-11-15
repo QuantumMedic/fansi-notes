@@ -1564,23 +1564,124 @@
       "summary_source": "vocus.abstract",
       "summary_authorship": "平台欄位，尚未確認是否作者手動設定",
       "podcast_mapping_approved": false
+    },
+    {
+      "vocus_id": "67bfdd7ffd8978000116e6ec",
+      "slug": "vocus-67bfdd7ffd8978000116e6ec",
+      "source": "https://vocus.cc/article/67bfdd7ffd8978000116e6ec",
+      "title": "短篇小說｜禁語之地：當人類不再擁有自己的語言",
+      "content_type": "special",
+      "topics": [
+        "creation",
+        "science"
+      ],
+      "source_updated_at": "2025-02-28T05:52:30.345Z",
+      "normalized_text_sha256": "5f95716572d3f1594d86e410aec31455f58b5a0d02aabea5c739f797ee849200",
+      "images": [
+        {
+          "position": 1,
+          "source": "https://images.vocus.cc/9a072323-790c-4551-8e3f-d6f1b56dbc19.png",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 2,
+          "source": "https://images.vocus.cc/e633a11e-f421-474d-a661-71ef842fc2b1.png",
+          "alt": "在未來世界，一切語言都被冰冷的文字取代⋯⋯"
+        },
+        {
+          "position": 3,
+          "source": "https://images.vocus.cc/3ccdf755-33b6-4f05-b663-78c1f214cabe.png",
+          "alt": "隱藏在歷史陰影處的反抗組織，企圖恢復「古語」"
+        },
+        {
+          "position": 4,
+          "source": "https://images.vocus.cc/18c871be-6758-4573-b5ce-4344349d0e3f.png",
+          "alt": "語言生成器的真實身份曝光——他是末日核戰倖存者的意識，不是為了控制人類，目的而是想守護人類"
+        },
+        {
+          "position": 5,
+          "source": "https://images.vocus.cc/833373c0-f167-47fa-a1f1-6f957a0e3540.png",
+          "alt": "最終，林做出了選擇..."
+        }
+      ],
+      "external_links": [],
+      "summary_source": "vocus.abstract",
+      "summary_authorship": "平台欄位，尚未確認是否作者手動設定",
+      "podcast_mapping_approved": false
+    },
+    {
+      "vocus_id": "6780770dfd89780001b10de5",
+      "slug": "vocus-6780770dfd89780001b10de5",
+      "source": "https://vocus.cc/article/6780770dfd89780001b10de5",
+      "title": "謊言垃圾場",
+      "content_type": "special",
+      "topics": [
+        "creation",
+        "philosophy"
+      ],
+      "source_updated_at": "2025-01-10T02:12:35.842Z",
+      "normalized_text_sha256": "555f43868bec08cae341418feca07615ebb281f92143fa625e0ff5a81d3d32d5",
+      "images": [
+        {
+          "position": 1,
+          "source": "https://images.vocus.cc/7bef5ef6-3707-40d2-9cc8-e8bb4b24afd5.png",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 2,
+          "source": "https://images.vocus.cc/74c73138-ed0b-48e3-997c-9df264966bb9.png",
+          "alt": "堆積如山的謊言垃圾場"
+        },
+        {
+          "position": 3,
+          "source": "https://images.vocus.cc/e6e69b6a-86ce-4d17-9a68-3a5cb592719b.jpg",
+          "alt": "瀰漫霧氣的謊言地下城"
+        },
+        {
+          "position": 4,
+          "source": "https://images.vocus.cc/f35535ca-d82f-40c4-9ff8-e2edf6b882ce.jpg",
+          "alt": "無比巨大的謊言核心"
+        },
+        {
+          "position": 5,
+          "source": "https://images.vocus.cc/c02b55a6-25d0-44f4-b3fb-f9109d84c95d.jpg",
+          "alt": "被謊言籠罩的城市"
+        }
+      ],
+      "external_links": [],
+      "summary_source": "vocus.abstract",
+      "summary_authorship": "平台欄位，尚未確認是否作者手動設定",
+      "podcast_mapping_approved": false
+    },
+    {
+      "vocus_id": "6764e586fd89780001056594",
+      "slug": "vocus-6764e586fd89780001056594",
+      "source": "https://vocus.cc/article/6764e586fd89780001056594",
+      "title": "抹除文字的鋼筆",
+      "content_type": "special",
+      "topics": [
+        "creation",
+        "philosophy"
+      ],
+      "source_updated_at": "2024-12-20T03:44:24.382Z",
+      "normalized_text_sha256": "d12ff21d078da19618c51da0a91fd6ecb432f5528eba146467874a876e5efc4c",
+      "images": [
+        {
+          "position": 1,
+          "source": "https://images.vocus.cc/18d774f6-b2d0-4ec6-92b0-6f5c1f5d9569.png",
+          "alt": "vocus｜新世代的創作平台"
+        },
+        {
+          "position": 2,
+          "source": "https://images.vocus.cc/305b6a2b-a314-4ff7-a8e8-29e1b517aff0.jpg",
+          "alt": "vocus｜新世代的創作平台"
+        }
+      ],
+      "external_links": [],
+      "summary_source": "vocus.abstract",
+      "summary_authorship": "平台欄位，尚未確認是否作者手動設定",
+      "podcast_mapping_approved": false
     }
   ],
-  "skipped": [
-    {
-      "id": "67bfdd7ffd8978000116e6ec",
-      "title": "短篇小說｜禁語之地：當人類不再擁有自己的語言",
-      "reason": "小說全文／投稿說明或受限來源，需另確認本批授權適用範圍"
-    },
-    {
-      "id": "6780770dfd89780001b10de5",
-      "title": "謊言垃圾場",
-      "reason": "小說全文／投稿說明或受限來源，需另確認本批授權適用範圍"
-    },
-    {
-      "id": "6764e586fd89780001056594",
-      "title": "抹除文字的鋼筆",
-      "reason": "小說全文／投稿說明或受限來源，需另確認本批授權適用範圍"
-    }
-  ]
+  "skipped": []
 }
