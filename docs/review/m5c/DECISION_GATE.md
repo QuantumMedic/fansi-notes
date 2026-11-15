@@ -1,3 +1,5 @@
+> **2026-11-15 作者最新授權／PR #19 已備資料（未合併）**：作者授權將九篇已公開 IG 書面全文重用於網站，已在 PR #19 分支建立9篇 Markdown、補滿25組 Podcast GUID 配對及九筆 IG URL；原先『九集Podcast-only』『尚未核准網站全文』是前期狀態，不能據此阻擋或要求再次逐篇核准。對 Vocus 沒有核實網址的8篇隱藏 Vocus 按鈕即可；圖片採 Vocus 既有圖片位置與已公開素材，明顯第三方或失效的省略，無圖正常排版，不再由圖片阻擋 M5-D。**唯一 Codex 工作指令：**`docs/review/m5d/FINAL_ARTICLE_PODCAST_CODEX_HANDOFF_2026-11-15.md`。正式部署仍未授權。
+
 # M5-C 唯一作者決策表｜剩餘待核准事項
 
 此清單對應 [INPUT_GAPS.json](INPUT_GAPS.json)、[IMAGE_TRIAGE.json](IMAGE_TRIAGE.json)、[PUBLICATION_CANDIDATES.json](PUBLICATION_CANDIDATES.json)。已核准的 48 篇文章分類及全文不可重新提案。INPUT_GAPS 的 IG／人氣空欄是**歷史 seed**，實際接線請查 `src/content/articles/`、`src/data/popularity.json` 及 `docs/review/m5d/`。本表的圖片、出版、服務與公開授權待審項仍屬候選；Podcast 分類／作品配對已於 2026-11-15 另行完成。
