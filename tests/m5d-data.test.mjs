@@ -31,7 +31,10 @@ test('25 GUID順位精準對應；未知作品最後，並非製造讚數／播�
  for(const r of podcast.rows){assert.ok(episodes.some(e=>e.guid===r.guid));assert.equal(popularity.podcast.find(p=>p.id===r.guid).rank,r.popularity_rank);}
  const sorted=popularity.articles.map(r=>({...r,date:0})).sort((a,b)=>compareBrowse(a,b,'popular'));
  assert.equal(sorted.at(-1).id,'vocus-6764e586fd89780001056594');assert.equal(sorted.at(-1).rank,null);
- assert.deepEqual(json('src/data/podcast-work-map.json'),[]);
+ const mappings=json('src/data/podcast-work-map.json');
+ assert.equal(mappings.length,16);
+ assert.equal(new Set(mappings.map(m=>m.guid)).size,mappings.length);
+ assert.ok(mappings.every(m=>m.approved===true));
 });
 test('四個短網址以精確轉址證據接線與去重，不改原文、不推測未知連結',()=>{
  for(const r of redirects){

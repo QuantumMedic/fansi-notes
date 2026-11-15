@@ -1,16 +1,16 @@
 # M5-C 唯一作者決策表｜剩餘待核准事項
 
-此清單對應 [INPUT_GAPS.json](INPUT_GAPS.json)、[IMAGE_TRIAGE.json](IMAGE_TRIAGE.json)、[PUBLICATION_CANDIDATES.json](PUBLICATION_CANDIDATES.json)。已核准的 48 篇文章分類及全文不可重新提案。INPUT_GAPS 的 IG／人氣空欄是**歷史 seed**，實際接線請查 `src/content/articles/`、`src/data/popularity.json` 及 `docs/review/m5d/`。本表其餘待審項仍是候選，不能當作核准。
+此清單對應 [INPUT_GAPS.json](INPUT_GAPS.json)、[IMAGE_TRIAGE.json](IMAGE_TRIAGE.json)、[PUBLICATION_CANDIDATES.json](PUBLICATION_CANDIDATES.json)。已核准的 48 篇文章分類及全文不可重新提案。INPUT_GAPS 的 IG／人氣空欄是**歷史 seed**，實際接線請查 `src/content/articles/`、`src/data/popularity.json` 及 `docs/review/m5d/`。本表的圖片、出版、服務與公開授權待審項仍屬候選；Podcast 分類／作品配對已於 2026-11-15 另行完成。
 
 ## 可直接使用、Codex 不必再蒐集
 - 48 篇正式文章、Vocus ID／URL、系列、主次主題及原文校驗：正式 frontmatter、M5-B batch-verification。
-- 25 集公開 RSS GUID、Spotify／Apple 單集連結：src/data/podcast.json；25 筆 proposed 分類：src/data/podcast-classifications.json。
+- 25 集公開 RSS GUID、Spotify／Apple 單集連結：src/data/podcast.json；25 筆正式 confirmed 分類：src/data/podcast-classifications.json（作者已委託 ChatGPT 完成）。
 - 新匯入 45 篇的 151 筆圖片來源位置及圖說：IMAGE_TRIAGE；另外三篇只有 8 個位置的數量記錄，真正圖片 URL 尚未齊全。
-- 11 筆有精確外連證據的文章／音訊配對候選，牽涉 10 個 GUID，含兩篇文章指向同一單集：INPUT_GAPS。
+- 15 筆原文單集 URL 證據、2 組原文／RSS 敘事內容比對，正式 16 筆唯一 GUID ↔ work_id 映射已寫入程式資料；鬼滅一集兩篇以一篇主要、另一篇保留獨立作品。詳見 PODCAST_MAPPING_APPROVAL_2026-11-15.md。
 - 7 筆公開出版作品線索：PUBLICATION_CANDIDATES；僅候選，沒有核准書封／直達連結。
 
 ## 作者集中核准：M5-C 收件閘門
-1. **音訊分類與配對**：一次核准或修訂 25 集 proposed 系列／主次主題，以及有證據的 GUID ↔ work_id。多篇對同一集需明確決定網站顯示策略。證據不足者保持 pending。
+1. **音訊分類與配對（已結案）**：作者明確授權由 ChatGPT 判斷；25 集均已 confirmed、16 集同作品對應、9 集 Podcast-only。分類與對應權威檔案見上方；無需再要求作者逐集確認。其餘項目按原定階段。
 2. **IG 與社群熱門（第一批已接入）**：PR #11 已按固定 work_id 接入 47 篇 IG 主貼文、2 則同作品相關貼文及 47 篇文章人氣名次；另有 1 篇 IG 狀態未知。25 集 Podcast 人氣名次也已接入，統計口徑是**發布後首 7 天播放＋下載總數**，不可稱 Spotify-only Plays。精確擷取時間未知維持 null，不把名次推算成原始數值。上述資料不必重新索取；後續只審核新作品或明確缺口。
 3. **圖片**：每篇選定封面無字原圖及可公開來源；每張內文圖決定採用／不採用、圖說、權利和可存放的網站素材路徑。Vocus 與 Canva 的「存在」本身都不是重刊權證據；來源不明不下載。Podcast 宣傳圖片改走統一收聽元件。
 4. **摘要**：作者獨立摘要優先，平台 auto 摘要可作卡片／SEO；若不合作者風格，改採作者核准的原文開頭摘錄，網站不擅自改寫敘事。

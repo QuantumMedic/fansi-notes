@@ -67,6 +67,11 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     writeFileSync(join(reviewDir, 'index.html'), 'STALE-REVIEW-SECRET');
     const classificationsFile = join(root, 'src/data/podcast-classifications.json');
     const classifications = JSON.parse(readFileSync(classificationsFile, 'utf8'));
+    // Isolate a deliberately unapproved fixture: actual public episodes are now confirmed.
+    const proposedGuid=classifications[0].guid;
+    classifications[0].status='proposed';
+    delete classifications[0].reviewed_by;
+    delete classifications[0].reviewed_at;
     classifications[0].keywords = ['PROPOSED-SEARCH-SECRET'];
     const before = JSON.stringify(classifications);
     writeFileSync(classificationsFile, before);
@@ -107,8 +112,13 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(html('works/demo-paper-city/index.html'),/https:\/\/example.com\/book/);
     assert.equal(existsSync(join(root,'dist/works/demo-paper-city/world/index.html')),false);
     const realEpisodes = JSON.parse(readFileSync(join(root, 'src/data/podcast.json'), 'utf8'));
-    for (const ep of realEpisodes)
-      assert.match(html(`podcast/${ep.slug}/index.html`), /分類待確認/);
+    for (const ep of realEpisodes) {
+      const page=html(`podcast/${ep.slug}/index.html`);
+      const primaryBadge=page.match(/<div class="classification"[^>]*>[\s\S]*?<\/div>/)?.[0];
+      assert.ok(primaryBadge,ep.guid);
+      if(ep.guid===proposedGuid) assert.match(primaryBadge,/分類待確認/);
+      else assert.match(primaryBadge,/分類已確認/); // 其他「繼續聆聽」推薦卡可能包含暫定測試資料
+    }
 
     assert.match(html('articles/index.html'), /海邊的紅色信箱/);
     assert.match(html('topics/psychology/index.html'), /新增合成文章/);
@@ -138,6 +148,9 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       join(root, 'src/data/podcast-work-map.json'),
       JSON.stringify([{ guid: e.guid, work_id: data.work_id, approved: true }]),
     );
+    // This synthetic RSS fixture has no connection to the 25 real, now-confirmed GUID records.
+    // Reset classifications in the temporary fixture only; production approvals stay unchanged.
+    writeFileSync(classificationsFile,JSON.stringify([]));
     data = article({
       ...data,
       slug: 'demo-renamed',
