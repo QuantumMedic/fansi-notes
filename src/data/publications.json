@@ -68,8 +68,20 @@
         "scope": "volume"
       },
       {
+        "label": "博客來｜紙本",
+        "url": "https://www.books.com.tw/products/0010823413?sloc=main",
+        "group": "print",
+        "scope": "volume"
+      },
+      {
         "label": "金石堂｜電子書",
         "url": "https://www.kingstone.com.tw/basic/2800000103134/",
+        "group": "ebook",
+        "scope": "volume"
+      },
+      {
+        "label": "博客來｜電子書",
+        "url": "https://www.books.com.tw/products/E050049457?sloc=main",
         "group": "ebook",
         "scope": "volume"
       }
@@ -152,8 +164,20 @@
         "scope": "volume"
       },
       {
+        "label": "博客來｜紙本",
+        "url": "https://www.books.com.tw/products/0010827312?sloc=main",
+        "group": "print",
+        "scope": "volume"
+      },
+      {
         "label": "金石堂｜電子書",
         "url": "https://www.kingstone.com.tw/basic/2800000104002/",
+        "group": "ebook",
+        "scope": "volume"
+      },
+      {
+        "label": "博客來｜電子書",
+        "url": "https://www.books.com.tw/products/E050051653?sloc=main",
         "group": "ebook",
         "scope": "volume"
       }
@@ -244,8 +268,20 @@
         "scope": "volume"
       },
       {
+        "label": "博客來｜紙本",
+        "url": "https://www.books.com.tw/products/0010864898?sloc=main",
+        "group": "print",
+        "scope": "volume"
+      },
+      {
         "label": "金石堂｜電子書",
         "url": "https://www.kingstone.com.tw/basic/2800000104022/",
+        "group": "ebook",
+        "scope": "volume"
+      },
+      {
+        "label": "博客來｜電子書",
+        "url": "https://www.books.com.tw/products/E050073570?sloc=main",
         "group": "ebook",
         "scope": "volume"
       }
@@ -347,6 +383,12 @@
         "url": "https://www.kobo.com/tw/zh/ebook/hBFywpsiezKw5qPz90ISBw",
         "group": "ebook",
         "scope": "volume"
+      },
+      {
+        "label": "博客來｜電子書",
+        "url": "https://www.books.com.tw/products/E050240249?sloc=main",
+        "group": "ebook",
+        "scope": "volume"
       }
     ]
   },
@@ -431,6 +473,12 @@
       {
         "label": "Readmoo電子書｜金石堂購買",
         "url": "https://www.kingstone.com.tw/basic/2800000201679/",
+        "group": "ebook",
+        "scope": "volume"
+      },
+      {
+        "label": "博客來｜電子書",
+        "url": "https://www.books.com.tw/products/E050240250?sloc=main",
         "group": "ebook",
         "scope": "volume"
       },
