@@ -1,5 +1,6 @@
 ---
 import { reviewMode } from '../lib/review-mode.mjs';
+import { url } from '../data/site';
 import { publicSeries as series, topics, matchesSeries } from '../lib/taxonomy.mjs';
 import UnifiedWorkCard from './UnifiedWorkCard.astro';
 const { works, initialSeries = '', initialTopic = '' } = Astro.props;
@@ -9,7 +10,7 @@ const visible = (w: any) =>
   (!initialTopic || w.classification.topics.includes(initialTopic));
 ---
 
-<section class="section" data-work-explorer data-fixed-series={initialSeries}>
+<section class="section" data-work-explorer data-fixed-series={initialSeries} data-fixed-topic={initialTopic}>
   <form class="filters" role="search">
     <label for="work-q">
       搜尋作品
@@ -26,17 +27,19 @@ const visible = (w: any) =>
         ))}
       </select>
     </label>}
-    <label for="work-topic">
-      主題分類
-      <select id="work-topic" name="topic">
-        <option value="">全部主題</option>
-        {topics.map((t) => (
-          <option value={t.slug} selected={t.slug === initialTopic}>
-            {t.name}
-          </option>
-        ))}
-      </select>
-    </label>
+    {!initialTopic ? (
+      <label for="work-topic">
+        主題分類
+        <select id="work-topic" name="topic">
+          <option value="">全部主題</option>
+          {topics.map((t) => (
+            <option value={t.slug}>{t.name}</option>
+          ))}
+        </select>
+      </label>
+    ) : (
+      <a class="muted" href={url("topics/")}>瀏覽其他主題 ↗</a>
+    )}
     <button type="reset">清除篩選</button>
   </form>
   <p class="muted">
@@ -67,7 +70,8 @@ const visible = (w: any) =>
   const form = root.querySelector('form')!;
   const q = root.querySelector<HTMLInputElement>('#work-q')!;
   const series = root.querySelector<HTMLSelectElement>('#work-series')!;
-  const topic = root.querySelector<HTMLSelectElement>('#work-topic')!;
+  const topic = root.querySelector<HTMLSelectElement>('#work-topic');
+  const fixedTopic = root.dataset.fixedTopic || '';
   function filter() {
     let n = 0;
     root.querySelectorAll<HTMLElement>('[data-work-result]').forEach((el) => {
@@ -75,7 +79,7 @@ const visible = (w: any) =>
         el.dataset.search!,
         el.dataset.topics!.split(' '),
         el.dataset.series!,
-        { q: q.value, topic: topic.value, contentType: root.dataset.fixedSeries || series?.value || '' },
+        { q: q.value, topic: fixedTopic || topic?.value || '', contentType: root.dataset.fixedSeries || series?.value || '' },
       );
       if (!el.hidden) n++;
     });
@@ -90,7 +94,8 @@ const visible = (w: any) =>
   form.addEventListener('reset', () =>
     setTimeout(() => {
       if (series) series.value = '';
-      topic.value = '';
+      if (topic) topic.value = '';
+      // This route is scoped to its topic: reset only search/series refinements.
       filter();
     }),
   );
