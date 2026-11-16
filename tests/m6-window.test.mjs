@@ -72,3 +72,24 @@ test('verification receipts and retries never consume or erase existing staging 
  storeReceipt(storage,scoped,fresh);assert.deepEqual(readReceipts(storage,scoped),[fresh]);assert.deepEqual(readReceipts(storage,'same-work'),[old]);
  assert.equal(receiptNamespace('same-work',undefined),'same-work');assert.equal(receiptNamespace('same-work','arbitrary'),'same-work');
 });
+
+import threadManifest from '../services/comments/generated/threads.json' with {type:'json'};
+test('same-author gateway still requires reader delete credential and preserves the verified reply in real SQL',async()=>{
+ const r=await setup();try{
+  r.env.ALLOWED_ORIGINS='https://isolated.example.test';
+  const site={...r.env,ENVIRONMENT:'staging',ASSETS:{fetch:async()=>new Response('unused')},COMMENTS:{fetch:q=>verificationPublic(q,r.env,r.keys,r.verify)}};
+  const jwt=await r.sign(),thread=Object.keys(threadManifest.threads)[0],own=newReceipt(),replyId=crypto.randomUUID();
+  const request=(path,method='GET',body,deleteToken)=>new Request('https://isolated.example.test'+path,{method,headers:{'Cf-Access-Jwt-Assertion':jwt,Origin:'https://isolated.example.test','CF-Connecting-IP':'192.0.2.18','Content-Type':'application/json',...(deleteToken?{Authorization:'Bearer '+deleteToken}:{})},body:body?JSON.stringify(body):undefined});
+  // Seed via the production handler: Node streaming Request differs from Workers.
+  // The DELETE and reading paths below still traverse the real gateway handler.
+  const created=await verificationPublic(request('/v1/comments','POST',{id:own.id,delete_token:own.token,thread,nickname:'synthetic reader',body:'local SQL verification only',turnstile_token:'local-window-delete'}),r.env,r.keys,r.verify);
+  assert.equal(created.status,201);
+  const reply=await verificationAdmin(request('/v1/admin/reply','POST',{id:replyId,parent_id:own.id,body:'synthetic reply'}),r.env,r.keys);assert.equal(reply.status,201);
+  assert.equal((await verificationSite(request('/v1/comments/'+own.id,'DELETE',undefined,'f'.repeat(64)),site,r.keys)).status,403);
+  assert.equal((await r.env.DB.prepare('SELECT status FROM comments WHERE id=?').bind(own.id).first()).status,'published');
+  assert.equal((await verificationSite(request('/v1/comments/'+own.id,'DELETE',undefined,own.token),site,r.keys)).status,200);
+  const deleted=await r.env.DB.prepare('SELECT nickname,body,status,delete_hash FROM comments WHERE id=?').bind(own.id).first();assert.deepEqual(deleted,{nickname:'',body:'',status:'deleted',delete_hash:null});
+  const retained=await r.env.DB.prepare('SELECT parent_id,status,author FROM comments WHERE id=?').bind(replyId).first();assert.deepEqual(retained,{parent_id:own.id,status:'published',author:1});
+  const feed=await verificationSite(request('/v1/threads/'+encodeURIComponent(thread)+'/comments'),site,r.keys);const data=await feed.json();assert.equal(data.comments[0].id,own.id);assert.equal(data.comments[0].status,'deleted');assert.equal(data.comments[0].replies.comments[0].id,replyId);
+ }finally{await r.close();}
+});

@@ -1,21 +1,29 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：PR #25已合併／受保護限時驗證通道已接線／真實操作證據待補（2026-11-17）
+## 目前階段：受控驗證已提前復原／作者操作結果已記錄／正式啟用仍有證據門檻（2026-11-17）
 
-作者接受PR #25並授權merge commit。合併提交`0fe555729dbb290b90a68fd6f0df8cdb39906366`，與PR HEAD完整內容樹一致；[main CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43902233778)。本輪從該main建立`prep/m6-controlled-verification`，沒有覆蓋其他工作。作者本輪明確授權受保護通道、精確臨時Turnstile hostname、限時寫入及自動復原，不等於正式發布授權。
+PR #25已用merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`整合，工程樹一致且main CI通過。本輪延續[PR #26](https://github.com/QuantumMedic/fansi-notes/pull/26)，未合併。作者已完成本輪人工操作並要求立即復原，不再要求重複登入、手機或跨瀏覽器測試。
 
-- **已接線**：沿用現有受Access保護前台，透過私有service binding連到實際production D1／留言Worker。前台及後端逐次驗JWT與精確作者Email；公開API的workers.dev仍false，所有preview仍false，PRODUCTION_SERVICES_ACTIVE仍false。另有獨立、最長4小時的驗證租期；只有本輪受保護請求可使用，不能從公開參數開啟。
-- **窗口實際狀態**：2026-11-17台灣時間04:06到期。受控期間D1允許少量合成驗收留言，獨立管理hostname暫時啟用但仍經既有Access及後端完整驗證。Turnstile只增加一個精確測試hostname。Pages設定實際讀回仍Branch=None／disabled，noindex維持，沒有執行release、修改Access政策或使用撤銷Token。
-- **到期保護**：Worker每次請求檢查截止時間；D1觸發器拒絕跨截止時間才完成的寫入；雲端每分鐘排程將租期關閉並paused=1。本機監督程序負責關閉管理hostname、恢復Worker／前台／widget及私下備份後清理本輪精確留言ID。若Mac離線，雲端拒絕服務不受影響，但控制台設定清理可能延後；未實際讀回復原前不宣稱已完成復原。
-- **已實測**：作者目前有效的Access登入可開前台及真正production管理頁，管理統計讀取0；私有通道health顯示configured／accepting_comments=true，文章正常讀到0／0。獨立未登入HTTP請求對前台、前台API、管理頁及管理API皆被Access轉址；公開production API回404。這不等於非白名單真實身分已驗收。
-- **必要小修**：隔離本次瀏覽器留言憑證，避免舊staging待審提示混進production驗證；舊憑證不刪除。實際Workers不支援redirect:error，改manual並明確拒絕3xx。沒有重做留言介面。
-- **尚待**：後續已觀察到使用者發表成功；真正D1保存1則公開主留言及1則已驗證作者回覆，父子關係正確、無孤立回覆。瀏覽器重整／主留言自刪並保留回覆、非白名單真實管理拒絕、獨立瀏覽器自刪權限仍依實際回報補證據。目前沒有填任何新的LIVE_*通過旗標。Formspree已實收的證據沿用；本輪沒有寄信或送分析流量。
+### 已實際復原並讀回
 
-本輪保留原106項保障，新增6項窗口／JWT／路由／真SQL到期／設定／憑證隔離測試；本地112項通過、輸入與64串清冊／local預檢通過、check 135檔0錯誤0警告（1個既有hint）、114頁普通build通過。三Worker打包成功。[PR #26首個工程CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43907791501)；後續僅補真實入庫觀察紀錄，最新CI見PR。真實人工測試不以CI替代。57篇正文、25集／配對、96圖、7出版作品／26入口、作者資料與人氣資料diff為零。唯一操作與驗收入口為[本批M6紀錄](review/m6/README.md)。
+2026-11-17台灣時間00:41:49完成提前復原，沒有等到原04:06期限。先關閉租期、暫停D1及管理入口，再私下保存刪除後狀態與兩筆合成記錄，依精確ID先清回覆再清主留言。原始證據及備份存repo外0700目錄／0600檔案，未公開。
 
-## 正式發布停止條件
+獨立Cloudflare讀回確認：production兩Worker的workers.dev=false、preview=false、PRODUCTION_SERVICES_ACTIVE=false；D1 0則留言、paused=1、moderation=1；真正管理AUD保留。公開／管理／受控前台的bindings均與窗口前一致，前台恢復原Access保護staging版本、不再連production；Turnstile只剩原正式hostname。臨時cron、租期表與觸發器、臨時公開Worker作者白名單secret均移除。本機watch已停止。Pages仍未啟用，noindex保持，沒有release、正式讀者寫入、付費或新Token。
 
-受控通道證據及原兩項安全證據未完整時，不產生完整發布manifest、不啟用正式公開留言、不切Pages Actions來源。受控測試hostname不冒稱正式GitHub Pages hostname已通過；後者須另行發布授權及發布後冒煙檢查。正式索引解除另行確認。未合併本輪新PR、未新增付費、未改正式內容或設計。
+### 真實驗收結果與界限
+
+- **通過（作者親測＋已有服務證據）**：真Turnstile發表、重新整理持久存在；管理回覆成功、宗凡照片／作者標示／位置正確。真正production D1已核對主留言與作者回覆的ID及parent_id，無孤立回覆。
+- **通過（作者親測＋後端測試）**：手機以同一作者帳號進入文章可見留言與回覆，但沒有原Mac留言的刪除按鈕。私人INDEPENDENT_BROWSER_DELETE_VERIFIED已記true；作者有效Access登入亦已記錄，無須重新操作。
+- **自刪證據有差異，不能宣稱完整通過**：作者回報原Mac自刪成功且回覆保留；但00:41:09清理前凍結讀回中，同一production主留言仍為published、文字及delete_hash未清空，作者回覆仍published且parent_id正確。兩種證據分開保留，不推測原因、不要求作者重測。後續行政清理已刪掉兩筆，不能把這次清理當成讀者自刪成功。LIVE_COMMENTS_VERIFIED不設true。
+- **非白名單明確拒絕仍缺證據**：作者嘗試後未收到OTP、未見管理資料，但沒有明確拒絕畫面；記為「非白名單登入未能完成，尚缺明確拒絕證據」。NON_ALLOWLIST_ADMIN_VERIFIED未設true。本輪以現有OAuth唯讀Access仍403，未取得該次拒絕紀錄；保存的精確Allow政策及自動化測試不能冒充真實拒絕證據。不索取新Token、不追加相同人工測試。
+
+本輪補1項隔離真SQL回歸：同一作者JWT經gateway刪除仍需本人憑證，錯誤憑證拒絕、正確憑證清空主留言並保留作者回覆；這不能抵銷上述production證據差異。原112項保障保留，本地完整113項測試通過，最新CI見PR。前輪check135檔0錯誤0警告（1既有hint）、114頁build證據保留；本次沒有修改網站或Worker處理程式，僅驗收文件及測試。
+
+### 正式啟用前最少剩餘事項
+
+私人production預檢invalid=[]，ready=false，僅缺M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED。資源不需重建；需要補足自刪差異及非白名單拒絕的證據，不能用CI／沒有OTP／人工清理取代。作者不再做本輪重複操作；後續只從合法可取得記錄及工程核對補證據，無法取得就保持停止條件。
+
+PR #26可在CI全綠、無衝突且另獲授權後作工程整合，**合併不等於正式互動驗收通過或公開發布**。本輪不合併。待必要證據與另行上線授權俱全，才準備正式版本備份／manifest、啟用精確正式來源的服務、健康檢查、Pages Actions來源與手動full release審核；正式hostname的Turnstile／CORS須發布後冒煙檢查，索引解除仍另行確認。唯一驗收入口：[M6紀錄](review/m6/README.md)。
 
 ## PR #24合併與發布保護（前輪已完成，AUD狀態以頂部為準）
 

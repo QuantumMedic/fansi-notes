@@ -1,19 +1,22 @@
-# M6 受控驗證（2026-11-17）
+# M6 受控驗證與提前安全收尾（2026-11-17）
 
 ## 本輪目前結果
 
-PR #25以merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併，工程樹與原HEAD一致；[main CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43902233778)。本輪獨立分支`prep/m6-controlled-verification`，Pages實際畫面仍停用。以下是當下驗證窗口狀態；不代表已公開官網或所有安全項目已通過。
+PR #25已用merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併；[main CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43902233778)。PR #26仍開啟、未合併。作者已完成本輪操作並要求提前復原，不再重複請作者測試。
 
 |項目|證據／結果|
 |---|---|
-|保護通道|原受保護前台→固定私有service binding→production公開Worker；前後端均驗簽章、issuer、AUD、期限及精確Email。原production管理AUD不變。|
-|入口與期限|production公開Worker網址關閉；管理網址僅限Access作者，preview全關。獨立最長4小時租期，本次台灣時間11/17 04:06到期。PRODUCTION_SERVICES_ACTIVE持續false，沒有偽造正式啟用／驗收旗標。|
-|資料與Turnstile|production D1從0留言／paused=1開始；窗口內允許少量合成資料，不搬staging留言。正式widget只增加現有前台的精確hostname；後端origin／hostname亦精確匹配。|
-|已實際觀察|目前作者登入可開管理頁並讀到0筆；前台可讀0／0。真實service binding health回configured=true及accepting_comments=true。未登入四種入口均Access302，公開production API404。|
-|後續真實入庫觀察|前台顯示「留言已送出」；真正production D1保存1則公開主留言及1則已驗證作者回覆，父子關係正確，孤立回覆0。未從staging搬入，也未用fixture代替。|
-|仍待真實證據|瀏覽器重整／自刪並保留作者回覆、非白名單真實管理拒絕、另一瀏覽器所有權。既有SSO有效登入不冒稱這輪重新輸入過OTP；沒收到OTP不算拒絕通過。|
-|郵件與分析|本輪隔離前台關閉聯絡與分析，避免重寄既已實收的信或污染任何統計。原功能及設定不變。|
-|資料保護|src/content、src/data、public、thread清冊均與合併main無差異。原106項測試保障保留。|
+|提前復原|台灣時間11/17 00:41:49完成；先停寫入、關管理入口，再備份及依精確ID清理本輪兩筆合成留言。不是等待04:06，也不是宣稱自動到期曾實際觸發。|
+|Cloudflare獨立讀回|production兩Worker入口、preview及正式activation全false；public/admin/site bindings與原快照相同，真正管理AUD保留。D1 0留言、paused=1、moderation=1。|
+|臨時設定清理|前台恢復原受保護staging版本，移除production service binding。Turnstile精確回復原正式hostname，臨時cron／SQL租期物件及公開Worker臨時白名單secret移除。本機watch停止。|
+|發表／持久化／作者回覆：通過|作者親測真Turnstile、發表及重整持久化，管理回覆及宗凡照片／作者標示／位置正確。已用production D1主留言、回覆ID及parent_id核對兩筆關係。|
+|跨瀏覽器：通過|作者確認手機用相同作者帳號可見留言與回覆，但無Mac原留言的刪除按鈕。私人INDEPENDENT_BROWSER_DELETE_VERIFIED=true；後端錯憑證拒絕仍由既有及新增SQL測試保護。|
+|自刪：存在證據差異|作者回報Mac自刪成功、回覆保留；00:41:09清理前凍結讀回，同一production主留言仍published、nickname/body/delete_hash尚未清除；回覆published且parent_id正確。不能把後續行政清理當成讀者自刪成功，不設定LIVE_COMMENTS_VERIFIED=true。不推測原因，不要求作者再測。|
+|非白名單：尚缺明確拒絕證據|未收到OTP、未見管理資料，但無明確Access denied。NON_ALLOWLIST_ADMIN_VERIFIED不設true。現有OAuth讀Access應用仍403，未取得本次對應拒絕紀錄；舊精確Allow讀回與自動化驗簽測試只作補強，不冒充真實帳號拒絕。|
+|備份與範圍|清理前原始兩筆、狀態核對、復原前後快照與獨立讀回均歸檔repo外私人目錄，0700／0600。沒有白名單、實際管理網址、密鑰或私人日誌提交GitHub。|
+|網站狀態|未合併PR #26、未啟用Pages／release、noindex維持；沒寄信、送正式分析、啟用付費或使用撤銷Token。既有文章、圖片、分類、出版與作者資料不變。|
+
+**合併與發布分開**：CI全綠及無衝突時，PR #26可另行授權作工程整合；它不會自動開窗口或部署網站。這不代表完整互動已驗收。production預檢invalid=[]，仍缺M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED。先補真實證據差異，無合法記錄就保留門檻；不讓作者重複本輪人工測試。再經明確正式啟用／發布授權，才備份、產生綁定SHA manifest、開正式服務與健康檢查、切Pages Actions Source、手動full release及作者審核。正式hostname冒煙測試及索引授權仍各自保留。
 
 ## 工具與精確復原邊界
 
@@ -30,11 +33,11 @@ PR #25以merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併，工程�
 1. 同一受保護前台切換DB時，舊staging瀏覽器憑證會呈現不存在的待審提示。新增只供驗證建置的`PUBLIC_COMMENTS_STORAGE_SCOPE=verification-<start>`；正常build不設定，既有憑證、pending請求及網站版型不變。新增測試確認不讀取／覆蓋／刪除原憑證。
 2. 真實Workers的Request不支援`redirect:error`（Node mock未暴露此差異）。改成manual並拒絕3xx，新增回歸檢查；修復後真實私有通道health及留言讀取成功。錯誤日誌只保留去識別類型與短訊息，原始tail私下保存並已停止。
 
-## 測試與待作者確認
+## 測試與已收到的作者確認
 
-本地112項測試通過，6項新測試覆蓋租期上下界／停用、精確JWT與所有管理入口、限定binding路徑及redirect、真實本地SQL到期與暫停、設定證據拒絕、瀏覽器憑證隔離；原106項未刪除／放寬。輸入／64串清冊／local預檢通過，check135檔0錯誤0警告及1個既有hint，普通build114頁。三Worker dry-run及真實部署讀回成功。[PR #26首個工程CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43907791501)，後續只有本段真實入庫紀錄更新；最新CI見PR。前台與管理實際畫面只存私人驗收目錄，沒有網址列或公開管理連結。
+前輪112項測試、check135檔0錯誤0警告（1既有hint）、114頁build及[CI #146](https://github.com/QuantumMedic/fansi-notes/actions/runs/43908858293)通過。此次補第113項真SQL回歸：建立主留言與作者回覆，經驗證gateway使用錯誤刪除憑證仍403；本人正確憑證可刪除主留言、清除文字及憑證雜湊，原作者回覆及讀取定位保留。前置發表直接走正式handler及隔離Turnstile provider，DELETE與讀取確實經gateway；避免將Node要求串流duplex的環境差異誤認成Workers問題。7項窗口精準測試及本地完整113項測試通過，完整CI見最新PR。沒有改動正式服務程式、原測試斷言或內容雜湊。
 
-作者操作已集中提出：發表合成留言、重整確認、管理回覆、另一瀏覽器沒有自刪權限、主留言刪除後保留回覆；另以非白名單真實帳號確認不能看到管理內容。沒有實際結果就繼續待驗，不反覆索取帳號或Token。窗口結束後先核對復原；全部必要證據完成，才另行授權合併本輪PR及正式啟用／發布。正式hostname的Turnstile／CORS仍屬發布後必做冒煙檢查及失敗停止條件。
+此SQL結果只能證明被測路徑，不能將production未呈刪除狀態的記錄改寫為通過。作者所述自刪畫面與凍結資料均保留，不知道原因就不推測；清理後已無合成留言，沒有再重開窗口或要求重測。發表／回覆／跨瀏覽器及有效作者Access登入的確認已記入私人證據，非白名單及完整留言旗標仍不通過。
 
 ## 以下為前輪歷史驗收（停用與待授權描述只指當時）
 
