@@ -3,6 +3,7 @@ import { reviewMode } from '../lib/review-mode.mjs';
 import { url } from '../data/site';
 import { publicSeries as series, topics, matchesSeries } from '../lib/taxonomy.mjs';
 import UnifiedWorkCard from './UnifiedWorkCard.astro';
+import Pagination from './Pagination.astro';
 const { works, initialSeries = '', initialTopic = '' } = Astro.props;
 const scopedWorks = initialSeries ? works.filter((w: any) => matchesSeries(w.classification.content_type, initialSeries)) : works;
 const visible = (w: any) =>
@@ -49,6 +50,7 @@ const visible = (w: any) =>
   <p role="status" data-work-count>
     共 {scopedWorks.filter(visible).length} 個作品
   </p>
+  <div data-work-list>
   {scopedWorks.map((w: any) => (
     <div
       hidden={!visible(w)}
@@ -60,11 +62,14 @@ const visible = (w: any) =>
       <UnifiedWorkCard work={w} />
     </div>
   ))}
+  </div>
+  <Pagination />
   <p data-work-empty hidden={scopedWorks.filter(visible).length > 0}>
     {scopedWorks.filter(visible).length === 0 ? '這個分類目前尚無已確認的作品。你仍可前往凡思聲收聽全部單集。' : '沒有符合的作品，請調整篩選。'}
   </p>
 </section>
 <script>
+  import { listPagination } from '../lib/list-pagination';
   import { matchesSearch } from '../lib/search.mjs';
   const root = document.querySelector<HTMLElement>('[data-work-explorer]')!;
   const form = root.querySelector('form')!;
@@ -72,6 +77,7 @@ const visible = (w: any) =>
   const series = root.querySelector<HTMLSelectElement>('#work-series')!;
   const topic = root.querySelector<HTMLSelectElement>('#work-topic');
   const fixedTopic = root.dataset.fixedTopic || '';
+  const pager = listPagination(root.querySelector<HTMLElement>('[data-pagination]')!, root.querySelector<HTMLElement>('[data-work-list]')!, root.querySelector<HTMLElement>('[data-work-count]')!, 12);
   function filter() {
     let n = 0;
     root.querySelectorAll<HTMLElement>('[data-work-result]').forEach((el) => {
@@ -85,6 +91,7 @@ const visible = (w: any) =>
     });
     root.querySelector('[data-work-count]')!.textContent = `共 ${n} 個作品`;
     root.querySelector<HTMLElement>('[data-work-empty]')!.hidden = n > 0;
+    pager.update();
   }
   form.addEventListener('input', filter);
   form.addEventListener('submit', (e) => {

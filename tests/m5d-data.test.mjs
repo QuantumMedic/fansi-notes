@@ -19,7 +19,7 @@ test('48固定ID精確接線：47主貼文、2相關貼文、47排名；空值�
   const links=JSON.parse(front.match(/^platform_urls: (.+)$/m)[1]);
   assert.equal(links.instagram_url??null,r.primary_instagram_url);
   assert.deepEqual(links.related_instagram_urls??[],r.related_instagram_urls);
-  assert.equal(popularity.articles.find(p=>p.id===r.work_id).rank,r.popularity_rank);
+  assert.equal(popularity.articles.find(p=>p.id===r.work_id).rank,json('docs/review/m5d/final/approved-baseline.json').popularity.articles.find(p=>p.id===r.work_id).rank);
   const slug=JSON.parse(front.match(/^slug: (.+)$/m)[1]);const html=readFileSync(`dist/articles/${slug}/index.html`,'utf8');
   const footer=html.slice(html.indexOf('aria-labelledby="reading-platforms-title"'));
   for(const href of [r.primary_instagram_url,...r.related_instagram_urls].filter(Boolean))assert.equal(footer.split(`href="${href}"`).length-1,1);
@@ -32,7 +32,7 @@ test('25 GUID順位精準對應；未知作品最後，並非製造讚數／播�
  const sorted=popularity.articles.map(r=>({...r,date:0})).sort((a,b)=>compareBrowse(a,b,'popular'));
  assert.equal(sorted.at(-1).id,'vocus-6764e586fd89780001056594');assert.equal(sorted.at(-1).rank,null);
  const mappings=json('src/data/podcast-work-map.json');
- assert.equal(mappings.length,16);
+ assert.equal(mappings.length,25);
  assert.equal(new Set(mappings.map(m=>m.guid)).size,mappings.length);
  assert.ok(mappings.every(m=>m.approved===true));
 });

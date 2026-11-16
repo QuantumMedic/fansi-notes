@@ -1,0 +1,12 @@
+<nav class="pagination" data-pagination aria-label="列表分頁" hidden>
+  <p class="muted" data-page-range></p>
+  <div class="page-buttons" data-page-buttons></div>
+</nav>
+<style>
+ .pagination { border-top:1px solid var(--line); margin-top:40px; padding-top:24px; text-align:center; }
+ .page-buttons { display:flex; justify-content:center; align-items:center; gap:8px; flex-wrap:wrap; }
+ .page-buttons :global(button) { min-width:44px; min-height:44px; margin:0; padding:8px 12px; border:1px solid var(--line); }
+ .page-buttons :global(button[aria-current="page"]) { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+ .page-buttons :global(button:disabled) { opacity:.4; cursor:default; }
+ .page-buttons :global(span) { padding:0 4px; }
+</style>

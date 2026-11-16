@@ -1,0 +1,1255 @@
+{
+  "articles": [
+    {
+      "file": "src/content/articles/ig-drroyve60v.md",
+      "work_id": "ig-drroyve60v",
+      "slug": "ig-drroyve60v",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "society"
+      ],
+      "sha256": "4635b2ffb3ce027e23931c2d1058b02494f2cf7f0727e1eb1f91413b4cd617bd"
+    },
+    {
+      "file": "src/content/articles/vocus-6859655dfd89780001378815.md",
+      "work_id": "vocus-6859655dfd89780001378815",
+      "slug": "vocus-6859655dfd89780001378815",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "philosophy"
+      ],
+      "sha256": "bf8fcf909ef6644b82f49ba4d417c6623e13bfb449d095f3749154e66aca4b67"
+    },
+    {
+      "file": "src/content/articles/vocus-6790393efd89780001cb26b2.md",
+      "work_id": "vocus-6790393efd89780001cb26b2",
+      "slug": "vocus-6790393efd89780001cb26b2",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "philosophy"
+      ],
+      "sha256": "7b4a589c79737196fafa5a6bfa99db96db2d54a7b4e26e735654224c6435c266"
+    },
+    {
+      "file": "src/content/articles/vocus-69340950fd89780001659d42.md",
+      "work_id": "vocus-69340950fd89780001659d42",
+      "slug": "vocus-69340950fd89780001659d42",
+      "series": "longform",
+      "topics": [
+        "medicine",
+        "creation"
+      ],
+      "sha256": "a07cec539758f315ef48c6fba28a8b09dc6b619f43f7c6f55226dbf3ae5d7c45"
+    },
+    {
+      "file": "src/content/articles/vocus-68c650cafd89780001ee563f.md",
+      "work_id": "vocus-68c650cafd89780001ee563f",
+      "slug": "vocus-68c650cafd89780001ee563f",
+      "series": "longform",
+      "topics": [
+        "literature",
+        "faith"
+      ],
+      "sha256": "7d693c0ba21a5776a3cb813fb30c48189df4b8e961e0d0316d895b396653f544"
+    },
+    {
+      "file": "src/content/articles/vocus-6785c591fd897800018c347b.md",
+      "work_id": "vocus-6785c591fd897800018c347b",
+      "slug": "vocus-6785c591fd897800018c347b",
+      "series": "longform",
+      "topics": [
+        "literature",
+        "creation"
+      ],
+      "sha256": "acf8cec35d13ed9430375cbba56077acff7d5c67c4ca6cd0b65b9dd05f80cc92"
+    },
+    {
+      "file": "src/content/articles/vocus-68eb6d09fd89780001833a2d.md",
+      "work_id": "vocus-68eb6d09fd89780001833a2d",
+      "slug": "vocus-68eb6d09fd89780001833a2d",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "medicine"
+      ],
+      "sha256": "bc3f9bfce1fd5e95d23172ce45c20d98fb7de44c1a303da6075974bfeca92af7"
+    },
+    {
+      "file": "src/content/articles/vocus-67c5192dfd89780001396083.md",
+      "work_id": "vocus-67c5192dfd89780001396083",
+      "slug": "vocus-67c5192dfd89780001396083",
+      "series": "longform",
+      "topics": [
+        "faith",
+        "philosophy"
+      ],
+      "sha256": "2a818916337b53ad23b743e489d896ba9799ce09ebbc334022abe72f8c78b635"
+    },
+    {
+      "file": "src/content/articles/ig-dulrjmfk64q.md",
+      "work_id": "ig-dulrjmfk64q",
+      "slug": "ig-dulrjmfk64q",
+      "series": "special",
+      "topics": [
+        "literature",
+        "creation"
+      ],
+      "sha256": "5a7694a68587b8db696c22cca9fcd1e7e6bdaa98611cd62b8a4693ebda199660"
+    },
+    {
+      "file": "src/content/articles/vocus-69a000cbfd897800012961e9.md",
+      "work_id": "vocus-69a000cbfd897800012961e9",
+      "slug": "vocus-69a000cbfd897800012961e9",
+      "series": "longform",
+      "topics": [
+        "psychology",
+        "society"
+      ],
+      "sha256": "615b8ca370a61713c4915fa1be2e08994eccd766bcb0568e69e2e9fa6e4f765f"
+    },
+    {
+      "file": "src/content/articles/vocus-6744890cfd89780001e70aa9.md",
+      "work_id": "vocus-6744890cfd89780001e70aa9",
+      "slug": "vocus-6744890cfd89780001e70aa9",
+      "series": "longform",
+      "topics": [
+        "medicine",
+        "creation"
+      ],
+      "sha256": "8ec0cd6a8e6badeae0c1424709f4310b9e59173d23f617161e672ce5ed1685cf"
+    },
+    {
+      "file": "src/content/articles/vocus-6970c532fd89780001c4568c.md",
+      "work_id": "vocus-6970c532fd89780001c4568c",
+      "slug": "vocus-6970c532fd89780001c4568c",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "psychology"
+      ],
+      "sha256": "6d7c6a8b68e2ce3255494f5712e6f0d26e3042e50020ae0a45c7f20f388efe2e"
+    },
+    {
+      "file": "src/content/articles/vocus-68086c27fd897800011e9a4f.md",
+      "work_id": "vocus-68086c27fd897800011e9a4f",
+      "slug": "vocus-68086c27fd897800011e9a4f",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "medicine"
+      ],
+      "sha256": "178622c4774f0e9e81fc0311fb7478d36cfb16590d67fa4e7c5ad58c55e96887"
+    },
+    {
+      "file": "src/content/articles/vocus-67d3bb68fd89780001334866.md",
+      "work_id": "vocus-67d3bb68fd89780001334866",
+      "slug": "vocus-67d3bb68fd89780001334866",
+      "series": "longform",
+      "topics": [
+        "faith",
+        "creation"
+      ],
+      "sha256": "296d95cf49b6391ce36bacd0a5f078add473fa34d2534276a22217479791a837"
+    },
+    {
+      "file": "src/content/articles/ig-dudigqee921.md",
+      "work_id": "ig-dudigqee921",
+      "slug": "ig-dudigqee921",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "medicine"
+      ],
+      "sha256": "98b65fbaf138fc6aa98c9cde9290a2d5323039a540291c44acb72ecc4b0f388d"
+    },
+    {
+      "file": "src/content/articles/vocus-68da9638fd89780001227fe1.md",
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "slug": "vocus-68da9638fd89780001227fe1",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "society"
+      ],
+      "sha256": "b9a57283d2eb528acc49c1287b3353dc4a6980856bbe65f108b0f7b53f884cf9"
+    },
+    {
+      "file": "src/content/articles/vocus-68199d76fd897800011df871.md",
+      "work_id": "vocus-68199d76fd897800011df871",
+      "slug": "vocus-68199d76fd897800011df871",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "psychology"
+      ],
+      "sha256": "8614a1afeb47d43ac9cb9e53c16c09228b9ca728c79f23beda2ce7c87b300c86"
+    },
+    {
+      "file": "src/content/articles/ig-dvbkyqok9e.md",
+      "work_id": "ig-dvbkyqok9e",
+      "slug": "ig-dvbkyqok9e",
+      "series": "longform",
+      "topics": [
+        "science",
+        "philosophy"
+      ],
+      "sha256": "57b63c9a7b8e712f47d6a48eb2e88aad3874cdb73e633ca29f6f651f5cbdd2f3"
+    },
+    {
+      "file": "src/content/articles/vocus-67d3cc10fd8978000137eb22.md",
+      "work_id": "vocus-67d3cc10fd8978000137eb22",
+      "slug": "vocus-67d3cc10fd8978000137eb22",
+      "series": "longform",
+      "topics": [
+        "society",
+        "creation"
+      ],
+      "sha256": "6327ba7705ad445c02b1765a4081ebb19c999b9d8e885a0f321605cd889385f4"
+    },
+    {
+      "file": "src/content/articles/vocus-68245605fd897800019da7d0.md",
+      "work_id": "vocus-68245605fd897800019da7d0",
+      "slug": "vocus-68245605fd897800019da7d0",
+      "series": "longform",
+      "topics": [
+        "philosophy",
+        "creation"
+      ],
+      "sha256": "0d1c3312a9ef9153f0ee2b4e2a017f402a9a946ab0ad906eb25d0aa86849cb84"
+    },
+    {
+      "file": "src/content/articles/vocus-67f7cc40fd8978000135d2fc.md",
+      "work_id": "vocus-67f7cc40fd8978000135d2fc",
+      "slug": "vocus-67f7cc40fd8978000135d2fc",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "philosophy"
+      ],
+      "sha256": "3cd29a009664d86f61cd44d9520bf375d8fdf4c62edc1b8cb5930e18c8c46700"
+    },
+    {
+      "file": "src/content/articles/talking-shadow.md",
+      "work_id": "vocus-674fcdeffd89780001b93c49",
+      "slug": "talking-shadow",
+      "series": "special",
+      "topics": [
+        "creation",
+        "psychology"
+      ],
+      "sha256": "4a9724a632de4275ae376503a8cb8fe49ebbf18b5ebf83730e71581c037f755a"
+    },
+    {
+      "file": "src/content/articles/vocus-6729aba2fd89780001d5b97a.md",
+      "work_id": "vocus-6729aba2fd89780001d5b97a",
+      "slug": "vocus-6729aba2fd89780001d5b97a",
+      "series": "longform",
+      "topics": [
+        "medicine",
+        "creation"
+      ],
+      "sha256": "3e26e09209ee68c1a3859b4af29fb8f1ff52c85902dde88436f11c047a470c41"
+    },
+    {
+      "file": "src/content/articles/vocus-682f1f7ffd89780001cc2d60.md",
+      "work_id": "vocus-682f1f7ffd89780001cc2d60",
+      "slug": "vocus-682f1f7ffd89780001cc2d60",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "philosophy"
+      ],
+      "sha256": "f6f939307757f68f726e34878ceb353320e0d708fd6e25b76c4d302e12afc7b2"
+    },
+    {
+      "file": "src/content/articles/ig-dvnhptok8yt.md",
+      "work_id": "ig-dvnhptok8yt",
+      "slug": "ig-dvnhptok8yt",
+      "series": "longform",
+      "topics": [
+        "psychology",
+        "philosophy"
+      ],
+      "sha256": "ae2d31840b30582ce0b9b8878accf3717d58ebb95db826bb7270f6bcca5838c7"
+    },
+    {
+      "file": "src/content/articles/antifragile-life.md",
+      "work_id": "vocus-6947fbe2fd89780001bd1dbb",
+      "slug": "antifragile-life",
+      "series": "longform",
+      "topics": [
+        "literature",
+        "philosophy"
+      ],
+      "sha256": "5f04e4db7a8066208846037a326ec96ead5dd49068d60c5af95d26e16dc39c2a"
+    },
+    {
+      "file": "src/content/articles/ig-drxkarwk5mw.md",
+      "work_id": "ig-drxkarwk5mw",
+      "slug": "ig-drxkarwk5mw",
+      "series": "longform",
+      "topics": [
+        "philosophy",
+        "society"
+      ],
+      "sha256": "0de3deddfd4b0485dac47dfacf8bad87fba747f07583d51317b0c7da07fddb79"
+    },
+    {
+      "file": "src/content/articles/vocus-681050d6fd8978000167fa4e.md",
+      "work_id": "vocus-681050d6fd8978000167fa4e",
+      "slug": "vocus-681050d6fd8978000167fa4e",
+      "series": "longform",
+      "topics": [
+        "faith",
+        "society"
+      ],
+      "sha256": "809749363e0c9d6c86f9de44c233c15295d5375c9c498db7937210bfaf6f2f52"
+    },
+    {
+      "file": "src/content/articles/vocus-68f48228fd89780001595841.md",
+      "work_id": "vocus-68f48228fd89780001595841",
+      "slug": "vocus-68f48228fd89780001595841",
+      "series": "longform",
+      "topics": [
+        "literature",
+        "philosophy"
+      ],
+      "sha256": "a0c1c0c4225a5c536011fbc8cf9b5843448b5fa331b180770a9c77066dfb2157"
+    },
+    {
+      "file": "src/content/articles/vocus-6733f8a4fd897800019465a6.md",
+      "work_id": "vocus-6733f8a4fd897800019465a6",
+      "slug": "vocus-6733f8a4fd897800019465a6",
+      "series": "longform",
+      "topics": [
+        "medicine",
+        "philosophy"
+      ],
+      "sha256": "6851f74eb13bb4b56000e761a73ab247f60f6374cd4df2b6de95ff53a7141e09"
+    },
+    {
+      "file": "src/content/articles/vocus-671f43ddfd89780001d85d12.md",
+      "work_id": "vocus-671f43ddfd89780001d85d12",
+      "slug": "vocus-671f43ddfd89780001d85d12",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "literature"
+      ],
+      "sha256": "0ad757292d9ddc0d83a3de9f65539b34d93a0900038d6a3021b16a8f03c307e1"
+    },
+    {
+      "file": "src/content/articles/vocus-69189f7afd89780001197b3c.md",
+      "work_id": "vocus-69189f7afd89780001197b3c",
+      "slug": "vocus-69189f7afd89780001197b3c",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "society"
+      ],
+      "sha256": "d976361eace731cbfbf6759a0a5532d8e1397492c94d91d2453c58900985ce6c"
+    },
+    {
+      "file": "src/content/articles/vocus-6780770dfd89780001b10de5.md",
+      "work_id": "vocus-6780770dfd89780001b10de5",
+      "slug": "vocus-6780770dfd89780001b10de5",
+      "series": "special",
+      "topics": [
+        "creation",
+        "philosophy"
+      ],
+      "sha256": "9bc5329e6dada06c4ff3924e0e1588bce8d69a2b11a0c9dadfa321b6a7281513"
+    },
+    {
+      "file": "src/content/articles/vocus-67e24412fd89780001f9a032.md",
+      "work_id": "vocus-67e24412fd89780001f9a032",
+      "slug": "vocus-67e24412fd89780001f9a032",
+      "series": "longform",
+      "topics": [
+        "psychology",
+        "creation"
+      ],
+      "sha256": "f35f97777da55ecbc019142dbd61da91293e152410d433f4ab710a4a3089d3b9"
+    },
+    {
+      "file": "src/content/articles/vocus-68ce7959fd89780001e796dd.md",
+      "work_id": "vocus-68ce7959fd89780001e796dd",
+      "slug": "vocus-68ce7959fd89780001e796dd",
+      "series": "longform",
+      "topics": [
+        "society",
+        "psychology"
+      ],
+      "sha256": "da7bb6ba9f0ad86b23cf8609909aaf37e38a697d68db6234e11a920abf9f8a9a"
+    },
+    {
+      "file": "src/content/articles/ig-dq3v8ste0kl.md",
+      "work_id": "ig-dq3v8ste0kl",
+      "slug": "ig-dq3v8ste0kl",
+      "series": "longform",
+      "topics": [
+        "literature",
+        "philosophy"
+      ],
+      "sha256": "19133d858e6db009bf0f224ff9703a42db25db6d5151c58406e5c7da4c93c9bd"
+    },
+    {
+      "file": "src/content/articles/vocus-67b7cc0ffd89780001a12b84.md",
+      "work_id": "vocus-67b7cc0ffd89780001a12b84",
+      "slug": "vocus-67b7cc0ffd89780001a12b84",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "psychology"
+      ],
+      "sha256": "787e028f1ca594ba4385fec668fec602b04d11c1c050ae2ef639a0494b55c6af"
+    },
+    {
+      "file": "src/content/articles/vocus-68bc309afd89780001643aa5.md",
+      "work_id": "vocus-68bc309afd89780001643aa5",
+      "slug": "vocus-68bc309afd89780001643aa5",
+      "series": "longform",
+      "topics": [
+        "psychology",
+        "creation"
+      ],
+      "sha256": "566693e1429327bf89f6e9e3c8c98e1a1bd9ce8887f0f33a83c28d87d633427d"
+    },
+    {
+      "file": "src/content/articles/vocus-68b1cc52fd89780001138a4f.md",
+      "work_id": "vocus-68b1cc52fd89780001138a4f",
+      "slug": "vocus-68b1cc52fd89780001138a4f",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "psychology"
+      ],
+      "sha256": "1caa753f661111cecf6cdf7ab4ecd2a93ad53a6ff07fbc82e0179fb088706550"
+    },
+    {
+      "file": "src/content/articles/vocus-683f025efd8978000114ddd9.md",
+      "work_id": "vocus-683f025efd8978000114ddd9",
+      "slug": "vocus-683f025efd8978000114ddd9",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "psychology"
+      ],
+      "sha256": "d2163e7e5e26bb851d89e1e5ff24a3b5752fd920600938d2879bf02cece295b1"
+    },
+    {
+      "file": "src/content/articles/willpower-and-habits.md",
+      "work_id": "vocus-68b418fdfd89780001979cd8",
+      "slug": "willpower-and-habits",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "science"
+      ],
+      "sha256": "1d5865d7d2e6b5c06381b27c7215593f4b63dca621bec2de15b7d26fe8d89a15"
+    },
+    {
+      "file": "src/content/articles/vocus-68aaa583fd89780001779778.md",
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "slug": "vocus-68aaa583fd89780001779778",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "psychology"
+      ],
+      "sha256": "a4a8d4b887b37c00c430acb5f8a373d74e32e9aab79378211da87fdc161eda2b"
+    },
+    {
+      "file": "src/content/articles/vocus-675b90a6fd89780001cc0f65.md",
+      "work_id": "vocus-675b90a6fd89780001cc0f65",
+      "slug": "vocus-675b90a6fd89780001cc0f65",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "philosophy"
+      ],
+      "sha256": "065ada819e94e314001a40dd60d11a8c6416ee48833e2113755b540b89c9f573"
+    },
+    {
+      "file": "src/content/articles/vocus-681c4b69fd897800017ddff5.md",
+      "work_id": "vocus-681c4b69fd897800017ddff5",
+      "slug": "vocus-681c4b69fd897800017ddff5",
+      "series": "longform",
+      "topics": [
+        "philosophy",
+        "psychology"
+      ],
+      "sha256": "f4b2a9996d00606ce6ac2c8ed00c62c1dc4dd47add39012205f4fa6f861a7e22"
+    },
+    {
+      "file": "src/content/articles/vocus-67c79b0ffd89780001c2f452.md",
+      "work_id": "vocus-67c79b0ffd89780001c2f452",
+      "slug": "vocus-67c79b0ffd89780001c2f452",
+      "series": "longform",
+      "topics": [
+        "faith",
+        "philosophy"
+      ],
+      "sha256": "b7c3e9e33a5b9db4ea28febb56537861e5c3fce3ae1fbc8671cf6ac51b33d4a3"
+    },
+    {
+      "file": "src/content/articles/ig-dtsrqjaewqz.md",
+      "work_id": "ig-dtsrqjaewqz",
+      "slug": "ig-dtsrqjaewqz",
+      "series": "longform",
+      "topics": [
+        "screen",
+        "philosophy"
+      ],
+      "sha256": "6b9387bc2f3bf97a726af496dfac136c1bdd452e3f14bc37b52dd65c9834b0dd"
+    },
+    {
+      "file": "src/content/articles/vocus-67bfdd7ffd8978000116e6ec.md",
+      "work_id": "vocus-67bfdd7ffd8978000116e6ec",
+      "slug": "vocus-67bfdd7ffd8978000116e6ec",
+      "series": "special",
+      "topics": [
+        "creation",
+        "science"
+      ],
+      "sha256": "0571435b283e3508d058207a4bc072d2924dbc5d74b4fe436194057bb6de479c"
+    },
+    {
+      "file": "src/content/articles/vocus-68fee256fd89780001139f49.md",
+      "work_id": "vocus-68fee256fd89780001139f49",
+      "slug": "vocus-68fee256fd89780001139f49",
+      "series": "fansiwei",
+      "topics": [
+        "psychology",
+        "society"
+      ],
+      "sha256": "8c3b6896812485e64ad160768803deb67c1d87d25003b22d8a06aad7af4766c3"
+    },
+    {
+      "file": "src/content/articles/vocus-6732b6b1fd89780001936027.md",
+      "work_id": "vocus-6732b6b1fd89780001936027",
+      "slug": "vocus-6732b6b1fd89780001936027",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "literature"
+      ],
+      "sha256": "d09d587a5900884f2eb2545fe198cf4227261a45d5c9e9c6e32161eafb5a9649"
+    },
+    {
+      "file": "src/content/articles/vocus-68201950fd89780001848e30.md",
+      "work_id": "vocus-68201950fd89780001848e30",
+      "slug": "vocus-68201950fd89780001848e30",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "philosophy"
+      ],
+      "sha256": "fe3f997a3e57dff1b673c95e6a1dd31f66c7b998077cb36df7ec423bc8432a54"
+    },
+    {
+      "file": "src/content/articles/vocus-689ed09bfd897800015571de.md",
+      "work_id": "vocus-689ed09bfd897800015571de",
+      "slug": "vocus-689ed09bfd897800015571de",
+      "series": "longform",
+      "topics": [
+        "psychology",
+        "creation"
+      ],
+      "sha256": "eaf889d0b8ad18aab3d2975222a2c70c16a62b22139eb5bb4ee30599e46e2f2f"
+    },
+    {
+      "file": "src/content/articles/vocus-673a0b99fd89780001bbb483.md",
+      "work_id": "vocus-673a0b99fd89780001bbb483",
+      "slug": "vocus-673a0b99fd89780001bbb483",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "literature"
+      ],
+      "sha256": "362ad34ac3b138a177f1bf3afcdb95f0e80cb6fff81a4a4cd5756f17b68e04c6"
+    },
+    {
+      "file": "src/content/articles/vocus-67ee69c9fd89780001777985.md",
+      "work_id": "vocus-67ee69c9fd89780001777985",
+      "slug": "vocus-67ee69c9fd89780001777985",
+      "series": "longform",
+      "topics": [
+        "creation",
+        "medicine"
+      ],
+      "sha256": "86e817d64e589b3e67b034b3cc5a8a952817d18be014229bfabebdd9c7e53979"
+    },
+    {
+      "file": "src/content/articles/vocus-694bff7dfd8978000124d7ab.md",
+      "work_id": "vocus-694bff7dfd8978000124d7ab",
+      "slug": "vocus-694bff7dfd8978000124d7ab",
+      "series": "longform",
+      "topics": [
+        "faith",
+        "philosophy"
+      ],
+      "sha256": "1f92c68647417be3cd9f91ea455b0e337524426aea6953252b4d1979fccd9329"
+    },
+    {
+      "file": "src/content/articles/vocus-698894aefd89780001f66c54.md",
+      "work_id": "vocus-698894aefd89780001f66c54",
+      "slug": "vocus-698894aefd89780001f66c54",
+      "series": "longform",
+      "topics": [
+        "society"
+      ],
+      "sha256": "fda1c328b8432a534bd6fc225da7265ee58ebbdb61a4b9afe21698e0a736a721"
+    },
+    {
+      "file": "src/content/articles/vocus-6764e586fd89780001056594.md",
+      "work_id": "vocus-6764e586fd89780001056594",
+      "slug": "vocus-6764e586fd89780001056594",
+      "series": "special",
+      "topics": [
+        "creation",
+        "philosophy"
+      ],
+      "sha256": "09d07edae525fc289b93978c972bbcdf3dfc706757a2af62c658f9020cd83363"
+    },
+    {
+      "file": "src/content/articles/vocus-676a6484fd89780001995dcf.md",
+      "work_id": "vocus-676a6484fd89780001995dcf",
+      "slug": "vocus-676a6484fd89780001995dcf",
+      "series": "longform",
+      "topics": [
+        "medicine",
+        "psychology"
+      ],
+      "sha256": "683cb3fe1737a4b023ae093434434d2e57ddd5e8ce43ec8218886fcfd584e432"
+    }
+  ],
+  "mapping": [
+    {
+      "guid": "c2fc0ec4-1e7a-4808-828a-2681658b0fb7",
+      "work_id": "vocus-69a000cbfd897800012961e9",
+      "approved": true
+    },
+    {
+      "guid": "3268a23e-ccaf-4f70-83d8-40550f3603e5",
+      "work_id": "vocus-698894aefd89780001f66c54",
+      "approved": true
+    },
+    {
+      "guid": "6810ebe2-da67-4283-bfc8-630c68e595c1",
+      "work_id": "vocus-6970c532fd89780001c4568c",
+      "approved": true
+    },
+    {
+      "guid": "e63a007f-52d8-4438-a5e5-246acb6386e5",
+      "work_id": "vocus-694bff7dfd8978000124d7ab",
+      "approved": true
+    },
+    {
+      "guid": "9dff92e9-3858-4519-87e6-bc9274205613",
+      "work_id": "vocus-6947fbe2fd89780001bd1dbb",
+      "approved": true
+    },
+    {
+      "guid": "d3f5858d-d8f6-45a1-804a-57d28d3fdbbe",
+      "work_id": "vocus-69340950fd89780001659d42",
+      "approved": true
+    },
+    {
+      "guid": "1f20def0-6228-4434-80fb-a33ddaf06745",
+      "work_id": "vocus-69189f7afd89780001197b3c",
+      "approved": true
+    },
+    {
+      "guid": "6f377651-fae5-42e0-919f-3f54ffb734b5",
+      "work_id": "vocus-68fee256fd89780001139f49",
+      "approved": true
+    },
+    {
+      "guid": "8f469193-9dc5-44ea-b8b2-3398d62dcd48",
+      "work_id": "vocus-68f48228fd89780001595841",
+      "approved": true
+    },
+    {
+      "guid": "12b8d2fe-824f-4682-b8f2-4e8512f89cde",
+      "work_id": "vocus-68eb6d09fd89780001833a2d",
+      "approved": true
+    },
+    {
+      "guid": "a760b308-7f28-407d-aff6-e149a6a869b7",
+      "work_id": "vocus-68da9638fd89780001227fe1",
+      "approved": true
+    },
+    {
+      "guid": "84443006-34d4-406b-bcd4-104ce64a4582",
+      "work_id": "vocus-68ce7959fd89780001e796dd",
+      "approved": true
+    },
+    {
+      "guid": "9f6dca71-4870-4684-8076-b853de0c41e6",
+      "work_id": "vocus-68c650cafd89780001ee563f",
+      "approved": true
+    },
+    {
+      "guid": "77d6725e-0918-40f1-8c01-e3b995325b0a",
+      "work_id": "vocus-68bc309afd89780001643aa5",
+      "approved": true
+    },
+    {
+      "guid": "0fa86973-54d7-4bd5-a64b-255b5afd9da2",
+      "work_id": "vocus-68b418fdfd89780001979cd8",
+      "approved": true
+    },
+    {
+      "guid": "05b69613-4296-4c7a-a205-5937639fb559",
+      "work_id": "vocus-68aaa583fd89780001779778",
+      "approved": true
+    },
+    {
+      "guid": "8dfe039a-7fb5-4bdf-9134-9fcdf76bb2e0",
+      "work_id": "ig-dvnhptok8yt",
+      "approved": true
+    },
+    {
+      "guid": "d973015a-d1d4-42a4-b959-d1f61c691397",
+      "work_id": "ig-dvbkyqok9e",
+      "approved": true
+    },
+    {
+      "guid": "9a81d6cd-3cd1-4fae-bb71-378c78371b64",
+      "work_id": "ig-dulrjmfk64q",
+      "approved": true
+    },
+    {
+      "guid": "58adc2d4-72c6-444d-8fe6-770296c843f1",
+      "work_id": "ig-dudigqee921",
+      "approved": true
+    },
+    {
+      "guid": "bf20ddce-f482-4556-b2fd-daa3833b33dc",
+      "work_id": "ig-dtsrqjaewqz",
+      "approved": true
+    },
+    {
+      "guid": "bd111a66-7431-41fa-92ad-fb1952112c70",
+      "work_id": "ig-drroyve60v",
+      "approved": true
+    },
+    {
+      "guid": "d0b432c1-36da-4863-9b71-4068dd941dae",
+      "work_id": "ig-drxkarwk5mw",
+      "approved": true
+    },
+    {
+      "guid": "53c18650-7819-41b2-b019-284617749502",
+      "work_id": "ig-dq3v8ste0kl",
+      "approved": true
+    },
+    {
+      "guid": "6f85e22a-f8a9-43fc-891c-cea514725480",
+      "work_id": "vocus-689ed09bfd897800015571de",
+      "approved": true
+    }
+  ],
+  "popularity": {
+    "articles": [
+      {
+        "id": "vocus-68eb6d09fd89780001833a2d",
+        "rank": 1,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68b1cc52fd89780001138a4f",
+        "rank": 2,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6790393efd89780001cb26b2",
+        "rank": 3,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-698894aefd89780001f66c54",
+        "rank": 4,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-675b90a6fd89780001cc0f65",
+        "rank": 5,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67b7cc0ffd89780001a12b84",
+        "rank": 6,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68ce7959fd89780001e796dd",
+        "rank": 7,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68f48228fd89780001595841",
+        "rank": 8,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-drroyve60v",
+        "rank": 9,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68da9638fd89780001227fe1",
+        "rank": 10,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-69189f7afd89780001197b3c",
+        "rank": 11,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68199d76fd897800011df871",
+        "rank": 12,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68aaa583fd89780001779778",
+        "rank": 13,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-69a000cbfd897800012961e9",
+        "rank": 14,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67f7cc40fd8978000135d2fc",
+        "rank": 15,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68bc309afd89780001643aa5",
+        "rank": 16,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68c650cafd89780001ee563f",
+        "rank": 17,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-683f025efd8978000114ddd9",
+        "rank": 18,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-dvbkyqok9e",
+        "rank": 19,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6729aba2fd89780001d5b97a",
+        "rank": 20,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68201950fd89780001848e30",
+        "rank": 21,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-dq3v8ste0kl",
+        "rank": 22,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-681050d6fd8978000167fa4e",
+        "rank": 23,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-drxkarwk5mw",
+        "rank": 24,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6744890cfd89780001e70aa9",
+        "rank": 25,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6859655dfd89780001378815",
+        "rank": 26,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68b418fdfd89780001979cd8",
+        "rank": 27,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6785c591fd897800018c347b",
+        "rank": 28,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-681c4b69fd897800017ddff5",
+        "rank": 29,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-69340950fd89780001659d42",
+        "rank": 30,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-694bff7dfd8978000124d7ab",
+        "rank": 31,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67ee69c9fd89780001777985",
+        "rank": 32,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-dtsrqjaewqz",
+        "rank": 33,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68245605fd897800019da7d0",
+        "rank": 34,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68fee256fd89780001139f49",
+        "rank": 35,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67d3cc10fd8978000137eb22",
+        "rank": 36,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-68086c27fd897800011e9a4f",
+        "rank": 37,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67c79b0ffd89780001c2f452",
+        "rank": 38,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-dulrjmfk64q",
+        "rank": 39,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67d3bb68fd89780001334866",
+        "rank": 40,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-676a6484fd89780001995dcf",
+        "rank": 41,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6733f8a4fd897800019465a6",
+        "rank": 42,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6970c532fd89780001c4568c",
+        "rank": 43,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6780770dfd89780001b10de5",
+        "rank": 44,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-673a0b99fd89780001bbb483",
+        "rank": 45,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67c5192dfd89780001396083",
+        "rank": 46,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6947fbe2fd89780001bd1dbb",
+        "rank": 47,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-dvnhptok8yt",
+        "rank": 48,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-689ed09bfd897800015571de",
+        "rank": 49,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-682f1f7ffd89780001cc2d60",
+        "rank": 50,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-671f43ddfd89780001d85d12",
+        "rank": 51,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "ig-dudigqee921",
+        "rank": 52,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-674fcdeffd89780001b93c49",
+        "rank": 53,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67e24412fd89780001f9a032",
+        "rank": 54,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6732b6b1fd89780001936027",
+        "rank": 55,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-67bfdd7ffd8978000116e6ec",
+        "rank": 56,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      },
+      {
+        "id": "vocus-6764e586fd89780001056594",
+        "rank": null,
+        "snapshot_at": null,
+        "metric": "instagram_primary_post_likes"
+      }
+    ],
+    "podcast": [
+      {
+        "id": "8f469193-9dc5-44ea-b8b2-3398d62dcd48",
+        "rank": 1,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "3268a23e-ccaf-4f70-83d8-40550f3603e5",
+        "rank": 2,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "6f377651-fae5-42e0-919f-3f54ffb734b5",
+        "rank": 3,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "77d6725e-0918-40f1-8c01-e3b995325b0a",
+        "rank": 4,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "d0b432c1-36da-4863-9b71-4068dd941dae",
+        "rank": 5,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "53c18650-7819-41b2-b019-284617749502",
+        "rank": 5,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "1f20def0-6228-4434-80fb-a33ddaf06745",
+        "rank": 7,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "12b8d2fe-824f-4682-b8f2-4e8512f89cde",
+        "rank": 8,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "c2fc0ec4-1e7a-4808-828a-2681658b0fb7",
+        "rank": 9,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "bd111a66-7431-41fa-92ad-fb1952112c70",
+        "rank": 9,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "bf20ddce-f482-4556-b2fd-daa3833b33dc",
+        "rank": 11,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "d973015a-d1d4-42a4-b959-d1f61c691397",
+        "rank": 12,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "9a81d6cd-3cd1-4fae-bb71-378c78371b64",
+        "rank": 13,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "a760b308-7f28-407d-aff6-e149a6a869b7",
+        "rank": 14,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "8dfe039a-7fb5-4bdf-9134-9fcdf76bb2e0",
+        "rank": 15,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "9dff92e9-3858-4519-87e6-bc9274205613",
+        "rank": 15,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "e63a007f-52d8-4438-a5e5-246acb6386e5",
+        "rank": 17,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "d3f5858d-d8f6-45a1-804a-57d28d3fdbbe",
+        "rank": 18,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "58adc2d4-72c6-444d-8fe6-770296c843f1",
+        "rank": 19,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "6810ebe2-da67-4283-bfc8-630c68e595c1",
+        "rank": 20,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "84443006-34d4-406b-bcd4-104ce64a4582",
+        "rank": 21,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "05b69613-4296-4c7a-a205-5937639fb559",
+        "rank": 22,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "6f85e22a-f8a9-43fc-891c-cea514725480",
+        "rank": 23,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "9f6dca71-4870-4684-8076-b853de0c41e6",
+        "rank": 24,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      },
+      {
+        "id": "0fa86973-54d7-4bd5-a64b-255b5afd9da2",
+        "rank": 25,
+        "snapshot_at": null,
+        "metric": "first_7_days_plays_plus_downloads"
+      }
+    ]
+  }
+}

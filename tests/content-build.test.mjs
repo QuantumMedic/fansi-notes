@@ -24,6 +24,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       cpSync(join(repo, path), join(root, path), { recursive: true });
     symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
     cpSync(join(repo,'tests/fixtures/platforms.astro.txt'),join(root,'src/pages/platform-fixture.astro'));
+    cpSync(join(repo,'tests/fixtures/image-state.astro.txt'),join(root,'src/pages/image-fixture.astro'));
     const file = join(root, 'src/content/articles/demo-new.md');
     const write = (data) =>
       writeFileSync(
@@ -73,12 +74,33 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     delete classifications[0].reviewed_by;
     delete classifications[0].reviewed_at;
     classifications[0].keywords = ['PROPOSED-SEARCH-SECRET'];
+    const fixtureEpisodesFile=join(root, 'src/data/podcast.json');
+    const fixtureEpisodes=JSON.parse(readFileSync(fixtureEpisodesFile,'utf8'));
+    for(const [suffix,series,status] of [['audio-only','fansiwei','confirmed'],['other-series','longform','confirmed'],['proposed-only','fansiwei','proposed']]) {
+      const guid=`last-pass-${suffix}`;
+      fixtureEpisodes.push({...fixtureEpisodes[0],guid,slug:guid,title:guid,description:'草地聲音測試',synthetic:true});
+      classifications.push({guid,work_id:guid,content_type:series,topics:['psychology'],keywords:[],status,...(status==='confirmed'?{reviewed_by:'isolated-test',reviewed_at:'2026-01-01T00:00:00Z'}:{})});
+    }
+    writeFileSync(fixtureEpisodesFile,JSON.stringify(fixtureEpisodes));
     const before = JSON.stringify(classifications);
     writeFileSync(classificationsFile, before);
     build();
-    for (const page of ['index.html','articles/index.html','series/fansiwei/index.html']) {
-      assert.match(html(page), /class="article-banner"[^>]*src="[^"]*assets\/test-banner.svg"[^>]*alt="隔離合成橫幅"/);
+    const mixed=html('series/fansiwei/index.html');
+    assert.match(mixed,/last-pass-audio-only/);assert.match(mixed,/共 10 個作品/);
+    assert.doesNotMatch(mixed,/last-pass-other-series|last-pass-proposed-only/);
+    assert.doesNotMatch(html('articles/index.html'),/last-pass-audio-only/);
+    assert.equal(existsSync(join(root,'dist/articles/last-pass-audio-only/index.html')),false);
+    for(const page of ['index.html','articles/index.html','series/fansiwei/index.html','podcast/index.html','topics/psychology/index.html','articles/demo-new/index.html']) {
+      const footer=html(page).match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)[0];
+      assert.match(footer,/href="https:\/\/www.instagram.com\/sci_fang2000\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+      assert.match(footer,/另開新分頁/);
     }
+    for (const page of ['index.html','articles/index.html','series/fansiwei/index.html','topics/psychology/index.html']) {
+      assert.doesNotMatch(html(page), /<img[^>]*test-banner.svg/);
+      assert.doesNotMatch(html(page), /class="article-banner"/);
+    }
+    assert.match(html('articles/demo-new/index.html'), /<img[^>]*class="real-cover"[^>]*test-banner.svg/);
+    assert.match(html('podcast/index.html'), /<img[^>]*src=/);
     for (const [alias, canonical] of [['books','literature'],['personal','creation'],['history_society','society']]) {
       assert.match(html(`topics/${alias}/index.html`), new RegExp(`topics/${canonical}/`));
       assert.match(html(`topics/${alias}/index.html`), /http-equiv="refresh"/);
@@ -116,7 +138,8 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
       const page=html(`podcast/${ep.slug}/index.html`);
       const primaryBadge=page.match(/<div class="classification"[^>]*>[\s\S]*?<\/div>/)?.[0];
       assert.ok(primaryBadge,ep.guid);
-      if(ep.guid===proposedGuid) assert.match(primaryBadge,/分類待確認/);
+      if(ep.guid==='last-pass-proposed-only') assert.match(primaryBadge,/分類待確認/);
+      else if(ep.guid===proposedGuid) assert.match(primaryBadge,/分類已確認/); // 已核准文章映射優先於獨立單集 proposed fixture
       else assert.match(primaryBadge,/分類已確認/); // 其他「繼續聆聽」推薦卡可能包含暫定測試資料
     }
 
@@ -124,12 +147,13 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     assert.match(html('topics/psychology/index.html'), /新增合成文章/);
     assert.match(html('index.html'), /新增合成文章/);
     assert.match(html('series/fansiwei/index.html'), /新增合成文章/);
-    assert.doesNotMatch(html('series/fansiwei/index.html'), /一盆植物延長生命/);
+    assert.match(html('series/fansiwei/index.html'), /一盆植物延長生命/);
     assert.doesNotMatch(html('series/fansiwei/index.html'), /id="work-series"/);
     assert.match(html('series/fansiwei/index.html'), /data-fixed-series="fansiwei"/);
     assert.doesNotMatch(html('articles/demo-new/index.html'), /Instagram 圖文|data-spotify-id|相關 Podcast/);
     assert.match(html('articles/demo-new/index.html'), /works\/demo-paper-city\//);
     assert.match(html('works/demo-paper-city/index.html'), /articles\/demo-new\//);
+    if (process.env.FANSI_TEST_ARTIFACT_DIR) cpSync(join(root,'dist'),process.env.FANSI_TEST_ARTIFACT_DIR,{recursive:true});
     const e = {
       guid: 'fixture-unique-guid',
       slug: 'fixture-episode',

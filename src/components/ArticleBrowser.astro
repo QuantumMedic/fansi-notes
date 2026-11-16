@@ -1,20 +1,21 @@
 ---
-import { popularityRank } from '../lib/popularity.mjs';
+import { articleBrowseWorks, articleBrowseRank } from '../lib/article-browser.mjs';
+import UnifiedWorkCard from './UnifiedWorkCard.astro';
 import WorkCard from './WorkCard.astro';
+import Pagination from './Pagination.astro';
 import { catalog } from '../lib/catalog';
 import { topics, series } from '../data/site';
-import { matchesSeries } from '../lib/taxonomy.mjs';
 interface Props {
   title?: string;
   fixedSeries?: string;
 }
 const { title = '探索文章', fixedSeries = '' } = Astro.props;
-const articles = (await catalog()).articles.filter((a) =>
-  matchesSeries(a.data.content_type, fixedSeries),
-);
+const all = await catalog();
+const works: typeof all.works = articleBrowseWorks(all, fixedSeries);
+const unit = fixedSeries === 'fansiwei' ? '個作品' : '篇文章';
 ---
 
-<div data-article-browser data-fixed-series={fixedSeries}>
+<div data-article-browser data-fixed-series={fixedSeries} data-count-unit={unit}>
   <section class="page-heading">
     <p class="eyebrow">文字的入口</p>
     <h1>{title}</h1>
@@ -59,29 +60,31 @@ const articles = (await catalog()).articles.filter((a) =>
     </form>
     <p class="muted">熱門依作者提供的 IG 主貼文讚數快照順位（非即時）；精確快照日期未提供。未知順位列於最後。</p>
     <p id="results" role="status">
-      共 {articles.length} 篇文章
+      共 {works.length} {unit}
     </p>
     <div class="cards" id="article-results">
-      {articles.map((a) => (
+      {works.map((w) => (
         <div
-          data-work-id={a.data.work_id}
-          data-rank={popularityRank('articles', a.data.work_id) ?? ''}
+          data-work-id={w.work_id}
+          data-rank={articleBrowseRank(w) ?? ''}
           data-result
-          data-date={a.data.published_at}
-          data-type={a.data.content_type}
-          data-topics={a.data.topics.join(' ')}
-          data-search={`${a.data.title} ${a.data.summary} ${a.body || ''} ${a.data.keywords.join(' ')}`}
+          data-date={w.published_at}
+          data-type={w.classification.content_type}
+          data-topics={w.classification.topics.join(' ')}
+          data-search={`${w.title} ${w.summary} ${w.article?.body || ''} ${w.classification.keywords.join(' ')}`}
         >
-          <WorkCard id={a.data.slug} {...a.data} type={a.data.content_type} />
+          {fixedSeries === 'fansiwei' ? <UnifiedWorkCard work={w} /> : <WorkCard id={w.article.data.slug} {...w.article.data} type={w.classification.content_type} episodes={w.episodes} />}
         </div>
       ))}
     </div>
+    <Pagination />
     <p id="no-results" hidden>
-      沒有符合的文章，請清除篩選再試一次。
+      沒有符合的作品，請清除篩選再試一次。
     </p>
   </section>
 </div>
 <script>
+  import { listPagination } from '../lib/list-pagination';
   import {compareBrowse} from '../lib/browse-sort.mjs';
   import { publicSeriesSlug, canonicalTopic } from '../lib/taxonomy.mjs';
   import { prepareSearch, matchesPrepared } from '../lib/search.mjs';
@@ -98,6 +101,7 @@ const articles = (await catalog()).articles.filter((a) =>
     date: Date.parse(el.dataset.date!),
     record: prepareSearch(el.dataset.search!, el.dataset.topics!.split(' '), el.dataset.type!),
   }));
+  const pager = listPagination(document.querySelector<HTMLElement>('[data-pagination]')!, list as HTMLElement, document.querySelector<HTMLElement>('#results')!, 20);
   const params = new URLSearchParams(location.search);
   for (const [select, key] of [
     [type, 'type'],
@@ -128,8 +132,9 @@ const articles = (await catalog()).articles.filter((a) =>
       });
       if (!row.el.hidden) count++;
     }
-    document.querySelector('#results')!.textContent = `共 ${count} 篇文章`;
+    document.querySelector('#results')!.textContent = `共 ${count} ${fixedSeries === 'fansiwei' ? '個作品' : '篇文章'}`;
     document.querySelector<HTMLElement>('#no-results')!.hidden = count > 0;
+    pager.update();
   }
   query.addEventListener('compositionstart', () => {
     composing = true;

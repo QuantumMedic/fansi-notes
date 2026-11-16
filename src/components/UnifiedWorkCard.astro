@@ -13,8 +13,9 @@ const { work: w } = Astro.props;
       : '聲音版本・尚無網站全文'}
     {w.article && w.episodes.length > 0 ? ' ＋ Podcast' : ''}
   </p>
-  <h2>{w.title}</h2>
   <ClassificationBadge classification={w.classification} />
+  <p class="muted">{w.article?.data.published_at?.slice(0,10) || w.episodes[0]?.published_at?.slice(0,10)}</p>
+  <h2><a href={url(w.article ? `articles/${w.article.data.slug}/` : `podcast/${w.episodes[0].slug}/`)}>{w.title}</a></h2>
   <p class="summary">{w.summary}</p>
   <div class:list={['media-links', { 'has-article': !!w.article }]}>
     {w.article && <a href={url(`articles/${w.article.data.slug}/`)}>閱讀全文 ↗</a>}
