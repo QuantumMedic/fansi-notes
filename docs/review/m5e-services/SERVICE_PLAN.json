@@ -1,0 +1,298 @@
+{
+  "schema_version": "m5e-free-interactions-v1",
+  "prepared_on": "2026-11-16",
+  "status": "owner_accepted_token_revoked_security_followup_in_m5f",
+  "document_role": "planning_input_not_runtime_configuration",
+  "repository": "QuantumMedic/fansi-notes",
+  "branch": "prep/m5e-free-interactions-20261116",
+  "base_branch": "prep/m5e-publication-display-20261115",
+  "verified_base_commit": "c96ec85f0c69d87647991e95ea534ffa82a3eec1",
+  "entrypoint": "docs/review/m5e-services/START_HERE.md",
+  "delivery": {
+    "codex_round_1": "Implement comments, admin, contact, analytics, local integration tests and one configuration checklist; no remote deploy",
+    "owner_setup": "One account/settings session; confirm all missing values and test-deployment permissions together",
+    "codex_round_2": "Connect verified settings and perform real staging tests in the same PR; do not rebuild or redesign",
+    "after_services": [
+      "M5-F single integrated acceptance",
+      "M6 separately authorized merge/release sequence and launch"
+    ],
+    "account_setup_may_run_parallel_to_round_1": true,
+    "merge_authorized": false,
+    "remote_test_deploy_authorized": true,
+    "production_deploy_authorized": false,
+    "paid_subscription_authorized": false,
+    "card_binding_authorized": false
+  },
+  "preserve_baseline": {
+    "articles": 57,
+    "podcasts": 25,
+    "approved_podcast_work_mappings": 25,
+    "article_images": 96,
+    "publications": 7,
+    "publication_links": 26,
+    "books_direct_links": 8,
+    "author_timeline_events": 13,
+    "existing_tests": 90,
+    "baseline_built_pages": 114,
+    "do_not_change": [
+      "original article bodies and baseline hashes",
+      "existing popularity values and metric definitions",
+      "approved classifications",
+      "publications and author copy",
+      "Canva",
+      "other repositories",
+      "homepage five scenes",
+      "noindex before M6"
+    ]
+  },
+  "cost_policy": {
+    "incremental_subscription_budget": 0,
+    "currency": "USD",
+    "accounts_required": true,
+    "free_tier_limits_are_not_unlimited": true,
+    "no_auto_upgrade_or_topup": true,
+    "no_new_paid_domain_or_server": true,
+    "on_limit_exceeded": "degrade only the affected service; preserve readable site and unsent input; never silently charge",
+    "existing_paid_account": "requires explicit cost review before using it; do not alter other projects or promise zero charges"
+  },
+  "comments": {
+    "provider": "custom-cloudflare-workers-free-d1-free",
+    "public_worker_name_proposed": "fansi-comments",
+    "admin_worker_name_proposed": "fansi-comments-admin",
+    "names_are_not_deployed_resources": true,
+    "database_binding": "DB",
+    "backend_directory_to_create": "services/comments",
+    "admin_identity": "Cloudflare Access Free with One-time PIN and exact author email allowlist",
+    "admin_host_is_separate_from_public_api": true,
+    "admin_identity_header_alone_is_not_authentication": true,
+    "readers_need_account": false,
+    "reader_email_collected": false,
+    "nickname_max_characters": 40,
+    "message_max_characters": 2000,
+    "request_body_max_bytes": 16384,
+    "content_mode": "plain_text_only",
+    "initial_moderation_mode": "publish_after_server_antispam_checks",
+    "admin_can_switch_premoderation": true,
+    "admin_can_pause_new_comments": true,
+    "reader_can_delete_own": true,
+    "reader_can_edit": false,
+    "delete_credential": "per-comment client-generated CSPRNG >=256bit; server stores digest only; preserve on retry; never in URLs or public responses",
+    "browser_storage": "automatic per-comment credentials; memory fallback; no copy/download/manual recovery UI",
+    "lost_credential": "no insecure automatic recovery; contact owner for review",
+    "delete_replies": "deleting parent must not delete others' replies; erase deleted content and preserve minimal tombstone when needed",
+    "reply_depth_max": 1,
+    "admin_can": [
+      "review",
+      "reply",
+      "hide",
+      "delete",
+      "toggle_moderation",
+      "pause_writes",
+      "authenticated_export"
+    ],
+    "new_comment_email_notifications": "deferred_first_version",
+    "pagination_default": 10,
+    "pagination_hard_max": 10,
+    "load": "after visitor requests comments, no per-card comment counts or polling",
+    "antispam": "Turnstile server-side verify + hostname/action + persistent short-lived rate limits",
+    "author_badge": "server-set for authenticated admin only",
+    "thread_keys": {
+      "article": "article:<stable_work_id>",
+      "mapped_podcast": "same article:<mapped_work_id> resolved by approved GUID mapping",
+      "unmapped_podcast": "podcast:<RSS_GUID>",
+      "publication": "publication:<stable_work_id>",
+      "current_expected_distinct_threads": 64,
+      "count_not_permanently_hardcoded": true,
+      "manifest": "generated from published catalog/publications; reject unknown IDs server-side; preserve aliases for deliberate later mappings"
+    },
+    "author_display_name": "宗凡",
+    "replies_per_batch": 10,
+    "persistent_unread": true,
+    "public_admin_entrypoints": false,
+    "admin_navigation": "private bookmark -> Cloudflare Access -> central management; one-way return to public comment",
+    "admin_url_delivery": "private local configuration only; no public build or PR/README"
+  },
+  "contact": {
+    "provider": "formspree_free",
+    "free_monthly_submissions_at_review": 50,
+    "free_archive_days_at_review": 30,
+    "recipient": "author-specified Gmail from conversation; set and verify privately in provider dashboard",
+    "recipient_not_stored_in_public_repo": true,
+    "endpoint": null,
+    "form_fields": [
+      "category",
+      "optional nickname",
+      "reply email",
+      "message"
+    ],
+    "autoresponder": false,
+    "attachments": false,
+    "spam_protection": "Formspree supported built-in/reCAPTCHA free capabilities; do not assume Turnstile is validated by Formspree",
+    "public_email_approved": false,
+    "public_email": null,
+    "public_email_decision": "confirm during the single setup session; recipient authorization is not automatic public disclosure",
+    "fallback_if_approved": [
+      "mailto",
+      "copy email"
+    ],
+    "no_config_behavior": "honest unavailable state or author-approved email-only contact; never pretend a form was sent",
+    "success_wording": "provider accepted submission; actual arrival separately verified by author",
+    "failure_behavior": "preserve unsent content, no unbounded automatic retries, show explicit fallback"
+  },
+  "analytics": {
+    "provider": "goatcounter_free_hosted",
+    "dashboard": "private",
+    "endpoint": null,
+    "enabled_default": false,
+    "non_production_excluded": [
+      "localhost",
+      "127.0.0.1",
+      "CI",
+      "admin",
+      "review routes"
+    ],
+    "events": [
+      "page_view",
+      "article_read_more",
+      "outbound_spotify",
+      "outbound_apple",
+      "outbound_vocus",
+      "outbound_instagram",
+      "outbound_bookstore",
+      "comment_submitted",
+      "contact_submitted"
+    ],
+    "allowed_context": [
+      "stable work_id",
+      "platform",
+      "approved pathname"
+    ],
+    "excluded_payloads": [
+      "email",
+      "message or comment text",
+      "deletion credentials",
+      "search input",
+      "sensitive query strings or fragments"
+    ],
+    "does_not_replace_existing_popularity": true,
+    "outbound_click_is_not_play_or_purchase": true
+  },
+  "required_configuration": [
+    {
+      "name": "Cloudflare account + Workers Free + Zero Trust Free",
+      "source": "author-owned account and explicit local login",
+      "visibility": "private account authorization",
+      "value": null,
+      "needed_for": "live staging only"
+    },
+    {
+      "name": "D1 staging and production database IDs",
+      "source": "Codex-assisted provisioning after authorization",
+      "visibility": "deployment config; not secret but do not invent",
+      "value": null,
+      "needed_for": "live staging/production; local D1 works first"
+    },
+    {
+      "name": "public API and admin worker URLs",
+      "source": "actual assigned workers.dev hostnames",
+      "visibility": "public API origin public; admin URL private local configuration/bookmark only",
+      "value": null,
+      "needed_for": "frontend cloud integration; do not apply /fansi-notes to Worker routes"
+    },
+    {
+      "name": "TURNSTILE_SITE_KEY",
+      "source": "real widget and hostnames",
+      "visibility": "public",
+      "value": null,
+      "needed_for": "real comment submission"
+    },
+    {
+      "name": "TURNSTILE_SECRET_KEY",
+      "source": "Cloudflare widget secret",
+      "visibility": "Worker secret only",
+      "value": null,
+      "needed_for": "backend Siteverify"
+    },
+    {
+      "name": "ACCESS_TEAM_DOMAIN, ACCESS_AUD, ADMIN_EMAIL_ALLOWLIST",
+      "source": "actual Access application/OTP configuration",
+      "visibility": "server-only config; author identity kept private",
+      "value": null,
+      "needed_for": "protected admin, deny when absent"
+    },
+    {
+      "name": "RATE_LIMIT_HMAC_SECRET",
+      "source": "cryptographically generated locally",
+      "visibility": "Worker secret only",
+      "value": null,
+      "needed_for": "short-lived anonymous antiabuse fingerprints"
+    },
+    {
+      "name": "ALLOWED_ORIGINS / hostname allowlists",
+      "source": "existing site configuration and explicit staging origins",
+      "visibility": "public config",
+      "value": null,
+      "needed_for": "CORS and Turnstile validation; no wildcard credentials"
+    },
+    {
+      "name": "FORMSPREE_ENDPOINT and verified recipient",
+      "source": "author-owned Free form; owner verifies the already specified Gmail",
+      "visibility": "endpoint public; recipient only provider settings",
+      "value": null,
+      "needed_for": "real contact submission and mail delivery"
+    },
+    {
+      "name": "GOATCOUNTER_ENDPOINT",
+      "source": "author-created private-dashboard code",
+      "visibility": "public ingestion endpoint, private account token never client-side",
+      "value": null,
+      "needed_for": "real analytics"
+    },
+    {
+      "name": "PUBLIC_CONTACT_EMAIL / explicit permission",
+      "source": "one-time publication decision for backup email",
+      "visibility": "public only if separately approved",
+      "value": null,
+      "needed_for": "email-only fallback; not needed to implement form"
+    }
+  ],
+  "configuration_check_output": {
+    "must_create_by_codex": "docs/review/m5e-services/ACTIVATION_CHECKLIST.md",
+    "show_all_missing_items_at_once": true,
+    "do_not_print_secret_values": true,
+    "labels": [
+      "local-ready",
+      "staging-ready",
+      "production-ready",
+      "not-configured",
+      "not-tested"
+    ]
+  },
+  "known_missing_before_development": [
+    "Historical initial gaps superseded by account_setup_status; do not repeat registration."
+  ],
+  "completion_boundary": "Staging deployed and live author/comment/mail/test-analytics checks evidenced; second real non-allowlisted identity and owner final acceptance remain. Production not enabled.",
+  "account_setup_status": {
+    "cloudflare_free": "Free staging resources and exact Access policies verified; real owner OTP and management succeeded",
+    "formspree": "one synthetic message accepted; owner confirmed Gmail receipt",
+    "goatcounter": "isolated dashboard shows authorized events; both dashboards reject anonymous statistics access",
+    "payment": "owner already completed required Free setup; no new paid changes authorized"
+  },
+  "live_staging_pending": [
+    "Second real non-allowlisted account login test",
+    "Independent browser reader ownership check"
+  ],
+  "staging_resource_state": {
+    "d1": "created; 0001/0002 applied; only a few synthetic acceptance comments",
+    "turnstile": "created; single staging hostname; secret private",
+    "access": "two full-hostname exact-author apps verified; real owner OTP passed",
+    "workers": "public/admin deployed; preview URLs disabled; production untouched",
+    "frontend": "Access-protected Astro staging deployed; all assets JWT verified; noindex retained",
+    "live_acceptance": "comments, owner management, Gmail receipt, isolated analytics evidenced; limitations in README"
+  },
+  "owner_acceptance": {
+    "operation_and_visual": "accepted by owner",
+    "temporary_access_setup_token": "revoked, owner-confirmed",
+    "production_authorized": false
+  }
+}

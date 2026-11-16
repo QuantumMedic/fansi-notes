@@ -13,18 +13,28 @@
     "check": "astro check",
     "test": "node --test tests/*.test.mjs",
     "sync:podcast": "node scripts/sync-podcast.mjs",
-    "format": "prettier --write src scripts tests"
+    "format": "prettier --write src scripts tests",
+    "sync:threads": "node scripts/sync-comment-threads.mjs",
+    "prebuild": "npm run sync:threads",
+    "test:services": "node --test tests/interactions-*.test.mjs",
+    "services:local": "node scripts/local-interactions.mjs",
+    "services:preflight": "node scripts/check_interaction_config.mjs",
+    "dev:services": "PUBLIC_INTERACTIONS_LOCAL=true PUBLIC_COMMENTS_ENABLED=true PUBLIC_COMMENTS_API=http://127.0.0.1:8787 PUBLIC_TURNSTILE_SITE_KEY=local-isolated PUBLIC_CONTACT_ENABLED=true PUBLIC_FORMSPREE_ENDPOINT=http://127.0.0.1:8789/success astro dev --host 127.0.0.1 --port 4335"
   },
   "dependencies": {
     "@astrojs/check": "0.9.12",
     "astro": "7.4.11",
     "fast-xml-parser": "5.12.0",
     "fast-xml-validator": "1.4.2",
+    "jose": "6.2.17",
     "typescript": "6.0.3",
     "zod": "4.6.7"
   },
   "devDependencies": {
+    "miniflare": "5.20261113.0-beta",
     "prettier": "3.10.1",
-    "prettier-plugin-astro": "1.1.2"
+    "prettier-plugin-astro": "1.1.2",
+    "wrangler": "4.162.0",
+    "yaml": "2.9.1"
   }
 }

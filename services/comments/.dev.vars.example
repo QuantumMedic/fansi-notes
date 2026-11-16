@@ -1,0 +1,9 @@
+# Copy only to ignored .dev.vars; never put real secrets/author email in Git.
+ENVIRONMENT=unconfigured
+ALLOWED_ORIGINS=
+TURNSTILE_HOSTNAMES=
+TURNSTILE_SECRET_KEY=
+RATE_LIMIT_HMAC_SECRET=
+ACCESS_TEAM_DOMAIN=
+ACCESS_AUD=
+ADMIN_EMAIL_ALLOWLIST=

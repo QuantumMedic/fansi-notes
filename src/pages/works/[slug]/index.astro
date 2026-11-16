@@ -102,7 +102,7 @@ import PublicationRelations from '../../../components/PublicationRelations.astro
       {b.award && <p><a href={b.award.source_url}>{b.award.year} {b.award.label} ↗</a></p>}
       </section>
       <PublicationRelations workId={b.work_id} kind="publication" />
-      <ServiceState kind="comments" />
+      <ServiceState kind="comments" threadKind="publication" threadId={b.work_id} />
     </div>
   </article>
 </Main>
