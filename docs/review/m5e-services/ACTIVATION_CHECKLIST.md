@@ -1,16 +1,18 @@
 # M5-E 互動服務｜集中啟用清單
 
-本批只完成本機程式與測試。以下資源**尚未建立／真實驗證**，不把測試網址當成正式服務。沒有任何步驟已授權部署、付費、綁卡或公開Email。
+本機程式已完成；本輪進入作者授權的免費 staging 接線。帳號存在不代表 CLI 已登入或雲端驗收完成。禁止 production、付費升級、公開 Email 備援及公開私人管理資訊。
 
-## 1. 作者一次完成的登入及確認
+## 1. 已有設定與本輪授權
 
-|服務|作者操作|驗證方式|
+|服務|已完成的準備|仍需驗證|
 |---|---|---|
-|[Cloudflare Dashboard](https://dash.cloudflare.com/)|登入自己的帳號，確認Workers Free、D1 Free；Zero Trust Free，不綁卡、不開付費試用。開啟One-time PIN登入方式。|確認方案及可用額度；若既有帳號有付費方案，先單獨檢查費用，不更改其他專案。|
-|[Formspree](https://formspree.io/)|登入／建立免費帳號與表單，於後台設定並驗證作者已指定的Gmail。不要將收件信箱寫入Git。|後台顯示收件驗證完成；真實測試寄信仍另需作者授權及確認收到。|
-|[GoatCounter](https://www.goatcounter.com/)|建立免費託管帳號，控制台設私人；測試與正式使用不同站點代碼。|登入後確認控制台非公開，取得實際count endpoint。|
+|Cloudflare|作者已完成 Zero Trust Free、官方要求的付款資料步驟及 One-time PIN；沿用原組織，不重建。|Wrangler OAuth 與帳號已核對；staging D1／Turnstile 已建立。待 Access 權限、team domain／政策核對及真實作者登入。|
+|Formspree|既有免費表單及指定收件通知已由作者畫面確認。|從受控聯絡頁送一封合成驗收信；服務接受與作者 Gmail 實收分開記錄。|
+|GoatCounter|正式與測試站點已建立，Email 已驗證；兩控制台匿名存取均為登入頁。|只向測試站送授權事件，作者登入確認資料；正式站不送驗收流量。|
 
-作者需集中確認：①是否允許**受控測試**Worker部署及D1遠端遷移；②允許寄一封合成驗收信並由作者確認Gmail實收；③公開Email備援是否同意（預設不公開）；④專用測試網站origin/hostname（不買新網域）；⑤Access僅允許作者精確Email，不能整個gmail.com網域或Everyone。密碼、OTP及secret不要貼PR或公開文件。
+本輪已授權本專案免費 staging D1／Worker／Turnstile／Access、受控 HTTPS 前台及增量遷移。公開 Email 備援仍關閉；不改正式 GitHub Pages 或 noindex。沒有建立外部資源前不寫已建立；Access 政策與真實登入分開驗證，不預填完成旗標。
+
+官方 OAuth 由作者親自批准，憑證使用 Wrangler 的 Mac 鑰匙圈。若 OAuth 缺 Access 權限，僅補所需控制台操作或受限 token；不得索取 Global API Key、密碼或 OTP，也不讀瀏覽器 Cookie。
 
 ## 2. 取得真實設定（全部缺項一次填）
 
@@ -95,9 +97,9 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 
 刪除擦除正文／暱稱／刪除碼hash，保留最小tombstone與冪等摘要；供應商備份保留限制另行確認。私人匯出檔也需由作者管理刪除與保留時間。
 
-**停止點：本輪未建立外部帳號、未部署Worker、未遷移遠端DB、未寄真信、未啟用正式分析。下一次同PR接線，不重做元件。**
+**接線進行中：已建立 staging D1、套用 0001／0002，Turnstile 已建立；尚未部署 Worker、寄驗收信或送統計。接續同 PR 補足 Access 權限及政策查核，不重做元件。**
 
-本輪補充：公開網站不使用管理URL設定，舊PUBLIC_COMMENTS_ADMIN_URL會被忽略；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號與正式接線仍未啟用。
+本輪補充：公開網站不使用管理URL設定，舊PUBLIC_COMMENTS_ADMIN_URL會被忽略；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號已準備，staging 真實接線尚未完成；production 不在本輪。
 
 ## 私人書籤與Access最後驗收
 
@@ -106,3 +108,24 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 - preview_urls保持false；未來若啟用也須同等保護。公開留言Worker不要求登入。
 - 真實接線以作者與非作者帳號分別驗證允許／拒絕；本地測試簽章不能當作正式登入驗收，測試身分不進正式Worker或公開建置。
 - 公開repo的程式與路徑不承諾保密；知道網址仍須通過伺服器JWT、issuer、audience、有效期、精確Email及寫入origin驗證。
+
+## 本輪 Access 權限與受控前台
+
+Wrangler 4.162.0 官方 OAuth 已完成；Access create 回應 403 auth.forbidden，組織讀取亦被拒絕。只補限目前帳號的短期 `Access: Apps and Policies Edit` 與 `Access: Organizations, Identity Providers, and Groups Read`。Token 只在 repo 外私人檔案以隱藏輸入保存；不要貼聊天／PR，不索取 Global API Key，不重新要求作者註冊。
+
+既有 staging D1 與 Turnstile 要沿用。私人資源清冊保存實際 ID、狀態與停用方法，不在此文件輸出私人管理 hostname。Access team domain、每個應用 AUD、精確 Email policy 必須由實際結果核對，政策檢查與真實 OTP 登入是兩個驗收項目。
+
+受控前台使用既有 Astro build，獨立 `services/comments/staging-site.mjs`，所有資產先驗 JWT；`assets.run_worker_first=true`、preview_urls=false。三服務僅在隔離 build 設定啟用，普通 build 仍關閉。Access 設定完成、preflight 通過後：
+
+```sh
+node scripts/prepare-staging-site.mjs /私人位置/設定.json
+# 產生被 Git 忽略的 services/comments/site.staging.private.json
+# 前台需獨立 FRONTEND_ACCESS_AUD，與管理 AUD 不同。
+# 三個 Worker 的帳號 ID 來自私人 CLOUDFLARE_ACCOUNT_ID。
+npx wrangler secret put ADMIN_EMAIL_ALLOWLIST --config services/comments/site.staging.private.json
+npx wrangler deploy --config services/comments/site.staging.private.json
+```
+
+前台 allowlist 同樣只進 Worker secret，不進 HTML／JS。腳本將 dist 複製到 repo 外並檢查靜態輸出不含私人管理 URL、allowlist、Turnstile secret 或限流 secret。前台 secret 尚未設定時驗證失敗、不能讀資產。上列命令是授權後接續步驟，**不是已部署證明**。
+
+本輪停用清單與實際資源 ID 私下保存：先停止本專案 staging Workers，再依作者決定備份／刪除測試 D1、Turnstile 和本批 Access app；不刪原組織、Identity Provider、帳號子網域、既有 Formspree 或 GoatCounter 站點。

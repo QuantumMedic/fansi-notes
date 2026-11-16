@@ -1,5 +1,19 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
+## 真實 staging 接線（2026-11-16，進行中）
+
+- 作者已完成 Cloudflare Zero Trust Free、One-time PIN、既有 Formspree 表單及收件通知、GoatCounter 正式／測試兩站的私人控制台設定；不再要求註冊，也不以作者已完成的付款資料步驟作為阻擋。
+- 本輪已授權本專案免費 staging 資源、受控部署與 D1 增量遷移、一封合成來信及隔離分析事件。仍禁止 production、合併、付費升級、公開私人管理網址／白名單／密鑰。
+- 最新分支基線 `d72d6e538a322012fddab66f2e73f10a7789f744`，Wrangler 4.162.0；官方裝置 OAuth 已由作者完成，帳號已核對。已建立本專案免費 staging D1 與 Turnstile；尚未部署 Worker 或前台。
+- 已匿名實測兩個 GoatCounter 控制台，皆顯示登入表單，未顯示統計；本輪未送分析事件。Formspree 收件設定由作者確認，尚未寄驗收信或確認 Gmail 實收。
+- 私人 staging 設定保存在 Repository 外、目錄 0700／檔案 0600；Account ID、D1 ID、workers.dev 子網域與 Turnstile key 皆來自實際 API 結果；Access team domain 仍待補權限核對，未虛構 AUD。
+- 本輪本地 91 項測試全數通過（保留原 90 項）、check 114 檔零錯誤／警告／提示、114 頁 build 成功；正式內容資料與雜湊基準不變。GitHub CI 待本輪提交驗證。新增受控 staging 前台與權限測試；所有資產先驗 JWT、精確帳號及 audience，缺設定拒絕，保持 /fansi-notes/ 與 noindex。本輪真 Turnstile、持久留言、自刪、Access OTP、管理回覆、Gmail 實收與測試統計仍待實測；不宣稱 M5-E 已驗收。
+- D1 僅套用現有 0001／0002 增量遷移，實查留言數為 0；沒有搬入本地示範留言。Turnstile managed widget 僅允許測試前台 hostname，secret 只在私人設定。
+- Access 應用建立回應 403 `auth.forbidden`；現有 Wrangler OAuth 缺 Access Apps and Policies 寫入權限與組織讀取權限。已提供限目前帳號的短期 Token 與本機隱藏輸入方式；未重試繞過、未虛填 ACCESS_POLICY_VERIFIED。
+- `prepare-staging-site.mjs` 將既有 build 放在 Repository 外，逐檔排除私人設定；獨立前台 Worker 要求 run_worker_first／Access 驗證，preview_urls=false。設定產生器仍先要求完整政策預檢；migration 使用限定 DB 的私人設定，不放寬既有 production 要求。
+
+
+
 本輪公開管理入口移除：程式與本地權限測試已完成；90項測試、check零錯誤／警告／提示、114頁build、輸入檢查／服務預檢、兩個Worker dry-run通過。正式Access政策與真實登入尚待接線驗證；GitHub CI以PR #21最新HEAD為準。
 
 
@@ -30,15 +44,15 @@
 5. M5-F一次全站整合驗收。依明確作者授權，先#19、再#20、再互動PR，逐一確認base與CI後合併；不與正式部署混同。
 6. M6另行批准正式上線、SEO與受控同步／回退。M7大型私人後台仍選做。
 
-## M5-E互動服務：本地已實作，待帳號設定及真實接線
+## M5-E互動服務：本地已實作，帳號已準備、待 CLI 授權及真實接線
 
 - **留言**：Cloudflare Workers/D1/Turnstile免費方案，免註冊暱稱純文字、預設防垃圾通過後公開、可切先審核、逐則安全管理碼讓讀者自刪。公開API與作者管理Worker分離；管理端Access Free＋Email一次性驗證、精確作者allowlist，預設拒絕無認證請求。
 - **管理**：最小留言列表／回覆／隱藏／刪除／審核開關／匯出；第一版不寄留言Email通知，不做會員、附件、即時聊天室或大型後台。這是作者確認的低成本縮減，不是忘記原規格。
 - **私人聯絡**：Formspree Free，收件地址已由作者指定，於服務後台私下驗證，不在公開repo放實際地址。準備mailto／複製Email備援，但未核准公開前不寫入地址。未設定不可假成功；遇免費額度不足不自動升級。
 - **分析**：GoatCounter免費託管，私人控制台，僅必要頁面與作品外連事件；本地/CI/admin預設不送，不收留言或來信正文，不改原熱門排名。
-- 本次查不到可直接代設上述服務的已連接工具；不宣稱帳號／資源已存在。實際帳號、D1 IDs、Worker URLs、Turnstile/Access設定、Formspree endpoint及驗證、GoatCounter code尚需一次設定。
+- 帳號與 Formspree／GoatCounter 端點已有作者確認資料；D1 ID、Worker URL、Turnstile widget、Access 應用及真實登入仍須以授權後的帳號查核與操作結果為準。
 - Codex第一批交付後建立一份`docs/review/m5e-services/ACTIVATION_CHECKLIST.md`與配置預檢完整列缺項。該檔、設定樣板與預檢已建立；`local-ready`通過，staging／production仍為not-configured。
-- 本批只批准免費方向及本地開發，不批准綁信用卡、付費、公開端點部署或正式上線；遇到這些動作集中要求明確授權，其他可完成程式照常做。
+- 最新授權允許免費 staging 受控端點與增量遷移，不允許 production、付費升級或額外付款變更；作者已自行完成 Free 開通要求。
 
 ## PR #21 留言閱讀與作者管理調整（2026-11-16）
 

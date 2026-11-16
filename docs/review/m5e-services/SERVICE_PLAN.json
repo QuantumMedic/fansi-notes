@@ -1,7 +1,7 @@
 {
   "schema_version": "m5e-free-interactions-v1",
   "prepared_on": "2026-11-16",
-  "status": "local_baseline_complete_reading_management_revision_in_progress",
+  "status": "staging_base_resources_created_access_permission_pending",
   "document_role": "planning_input_not_runtime_configuration",
   "repository": "QuantumMedic/fansi-notes",
   "branch": "prep/m5e-free-interactions-20261116",
@@ -18,7 +18,7 @@
     ],
     "account_setup_may_run_parallel_to_round_1": true,
     "merge_authorized": false,
-    "remote_test_deploy_authorized": false,
+    "remote_test_deploy_authorized": true,
     "production_deploy_authorized": false,
     "paid_subscription_authorized": false,
     "card_binding_authorized": false
@@ -32,7 +32,7 @@
     "publication_links": 26,
     "books_direct_links": 8,
     "author_timeline_events": 13,
-    "existing_tests": 73,
+    "existing_tests": 90,
     "baseline_built_pages": 114,
     "do_not_change": [
       "original article bodies and baseline hashes",
@@ -195,7 +195,7 @@
     {
       "name": "public API and admin worker URLs",
       "source": "actual assigned workers.dev hostnames",
-      "visibility": "public URLs",
+      "visibility": "public API origin public; admin URL private local configuration/bookmark only",
       "value": null,
       "needed_for": "frontend cloud integration; do not apply /fansi-notes to Worker routes"
     },
@@ -269,12 +269,29 @@
     ]
   },
   "known_missing_before_development": [
-    "Cloudflare account login/authorization not inspected",
-    "No real database IDs or Worker URLs provisioned",
-    "Turnstile and Access settings not supplied",
-    "Formspree endpoint and Gmail verification not completed",
-    "GoatCounter account code not supplied",
-    "Email-publication and remote-test-deployment consent not yet recorded"
+    "Historical initial gaps superseded by account_setup_status; do not repeat registration."
   ],
-  "completion_boundary": "Spec and workflow are complete enough to implement locally; accounts, cloud resources, live delivery and deployed services are NOT already completed. Missing external settings must never stop local code work or be hidden in final acceptance."
+  "completion_boundary": "Spec and workflow are complete enough to implement locally; accounts, cloud resources, live delivery and deployed services are NOT already completed. Missing external settings must never stop local code work or be hidden in final acceptance.",
+  "account_setup_status": {
+    "cloudflare_free": "owner-confirmed Free; official Wrangler device OAuth completed and account verified; D1 and Turnstile staging resources created; Access API write denied",
+    "formspree": "existing form and recipient notification owner-confirmed; synthetic send and receipt pending",
+    "goatcounter": "production and isolated test sites owner-confirmed; both anonymous dashboards show sign-in; test ingestion pending",
+    "payment": "owner already completed required Free setup; no new paid changes authorized"
+  },
+  "live_staging_pending": [
+    "Restricted Access Apps and Policies Edit plus Organizations/Identity Providers Read permission",
+    "Protected staging frontend and public/admin Worker deployment after Access policy verification",
+    "Turnstile widget and Access policy configuration",
+    "Real author OTP, persisted comments/self-delete/admin reply",
+    "One synthetic Formspree acceptance and owner Gmail receipt",
+    "Isolated analytics event appearance in private dashboard"
+  ],
+  "staging_resource_state": {
+    "d1": "created; migrations 0001/0002 applied; zero comments",
+    "turnstile": "created; single staging hostname; secret private",
+    "access": "create denied 403; no application created",
+    "workers": "not deployed",
+    "frontend": "implemented fail-closed wrapper; not deployed",
+    "live_acceptance": "not started"
+  }
 }
