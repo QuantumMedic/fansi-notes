@@ -1,6 +1,14 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：工程已整合 main，正式上線待授權（2026-11-16）
+## 目前階段：production Access已配置並讀回核對／正式入口停用、安全啟用仍待驗（2026-11-16）
+
+本輪從main `37fb883`建立`prep/m6-production-wiring`，只做授權的免費production接線。獨立D1已遷移0001／0002、0留言、paused=1；獨立Turnstile已配置；public與admin Worker已上傳但workers.dev／preview皆關閉，PRODUCTION_SERVICES_ACTIVE=false。尚無可使用的正式管理書籤。私人資源、secret與空庫備份留repo外。
+
+本輪以作者新授權的短期Token完成獨立production管理端Access：精確作者Email、只允許既有OTP、完整hostname所有路徑、一條Allow且無Bypass；讀回確認其他應用未變更。實際AUD已保存私人設定，未部署至Worker，線上仍缺AUD拒絕且全部入口停用。兩項真實安全待驗仍未通過，作者本輪暫不追加測試。短期production Token已提醒作者撤銷，尚未收到撤銷確認。Formspree/Gmail及隔離GoatCounter已完成證據沿用，不重寄。正式發布仍未授權、Pages未啟用、noindex不變，沒有新增付費。
+
+完整網站release已增加full/off模式、獨立服務／索引授權、production預檢、SHA綁定的公開欄位manifest及唯讀health停止條件；不輸出管理網址／秘密。103項本地測試通過、check零錯誤、build114頁；最新CI見本輪PR。唯一操作／資源狀態／集中控制台清單：docs/review/m6/README.md。
+
+## 前批整合基線（已完成，非本輪部署授權）
 
 作者已接受網站、留言與管理操作及PR #23工程準備。此次僅授權程式碼整合；#19→#20→#21→#22→#23均以merge commit完成，未刪分支、未force push。#20／#21已轉Ready；每次先將下一PR base調整main，核對內容樹並等待main CI成功後才繼續。
 
@@ -18,14 +26,14 @@
 
 - 合併前後均實際讀取GitHub Pages：Source為Deploy from a branch，Branch=None，顯示Pages currently disabled。未按Save或啟用。
 - 先前核查Environments為空，github-pages審核保護尚未建立；正式發布前另行設定。release僅workflow_dispatch，不隨main push執行；本輪只有驗證CI，沒有執行release。
-- noindex維持，普通建置留言／聯絡／分析預設關閉，未建立或變更Cloudflare production、未新增付費。
+- 整合當時noindex維持、服務預設關閉、未建立production；本輪已授權資源建立但仍停用，詳見頂部。
 - 完整留言、聯絡、分析仍是目標；靜態服務關閉版本只是備案，不代表取消留言。
 - 唯一M6操作入口：docs/review/m6/README.md。該報告內「PR待合併」等為準備當時紀錄，最新整合狀態以上表為準。
 
 ## 正式啟用前真正剩餘事項
 
-1. 作者另行授權正式發布／production設定；核對Pages Actions來源與github-pages環境審核及main部署限制。
-2. 獨立production D1、Workers、Turnstile、精確Access政策及私人管理書籤；備份、真實接線與完整公開設定再驗證，不能搬staging合成留言。
+1. 作者另行授權正式發布／production啟用；核對Pages Actions來源與github-pages環境審核及main部署限制。
+2. D1、Workers與Turnstile已建立並停用；Access政策與實際AUD已私下配置及讀回；仍須另行授權將AUD部署至停用的Worker，之後再驗證私人管理書籤、真實接線及完整公開設定。初始空庫已備份，不能搬staging合成留言。
 3. 兩項安全證據仍未完整完成：非白名單真實帳號的私人管理拒絕、獨立瀏覽器讀者自刪權限。作者本輪暫不追加測試；不重建Access Token、不改寫為通過或已接受所有風險。production預檢門檻保留。
 4. 第一次約14:55手機LINE開啟的是一般staging文章，沒有已確認非作者進入管理端證據。後續無OTP不等於拒絕驗收通過；當時authentication logs未取得，未繞過瀏覽器安全限制。
 5. 正式分析切換與隱私、索引／SEO／分享圖用途、發布後檢查及回退確認，均在正式授權時進行。Gmail既已實收，不重寄。

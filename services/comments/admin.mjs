@@ -8,6 +8,7 @@ export async function handleAdmin(req,env,keys){
  try{
   if(!['staging','production'].includes(env.ENVIRONMENT)||!env.DB)fail(503,'not_configured');
   await verifyAccess(req,env,keys);
+  if(env.ENVIRONMENT==='production'&&env.PRODUCTION_SERVICES_ACTIVE!=='true')fail(503,'production_inactive');
   const u=new URL(req.url),p=u.pathname;
   if(req.method!=='GET'&&req.headers.get('Origin')!==u.origin)fail(403,'origin_denied');
   if(p==='/admin/'&&req.method==='GET')return new Response(adminPage.replace("__SITE_ORIGIN__",JSON.stringify(siteOrigin(env))).replace("__SITE_BASE__",JSON.stringify(siteBase(env))),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY','Content-Security-Policy':"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"}});

@@ -20,9 +20,13 @@ export function preflight(e,mode='local'){
  for(const k of ['ALLOWED_ORIGINS'])if(!(e[k]||'').split(',').every(s=>{try{const u=new URL(s);return u.protocol==='https:'&&u.origin===s&&!/localhost|example/.test(u.hostname);}catch{return false;}}))invalid.push(k);
  const c=interactionConfig({...e,PUBLIC_COMMENTS_ENABLED:'true',PUBLIC_CONTACT_ENABLED:'true',PUBLIC_ANALYTICS_ENABLED:'true',DEV:false,CI:false});
  if(!c.comments.enabled)invalid.push('comments_public_config');if(!c.contact.enabled)invalid.push('contact_public_config');if(!c.analytics.enabled)invalid.push('analytics_public_config');
- const consent=['REMOTE_TEST_DEPLOY_APPROVED','FORMSPREE_RECIPIENT_VERIFIED','ACCESS_POLICY_VERIFIED','GOATCOUNTER_PRIVATE_DASHBOARD_VERIFIED'];
+ const consent=[mode==='production'?'PRODUCTION_RESOURCES_AUTHORIZED':'REMOTE_TEST_DEPLOY_APPROVED','FORMSPREE_RECIPIENT_VERIFIED','ACCESS_POLICY_VERIFIED','GOATCOUNTER_PRIVATE_DASHBOARD_VERIFIED'];
  if(mode==='production')consent.push('M6_DEPLOY_APPROVED','LIVE_COMMENTS_VERIFIED','LIVE_ACCESS_VERIFIED','LIVE_MAIL_RECEIVED','ISOLATED_ANALYTICS_VERIFIED','NON_ALLOWLIST_ADMIN_VERIFIED','INDEPENDENT_BROWSER_DELETE_VERIFIED');
  if(mode==='production'){
+  if(/https:\/\/[^.]*staging/i.test(e.PUBLIC_COMMENTS_API||''))invalid.push('staging_api');
+  if(!e.STAGING_ACCESS_AUD)missing.push('STAGING_ACCESS_AUD');
+  if(e.ACCESS_AUD===e.STAGING_ACCESS_AUD)invalid.push('separate_access_audience');
+  if(e.ALLOWED_ORIGINS!=='https://quantummedic.github.io'||e.TURNSTILE_HOSTNAMES!=='quantummedic.github.io')invalid.push('exact_production_origin');
   if(e.D1_DATABASE_NAME!=='fansi-comments')invalid.push('production_database_name');
   if(!e.STAGING_D1_DATABASE_ID)missing.push('STAGING_D1_DATABASE_ID');
   if(e.D1_DATABASE_ID===e.STAGING_D1_DATABASE_ID)invalid.push('separate_production_database');
