@@ -1,14 +1,20 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：PR #24已整合main／發布環境保護已設定／正式入口停用（2026-11-16）
+## 目前階段：production管理AUD已實際部署／所有入口停用／待受控驗證授權（2026-11-16）
 
-本輪從main `37fb883`建立`prep/m6-production-wiring`，只做授權的免費production接線。獨立D1已遷移0001／0002、0留言、paused=1；獨立Turnstile已配置；public與admin Worker已上傳但workers.dev／preview皆關閉，PRODUCTION_SERVICES_ACTIVE=false。尚無可使用的正式管理書籤。私人資源、secret與空庫備份留repo外。
+本輪從最新main `3d7f0ba7dc3afccc9de34c32ac627595a8f4f5e6`建立`prep/m6-admin-aud-verification`，開工時無未結PR／並行修改。只修正停用設定產生器與回歸測試，沒有改動正式內容、服務驗證邏輯或release安全門檻。
 
-本輪以作者新授權的短期Token完成獨立production管理端Access：精確作者Email、只允許既有OTP、完整hostname所有路徑、一條Allow且無Bypass；讀回確認其他應用未變更。實際AUD已保存私人設定，未部署至Worker，線上仍缺AUD拒絕且全部入口停用。兩項真實安全待驗仍未通過，作者本輪暫不追加測試。作者已確認撤銷短期production Token `fansi-access-production-setup`；本輪未再使用或要求建立Token。Formspree/Gmail及隔離GoatCounter已完成證據沿用，不重寄。正式發布仍未授權、Pages未啟用、noindex不變，沒有新增付費。
+production管理Worker已部署真正Access AUD，Cloudflare設定讀回與私人設定及既有官方Access證據一致；issuer、D1、作者白名單secret與其他綁定保持不變。兩Worker仍workers.dev=false、preview=false、PRODUCTION_SERVICES_ACTIVE=false；D1仍0留言、paused=1。公開Worker未部署／未改動，沒有公開管理書籤可用。
 
-完整網站release已增加full/off模式、獨立服務／索引授權、production預檢、SHA綁定的公開欄位manifest及唯讀health停止條件；不輸出管理網址／秘密。103項本地測試通過、check零錯誤、build114頁；最新CI見本輪PR。唯一操作／資源狀態／集中控制台清單：docs/review/m6/README.md。
+本次OAuth重讀Access應用回403；未索取或使用已撤銷Token。政策匹配依先前官方讀回檔核對，不能宣稱本次即時政策或真實登入已驗證。兩項真實安全證據仍未完整完成，不填假通過。Pages停用、noindex及Environment保護保持，未執行release。
 
-## PR #24合併與發布保護（本輪已完成）
+`prepare-production-inactive.mjs`有AUD時必須提供匹配的私人Access讀回證據；未核實、錯應用、錯hostname、寬鬆policy或不完整已核實設定會在寫檔前停止。無AUD的初始設定仍fail closed。重跑保留核實AUD，不把資料輸出至日誌。
+
+完整發布確有啟用前驗證的相依問題；本輪沒有繞過。已在唯一M6文件界定「受Access保護的驗證前台＋私有service binding＋限時production寫入」下一輪方案、真實證據適用範圍、恢復及最終hostname上線後檢查。此驗證通道尚未實作／部署，不假稱今天即可直接開啟測試；須另行一次性授權，不需要重製網站或重做staging驗收。
+
+本輪驗證：新增3項精確AUD回歸保障、完整106項測試通過；輸入／64串清冊／local預檢通過；Astro check 128檔0 errors／0 warnings、1項既有unused-import hint；build 114頁。管理Worker dry-run及實際停用部署／讀回成功。既有src/content、src/data、public與服務處理程式未改，CI見本輪PR。
+
+## PR #24合併與發布保護（前輪已完成，AUD狀態以頂部為準）
 
 - 作者接受PR #24並授權merge commit。合併前重新讀取Pages：Deploy from a branch／Branch=None／currently disabled；PR最新HEAD `1deb0261d4df4570c3531d9229a1061ad767abd5` CI通過、main未被並行更動，正式內容diff為零。
 - merge commit：`745553452f229f359d17989d61dce1c582461e99`；[main CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43845649652)。合併後完整內容樹與PR #24 HEAD同為`6b89a6ae4967ca729d8cfcd174e620b43bbdaad9`。本次現況文件提交在該比較之後，與工程樹核對分開記錄。
@@ -41,7 +47,7 @@
 ## 正式啟用前真正剩餘事項
 
 1. 作者另行授權受控啟用驗證及正式發布。Environment保護已設定；Pages Actions來源仍待正式發布授權時切換，不先啟用。
-2. D1、Workers與Turnstile已建立並停用；Access政策與實際AUD已私下配置及讀回；仍須另行授權將AUD部署至停用的Worker，之後再驗證私人管理書籤、真實接線及完整公開設定。初始空庫已備份，不能搬staging合成留言。
+2. D1、Workers與Turnstile已建立並停用；Access政策與實際AUD已私下配置及讀回；AUD已部署並讀回，仍須另行授權受控驗證通道、限時寫入及管理登入實測，之後才可啟用正式服務。初始空庫已備份，不能搬staging合成留言。
 3. 兩項安全證據仍未完整完成：非白名單真實帳號的私人管理拒絕、獨立瀏覽器讀者自刪權限。作者本輪暫不追加測試；不重建Access Token、不改寫為通過或已接受所有風險。production預檢門檻保留。
 4. 第一次約14:55手機LINE開啟的是一般staging文章，沒有已確認非作者進入管理端證據。後續無OTP不等於拒絕驗收通過；當時authentication logs未取得，未繞過瀏覽器安全限制。
 5. 正式分析切換與隱私、索引／SEO／分享圖用途、發布後檢查及回退確認，均在正式授權時進行。Gmail既已實收，不重寄。
