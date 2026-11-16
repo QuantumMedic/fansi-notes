@@ -1,0 +1,861 @@
+{
+  "schema_version": "fansi-m5e-display-input-v2",
+  "prepared_on": "2026-11-15",
+  "repository": "QuantumMedic/fansi-notes",
+  "scope": "M5-E主要展示：七筆作品、作者及首頁；不包含留言／聯絡／分析服務或部署",
+  "state": "repository_content_staged; external_platform_exceptions_explicit; UI_not_implemented",
+  "authorization": {
+    "allow_preparation_and_review_pr": true,
+    "author_final_ui_acceptance": false,
+    "allow_full_manuscripts": false,
+    "allow_merge": false,
+    "allow_deploy": false,
+    "allow_paid_services": false
+  },
+  "count": {
+    "publications": 7,
+    "official_cover_source_urls": 6,
+    "local_cover_files": 0,
+    "local_author_photo_files": 1,
+    "purchase_or_reading_link_records": 26
+  },
+  "presentation": {
+    "retain_existing_shelf": true,
+    "article_text_cards_unchanged": true,
+    "detail_order": [
+      "cover_and_short_summary",
+      "grouped_reading_purchase_links",
+      "long_description",
+      "verified_endorsements",
+      "series_reading_order",
+      "edition_metadata"
+    ],
+    "link_groups": {
+      "print": "紙本購書",
+      "ebook": "電子書",
+      "read": "線上閱讀"
+    },
+    "default_visible_endorsements": 2,
+    "additional_endorsements": "native_details",
+    "hide_empty_sections": true,
+    "covers": "Use exact official remote URLs below in ordinary img elements; no asset-fetch script or new source search. Preserve aspect ratio; provide existing typographic fallback. Remote availability and actual rendering require UI acceptance, not asserted here.",
+    "missing_official_cover": "existing_typographic_work_label_not_fake_published_cover",
+    "no_prices_or_live_rankings": true,
+    "base_path": "/fansi-notes/",
+    "note_story_description": "2026-11-15 作者預覽回饋：七筆故事介紹擴充為具體情節、三至四段自然段落；維持書架短介與各冊基本身分。仍待作者於PR最終驗收。"
+  },
+  "publications": [
+    {
+      "work_id": "publication-tianqi-1",
+      "slug": "publication-tianqi-1",
+      "title": "天啟Ⅰ：末世訊號",
+      "author": "江宗凡",
+      "series": "天啟",
+      "order": 1,
+      "display_order": 1,
+      "work_form": "novel",
+      "publication_status": "published",
+      "completion_status": "completed",
+      "formats_verified": [
+        "print",
+        "ebook"
+      ],
+      "publisher": "釀出版",
+      "edition_date": "2019-06",
+      "edition_isbn": "9789864453290",
+      "theme": "sage",
+      "date_note": "本次商品頁所列版本日期，不推定為作品初版年份。",
+      "summary": "西安強震後，歷史系學生倫納德腦中出現與秦朝有關的幻象。地底金屬人與致命怪病接連現身，他與蕭璟被捲入一場從古代延續至今的危機。",
+      "description": [
+        "在中國西安的西北大學，歷史系學生倫納德・馬修斯正為一份秦始皇的期末報告傷透腦筋。一場突如其來的強震摧毀圖書館。昏迷之前，他看見電腦螢幕閃現陌生的小篆文字，意識中也湧入自己不可能親歷的古代片段。",
+        "倫納德被前來救災的蕭璟從瓦礫中救出。災區的忙亂尚未平息，科學家便在地底偵測到無法穿透的巨大金屬構造；與震災同時抵達的神祕電磁波，更使這場災難難以用尋常地質現象解釋。",
+        "他在幻象中看見的文字和場景，逐漸與秦始皇留下的歷史謎團互相呼應。隨著調查深入，致命怪病、未知科技與各國的政治角力相繼浮現，越來越多人被捲入其中。",
+        "兩千多年前的秦朝祕史與當代科學開始交會。倫納德與蕭璟循著線索接近震災背後的秘密，也踏上一段從個人命運延伸至世界危機的旅程。"
+      ],
+      "endorsements": [
+        {
+          "by": "上官鼎",
+          "quote": "這是一本充滿奇幻布局和玄想科技的小說，作者也不忘記加入了一些人性的關懷",
+          "source_label": "天啟Ⅰ：末世訊號推薦序",
+          "source_page": 4,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=121977"
+        },
+        {
+          "by": "張善政",
+          "quote": "比起許多科幻電影，這本書的劇情毫不遜色",
+          "source_label": "天啟Ⅰ：末世訊號推薦序",
+          "source_page": 3,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=121977"
+        },
+        {
+          "by": "林宜澐",
+          "quote": "有靈活的情節構思能力，也能精準地將這個龐大的故事以文字呈現",
+          "source_label": "天啟Ⅰ：末世訊號推薦序",
+          "source_page": 5,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=121977"
+        }
+      ],
+      "cover": {
+        "mode": "remote",
+        "source_url": "https://store.showwe.tw/bookpic/9789864453290_01.jpg",
+        "source_page": "https://store.showwe.tw/books.aspx?b=121977",
+        "alt": "天啟Ⅰ：末世訊號正式書封",
+        "state": "official_source_url_located_rendering_not_verified",
+        "crop": "none"
+      },
+      "links": [
+        {
+          "platform": "秀威書店",
+          "label": "秀威書店｜紙本",
+          "url": "https://store.showwe.tw/books.aspx?b=121977",
+          "group": "print",
+          "scope": "volume",
+          "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "platform": "誠品線上",
+          "label": "誠品｜紙本",
+          "url": "https://www.eslite.com/product/1001258882766855",
+          "group": "print",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜紙本",
+          "url": "https://www.books.com.tw/products/0010823413?sloc=main",
+          "group": "print",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "official_product_page_title_matched"
+        },
+        {
+          "platform": "金石堂",
+          "label": "金石堂｜電子書",
+          "url": "https://www.kingstone.com.tw/basic/2800000103134/",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050049457?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        }
+      ]
+    },
+    {
+      "work_id": "publication-tianqi-2",
+      "slug": "publication-tianqi-2",
+      "title": "天啟Ⅱ：始皇印記",
+      "author": "江宗凡",
+      "series": "天啟",
+      "order": 2,
+      "display_order": 2,
+      "work_form": "novel",
+      "publication_status": "published",
+      "completion_status": "completed",
+      "formats_verified": [
+        "print",
+        "ebook"
+      ],
+      "publisher": "釀出版",
+      "edition_date": "2019-07",
+      "edition_isbn": "9789864453320",
+      "theme": "sage",
+      "date_note": "本次商品頁所列版本日期，不推定為作品初版年份。",
+      "summary": "戰後七年，倫納德從芬蘭寄來的古老病原樣本，竟與蕭璟參與研發的「創世疫苗」高度相似。追查將兩人帶向跨國集團印法埃，以及一場即將席捲世界的危機。",
+      "description": [
+        "西安之戰已經過去七年，世界在災難後逐漸重建。倫納德成為歷史研究者，在芬蘭追查與中世紀黑死病有關的遺骸；蕭璟則進入跨國企業印法埃的醫學研究部門，投入一項被寄予厚望的「創世疫苗」計畫。",
+        "一份自冰封墓穴取得的古老病原樣本，被倫納德寄給蕭璟分析。檢測結果顯示，它竟與公司研製中的疫苗有驚人的相似之處。兩人一直試圖解開的始皇血脈之謎，也因此重新與現實交纏。",
+        "同一時間，非洲偏遠地區出現不尋常的疫情，國際刑警則持續調查各國專業人士的離奇死亡。線索屢屢指向曾在戰後協助重建、如今勢力龐大的印法埃集團，但公司深藏的計畫與相互矛盾的證據，使事件越發難以看清。",
+        "當瘟疫與軍事衝突逐步擴大，倫納德和蕭璟必須在追捕與逃亡中尋找解答。他們與印法埃首領江少白的關係，也讓這場全球危機帶上更為複雜的個人牽掛。"
+      ],
+      "endorsements": [
+        {
+          "by": "甄偉健",
+          "quote": "故事簡直就是一本以整個地球為戰場的三國演義",
+          "source_label": "天啟Ⅱ：始皇印記推薦序",
+          "source_page": 6,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=122283"
+        },
+        {
+          "by": "李惟陽",
+          "quote": "所描寫的父子之情，男女愛戀，同事朋友的點點滴滴，有著年過半百的閱歷智慧。",
+          "source_label": "天啟Ⅱ：始皇印記推薦序",
+          "source_page": 4,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=122283"
+        },
+        {
+          "by": "黃致錕",
+          "quote": "一部解答秦始皇的歷史謎團，並帶領你穿越兩千年時空的科幻巨作。",
+          "source_label": "天啟Ⅱ：始皇印記推薦序",
+          "source_page": 6,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=122283"
+        },
+        {
+          "by": "張善政",
+          "quote": "隨著第二集的故事越來精彩，我再度為江宗凡的創意喝采！",
+          "source_label": "天啟Ⅱ：始皇印記推薦序",
+          "source_page": 3,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=122283"
+        }
+      ],
+      "cover": {
+        "mode": "remote",
+        "source_url": "https://store.showwe.tw/bookpic/9789864453320_01.jpg",
+        "source_page": "https://store.showwe.tw/books.aspx?b=122283",
+        "alt": "天啟Ⅱ：始皇印記正式書封",
+        "state": "official_source_url_located_rendering_not_verified",
+        "crop": "none"
+      },
+      "links": [
+        {
+          "platform": "秀威書店",
+          "label": "秀威書店｜紙本",
+          "url": "https://store.showwe.tw/books.aspx?b=122283",
+          "group": "print",
+          "scope": "volume",
+          "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "platform": "誠品線上",
+          "label": "誠品｜紙本",
+          "url": "https://www.eslite.com/product/1001258882776725",
+          "group": "print",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜紙本",
+          "url": "https://www.books.com.tw/products/0010827312?sloc=main",
+          "group": "print",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        },
+        {
+          "platform": "金石堂",
+          "label": "金石堂｜電子書",
+          "url": "https://www.kingstone.com.tw/basic/2800000104002/",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050051653?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        }
+      ]
+    },
+    {
+      "work_id": "publication-tianqi-3",
+      "slug": "publication-tianqi-3",
+      "title": "天啟Ⅲ：創始之體",
+      "author": "江宗凡",
+      "series": "天啟",
+      "order": 3,
+      "display_order": 3,
+      "work_form": "novel",
+      "publication_status": "published",
+      "completion_status": "completed",
+      "formats_verified": [
+        "print",
+        "ebook"
+      ],
+      "publisher": "釀出版",
+      "edition_date": "2020-08",
+      "edition_isbn": "9789864454075",
+      "theme": "sage",
+      "date_note": "本次商品頁所列版本日期，不推定為作品初版年份。",
+      "summary": "瘟疫過後，地球仍陷於戰爭與權力鬥爭。來自乙太的訊息，使倫納德與江少白分別踏入更深的衝突，戰場也延伸至精神意識與宇宙的起源。",
+      "description": [
+        "瘟疫雖已終結，世界仍籠罩在戰爭留下的廢墟與不安之中。城市停擺、社會秩序崩解，人們試圖重新建立生活，各方勢力卻仍在爭奪掌握未來的權力。印法埃集團也沒有真正退出這場鬥爭。",
+        "就在各國勉力重建之際，一段來自乙太的神祕訊息被接收。昔日只存在於古老傳說與戰爭陰影中的文明，再度與地球產生聯繫。人類逐步理解的精神力量，以及圍繞這股力量展開的新計畫，使局勢更難以預測。",
+        "倫納德一方面尋找外星科技留下的答案，一方面牽掛著蕭璟的安危。江少白則在印法埃內部的權力衝突中面對新的抉擇；昔日的敵人、盟友與各自的信念，都在接連而來的危機中受到考驗。",
+        "《天啟》三部曲的最後篇章，將戰場從地球上的軍事與政治衝突，逐漸推往精神意識、宇宙文明與「創始之體」的秘密。人物的愛恨、忠誠與選擇，也在這場最終危機裡交錯。"
+      ],
+      "endorsements": [
+        {
+          "by": "林思偕",
+          "quote": "他筆下的人物，則是愛與仇恨交織的血肉之軀，複雜難解，沒有絕對的好壞……",
+          "source_label": "天啟Ⅲ：創始之體推薦序",
+          "source_page": 6,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+        },
+        {
+          "by": "上官鼎",
+          "quote": "劇情流暢細膩，畫面感十足",
+          "source_label": "天啟Ⅲ：創始之體推薦序",
+          "source_page": 4,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+        },
+        {
+          "by": "李偉才",
+          "quote": "這麼年輕便能夠寫出布局如此龐大的史詩式科幻作品實在不簡單。",
+          "source_label": "天啟Ⅲ：創始之體推薦序",
+          "source_page": 7,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+        },
+        {
+          "by": "張善政",
+          "quote": "第三集故事內容千絲萬縷，相當精彩複雜。",
+          "source_label": "天啟Ⅲ：創始之體推薦序",
+          "source_page": 3,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+        },
+        {
+          "by": "湯惟中",
+          "quote": "無論是江少白，雙木，甚至是大頭目，都是真正蘊含感情，有完整故事的人物",
+          "source_label": "天啟Ⅲ：創始之體推薦序",
+          "source_page": 8,
+          "quoted_verbatim": true,
+          "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+        }
+      ],
+      "cover": {
+        "mode": "remote",
+        "source_url": "https://store.showwe.tw/bookpic/9789864454075_01.jpg",
+        "source_page": "https://store.showwe.tw/books.aspx?b=127170",
+        "alt": "天啟Ⅲ：創始之體正式書封",
+        "state": "official_source_url_located_rendering_not_verified",
+        "crop": "none"
+      },
+      "links": [
+        {
+          "platform": "秀威書店",
+          "label": "秀威書店｜紙本",
+          "url": "https://store.showwe.tw/books.aspx?b=127170",
+          "group": "print",
+          "scope": "volume",
+          "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "platform": "誠品線上",
+          "label": "誠品｜紙本",
+          "url": "https://www.eslite.com/product/1001258882860503",
+          "group": "print",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜紙本",
+          "url": "https://www.books.com.tw/products/0010864898?sloc=main",
+          "group": "print",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        },
+        {
+          "platform": "金石堂",
+          "label": "金石堂｜電子書",
+          "url": "https://www.kingstone.com.tw/basic/2800000104022/",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050073570?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "official_product_page_title_matched"
+        }
+      ]
+    },
+    {
+      "work_id": "publication-singularity-1",
+      "slug": "publication-singularity-1",
+      "title": "智慧奇點（上）",
+      "author": "江宗凡",
+      "series": "智慧奇點",
+      "order": 1,
+      "display_order": 4,
+      "work_form": "novel",
+      "publication_status": "published",
+      "completion_status": "completed",
+      "formats_verified": [
+        "ebook"
+      ],
+      "publisher": "台灣角川",
+      "edition_date": "2024-11-08",
+      "edition_isbn": "9786264009294",
+      "theme": "bronze",
+      "summary": "一場科技發表會的爆炸，讓神經外科醫師趙昀成為被追捕的嫌犯。他與特務丹尼爾循線調查，逐漸接近人工智慧「伊芙」、神經晶片與復活亡者計畫背後的秘密。",
+      "description": [
+        "七年前，科技巨擘賽門・羅傑斯在空難中失去獨生女伊芙。他以女兒的名字命名自己創造的泛用型人工智慧，讓一套能夠學習、推理與處理龐大資訊的系統，成為推動世界改變的核心技術。",
+        "人工智慧的進展促成神經晶片與虛擬人物技術的突破。晶片開始能解讀人腦訊號，電腦也能模擬逝去的人所留下的樣貌、聲音與人格。對失去摯愛的人而言，科技帶來前所未有的可能；各國政商高層卻接連發生難以解釋的意外死亡。",
+        "台灣神經外科醫師趙昀前往矽谷參加科技發表會，現場卻突然發生爆炸。他在特務丹尼爾協助下逃離，兩人隨後竟被指控為恐怖攻擊的主謀，開始躲避追捕並試圖查明爆炸的真正原因。",
+        "七年前的空難、中情局的暗殺行動、讀取思想的神經晶片與復活亡者的奧菲斯計畫，逐漸出現在同一條追查線索上。當人工智慧開始觸及人類的意識與身分，趙昀與丹尼爾發現自己面對的秘密，遠超出一樁恐攻案件。"
+      ],
+      "description_scope": "whole_work",
+      "description_label": "作品介紹",
+      "endorsements": [
+        {
+          "by": "李惟陽",
+          "quote": "把AI 和人性錯綜複雜地融合，相覆相傾。",
+          "source_url": "https://www.bookwalker.com.tw/product/221464",
+          "source_label": "《智慧奇點（上）》公開推薦摘錄",
+          "quoted_verbatim": true
+        },
+        {
+          "by": "約書亞・鍾",
+          "quote": "在一個非常可信的科幻宇宙中呈現了一篇精彩故事。",
+          "source_url": "https://www.bookwalker.com.tw/product/221465",
+          "source_label": "《智慧奇點（下）》公開推薦摘錄",
+          "quoted_verbatim": true
+        },
+        {
+          "by": "戴伸峰",
+          "quote": "AI 所犯下的罪行，到底需要由人類來概括承受",
+          "source_label": "《智慧奇點（下）》公開推薦摘錄",
+          "quoted_verbatim": true,
+          "source_url": "https://www.eslite.com/product/10072302132682787481005"
+        },
+        {
+          "by": "羅禾淋",
+          "quote": "到底人要如何確認複製後的那個人是真實的自己？",
+          "source_label": "《智慧奇點（下）》公開推薦摘錄",
+          "quoted_verbatim": true,
+          "source_url": "https://www.eslite.com/product/10072302132682787481005"
+        }
+      ],
+      "recommendation_credits": [
+        "李惟陽",
+        "張善政",
+        "游弘宇",
+        "約書亞・鍾",
+        "戴伸峰",
+        "羅禾淋"
+      ],
+      "credits_note": "僅列名者不得生成評語或推測現職。",
+      "award": {
+        "year": 2023,
+        "label": "KadoKado百萬小說創作大賞類型小說組首獎",
+        "source_url": "https://www.kadokawa.com.tw/blog/posts/20240207"
+      },
+      "cover": {
+        "mode": "remote",
+        "source_url": "https://taiwan-image.bookwalker.com.tw/product/221464/zoom_big_221464.jpg",
+        "source_page": "https://www.bookwalker.com.tw/product/221464",
+        "alt": "智慧奇點（上）正式書封",
+        "state": "official_source_url_located_rendering_not_verified",
+        "crop": "none"
+      },
+      "links": [
+        {
+          "platform": "BOOK☆WALKER",
+          "label": "BOOK☆WALKER｜電子書",
+          "url": "https://www.bookwalker.com.tw/product/221464",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "platform": "金石堂",
+          "label": "Readmoo電子書｜金石堂購買",
+          "url": "https://www.kingstone.com.tw/basic/2800000201850/",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "platform": "KadoKado",
+          "label": "KadoKado｜整部作品",
+          "url": "https://www.kadokado.com.tw/book/26481",
+          "group": "read",
+          "scope": "whole_work",
+          "evidence_level": "primary_page_title_and_author_matched"
+        },
+        {
+          "platform": "Kobo",
+          "label": "Kobo｜電子書",
+          "url": "https://www.kobo.com/tw/zh/ebook/hBFywpsiezKw5qPz90ISBw",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050240249?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "official_product_page_title_matched"
+        }
+      ]
+    },
+    {
+      "work_id": "publication-singularity-2",
+      "slug": "publication-singularity-2",
+      "title": "智慧奇點（下）",
+      "author": "江宗凡",
+      "series": "智慧奇點",
+      "order": 2,
+      "display_order": 5,
+      "work_form": "novel",
+      "publication_status": "published",
+      "completion_status": "completed",
+      "formats_verified": [
+        "ebook"
+      ],
+      "publisher": "台灣角川",
+      "edition_date": "2024-11-08",
+      "theme": "bronze",
+      "summary": "一場科技發表會的爆炸，讓神經外科醫師趙昀成為被追捕的嫌犯。他與特務丹尼爾循線調查，逐漸接近人工智慧「伊芙」、神經晶片與復活亡者計畫背後的秘密。",
+      "description": [
+        "七年前，科技巨擘賽門・羅傑斯在空難中失去獨生女伊芙。他以女兒的名字命名自己創造的泛用型人工智慧，讓一套能夠學習、推理與處理龐大資訊的系統，成為推動世界改變的核心技術。",
+        "人工智慧的進展促成神經晶片與虛擬人物技術的突破。晶片開始能解讀人腦訊號，電腦也能模擬逝去的人所留下的樣貌、聲音與人格。對失去摯愛的人而言，科技帶來前所未有的可能；各國政商高層卻接連發生難以解釋的意外死亡。",
+        "台灣神經外科醫師趙昀前往矽谷參加科技發表會，現場卻突然發生爆炸。他在特務丹尼爾協助下逃離，兩人隨後竟被指控為恐怖攻擊的主謀，開始躲避追捕並試圖查明爆炸的真正原因。",
+        "七年前的空難、中情局的暗殺行動、讀取思想的神經晶片與復活亡者的奧菲斯計畫，逐漸出現在同一條追查線索上。當人工智慧開始觸及人類的意識與身分，趙昀與丹尼爾發現自己面對的秘密，遠超出一樁恐攻案件。"
+      ],
+      "description_scope": "whole_work",
+      "description_label": "作品介紹",
+      "endorsements": [
+        {
+          "by": "李惟陽",
+          "quote": "把AI 和人性錯綜複雜地融合，相覆相傾。",
+          "source_url": "https://www.bookwalker.com.tw/product/221464",
+          "source_label": "《智慧奇點（上）》公開推薦摘錄",
+          "quoted_verbatim": true
+        },
+        {
+          "by": "約書亞・鍾",
+          "quote": "在一個非常可信的科幻宇宙中呈現了一篇精彩故事。",
+          "source_url": "https://www.bookwalker.com.tw/product/221465",
+          "source_label": "《智慧奇點（下）》公開推薦摘錄",
+          "quoted_verbatim": true
+        },
+        {
+          "by": "戴伸峰",
+          "quote": "AI 所犯下的罪行，到底需要由人類來概括承受",
+          "source_label": "《智慧奇點（下）》公開推薦摘錄",
+          "quoted_verbatim": true,
+          "source_url": "https://www.eslite.com/product/10072302132682787481005"
+        },
+        {
+          "by": "羅禾淋",
+          "quote": "到底人要如何確認複製後的那個人是真實的自己？",
+          "source_label": "《智慧奇點（下）》公開推薦摘錄",
+          "quoted_verbatim": true,
+          "source_url": "https://www.eslite.com/product/10072302132682787481005"
+        }
+      ],
+      "recommendation_credits": [
+        "李惟陽",
+        "張善政",
+        "游弘宇",
+        "約書亞・鍾",
+        "戴伸峰",
+        "羅禾淋"
+      ],
+      "credits_note": "僅列名者不得生成評語或推測現職。",
+      "award": {
+        "year": 2023,
+        "label": "KadoKado百萬小說創作大賞類型小說組首獎",
+        "source_url": "https://www.kadokawa.com.tw/blog/posts/20240207"
+      },
+      "cover": {
+        "mode": "remote",
+        "source_url": "https://taiwan-image.bookwalker.com.tw/product/221465/zoom_big_221465.jpg",
+        "source_page": "https://www.bookwalker.com.tw/product/221465",
+        "alt": "智慧奇點（下）正式書封",
+        "state": "official_source_url_located_rendering_not_verified",
+        "crop": "none"
+      },
+      "links": [
+        {
+          "platform": "BOOK☆WALKER",
+          "label": "BOOK☆WALKER｜電子書",
+          "url": "https://www.bookwalker.com.tw/product/221465",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_text_matched"
+        },
+        {
+          "platform": "金石堂",
+          "label": "Readmoo電子書｜金石堂購買",
+          "url": "https://www.kingstone.com.tw/basic/2800000201679/",
+          "group": "ebook",
+          "scope": "volume",
+          "evidence_level": "primary_page_search_index_matched"
+        },
+        {
+          "label": "博客來｜電子書",
+          "url": "https://www.books.com.tw/products/E050240250?sloc=main",
+          "group": "ebook",
+          "scope": "volume",
+          "platform": "博客來",
+          "evidence_level": "author_supplied_exact_product_url_not_independently_fetched"
+        },
+        {
+          "platform": "KadoKado",
+          "label": "KadoKado｜整部作品",
+          "url": "https://www.kadokado.com.tw/book/26481",
+          "group": "read",
+          "scope": "whole_work",
+          "evidence_level": "primary_page_title_and_author_matched"
+        }
+      ]
+    },
+    {
+      "work_id": "publication-heart-reflection",
+      "slug": "publication-heart-reflection",
+      "title": "心靈倒影",
+      "author": "江宗凡",
+      "series": null,
+      "order": null,
+      "display_order": 6,
+      "work_form": "novel",
+      "publication_status": "online",
+      "completion_status": "completed",
+      "display_status": "網路發表・已完結",
+      "formats_verified": [
+        "online"
+      ],
+      "publisher": null,
+      "edition_date": null,
+      "theme": "sage",
+      "summary": "三年前，刑警許以漢追捕「溪畔殺手」鄭惟，也失去了搭檔陳巧夏。如今鄭惟已經入獄，灣北市卻再度出現手法相似的連環命案。",
+      "description": [
+        "三年前，刑警許以漢追捕連環殺人犯「溪畔殺手」鄭惟，卻在案件中失去搭檔陳巧夏。鄭惟入獄後，舊案的傷痕仍留在許以漢心中，他也始終難以完全放下當時發生的一切。",
+        "如今，灣北市又出現手法相似的連環命案。已經被關押的犯人不可能親自犯案，新的死亡究竟與舊案有什麼關係？許以漢被迫重新檢視當年的線索，追查一名似乎刻意模仿過去的兇手。",
+        "調查途中，他與記者林曦不斷交鋒。林曦身上有著令許以漢想起昔日搭檔的熟悉氣息，兩人緊張的關係，也讓這起案件逐漸牽動他一直試圖封存的記憶。",
+        "隨著新舊命案相互交錯，人物之間的關係愈發難辨，案件背後更浮現醫界罔顧人命的黑幕。許以漢必須在追尋真相的同時，重新面對那段改變他人生的過去。"
+      ],
+      "endorsements": [],
+      "cover": {
+        "mode": "remote",
+        "source_url": "https://img-cdn.mirrorfiction.com/u/0/4/211204/bk/32150/1048369/IwSSTZcozh4hA0a5.jpg",
+        "source_page": "https://www.mirrorfiction.com/book/32150",
+        "alt": "心靈倒影正式作品封面",
+        "state": "official_source_url_located_rendering_not_verified",
+        "crop": "none"
+      },
+      "links": [
+        {
+          "platform": "鏡文學",
+          "label": "鏡文學｜閱讀作品",
+          "url": "https://www.mirrorfiction.com/book/32150",
+          "group": "read",
+          "scope": "whole_work",
+          "evidence_level": "primary_page_text_matched"
+        }
+      ],
+      "note": "KadoKado26481屬智慧奇點，不能誤配到本作。"
+    },
+    {
+      "work_id": "publication-data-storm",
+      "slug": "publication-data-storm",
+      "title": "數據風暴",
+      "author": "江宗凡",
+      "series": null,
+      "order": null,
+      "display_order": 7,
+      "work_form": "short",
+      "publication_status": "online",
+      "completion_status": "completed",
+      "display_status": "公開短篇",
+      "formats_verified": [
+        "online"
+      ],
+      "publisher": null,
+      "edition_date": null,
+      "theme": "bronze",
+      "summary": "在由數據系統統籌醫療與資源的未來，一連串看似藥物過量的死亡案件，讓刑警游弘宇開始懷疑人體內的奈米機器。他必須借助這套系統追查兇手，而自己的兒子，也正仰賴它活下去。",
+      "description": [
+        "一場席捲世界的災難過後，奈米醫療與大型資料運算系統成為新社會的基礎。植入人體的奈米機器能協助治療疾病，龐大的資訊網絡則負責分析健康、資源與公共安全，讓人們逐漸習慣由系統提供判斷。",
+        "刑警游弘宇在一次死亡案件中看見了異常：一名女子倒在沒有明顯入侵痕跡的住處，表面上像是自行服藥過量。隨著相似案件在不同地區接連出現，他開始懷疑這些死亡可能涉及人體內的奈米機器。",
+        "調查所需的資料，大部分掌握在名為「盤古」的龐大系統手中。游弘宇與同僚試圖從看似毫無關聯的案件找出共同點，卻發現每一次追查，都必須借助自己正在懷疑的技術。",
+        "與此同時，他的兒子仍在醫院接受奈米醫療治療。對游弘宇而言，這套系統牽涉著無數人的生活與健康，也牽涉著自己最珍惜的家人。"
+      ],
+      "endorsements": [],
+      "cover": {
+        "mode": "typographic",
+        "source_url": null,
+        "alt": null,
+        "state": "no_official_cover_supplied",
+        "fallback": "existing_typographic_work_label_not_fake_published_cover"
+      },
+      "links": [
+        {
+          "platform": "未來科幻大師獎作品頁",
+          "label": "原發表平台｜閱讀短篇",
+          "url": "http://www.wlkhds.com/wlkhds7_detail.php?id=808",
+          "group": "read",
+          "scope": "whole_work",
+          "evidence_level": "author_supplied_reachability_unverified"
+        }
+      ],
+      "editorial_basis": "第一版僅供理解故事和保守簡介，未聲稱與平台版逐字一致。",
+      "full_text_import_allowed": false,
+      "excerpt_import_allowed": false
+    }
+  ],
+  "author": {
+    "name": "江宗凡",
+    "label": "醫師、小說創作者",
+    "bio": "我在花蓮長大，高中時出版了第一本小說《天啟Ⅰ：末世訊號》。後來進入長庚大學醫學系，也繼續寫故事。從《天啟》的後續、《智慧奇點》到《心靈倒影》，小說的題材一路從歷史科幻延伸到人工智慧與犯罪懸疑。\n\n醫學訓練帶我走進臨床，研究工作則讓我持續接觸兒童與青少年精神醫學。除此之外，我也喜歡閱讀、看電影，琢磨歷史、心理，以及一些乍看和日常沒太大關係的問題。\n\n我把這些興趣寫進「凡思筆記」，也錄成Podcast「凡思聲」。有些是認真查了資料才敢下筆，有些則只是好奇心一直不肯放過的問題。",
+    "short_bio": "江宗凡，醫師、小說創作者。著有《天啟》三部曲與《智慧奇點》，並於鏡文學發表《心靈倒影》；經營「凡思筆記」與Podcast「凡思聲」。",
+    "photo": {
+      "repository_path": "public/images/author/jiang-zongfan.avif",
+      "source": "作者指定簡報第2頁照片；只取指定照片，不包含私人簡報。",
+      "width": 640,
+      "height": 960,
+      "sha256": "3a1911f18c5ee1a3394dfed9ed5ee7cf0273362c6fb0aae9efb16c2c7bb4d0c8",
+      "git_blob_sha": "284d3b61084a9afc0f5f7bb4128dc775ed5c280e",
+      "alt": "江宗凡手持麥克風與獎座的活動照片",
+      "processing": "由960×1440網站用照片等比例縮成640×960 AVIF；完整構圖，無裁切、修臉、換背景或生成式修圖。"
+    },
+    "timeline": [
+      {
+        "year": "2026",
+        "category": "研究",
+        "title": "期刊論文",
+        "source_url": "https://doi.org/10.1016/j.ajp.2026.105169",
+        "text": "以第一作者於《Asian Journal of Psychiatry》發表兒童 ADHD 執行功能團體訓練與家長參與研究（Letter to the Editor）。"
+      },
+      {
+        "year": "2024 起",
+        "category": "醫學",
+        "title": "臨床訓練",
+        "text": "於林口長庚紀念醫院接受不分科住院醫師（PGY）一般醫學訓練。"
+      },
+      {
+        "year": "2024",
+        "category": "醫學",
+        "title": "醫學系畢業",
+        "text": "長庚大學醫學系畢業，取得醫學士學位（M.D.）。"
+      },
+      {
+        "year": "2024",
+        "category": "創作",
+        "title": "《智慧奇點》出版",
+        "source_url": "https://www.bookwalker.com.tw/product/221464",
+        "text": "《智慧奇點》上下冊電子書由台灣角川出版。"
+      },
+      {
+        "year": "2023",
+        "category": "創作",
+        "title": "KadoKado 類型小說首獎",
+        "source_url": "https://www.kadokawa.com.tw/blog/posts/20240207",
+        "text": "《智慧奇點》獲2023 KadoKado百萬小說創作大賞類型小說組首獎。"
+      },
+      {
+        "year": "2023",
+        "category": "創作",
+        "title": "《心靈倒影》發表",
+        "source_url": "https://www.mirrorfiction.com/book/32150",
+        "text": "長篇犯罪懸疑小說《心靈倒影》於鏡文學發表。"
+      },
+      {
+        "year": "2023",
+        "category": "研究",
+        "title": "ASCAPAP Best Poster",
+        "source_url": "https://child-adolesc.jp/ascapap2023/poster-presentations/",
+        "text": "於日本京都ASCAPAP兒童與青少年精神醫學年會發表ADHD執行功能團體訓練研究，研究團隊獲Best Poster Award。"
+      },
+      {
+        "year": "2020–2021",
+        "category": "公共參與",
+        "title": "青年發展諮詢委員",
+        "source_url": "https://ydc.org.tw/zh-hant/talent/list/",
+        "text": "曾任花蓮縣政府第二屆青年發展諮詢委員會諮詢委員。"
+      },
+      {
+        "year": "2020",
+        "category": "創作",
+        "title": "《天啟》三部曲完結",
+        "source_url": "https://store.showwe.tw/books.aspx?b=127170",
+        "text": "《天啟Ⅲ：創始之體》出版，完成自高中開始創作的科幻三部曲。"
+      },
+      {
+        "year": "2019",
+        "category": "創作",
+        "title": "《天啟Ⅱ》出版",
+        "source_url": "https://store.showwe.tw/books.aspx?b=122283",
+        "text": "《天啟Ⅱ：始皇印記》出版。"
+      },
+      {
+        "year": "2018",
+        "category": "創作",
+        "title": "《數據風暴》人氣獎",
+        "source_url": "https://news.sina.cn/gn/2018-12-10/detail-ihmutuec7718981.d.html?vt=4",
+        "text": "科幻短篇《數據風暴》獲第七屆未來科幻大師獎人氣獎。"
+      },
+      {
+        "year": "2018",
+        "category": "創作",
+        "title": "《天啟Ⅰ》初選提名",
+        "source_url": "https://www.hl.gov.tw/News_Content.aspx?n=32725&s=113410",
+        "text": "《天啟Ⅰ：末世訊號》獲第九屆全球華文科幻星雲獎初選提名。"
+      },
+      {
+        "year": "2017",
+        "category": "創作",
+        "title": "第一部長篇出版",
+        "source_url": "https://books.google.com/books/about/%E5%A4%A9%E5%95%9F%E2%85%A0_%E6%9C%AB%E4%B8%96%E8%A8%8A%E8%99%9F.html?id=5D8uDwAAQBAJ",
+        "text": "高中時期首次出版《天啟Ⅰ：末世訊號》。"
+      }
+    ],
+    "social_links": [
+      {
+        "label": "Instagram · @sci_fang2000",
+        "url": "https://www.instagram.com/sci_fang2000/"
+      }
+    ],
+    "excluded_fields": [
+      "私人信箱與電話",
+      "未確認的現職醫院與科別",
+      "未核准公開的作品",
+      "私人提案與原始履歷"
+    ]
+  },
+  "external_exceptions": [
+    {
+      "id": "books-direct",
+      "requirement": "博客來各冊商品直達網址",
+      "status": "resolved_author_supplied_eight_direct_links",
+      "evidence": "作者提供5冊各自的博客來直達商品網址，共8筆（天啟三冊各紙本及電子書、智慧奇點上下冊各電子書）；其中0010823413、E050073570、E050240249已獨立查到博客來商品頁標題，其他5筆來自作者提供的確切直達網址、工具仍未能獨立開啟。",
+      "codex_action": "全部8筆已在正式資料，直接接線；只做有限的點擊與正確標示驗收，不另行搜尋商品ID，不以未獨立取得的回應冒稱全8筆在線核實。"
+    },
+    {
+      "id": "readmoo-direct",
+      "requirement": "讀墨官網各冊商品直達網址",
+      "status": "not_fully_verified",
+      "evidence": "已列智慧奇點Readmoo電子書的金石堂購買通路，不是讀墨官網。",
+      "codex_action": "維持正確通路標示，不冒稱官網；未核實官網網址不產生按鈕，不把缺項標記為作者已同意放棄。"
+    },
+    {
+      "id": "remote-covers",
+      "requirement": "六張正式封面顯示",
+      "status": "fixed_official_remote_sources_not_render_verified",
+      "codex_action": "只以既定URL正常呈現並於UI驗收檢查；不另下載、找新圖或生成封面。失敗記錄具體作品，提供既有文字回退，仍不能把回退當成封面已驗收。"
+    },
+    {
+      "id": "data-storm-origin",
+      "requirement": "數據風暴原發表閱讀入口",
+      "status": "author_supplied_url_reachability_not_verified",
+      "codex_action": "保留指定HTTP網址，顯示為原發表平台；不猜HTTPS、不拿第一版全文替代、不偽稱外站已可用。"
+    }
+  ],
+  "completion_note": "七筆作品與指定作者照片在PR #20可直接使用，八個博客來紙本／電子書單冊入口已由作者補齊；獨立開啟核驗其中三個，另五個保留作者原始直達URL。Readmoo官網單冊入口仍未全部核實。作品UI整合與作者最終視覺驗收仍需依PR最新CI。"
+}

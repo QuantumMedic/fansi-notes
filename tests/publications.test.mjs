@@ -28,7 +28,8 @@ test('正式書架、作者頁及首頁不輸出合成小說，示範詳頁與�
     assert.doesNotMatch(readFileSync(`dist/${page}.html`, 'utf8'), /紙城・合成作品示範|demo-paper-city/);
   assert.equal(existsSync('dist/works/demo-paper-city/index.html'), false);
   assert.equal(existsSync('dist/works/demo-paper-city/world/index.html'), false);
-  assert.match(readFileSync('dist/works/index.html', 'utf8'), /作品資料整理中/);
+  assert.match(readFileSync('dist/works/index.html', 'utf8'), /天啟Ⅰ：末世訊號/);
+  assert.doesNotMatch(readFileSync('dist/works/index.html', 'utf8'), /作品資料整理中/);
 });
 
 import { validatePublicationRelations } from '../src/lib/publication-relations.mjs';

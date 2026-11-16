@@ -1,0 +1,130 @@
+{
+  "schema_version": "author-page-edit-2026-11-16",
+  "status": "author_requested_editorial_copy_staged_for_codex_and_final_page_acceptance",
+  "work_scope": "M5-E main display / author page only; do not start reader comments/contact/analytics",
+  "target_runtime": "src/data/author.json",
+  "target_author_page": "src/pages/about.astro",
+  "target_home_copy": "src/pages/index.astro (already consumes short_bio; no independent homepage rewrite)",
+  "target_input_author": "docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json.author",
+  "photo": "images/author/jiang-zongfan.avif",
+  "name": "江宗凡",
+  "label": "醫師、小說創作者",
+  "bio_paragraphs": [
+    "我在花蓮長大，高中時出版了第一本小說《天啟Ⅰ：末世訊號》。後來進入長庚大學醫學系，也繼續寫故事。從《天啟》的後續、《智慧奇點》到《心靈倒影》，小說的題材一路從歷史科幻延伸到人工智慧與犯罪懸疑。",
+    "醫學訓練帶我走進臨床，研究工作則讓我持續接觸兒童與青少年精神醫學。除此之外，我也喜歡閱讀、看電影，琢磨歷史、心理，以及一些乍看和日常沒太大關係的問題。",
+    "我把這些興趣寫進「凡思筆記」，也錄成Podcast「凡思聲」。有些是認真查了資料才敢下筆，有些則只是好奇心一直不肯放過的問題。"
+  ],
+  "short_bio": "江宗凡，醫師、小說創作者。著有《天啟》三部曲與《智慧奇點》，並於鏡文學發表《心靈倒影》；經營「凡思筆記」與Podcast「凡思聲」。",
+  "timeline": [
+    {
+      "year": "2026",
+      "category": "研究",
+      "title": "期刊論文",
+      "event": "以第一作者於《Asian Journal of Psychiatry》發表兒童 ADHD 執行功能團體訓練與家長參與研究（Letter to the Editor）。",
+      "source_url": "https://doi.org/10.1016/j.ajp.2026.105169"
+    },
+    {
+      "year": "2024 起",
+      "category": "醫學",
+      "title": "臨床訓練",
+      "event": "於林口長庚紀念醫院接受不分科住院醫師（PGY）一般醫學訓練。"
+    },
+    {
+      "year": "2024",
+      "category": "醫學",
+      "title": "醫學系畢業",
+      "event": "長庚大學醫學系畢業，取得醫學士學位（M.D.）。"
+    },
+    {
+      "year": "2024",
+      "category": "創作",
+      "title": "《智慧奇點》出版",
+      "event": "《智慧奇點》上下冊電子書由台灣角川出版。",
+      "source_url": "https://www.bookwalker.com.tw/product/221464"
+    },
+    {
+      "year": "2023",
+      "category": "創作",
+      "title": "KadoKado 類型小說首獎",
+      "event": "《智慧奇點》獲2023 KadoKado百萬小說創作大賞類型小說組首獎。",
+      "source_url": "https://www.kadokawa.com.tw/blog/posts/20240207"
+    },
+    {
+      "year": "2023",
+      "category": "創作",
+      "title": "《心靈倒影》發表",
+      "event": "長篇犯罪懸疑小說《心靈倒影》於鏡文學發表。",
+      "source_url": "https://www.mirrorfiction.com/book/32150"
+    },
+    {
+      "year": "2023",
+      "category": "研究",
+      "title": "ASCAPAP Best Poster",
+      "event": "於日本京都ASCAPAP兒童與青少年精神醫學年會發表ADHD執行功能團體訓練研究，研究團隊獲Best Poster Award。",
+      "source_url": "https://child-adolesc.jp/ascapap2023/poster-presentations/"
+    },
+    {
+      "year": "2020–2021",
+      "category": "公共參與",
+      "title": "青年發展諮詢委員",
+      "event": "曾任花蓮縣政府第二屆青年發展諮詢委員會諮詢委員。",
+      "source_url": "https://ydc.org.tw/zh-hant/talent/list/"
+    },
+    {
+      "year": "2020",
+      "category": "創作",
+      "title": "《天啟》三部曲完結",
+      "event": "《天啟Ⅲ：創始之體》出版，完成自高中開始創作的科幻三部曲。",
+      "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+    },
+    {
+      "year": "2019",
+      "category": "創作",
+      "title": "《天啟Ⅱ》出版",
+      "event": "《天啟Ⅱ：始皇印記》出版。",
+      "source_url": "https://store.showwe.tw/books.aspx?b=122283"
+    },
+    {
+      "year": "2018",
+      "category": "創作",
+      "title": "《數據風暴》人氣獎",
+      "event": "科幻短篇《數據風暴》獲第七屆未來科幻大師獎人氣獎。",
+      "source_url": "https://news.sina.cn/gn/2018-12-10/detail-ihmutuec7718981.d.html?vt=4"
+    },
+    {
+      "year": "2018",
+      "category": "創作",
+      "title": "《天啟Ⅰ》初選提名",
+      "event": "《天啟Ⅰ：末世訊號》獲第九屆全球華文科幻星雲獎初選提名。",
+      "source_url": "https://www.hl.gov.tw/News_Content.aspx?n=32725&s=113410"
+    },
+    {
+      "year": "2017",
+      "category": "創作",
+      "title": "第一部長篇出版",
+      "event": "高中時期首次出版《天啟Ⅰ：末世訊號》。",
+      "source_url": "https://books.google.com/books/about/%E5%A4%A9%E5%95%9F%E2%85%A0_%E6%9C%AB%E4%B8%96%E8%A8%8A%E8%99%9F.html?id=5D8uDwAAQBAJ"
+    }
+  ],
+  "rendering_contract": {
+    "title": "經歷與作品",
+    "order": "newest_first_preserve_author_rows; group contiguous matching years where reasonable; 2024 起 is separate",
+    "date_note": "2017 first edition of 天啟Ⅰ is distinct from the 2019 釀出版 edition currently recorded in publications.json; do not alter the latter",
+    "bio": "three natural paragraphs with existing author portrait at the left on desktop, stacked on mobile; keep existing colors fonts and spacing",
+    "timeline": "compact year-led typographic chronology; muted category text, not loud badges or repeated giant cards; concise title and description; source link only when grounded",
+    "continuity": "retain current photo, bookstore links, seven published works, site footer and homepage five-scene design; only short_bio updates homepage",
+    "source_link": "link to actual public original page if provided; leave unverified or private-only items without a public source link"
+  },
+  "accuracy_notes": [
+    "2018 《數據風暴》 award is 第七屆未來科幻大師獎「人氣獎」 per award certificate and 2018 published winner list. Historical publisher biographies have a divergent name; do not copy that name.",
+    "2017 initial publication of 天啟Ⅰ from original 2017 ISBN/book record; 2019 is a later listed publisher edition. Existing seven-book metadata unchanged.",
+    "2023 ASCAPAP Best Poster was awarded to research poster PO-138 involving multiple coauthors; do not imply sole individual award.",
+    "2026 paper is a Letter to the Editor, with first author and DOI; do not call it a large clinical trial or conflate it with 2023 poster.",
+    "2020–2021 public appointment is historical (2020-10-28 to 2021-10-27); do not present as current committee membership.",
+    "PGY clinical training period is based on author's supplied professional CV; don't infer current specialty certification or later employer."
+  ],
+  "private_information_exclusions": [
+    "personal email, phone, private employer applications, detailed family/childhood history, patient details, unreleased manuscript and other private source-file content"
+  ],
+  "current_author_data_change_approved": "content candidate prepared in PR; final page author acceptance remains separate from PR merge or deployment"
+}

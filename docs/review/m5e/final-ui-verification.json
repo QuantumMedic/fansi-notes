@@ -1,0 +1,214 @@
+[
+  {
+    "books": [
+      {
+        "label": "博客來｜紙本 ↗",
+        "url": "https://www.books.com.tw/products/0010823413?sloc=main"
+      },
+      {
+        "label": "博客來｜電子書 ↗",
+        "url": "https://www.books.com.tw/products/E050049457?sloc=main"
+      }
+    ],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-tianqi-1/",
+    "purchaseCount": 5,
+    "recommendations": [
+      {
+        "attributionPadding": "0px",
+        "height": 193.375,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      }
+    ],
+    "title": "天啟Ⅰ：末世訊號",
+    "width": 390
+  },
+  {
+    "books": [
+      {
+        "label": "博客來｜紙本 ↗",
+        "url": "https://www.books.com.tw/products/0010827312?sloc=main"
+      },
+      {
+        "label": "博客來｜電子書 ↗",
+        "url": "https://www.books.com.tw/products/E050051653?sloc=main"
+      }
+    ],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-tianqi-2/",
+    "purchaseCount": 5,
+    "recommendations": [
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 193.375,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      }
+    ],
+    "title": "天啟Ⅱ：始皇印記",
+    "width": 390
+  },
+  {
+    "books": [
+      {
+        "label": "博客來｜紙本 ↗",
+        "url": "https://www.books.com.tw/products/0010864898?sloc=main"
+      },
+      {
+        "label": "博客來｜電子書 ↗",
+        "url": "https://www.books.com.tw/products/E050073570?sloc=main"
+      }
+    ],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-tianqi-3/",
+    "purchaseCount": 5,
+    "recommendations": [
+      {
+        "attributionPadding": "0px",
+        "height": 193.375,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 124.984375,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 193.375,
+        "visible": true
+      }
+    ],
+    "title": "天啟Ⅲ：創始之體",
+    "width": 390
+  },
+  {
+    "books": [
+      {
+        "label": "博客來｜電子書 ↗",
+        "url": "https://www.books.com.tw/products/E050240249?sloc=main"
+      }
+    ],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-singularity-1/",
+    "purchaseCount": 5,
+    "recommendations": [
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      }
+    ],
+    "title": "智慧奇點（上）",
+    "width": 390
+  },
+  {
+    "books": [
+      {
+        "label": "博客來｜電子書 ↗",
+        "url": "https://www.books.com.tw/products/E050240250?sloc=main"
+      }
+    ],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-singularity-2/",
+    "purchaseCount": 4,
+    "recommendations": [
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      },
+      {
+        "attributionPadding": "0px",
+        "height": 159.1796875,
+        "visible": true
+      }
+    ],
+    "title": "智慧奇點（下）",
+    "width": 390
+  },
+  {
+    "books": [],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-heart-reflection/",
+    "purchaseCount": 1,
+    "recommendations": [],
+    "title": "心靈倒影",
+    "width": 390
+  },
+  {
+    "books": [],
+    "overflow": false,
+    "paragraphs": 4,
+    "path": "/fansi-notes/works/publication-data-storm/",
+    "purchaseCount": 1,
+    "recommendations": [],
+    "title": "數據風暴",
+    "width": 390
+  }
+]

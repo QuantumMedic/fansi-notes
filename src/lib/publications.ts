@@ -3,4 +3,4 @@ import {validatePublications,publicationSchema} from './publications.mjs';
 import type {z} from 'zod';
 export type Publication = z.infer<typeof publicationSchema>;
 export const allPublications: Publication[]=validatePublications(raw);
-export const publications = allPublications.filter(b => !b.synthetic);
+export const publications = allPublications.filter(b => !b.synthetic).sort((a,b)=>(a.display_order ?? Infinity)-(b.display_order ?? Infinity));

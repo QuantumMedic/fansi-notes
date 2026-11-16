@@ -62,7 +62,7 @@ const featured = articles
     <div class="podcast-art" aria-hidden="true">
       <span>凡思聲</span>
       <div class="wave">│┃│┃│┃│┃│┃│┃│┃│</div>
-      <small>封面示意</small>
+      <small>凡思筆記 Podcast</small>
     </div>
     <div>
       <p class="eyebrow">聲音的房間</p>
@@ -102,7 +102,7 @@ const featured = articles
   <section class="section author-note">
     <p class="eyebrow">書頁背後</p>
     <h2>關於寫下這些文字的人</h2>
-    <p>{author.approved && author.bio ? author.bio : '作者公開署名與簡介待確認。'}</p>
+    <p>{author.approved && author.short_bio ? author.short_bio : '作者公開署名與簡介待確認。'}</p>
     <a class="text-link" href={url('about/')}>
       走近作者的書桌 ↗
     </a>

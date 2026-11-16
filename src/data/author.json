@@ -1,1 +1,106 @@
-{"name":null,"bio":null,"photo":null,"timeline":[],"approved":false}
+{
+  "name": "江宗凡",
+  "label": "醫師、小說創作者",
+  "bio": "我在花蓮長大，高中時出版了第一本小說《天啟Ⅰ：末世訊號》。後來進入長庚大學醫學系，也繼續寫故事。從《天啟》的後續、《智慧奇點》到《心靈倒影》，小說的題材一路從歷史科幻延伸到人工智慧與犯罪懸疑。\n\n醫學訓練帶我走進臨床，研究工作則讓我持續接觸兒童與青少年精神醫學。除此之外，我也喜歡閱讀、看電影，琢磨歷史、心理，以及一些乍看和日常沒太大關係的問題。\n\n我把這些興趣寫進「凡思筆記」，也錄成Podcast「凡思聲」。有些是認真查了資料才敢下筆，有些則只是好奇心一直不肯放過的問題。",
+  "short_bio": "江宗凡，醫師、小說創作者。著有《天啟》三部曲與《智慧奇點》，並於鏡文學發表《心靈倒影》；經營「凡思筆記」與Podcast「凡思聲」。",
+  "social_links": [
+    {
+      "label": "Instagram · @sci_fang2000",
+      "url": "https://www.instagram.com/sci_fang2000/"
+    }
+  ],
+  "photo": "images/author/jiang-zongfan.avif",
+  "photo_alt": "江宗凡手持麥克風與獎座的活動照片",
+  "timeline": [
+    {
+      "year": "2026",
+      "category": "研究",
+      "title": "期刊論文",
+      "event": "以第一作者於《Asian Journal of Psychiatry》發表兒童 ADHD 執行功能團體訓練與家長參與研究（Letter to the Editor）。",
+      "source_url": "https://doi.org/10.1016/j.ajp.2026.105169"
+    },
+    {
+      "year": "2024 起",
+      "category": "醫學",
+      "title": "臨床訓練",
+      "event": "於林口長庚紀念醫院接受不分科住院醫師（PGY）一般醫學訓練。"
+    },
+    {
+      "year": "2024",
+      "category": "醫學",
+      "title": "醫學系畢業",
+      "event": "長庚大學醫學系畢業，取得醫學士學位（M.D.）。"
+    },
+    {
+      "year": "2024",
+      "category": "創作",
+      "title": "《智慧奇點》出版",
+      "event": "《智慧奇點》上下冊電子書由台灣角川出版。",
+      "source_url": "https://www.bookwalker.com.tw/product/221464"
+    },
+    {
+      "year": "2023",
+      "category": "創作",
+      "title": "KadoKado 類型小說首獎",
+      "event": "《智慧奇點》獲2023 KadoKado百萬小說創作大賞類型小說組首獎。",
+      "source_url": "https://www.kadokawa.com.tw/blog/posts/20240207"
+    },
+    {
+      "year": "2023",
+      "category": "創作",
+      "title": "《心靈倒影》發表",
+      "event": "長篇犯罪懸疑小說《心靈倒影》於鏡文學發表。",
+      "source_url": "https://www.mirrorfiction.com/book/32150"
+    },
+    {
+      "year": "2023",
+      "category": "研究",
+      "title": "ASCAPAP Best Poster",
+      "event": "於日本京都ASCAPAP兒童與青少年精神醫學年會發表ADHD執行功能團體訓練研究，研究團隊獲Best Poster Award。",
+      "source_url": "https://child-adolesc.jp/ascapap2023/poster-presentations/"
+    },
+    {
+      "year": "2020–2021",
+      "category": "公共參與",
+      "title": "青年發展諮詢委員",
+      "event": "曾任花蓮縣政府第二屆青年發展諮詢委員會諮詢委員。",
+      "source_url": "https://ydc.org.tw/zh-hant/talent/list/"
+    },
+    {
+      "year": "2020",
+      "category": "創作",
+      "title": "《天啟》三部曲完結",
+      "event": "《天啟Ⅲ：創始之體》出版，完成自高中開始創作的科幻三部曲。",
+      "source_url": "https://store.showwe.tw/books.aspx?b=127170"
+    },
+    {
+      "year": "2019",
+      "category": "創作",
+      "title": "《天啟Ⅱ》出版",
+      "event": "《天啟Ⅱ：始皇印記》出版。",
+      "source_url": "https://store.showwe.tw/books.aspx?b=122283"
+    },
+    {
+      "year": "2018",
+      "category": "創作",
+      "title": "《數據風暴》人氣獎",
+      "event": "科幻短篇《數據風暴》獲第七屆未來科幻大師獎人氣獎。",
+      "source_url": "https://news.sina.cn/gn/2018-12-10/detail-ihmutuec7718981.d.html?vt=4"
+    },
+    {
+      "year": "2018",
+      "category": "創作",
+      "title": "《天啟Ⅰ》初選提名",
+      "event": "《天啟Ⅰ：末世訊號》獲第九屆全球華文科幻星雲獎初選提名。",
+      "source_url": "https://www.hl.gov.tw/News_Content.aspx?n=32725&s=113410"
+    },
+    {
+      "year": "2017",
+      "category": "創作",
+      "title": "第一部長篇出版",
+      "event": "高中時期首次出版《天啟Ⅰ：末世訊號》。",
+      "source_url": "https://books.google.com/books/about/%E5%A4%A9%E5%95%9F%E2%85%A0_%E6%9C%AB%E4%B8%96%E8%A8%8A%E8%99%9F.html?id=5D8uDwAAQBAJ"
+    }
+  ],
+  "approved": true
+}

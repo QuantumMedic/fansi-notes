@@ -1,0 +1,61 @@
+{
+  "version": "repository-native-v2",
+  "prepared_on": "2026-11-15",
+  "requires_chat_attachment": false,
+  "requires_asset_download_script": false,
+  "requires_additional_source_research_by_codex": false,
+  "source": "docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json",
+  "input_git_blob_sha": "d2cae45dd195fb157412074050ade32c938cd3cd",
+  "handoff": "docs/review/m5e/CODEX_DISPLAY_HANDOFF.md",
+  "offline_validator": "scripts/check_m5e_inputs.py",
+  "author_photo": {
+    "path": "public/images/author/jiang-zongfan.avif",
+    "sha256": "3a1911f18c5ee1a3394dfed9ed5ee7cf0273362c6fb0aae9efb16c2c7bb4d0c8",
+    "git_blob_sha": "284d3b61084a9afc0f5f7bb4128dc775ed5c280e",
+    "width": 640,
+    "height": 960,
+    "bytes": 14929
+  },
+  "counts": {
+    "works": 7,
+    "platform_link_records": 26,
+    "remote_official_cover_urls": 6,
+    "local_official_cover_files": 0,
+    "local_author_photo_files": 1,
+    "books_com_tw_direct_product_records": 8
+  },
+  "replaces": "FANSI_M5E_DISPLAY_PACKAGE_v1.zip attachment dependency; no need to attach or unpack v1",
+  "known_external_exceptions": [
+    "readmoo_official_direct_urls_not_fully_verified",
+    "some_books_direct_page_live_verification_unavailable",
+    "remote_cover_runtime_risk"
+  ],
+  "completion_boundary": "Eight author-provided Books direct product links have been staged in source + runtime; 3 have independently matched official titles, other 5 are exact author supplied and need only bounded click verification. Readmoo official direct links are separately still missing. UI endorsement card layout polish remains. No deployment or author acceptance claimed.",
+  "copy_review_note": "2026-11-15 author requested fuller stories and all visible endorsement quotes: 7 stories updated (293–361 Han characters before punctuation), direct endorsements now 3/4/5/4/4/0/0; original 18 platform URLs unchanged. UI compact cards and all-show fix pending Codex.",
+  "books_direct_links": {
+    "source": "author_supplied_explicit_book_product_urls",
+    "status": "8_of_8_added_to_formal_publication_data",
+    "physical_three": [
+      "0010823413",
+      "0010827312",
+      "0010864898"
+    ],
+    "ebook_five": [
+      "E050049457",
+      "E050051653",
+      "E050073570",
+      "E050240249",
+      "E050240250"
+    ],
+    "independently_title_matched": [
+      "0010823413",
+      "E050073570",
+      "E050240249"
+    ],
+    "other_five": "Author provided direct URLs; independent web fetch was unavailable; do not mark as verified externally without testing."
+  },
+  "author_copy_source": {
+    "path": "docs/review/m5e/AUTHOR_PAGE_COPY_AND_TIMELINE_2026-11-16.json",
+    "git_blob_sha": "3e224d519d54d9b4a727d1d71ee648f75acbebc0"
+  }
+}
