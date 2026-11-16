@@ -10,7 +10,8 @@ PR #25以merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併，工程�
 |入口與期限|production公開Worker網址關閉；管理網址僅限Access作者，preview全關。獨立最長4小時租期，本次台灣時間11/17 04:06到期。PRODUCTION_SERVICES_ACTIVE持續false，沒有偽造正式啟用／驗收旗標。|
 |資料與Turnstile|production D1從0留言／paused=1開始；窗口內允許少量合成資料，不搬staging留言。正式widget只增加現有前台的精確hostname；後端origin／hostname亦精確匹配。|
 |已實際觀察|目前作者登入可開管理頁並讀到0筆；前台可讀0／0。真實service binding health回configured=true及accepting_comments=true。未登入四種入口均Access302，公開production API404。|
-|仍待真實證據|發表／重整持久化／自刪／作者回覆、非白名單真實管理拒絕、另一瀏覽器所有權。既有SSO有效登入不冒稱這輪重新輸入過OTP；沒收到OTP不算拒絕通過。|
+|後續真實入庫觀察|前台顯示「留言已送出」；真正production D1保存1則公開主留言及1則已驗證作者回覆，父子關係正確，孤立回覆0。未從staging搬入，也未用fixture代替。|
+|仍待真實證據|瀏覽器重整／自刪並保留作者回覆、非白名單真實管理拒絕、另一瀏覽器所有權。既有SSO有效登入不冒稱這輪重新輸入過OTP；沒收到OTP不算拒絕通過。|
 |郵件與分析|本輪隔離前台關閉聯絡與分析，避免重寄既已實收的信或污染任何統計。原功能及設定不變。|
 |資料保護|src/content、src/data、public、thread清冊均與合併main無差異。原106項測試保障保留。|
 
@@ -31,7 +32,7 @@ PR #25以merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併，工程�
 
 ## 測試與待作者確認
 
-本地112項測試通過，6項新測試覆蓋租期上下界／停用、精確JWT與所有管理入口、限定binding路徑及redirect、真實本地SQL到期與暫停、設定證據拒絕、瀏覽器憑證隔離；原106項未刪除／放寬。輸入／64串清冊／local預檢通過，check135檔0錯誤0警告及1個既有hint，普通build114頁。三Worker dry-run及真實部署讀回成功。最新CI見本輪PR；前台與管理實際畫面只存私人驗收目錄，沒有網址列或公開管理連結。
+本地112項測試通過，6項新測試覆蓋租期上下界／停用、精確JWT與所有管理入口、限定binding路徑及redirect、真實本地SQL到期與暫停、設定證據拒絕、瀏覽器憑證隔離；原106項未刪除／放寬。輸入／64串清冊／local預檢通過，check135檔0錯誤0警告及1個既有hint，普通build114頁。三Worker dry-run及真實部署讀回成功。[PR #26首個工程CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43907791501)，後續只有本段真實入庫紀錄更新；最新CI見PR。前台與管理實際畫面只存私人驗收目錄，沒有網址列或公開管理連結。
 
 作者操作已集中提出：發表合成留言、重整確認、管理回覆、另一瀏覽器沒有自刪權限、主留言刪除後保留回覆；另以非白名單真實帳號確認不能看到管理內容。沒有實際結果就繼續待驗，不反覆索取帳號或Token。窗口結束後先核對復原；全部必要證據完成，才另行授權合併本輪PR及正式啟用／發布。正式hostname的Turnstile／CORS仍屬發布後必做冒煙檢查及失敗停止條件。
 
