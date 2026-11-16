@@ -45,7 +45,7 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 
 既有98項保障保留，新增5項production fail-closed、停用資源設定、SHA與公開欄位白名單、獨立授權及完整網站隔離build測試；共103項通過。真本地SQL驗證有效作者仍無法操作停用production、公開寫入不進DB、paused health不放行。合成full manifest僅存在測試記憶體與臨時建置，測完刪除，不冒充真實安全證據。
 
-輸入／64串清冊／local預檢成功，check127檔零錯誤／警告、1個既有unused-import hint，114頁普通build成功；受影響測試最後再跑9項通過。正式文章、data、圖片與fixtures沒有變更。沒有新UI，本輪不重跑已接受的全站桌手機巡檢。CI以本PR最新HEAD為準。
+輸入／64串清冊／local預檢成功，check127檔零錯誤／警告、1個既有unused-import hint，114頁普通build成功；受影響測試最後再跑9項通過。正式文章、data、圖片與fixtures沒有變更。沒有新UI，本輪不重跑已接受的全站桌手機巡檢。首輪CI新增完整build與原內容fixture共享Astro快取造成競態，已將新增fixture改為獨立root／Astro與Vite快取；不改正式資料或放寬既有斷言。CI以本PR最新HEAD為準。
 
 ## 先前PR #23準備工具及歷史說明（最新狀態以上為準）
 
