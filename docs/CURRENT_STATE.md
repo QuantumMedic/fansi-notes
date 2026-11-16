@@ -1,29 +1,24 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：受控驗證已提前復原／作者操作結果已記錄／正式啟用仍有證據門檻（2026-11-17）
+## 目前階段：PR #26發布安全收尾／準備完整網站審核（2026-11-17）
 
-PR #25已用merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`整合，工程樹一致且main CI通過。本輪延續[PR #26](https://github.com/QuantumMedic/fansi-notes/pull/26)，未合併。作者已完成本輪人工操作並要求立即復原，不再要求重複登入、手機或跨瀏覽器測試。
+作者已更正：production驗證時**沒有按下Mac的刪除留言**。00:41:09讀回主留言為published符合實際操作，前版「自刪成功但資料庫未刪」判斷撤回；不是待修故障。PR #26仍以最新HEAD驗證後merge commit整合，正式發布須經github-pages作者審核。索引維持noindex，不改內容或視覺。
 
-### 已實際復原並讀回
+### 已確認的復原與驗收
 
-2026-11-17台灣時間00:41:49完成提前復原，沒有等到原04:06期限。先關閉租期、暫停D1及管理入口，再私下保存刪除後狀態與兩筆合成記錄，依精確ID先清回覆再清主留言。原始證據及備份存repo外0700目錄／0600檔案，未公開。
+- 00:41:49已提前完整復原；production兩Worker入口／preview／activation關閉，管理AUD保留，D1 0留言／paused=1／moderation=1。前台恢復受保護staging、Turnstile恢復正式hostname、臨時租期／cron／secret已移除。兩筆合成記錄先私人備份，再按ID清理；行政清理不算讀者自刪。
+- 真production Turnstile發表、重整持久化、作者回覆及其parent_id已驗證；宗凡照片／標示／位置由作者確認。手機同作者帳號沒有Mac留言的本人刪除按鈕，跨瀏覽器所有權驗證通過。
+- production自刪當次未執行。既有staging自刪實測、相同正式handler／真SQL測試及經gateway的本人／他人憑證測試共同保障自刪與保留回覆；不宣稱production瀏覽器DELETE實測過。沒有實際故障證據，不為此重新開啟測試窗口或要求重做人工流程。
+- 非白名單安全判定採綜合證據：保存的官方精確單一Email Allow／OTP／全路徑政策、已部署並讀回的AUD、後端逐次JWT簽章／issuer／audience／期限／精確Email檢查、真SQL管理路由拒絕測試，以及作者實際非白名單無OTP且無管理資料的觀察。這不是另一真實帳號取得JWT後的端到端登入測試。
+- [Cloudflare官方OTP說明](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/)確認未獲允許者不收OTP，未提交code不產生authentication log。因此不再強制要求Access denied截圖／不存在的OTP登入紀錄；也不單憑沒收信就判定通過。現有OAuth無Access讀權限，保留最近已保存政策證據及其界限，不重建Token。
 
-獨立Cloudflare讀回確認：production兩Worker的workers.dev=false、preview=false、PRODUCTION_SERVICES_ACTIVE=false；D1 0則留言、paused=1、moderation=1；真正管理AUD保留。公開／管理／受控前台的bindings均與窗口前一致，前台恢復原Access保護staging版本、不再連production；Turnstile只剩原正式hostname。臨時cron、租期表與觸發器、臨時公開Worker作者白名單secret均移除。本機watch已停止。Pages仍未啟用，noindex保持，沒有release、正式讀者寫入、付費或新Token。
+本輪本地完整113項測試通過；管理路由矩陣另外同時驗證staging及active production模式，錯帳號／無憑證／錯AUD／過期／假header均拒絕。最新復原唯讀結果再次確認入口關閉、AUD相符、空庫暫停及正式Turnstile hostname。合併前仍等最新GitHub check／build／113項CI完成。
 
-### 真實驗收結果與界限
+### 發布判定與剩餘步驟
 
-- **通過（作者親測＋已有服務證據）**：真Turnstile發表、重新整理持久存在；管理回覆成功、宗凡照片／作者標示／位置正確。真正production D1已核對主留言與作者回覆的ID及parent_id，無孤立回覆。
-- **通過（作者親測＋後端測試）**：手機以同一作者帳號進入文章可見留言與回覆，但沒有原Mac留言的刪除按鈕。私人INDEPENDENT_BROWSER_DELETE_VERIFIED已記true；作者有效Access登入亦已記錄，無須重新操作。
-- **自刪證據有差異，不能宣稱完整通過**：作者回報原Mac自刪成功且回覆保留；但00:41:09清理前凍結讀回中，同一production主留言仍為published、文字及delete_hash未清空，作者回覆仍published且parent_id正確。兩種證據分開保留，不推測原因、不要求作者重測。後續行政清理已刪掉兩筆，不能把這次清理當成讀者自刪成功。LIVE_COMMENTS_VERIFIED不設true。
-- **非白名單明確拒絕仍缺證據**：作者嘗試後未收到OTP、未見管理資料，但沒有明確拒絕畫面；記為「非白名單登入未能完成，尚缺明確拒絕證據」。NON_ALLOWLIST_ADMIN_VERIFIED未設true。本輪以現有OAuth唯讀Access仍403，未取得該次拒絕紀錄；保存的精確Allow政策及自動化測試不能冒充真實拒絕證據。不索取新Token、不追加相同人工測試。
+本輪接受上述可稽核的綜合驗收作為LIVE_COMMENTS_VERIFIED及NON_ALLOWLIST_ADMIN_VERIFIED的依據，定義與限制詳見[M6唯一報告](review/m6/README.md)。不修改Worker認證規則、不刪測試、不把未執行的操作填成已執行。私人驗收紀錄與旗標須逐項對應實證，不能只為讓預檢變綠而填值。
 
-本輪補1項隔離真SQL回歸：同一作者JWT經gateway刪除仍需本人憑證，錯誤憑證拒絕、正確憑證清空主留言並保留作者回覆；這不能抵銷上述production證據差異。原112項保障保留，本地完整113項測試通過，最新CI見PR。前輪check135檔0錯誤0警告（1既有hint）、114頁build證據保留；本次沒有修改網站或Worker處理程式，僅驗收文件及測試。
-
-### 正式啟用前最少剩餘事項
-
-私人production預檢invalid=[]，ready=false，僅缺M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED。資源不需重建；需要補足自刪差異及非白名單拒絕的證據，不能用CI／沒有OTP／人工清理取代。作者不再做本輪重複操作；後續只從合法可取得記錄及工程核對補證據，無法取得就保持停止條件。
-
-PR #26可在CI全綠、無衝突且另獲授權後作工程整合，**合併不等於正式互動驗收通過或公開發布**。本輪不合併。待必要證據與另行上線授權俱全，才準備正式版本備份／manifest、啟用精確正式來源的服務、健康檢查、Pages Actions來源與手動full release審核；正式hostname的Turnstile／CORS須發布後冒煙檢查，索引解除仍另行確認。唯一驗收入口：[M6紀錄](review/m6/README.md)。
+依作者本輪授權：最新CI及內容完整性核對 → merge commit PR #26並等main CI → 私人版本／D1備份與精確production設定預檢 → 啟用既有正式服務、核對Access／健康／來源／回退 → Pages Actions來源及綁定main SHA的full release → **由作者親自核准github-pages Environment** → 正式網址冒煙檢查。部署前仍未公開網站；任何真正缺陷停止啟用，不能發布縮減版本。保留noindex，不啟用付費、不重新匯入或更動既有57篇／25集／96圖／7作品及其資料。
 
 ## PR #24合併與發布保護（前輪已完成，AUD狀態以頂部為準）
 

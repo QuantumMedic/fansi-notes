@@ -1,22 +1,33 @@
-# M6 受控驗證與提前安全收尾（2026-11-17）
+# M6 正式發布安全收尾（2026-11-17）
 
-## 本輪目前結果
+## 更正與正式發布判定
 
-PR #25已用merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併；[main CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43902233778)。PR #26仍開啟、未合併。作者已完成本輪操作並要求提前復原，不再重複請作者測試。
+作者最新更正：**當次production驗證沒有按下Mac刪除留言**。主留言published與回覆published的00:41:09讀回完全符合實際操作；前版「自刪回報與資料庫不一致」推論撤回，不是待修缺陷。原始讀回不改動，私人作者確認另記更正。後續依ID行政清理不當成讀者自刪。
 
-|項目|證據／結果|
+|項目|實際證據／判定|
 |---|---|
-|提前復原|台灣時間11/17 00:41:49完成；先停寫入、關管理入口，再備份及依精確ID清理本輪兩筆合成留言。不是等待04:06，也不是宣稱自動到期曾實際觸發。|
-|Cloudflare獨立讀回|production兩Worker入口、preview及正式activation全false；public/admin/site bindings與原快照相同，真正管理AUD保留。D1 0留言、paused=1、moderation=1。|
-|臨時設定清理|前台恢復原受保護staging版本，移除production service binding。Turnstile精確回復原正式hostname，臨時cron／SQL租期物件及公開Worker臨時白名單secret移除。本機watch停止。|
-|發表／持久化／作者回覆：通過|作者親測真Turnstile、發表及重整持久化，管理回覆及宗凡照片／作者標示／位置正確。已用production D1主留言、回覆ID及parent_id核對兩筆關係。|
-|跨瀏覽器：通過|作者確認手機用相同作者帳號可見留言與回覆，但無Mac原留言的刪除按鈕。私人INDEPENDENT_BROWSER_DELETE_VERIFIED=true；後端錯憑證拒絕仍由既有及新增SQL測試保護。|
-|自刪：存在證據差異|作者回報Mac自刪成功、回覆保留；00:41:09清理前凍結讀回，同一production主留言仍published、nickname/body/delete_hash尚未清除；回覆published且parent_id正確。不能把後續行政清理當成讀者自刪成功，不設定LIVE_COMMENTS_VERIFIED=true。不推測原因，不要求作者再測。|
-|非白名單：尚缺明確拒絕證據|未收到OTP、未見管理資料，但無明確Access denied。NON_ALLOWLIST_ADMIN_VERIFIED不設true。現有OAuth讀Access應用仍403，未取得本次對應拒絕紀錄；舊精確Allow讀回與自動化驗簽測試只作補強，不冒充真實帳號拒絕。|
-|備份與範圍|清理前原始兩筆、狀態核對、復原前後快照與獨立讀回均歸檔repo外私人目錄，0700／0600。沒有白名單、實際管理網址、密鑰或私人日誌提交GitHub。|
-|網站狀態|未合併PR #26、未啟用Pages／release、noindex維持；沒寄信、送正式分析、啟用付費或使用撤銷Token。既有文章、圖片、分類、出版與作者資料不變。|
+|受控環境復原|00:41:49提前完成；兩正式Worker入口／preview／activation關閉，管理AUD保留，D1 0留言／paused=1／moderation=1。前台與bindings回原快照、Turnstile回正式hostname，臨時SQL／cron／secret清除。原始備份在repo外。|
+|正式留言與回覆|真Turnstile發表、重整持久化、作者回覆及ID／parent_id已核對。宗凡照片／標示／位置作者親測。|
+|跨瀏覽器所有權|作者手機以同一Access帳號可閱讀，但沒有Mac原留言的本人刪除入口。後端仍要求私密刪除憑證；登入不授予留言所有權。|
+|讀者自刪|production當次未執行，不能宣稱該次DELETE通過。既有staging實測＋正式handler真SQL＋gateway本人／錯憑證及回覆保留回歸通過。相同處理路徑沒有缺陷證據，工程判定足以發布，不再開重複人工測試。|
+|非白名單管理限制|官方已保存精確單一Email Allow／OTP／全路徑政策與獨立AUD，真部署讀回、後端逐次驗簽／issuer／audience／期限／Email，以及全部管理路由拒絕測試；作者實際非白名單無OTP且無管理資料。綜合符合拒絕策略，並非宣稱取得另一真實帳號JWT後完成線上拒絕登入。|
+|未取得的資料|現有OAuth讀Access為403，沒有新取雲端登入紀錄；不把既存政策快照說成這輪新讀回，也不再要求撤銷的Token或重複帳號測試。|
+|網站與資料|文章、圖片、配對、分類、人氣、出版、作者資料與視覺不改。索引仍noindex；本輪完整發布授權須經github-pages作者人工審核，不自行核准。|
 
-**合併與發布分開**：CI全綠及無衝突時，PR #26可另行授權作工程整合；它不會自動開窗口或部署網站。這不代表完整互動已驗收。production預檢invalid=[]，仍缺M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED。先補真實證據差異，無合法記錄就保留門檻；不讓作者重複本輪人工測試。再經明確正式啟用／發布授權，才備份、產生綁定SHA manifest、開正式服務與健康檢查、切Pages Actions Source、手動full release及作者審核。正式hostname冒煙測試及索引授權仍各自保留。
+### 驗收標準及正式文件依據
+
+[Cloudflare One-time PIN官方文件](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/)的「Log in with OTP／OTP behavior and limits」說明：只寄給Access政策允許的Email；被阻擋者不收信，畫面訊息不揭露是否寄送；只有提交code後才記authentication event。因此「必須看見Access denied」及「必須取得未寄OTP的登入紀錄」不是適當必要條件。這裡不是以無OTP單獨判定，而是結合精確政策、獨立AUD與伺服器授權測試及實際觀察；未改動任何政策／驗簽／來源限制。
+
+- `NON_ALLOWLIST_ADMIN_VERIFIED`：以上綜合安全驗收成立；不代表未發生的第二帳號成功驗證身分後再遭拒事件。
+- `LIVE_COMMENTS_VERIFIED`：真正production發表／持久化／回覆、獨立瀏覽器所有權觀察，加上已有staging自刪及同版正式handler／SQL測試；production瀏覽器自刪仍註明當次未執行。
+- `LIVE_ACCESS_VERIFIED`：指定作者已實際進入正式管理服務並回覆；不聲稱本輪重新輸入一次OTP。
+- 所有旗標須有私人逐項證據索引及本文件定義。缺政策、AUD不符、錯誤身分被接受、刪除授權失守或CI失敗仍立即阻擋。正式hostname發布後另做TLS／CORS／Turnstile及服務冒煙檢查，不把受控hostname當作已驗證正式前台。
+
+本輪本地完整113項測試通過；管理路由矩陣另外同時驗證staging及active production模式，錯帳號／無憑證／錯AUD／過期／假header均拒絕。最新復原唯讀結果再次確認入口關閉、AUD相符、空庫暫停及正式Turnstile hostname。合併前仍等最新GitHub check／build／113項CI完成。
+
+### 本輪發布順序
+
+先核對復原與CI，merge commit PR #26並等待main CI；保存版本／空庫備份，產生只含公開允許欄位且綁定main SHA的manifest；依授權啟用既有production、確認健康與管理拒絕，再設定Pages Actions及手動full/noindex release。兩個github-pages工作（準備與部署）均保留原作者審核，不代為核准。正式前台尚未部署時不能宣稱全站上線；正式URL可用後再驗閱讀／留言連線／聯絡／分析及回退。沒有付費、假ID、staging資料搬入或私人網址公開。
 
 ## 工具與精確復原邊界
 
@@ -37,7 +48,7 @@ PR #25已用merge commit `0fe555729dbb290b90a68fd6f0df8cdb39906366`合併；[mai
 
 前輪112項測試、check135檔0錯誤0警告（1既有hint）、114頁build及[CI #146](https://github.com/QuantumMedic/fansi-notes/actions/runs/43908858293)通過。此次補第113項真SQL回歸：建立主留言與作者回覆，經驗證gateway使用錯誤刪除憑證仍403；本人正確憑證可刪除主留言、清除文字及憑證雜湊，原作者回覆及讀取定位保留。前置發表直接走正式handler及隔離Turnstile provider，DELETE與讀取確實經gateway；避免將Node要求串流duplex的環境差異誤認成Workers問題。7項窗口精準測試及本地完整113項測試通過，完整CI見最新PR。沒有改動正式服務程式、原測試斷言或內容雜湊。
 
-此SQL結果只能證明被測路徑，不能將production未呈刪除狀態的記錄改寫為通過。作者所述自刪畫面與凍結資料均保留，不知道原因就不推測；清理後已無合成留言，沒有再重開窗口或要求重測。發表／回覆／跨瀏覽器及有效作者Access登入的確認已記入私人證據，非白名單及完整留言旗標仍不通過。
+此SQL結果證明被測正式處理路徑，不冒稱production瀏覽器自刪。最新作者更正已解釋主留言仍published，前版矛盾推論撤回。已確認實際發表／回覆／跨瀏覽器與作者Access登入；本輪依官方OTP行為採綜合安全判定，保留原始證據及限制，不以不存在的畫面要求阻擋。
 
 ## 以下為前輪歷史驗收（停用與待授權描述只指當時）
 
