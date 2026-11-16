@@ -1,0 +1,94 @@
+[
+  {
+    "booksLinks": [
+      "https://www.books.com.tw/products/0010823413?sloc=main",
+      "https://www.books.com.tw/products/E050049457?sloc=main"
+    ],
+    "scroll": 345,
+    "title": "天啟Ⅰ：末世訊號",
+    "visibleImages": [
+      {
+        "alt": "天啟Ⅰ：末世訊號正式書封",
+        "loaded": true
+      }
+    ],
+    "width": 360
+  },
+  {
+    "booksLinks": [
+      "https://www.books.com.tw/products/0010827312?sloc=main",
+      "https://www.books.com.tw/products/E050051653?sloc=main"
+    ],
+    "scroll": 345,
+    "title": "天啟Ⅱ：始皇印記",
+    "visibleImages": [
+      {
+        "alt": "天啟Ⅱ：始皇印記正式書封",
+        "loaded": true
+      }
+    ],
+    "width": 360
+  },
+  {
+    "booksLinks": [
+      "https://www.books.com.tw/products/0010864898?sloc=main",
+      "https://www.books.com.tw/products/E050073570?sloc=main"
+    ],
+    "scroll": 345,
+    "title": "天啟Ⅲ：創始之體",
+    "visibleImages": [
+      {
+        "alt": "天啟Ⅲ：創始之體正式書封",
+        "loaded": true
+      }
+    ],
+    "width": 360
+  },
+  {
+    "booksLinks": [
+      "https://www.books.com.tw/products/E050240249?sloc=main"
+    ],
+    "scroll": 345,
+    "title": "智慧奇點（上）",
+    "visibleImages": [
+      {
+        "alt": "智慧奇點（上）正式書封",
+        "loaded": true
+      }
+    ],
+    "width": 360
+  },
+  {
+    "booksLinks": [
+      "https://www.books.com.tw/products/E050240250?sloc=main"
+    ],
+    "scroll": 345,
+    "title": "智慧奇點（下）",
+    "visibleImages": [
+      {
+        "alt": "智慧奇點（下）正式書封",
+        "loaded": true
+      }
+    ],
+    "width": 360
+  },
+  {
+    "booksLinks": [],
+    "scroll": 345,
+    "title": "心靈倒影",
+    "visibleImages": [
+      {
+        "alt": "心靈倒影正式作品封面",
+        "loaded": true
+      }
+    ],
+    "width": 360
+  },
+  {
+    "booksLinks": [],
+    "scroll": 345,
+    "title": "數據風暴",
+    "visibleImages": [],
+    "width": 360
+  }
+]
