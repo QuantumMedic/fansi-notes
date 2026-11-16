@@ -97,7 +97,7 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 
 刪除擦除正文／暱稱／刪除碼hash，保留最小tombstone與冪等摘要；供應商備份保留限制另行確認。私人匯出檔也需由作者管理刪除與保留時間。
 
-**staging已接線並實測：同PR保留現有架構，待作者最後確認與非白名單真實帳號驗證；production仍未啟用。**
+**staging已接線並實測：同PR保留現有架構，作者已確認操作與視覺；非白名單真實帳號驗證待M5-F補驗；production仍未啟用。**
 
 本輪補充：公開網站不使用管理URL設定，舊PUBLIC_COMMENTS_ADMIN_URL會被忽略；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號已準備，staging 真實接線尚未完成；production 不在本輪。
 
@@ -134,6 +134,6 @@ npx wrangler deploy --config services/comments/site.staging.private.json
 
 - 已核對Access全hostname／全路徑、精確作者帳號、不同前台／管理AUD、preview關閉；公開留言API不套作者登入。匿名與偽造憑證拒絕已實測；第二個非白名單真實帳號仍未操作，不預先標成完成。
 - 作者保存私人staging書籤即可進管理，不依賴GPT或公開GitHub入口。實際URL與停用方法只在私人本機設定；網站沒有反向管理入口。
-- 撤銷本次`fansi-access-staging-setup`短期Token；不必因此重建Access或取消Wrangler既有OAuth。不得把Token貼到聊天或PR。
+- 作者已確認撤銷本次`fansi-access-staging-setup`短期Token，不重新建立；不必因此重建Access或取消Wrangler既有OAuth。不得把Token貼到聊天或PR。
 - 選填`PUBLIC_CONTACT_SUBJECT`只用作Formspree主旨；本次一封驗收信已送達，不再觸發寄送。公開Email備援繼續false／空。
 - 暫停或刪除本批資源需按私人OPERATIONS清單逐一指定staging資源，不刪其他專案、原組織或正式分析站。未授權production與M6。

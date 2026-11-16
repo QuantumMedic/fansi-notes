@@ -1,7 +1,7 @@
 {
   "schema_version": "m5e-free-interactions-v1",
   "prepared_on": "2026-11-16",
-  "status": "staging_connected_live_checks_passed_owner_acceptance_and_second_identity_pending",
+  "status": "owner_accepted_token_revoked_security_followup_in_m5f",
   "document_role": "planning_input_not_runtime_configuration",
   "repository": "QuantumMedic/fansi-notes",
   "branch": "prep/m5e-free-interactions-20261116",
@@ -280,8 +280,7 @@
   },
   "live_staging_pending": [
     "Second real non-allowlisted account login test",
-    "Owner final operation and visual acceptance",
-    "Owner revocation of short-lived Access setup token"
+    "Independent browser reader ownership check"
   ],
   "staging_resource_state": {
     "d1": "created; 0001/0002 applied; only a few synthetic acceptance comments",
@@ -290,5 +289,10 @@
     "workers": "public/admin deployed; preview URLs disabled; production untouched",
     "frontend": "Access-protected Astro staging deployed; all assets JWT verified; noindex retained",
     "live_acceptance": "comments, owner management, Gmail receipt, isolated analytics evidenced; limitations in README"
+  },
+  "owner_acceptance": {
+    "operation_and_visual": "accepted by owner",
+    "temporary_access_setup_token": "revoked, owner-confirmed",
+    "production_authorized": false
   }
 }
