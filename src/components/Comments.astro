@@ -9,7 +9,7 @@ const {kind='article',id=''}=Astro.props;
 const thread=resolveThread(manifest,kind,id);
 const config=interactions.comments, active=config.enabled&&!!thread;
 ---
-<section class="interaction" id="comments" data-avatar={url("images/author/jiang-zongfan.avif")} data-comments data-thread={thread} data-api={active?config.api:undefined} data-sitekey={active?config.siteKey:undefined} data-local={interactions.local?'true':undefined}>
+<section class="interaction" id="comments" data-avatar={url("images/author/jiang-zongfan.avif")} data-comments data-storage-scope={/^verification-[0-9]{13}$/.test(import.meta.env.PUBLIC_COMMENTS_STORAGE_SCOPE||'')?import.meta.env.PUBLIC_COMMENTS_STORAGE_SCOPE:undefined} data-thread={thread} data-api={active?config.api:undefined} data-sitekey={active?config.siteKey:undefined} data-local={interactions.local?'true':undefined}>
 <h2>讀者留言</h2>
 {active ? <><p>暱稱與純文字即可參與，不需要帳號。請不要留下病歷、聯絡資料或其他敏感內容。</p>{interactions.local&&<p class="muted">留言示範，非真實讀者內容。作者回覆亦為合成測試文字。</p>}
 <form data-comment-form><fieldset disabled><label>暱稱<input name="nickname" required maxlength="40" autocomplete="nickname" /></label><label>留言<textarea name="body" required maxlength="2000" rows="5"></textarea></label><div data-turnstile></div>{interactions.local&&<button type="button" data-local-verify>取得本機測試驗證</button>}<button type="submit">發表留言</button></fieldset></form>

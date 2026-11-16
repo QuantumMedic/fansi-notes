@@ -1,17 +1,18 @@
-import {newReceipt,readReceipts,storeReceipt} from '../lib/interaction-client.mjs';
+import {newReceipt,readReceipts,storeReceipt,receiptNamespace} from '../lib/interaction-client.mjs';
 export function mountComments(root:HTMLElement){
  const $=<T extends Element=HTMLElement>(s:string)=>root.querySelector<T>(s)!;
  const thread=root.dataset.thread!,api=root.dataset.api!,local=root.dataset.local==='true'&&['127.0.0.1','localhost'].includes(location.hostname);
+ const receiptThread=receiptNamespace(thread,root.dataset.storageScope);
  const status=$('[data-comment-status]'),form=$<HTMLFormElement>('form');form.querySelector('fieldset')!.disabled=false;
- let receipts:any[]=[];try{receipts=readReceipts(localStorage,thread);}catch{}
+ let receipts:any[]=[];try{receipts=readReceipts(localStorage,receiptThread);}catch{}
  let pending:any=null,token='',cursor:number|null=0,busy=false,widget:any;
- const key='fansi.pending.'+thread;
+ const key='fansi.pending.'+receiptThread;
  try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved?.id&&saved?.token)pending=saved;}catch{}
  function el(tag:string,text:string){const e=document.createElement(tag);e.textContent=text;return e;}
  async function request(path:string,method='GET',body?:any,credential?:string){const r=await fetch(new URL(path,api),{method,headers:{'Content-Type':'application/json',...(credential?{Authorization:'Bearer '+credential}:{})},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(12000)});const data=await r.json();if(!r.ok)throw Error(({rate_limited:'操作太頻繁，請稍後再試。',verification_failed:'驗證失敗，請重新驗證。',verification_replayed:'驗證已使用，請重新驗證。',comments_paused:'作者暫停新留言，輸入已保留。',delete_denied:'管理碼不符，無法刪除。',request_conflict:'重試內容與先前不同。請先載入留言確認是否已發表。'} as any)[data.error]||'服務未完成操作，請保留輸入並稍後再試。');return data;}
  let persistent=true;const shown=new Map<string,any>();let loading=false,total=0;
- function save(receipt:any){receipts=receipts.filter(x=>x.id!==receipt.id);receipts.push(receipt);try{persistent=storeReceipt(localStorage,thread,receipt);}catch{persistent=false;}return persistent;}
- function deletion(r:any){const receipt=receipts.find(x=>x.id===r.id);if(!receipt)return null;const b=el('button','刪除') as HTMLButtonElement;b.type='button';b.onclick=async()=>{if(!confirm('刪除自己的留言？其他人的回覆會保留。'))return;b.disabled=true;try{await request('/v1/comments/'+r.id,'DELETE',undefined,receipt.token);receipts=receipts.filter(x=>x.id!==r.id);try{localStorage.setItem('fansi.comment.'+thread,JSON.stringify(receipts));}catch{}status.textContent='留言已刪除';renderPending();await load(true);}catch(e){status.textContent=(e as Error).message;b.disabled=false;}};return b;}
+ function save(receipt:any){receipts=receipts.filter(x=>x.id!==receipt.id);receipts.push(receipt);try{persistent=storeReceipt(localStorage,receiptThread,receipt);}catch{persistent=false;}return persistent;}
+ function deletion(r:any){const receipt=receipts.find(x=>x.id===r.id);if(!receipt)return null;const b=el('button','刪除') as HTMLButtonElement;b.type='button';b.onclick=async()=>{if(!confirm('刪除自己的留言？其他人的回覆會保留。'))return;b.disabled=true;try{await request('/v1/comments/'+r.id,'DELETE',undefined,receipt.token);receipts=receipts.filter(x=>x.id!==r.id);try{localStorage.setItem('fansi.comment.'+receiptThread,JSON.stringify(receipts));}catch{}status.textContent='留言已刪除';renderPending();await load(true);}catch(e){status.textContent=(e as Error).message;b.disabled=false;}};return b;}
  function renderPending(){const target=$('[data-own-pending]');target.replaceChildren();for(const r of receipts.filter(x=>x.pending)){const box=el('p','你的留言等待作者審核。');const b=deletion(r);if(b)box.append(b);target.append(box);}}
  function renderCard(r:any,reply=false){const card=el('article','');card.id='comment-'+r.id;card.className=reply?'comment-reply':'comment-root';
  if(r.author===1){const img=document.createElement('img');img.src=root.dataset.avatar!;img.alt='宗凡';img.className='comment-avatar';card.append(img,el('strong','宗凡'));const badge=el('span','作者');badge.className='author-badge';badge.setAttribute('aria-label','經驗證的作者回覆');card.append(badge);}else card.append(el('strong',r.nickname||'已刪除'));

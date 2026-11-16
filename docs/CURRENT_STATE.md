@@ -1,18 +1,21 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：production管理AUD已實際部署／所有入口停用／待受控驗證授權（2026-11-16）
+## 目前階段：PR #25已合併／受保護限時驗證通道已接線／真實操作證據待補（2026-11-17）
 
-本輪從最新main `3d7f0ba7dc3afccc9de34c32ac627595a8f4f5e6`建立`prep/m6-admin-aud-verification`，開工時無未結PR／並行修改。只修正停用設定產生器與回歸測試，沒有改動正式內容、服務驗證邏輯或release安全門檻。
+作者接受PR #25並授權merge commit。合併提交`0fe555729dbb290b90a68fd6f0df8cdb39906366`，與PR HEAD完整內容樹一致；[main CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43902233778)。本輪從該main建立`prep/m6-controlled-verification`，沒有覆蓋其他工作。作者本輪明確授權受保護通道、精確臨時Turnstile hostname、限時寫入及自動復原，不等於正式發布授權。
 
-production管理Worker已部署真正Access AUD，Cloudflare設定讀回與私人設定及既有官方Access證據一致；issuer、D1、作者白名單secret與其他綁定保持不變。兩Worker仍workers.dev=false、preview=false、PRODUCTION_SERVICES_ACTIVE=false；D1仍0留言、paused=1。公開Worker未部署／未改動，沒有公開管理書籤可用。
+- **已接線**：沿用現有受Access保護前台，透過私有service binding連到實際production D1／留言Worker。前台及後端逐次驗JWT與精確作者Email；公開API的workers.dev仍false，所有preview仍false，PRODUCTION_SERVICES_ACTIVE仍false。另有獨立、最長4小時的驗證租期；只有本輪受保護請求可使用，不能從公開參數開啟。
+- **窗口實際狀態**：2026-11-17台灣時間04:06到期。受控期間D1允許少量合成驗收留言，獨立管理hostname暫時啟用但仍經既有Access及後端完整驗證。Turnstile只增加一個精確測試hostname。Pages設定實際讀回仍Branch=None／disabled，noindex維持，沒有執行release、修改Access政策或使用撤銷Token。
+- **到期保護**：Worker每次請求檢查截止時間；D1觸發器拒絕跨截止時間才完成的寫入；雲端每分鐘排程將租期關閉並paused=1。本機監督程序負責關閉管理hostname、恢復Worker／前台／widget及私下備份後清理本輪精確留言ID。若Mac離線，雲端拒絕服務不受影響，但控制台設定清理可能延後；未實際讀回復原前不宣稱已完成復原。
+- **已實測**：作者目前有效的Access登入可開前台及真正production管理頁，管理統計讀取0；私有通道health顯示configured／accepting_comments=true，文章正常讀到0／0。獨立未登入HTTP請求對前台、前台API、管理頁及管理API皆被Access轉址；公開production API回404。這不等於非白名單真實身分已驗收。
+- **必要小修**：隔離本次瀏覽器留言憑證，避免舊staging待審提示混進production驗證；舊憑證不刪除。實際Workers不支援redirect:error，改manual並明確拒絕3xx。沒有重做留言介面。
+- **尚待**：使用者真實發表／持久化／回覆／自刪、非白名單真實管理拒絕、獨立瀏覽器自刪權限，依實際回報補證據。目前沒有填任何新的LIVE_*通過旗標。Formspree已實收的證據沿用；本輪沒有寄信或送分析流量。
 
-本次OAuth重讀Access應用回403；未索取或使用已撤銷Token。政策匹配依先前官方讀回檔核對，不能宣稱本次即時政策或真實登入已驗證。兩項真實安全證據仍未完整完成，不填假通過。Pages停用、noindex及Environment保護保持，未執行release。
+本輪保留原106項保障，新增6項窗口／JWT／路由／真SQL到期／設定／憑證隔離測試；本地112項通過、輸入與64串清冊／local預檢通過、check 135檔0錯誤0警告（1個既有hint）、114頁普通build通過。三Worker打包成功。CI以本輪獨立PR最新HEAD為準；真實人工測試不以CI替代。57篇正文、25集／配對、96圖、7出版作品／26入口、作者資料與人氣資料diff為零。唯一操作與驗收入口為[本批M6紀錄](review/m6/README.md)。
 
-`prepare-production-inactive.mjs`有AUD時必須提供匹配的私人Access讀回證據；未核實、錯應用、錯hostname、寬鬆policy或不完整已核實設定會在寫檔前停止。無AUD的初始設定仍fail closed。重跑保留核實AUD，不把資料輸出至日誌。
+## 正式發布停止條件
 
-完整發布確有啟用前驗證的相依問題；本輪沒有繞過。已在唯一M6文件界定「受Access保護的驗證前台＋私有service binding＋限時production寫入」下一輪方案、真實證據適用範圍、恢復及最終hostname上線後檢查。此驗證通道尚未實作／部署，不假稱今天即可直接開啟測試；須另行一次性授權，不需要重製網站或重做staging驗收。
-
-本輪驗證：新增3項精確AUD回歸保障、完整106項測試通過；輸入／64串清冊／local預檢通過；Astro check 128檔0 errors／0 warnings、1項既有unused-import hint；build 114頁。管理Worker dry-run及實際停用部署／讀回成功。既有src/content、src/data、public與服務處理程式未改，CI見本輪PR。
+受控通道證據及原兩項安全證據未完整時，不產生完整發布manifest、不啟用正式公開留言、不切Pages Actions來源。受控測試hostname不冒稱正式GitHub Pages hostname已通過；後者須另行發布授權及發布後冒煙檢查。正式索引解除另行確認。未合併本輪新PR、未新增付費、未改正式內容或設計。
 
 ## PR #24合併與發布保護（前輪已完成，AUD狀態以頂部為準）
 
@@ -44,7 +47,7 @@ production管理Worker已部署真正Access AUD，Cloudflare設定讀回與私�
 - 完整留言、聯絡、分析仍是目標；靜態服務關閉版本只是備案，不代表取消留言。
 - 唯一M6操作入口：docs/review/m6/README.md。該報告內「PR待合併」等為準備當時紀錄，最新整合狀態以上表為準。
 
-## 正式啟用前真正剩餘事項
+## PR #25之前的正式啟用待辦（歷史；本輪狀態以頂部為準）
 
 1. 作者另行授權受控啟用驗證及正式發布。Environment保護已設定；Pages Actions來源仍待正式發布授權時切換，不先啟用。
 2. D1、Workers與Turnstile已建立並停用；Access政策與實際AUD已私下配置及讀回；AUD已部署並讀回，仍須另行授權受控驗證通道、限時寫入及管理登入實測，之後才可啟用正式服務。初始空庫已備份，不能搬staging合成留言。

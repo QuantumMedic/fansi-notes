@@ -1,3 +1,5 @@
+// A controlled window must not consume credentials belonging to the existing staging DB.
+export function receiptNamespace(thread,scope){return /^verification-[0-9]{13}$/.test(scope||'')?scope+':'+thread:thread;}
 export function newReceipt(){const bytes=crypto.getRandomValues(new Uint8Array(32));return {id:crypto.randomUUID(),token:[...bytes].map(b=>b.toString(16).padStart(2,'0')).join('')};}
 export function storeReceipt(storage,thread,receipt){try{const key='fansi.comment.'+thread;const entries=JSON.parse(storage.getItem(key)||'[]').filter(x=>x.id!==receipt.id);storage.setItem(key,JSON.stringify([...entries,receipt]));return true;}catch{return false;}}
 export function readReceipts(storage,thread){try{return JSON.parse(storage.getItem('fansi.comment.'+thread)||'[]').filter(x=>/^[a-f0-9-]{36}$/.test(x.id)&&/^[a-f0-9]{64}$/.test(x.token));}catch{return [];}}
