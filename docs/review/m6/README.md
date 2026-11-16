@@ -1,6 +1,53 @@
-# M6 上線準備（2026-11-16）
+# M6 production 接線（2026-11-16）
 
-M6上線準備已實作；正式部署與互動啟用待另行授權及必要條件。本PR base為PR #22。未合併、未部署、未建立production、未改Access、未重寄信或新增費用。作者已接受網站操作與視覺，非阻擋細節延後。
+本輪從已整合main `37fb8838e6cc2b3c4d763ea6a05280474338207d` 建立 `prep/m6-production-wiring`。作者授權免費production資源準備，但未授權公開網站或開放讀者寫入。原網站、文章與視覺不變。
+
+## 實際資源與狀態
+
+|項目|本輪實際結果|啟用狀態|
+|---|---|---|
+|production D1 `fansi-comments`|已建立，與staging不同ID；0001／0002遷移成功；讀回0則留言、paused=1、moderation=1；初始空庫備份在repo外|已配置／寫入停用|
+|公開留言Worker `fansi-comments`|已上傳既有程式＋production停用閘門，綁定production DB；secret私下匯入|workers.dev=false、preview_urls=false、PRODUCTION_SERVICES_ACTIVE=false；沒有公開入口|
+|私人管理Worker `fansi-comments-admin`|已上傳，綁定production DB；精確帳號secret私下保存；原JWT簽章／issuer／audience／期限驗證保留|workers.dev=false、preview_urls=false、啟用false；AUD缺失時拒絕，無可用管理頁|
+|production Turnstile|獨立widget/site key，精確hostname為quantummedic.github.io，managed模式、no_clearance|已配置，尚未在正式前台驗證|
+|production Access|Wrangler OAuth讀取既有應用403、組織403；沒有假造AUD或冒稱建立成功|阻擋；不開放管理Worker|
+|Formspree|沿用已存在的表單；收件與作者確認Gmail實收證據保留，沒有重寄|網站尚未發布，未新增表單|
+|GoatCounter|正式站點配置契約已接入；測試站／私人控制台證據保留|未送本輪production流量|
+|GitHub Pages|未啟用，沒有執行release或解除noindex|仍待另行授權|
+
+Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging資料／政策、未設定付款或升級。所有實際ID、完整管理網址、白名單、secret、備份與雲端原始日誌均留repo外私人目錄，0700／0600，不放PR。帳號的既有workers.dev共用後綴含staging字樣不等於使用staging Worker；以不同script名稱、D1 ID、widget及未來獨立AUD核對，不更改帳號子網域。
+
+## 本輪程式接線
+
+- `prepare-production-inactive.mjs`只產生停用設定，要求精確帳號、production目標與獨立實際D1；不填安全通過旗標。實際上傳後再次API讀回入口關閉、DB隔離、啟用false及空庫。
+- 公開Worker在production缺少明確啟用旗標時，連POST／DELETE／OPTIONS都拒絕，不先查庫或驗Turnstile。管理端先驗Access，再檢查啟用；知道網址不會取得管理權限。資料庫另以paused=1維持第二層停止。
+- 原正式預檢與設定產生器沿用，新增獨立Access AUD及精確origin／hostname檢查；只有所有既有安全證據與發布授權通過後，才能產生啟用設定。資源建立授權與發布授權分開。
+- 完整release模式使用`service-release.mjs`由私人設定預檢後輸出白名單manifest：只有公開API、site key、Formspree、GoatCounter與允許hostname及核對旗標，不含admin URL／Email／secret。manifest綁定精確main SHA，換SHA必須重核。
+- `release.yml`仍只手動執行；`services=full`還須`ENABLE_VERIFIED_PRODUCTION_SERVICES`，解除索引另須`AUTHORIZE_INDEXING`。Environment審核後才讀manifest；完整模式發布前只讀public health，未啟用、未配置或DB仍paused即停止，不發測試留言、郵件或分析。
+- 普通build／CI保持原先服務關閉與noindex。只有完整manifest驗證成功的候選建置，才將三個adapter輸出；建置本身不跑瀏覽器、不送分析。此受控步驟移除CI環境旗標以避免正式GoatCounter adapter被一般CI防護誤抑制；一般測試／預覽防護不變。
+- `services=off`仍可作另外授權的故障降級；不代表取消完整網站目標。回退指定先前已驗證且具本版工具的main SHA，full需重核綁定舊SHA的manifest；缺工具／缺證據則停止，不偷帶較新設定。靜態回退不自動回退Worker或DB，沿用私人版本與備份流程。
+
+## 一次性控制台操作（本輪不執行）
+
+1. **Cloudflare最小Access權限**：限現有帳號的Access: Apps and Policies—Edit，以及Access: Organizations, Identity Providers, and Groups—Read。可由作者在控制台完成精確設定，或未來另行授權短期受限Token經私人本機輸入；不索取Global API Key、不重用已撤銷Token。管理應用保護完整hostname所有路徑，精確作者Email＋OTP；不得Everyone或整個Email網域。public API與Pages不加作者登入。
+2. **GitHub Settings → Environments → github-pages**：另外授權後建立，部署分支限制main，指定作者為required reviewer。若只有作者一人，不設定會令自己永遠不能審核的prevent self-review；若要雙人批准須另有指定審核者。此流程prepare與deploy使用同一Environment，可能各要求一次審核。
+3. 在該Environment建立`RELEASE_SERVICES_JSON` secret，內容來自完成私人預檢後的白名單manifest；不把Cloudflare secrets、白名單或管理網址上傳GitHub。生成：`node scripts/launch/service-release.mjs 私人production設定.json repo外manifest.json`。目前此命令應拒絕，不能手工把待驗旗標改true。
+4. **GitHub Settings → Pages → Build and deployment**：另行發布授權時才切換Source為GitHub Actions，維持既定`https://quantummedic.github.io/fansi-notes/`；不要選main分支式自動發布、不改DNS或買網域。本輪未動設定。
+5. 安全證據與production真實接線完成後，另行授權啟用Workers與DB寫入；先確認管理Access所有可達hostname，再開workers.dev，preview持續關閉。網站公開前依序做正式預檢、備份、manifest、手動workflow與發布後檢查。正式管理書籤需另外驗證後私下交付。
+
+## 明確停止條件
+
+目前production preflight為not-configured：缺ACCESS_AUD、ACCESS_POLICY_VERIFIED、M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、LIVE_ACCESS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED、INDEPENDENT_BROWSER_DELETE_VERIFIED。未擅自填true。
+
+非白名單真實管理存取／獨立瀏覽器自刪仍待驗；作者本輪暫不追加操作。第一次其他Email開啟一般staging文章不是已確認管理入侵；無OTP也不是拒絕通過。不能為本輪接線暫時移除限制；保留Access權限阻擋及安全門檻，其他可安全執行的資源已完成。
+
+## 本輪驗證
+
+既有98項保障保留，新增5項production fail-closed、停用資源設定、SHA與公開欄位白名單、獨立授權及完整網站隔離build測試；共103項通過。真本地SQL驗證有效作者仍無法操作停用production、公開寫入不進DB、paused health不放行。合成full manifest僅存在測試記憶體與臨時建置，測完刪除，不冒充真實安全證據。
+
+輸入／64串清冊／local預檢成功，check127檔零錯誤／警告、1個既有unused-import hint，114頁普通build成功；受影響測試最後再跑9項通過。正式文章、data、圖片與fixtures沒有變更。沒有新UI，本輪不重跑已接受的全站桌手機巡檢。CI以本PR最新HEAD為準。
+
+## 先前PR #23準備工具及歷史說明（最新狀態以上為準）
 
 ## 可執行工具
 

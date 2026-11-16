@@ -1,4 +1,4 @@
-name: 手動正式靜態發布（需另行授權）
+name: 手動正式網站發布（需另行授權）
 on:
   workflow_dispatch:
     inputs:
@@ -8,6 +8,17 @@ on:
       confirmation:
         description: '作者授權後輸入 PUBLISH_STATIC_PRODUCTION'
         required: true
+      services:
+        type: choice
+        options: [off, full]
+        default: off
+        description: '完整服務必須另行通過production預檢與安全證據'
+      services_confirmation:
+        description: 'full需另外輸入 ENABLE_VERIFIED_PRODUCTION_SERVICES'
+        required: false
+      indexing_confirmation:
+        description: 'index需另外輸入 AUTHORIZE_INDEXING'
+        required: false
       indexing:
         type: choice
         options: [noindex, index]
@@ -22,6 +33,7 @@ jobs:
   prepare:
     if: github.ref == 'refs/heads/main' && inputs.confirmation == 'PUBLISH_STATIC_PRODUCTION'
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,12 +51,19 @@ jobs:
           cache: npm
       - run: npm ci
       - run: python3 scripts/check_m5e_inputs.py && node scripts/sync-comment-threads.mjs --check && npm run services:preflight && npm run check && npm run build && npm test
-      - name: Prepare isolated release
+      - name: Prepare independently approved release
         env:
           INDEXING: ${{ inputs.indexing }}
+          INDEXING_CONFIRMATION: ${{ inputs.indexing_confirmation }}
+          RELEASE_SERVICES: ${{ inputs.services }}
+          SERVICES_CONFIRMATION: ${{ inputs.services_confirmation }}
+          RELEASE_SERVICES_JSON: ${{ secrets.RELEASE_SERVICES_JSON }}
         run: |
-          node --input-type=module -e "import fs from 'node:fs'; fs.writeFileSync('/tmp/release.json',JSON.stringify({environment:'production',site:'https://quantummedic.github.io/fansi-notes/',indexing:process.env.INDEXING,indexing_authorized:process.env.INDEXING==='index',services:'off'}))"
-          node scripts/launch/release.mjs build /tmp/release.json
+          umask 077
+          node scripts/launch/workflow-input.mjs "$RUNNER_TEMP/release.json"
+          node scripts/launch/check-live-services.mjs "$RUNNER_TEMP/release.json"
+          node scripts/launch/release.mjs build "$RUNNER_TEMP/release.json"
+          rm "$RUNNER_TEMP/release.json"
       - uses: actions/upload-artifact@v4
         with:
           name: release-manifest

@@ -1,6 +1,14 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：工程已整合 main，正式上線待授權（2026-11-16）
+## 目前階段：production資源已建立並停用／Access與安全啟用仍受阻擋（2026-11-16）
+
+本輪從main `37fb883`建立`prep/m6-production-wiring`，只做授權的免費production接線。獨立D1已遷移0001／0002、0留言、paused=1；獨立Turnstile已配置；public與admin Worker已上傳但workers.dev／preview皆關閉，PRODUCTION_SERVICES_ACTIVE=false。尚無可使用的正式管理書籤。私人資源、secret與空庫備份留repo外。
+
+Access讀取權限403，未建立production Access或填假AUD；兩項真實安全待驗仍未通過，作者本輪暫不追加測試。Formspree/Gmail及隔離GoatCounter已完成證據沿用，不重寄。正式發布仍未授權、Pages未啟用、noindex不變，沒有新增付費。
+
+完整網站release已增加full/off模式、獨立服務／索引授權、production預檢、SHA綁定的公開欄位manifest及唯讀health停止條件；不輸出管理網址／秘密。103項本地測試通過、check零錯誤、build114頁；最新CI見本輪PR。唯一操作／資源狀態／集中控制台清單：docs/review/m6/README.md。
+
+## 前批整合基線（已完成，非本輪部署授權）
 
 作者已接受網站、留言與管理操作及PR #23工程準備。此次僅授權程式碼整合；#19→#20→#21→#22→#23均以merge commit完成，未刪分支、未force push。#20／#21已轉Ready；每次先將下一PR base調整main，核對內容樹並等待main CI成功後才繼續。
 
@@ -18,7 +26,7 @@
 
 - 合併前後均實際讀取GitHub Pages：Source為Deploy from a branch，Branch=None，顯示Pages currently disabled。未按Save或啟用。
 - 先前核查Environments為空，github-pages審核保護尚未建立；正式發布前另行設定。release僅workflow_dispatch，不隨main push執行；本輪只有驗證CI，沒有執行release。
-- noindex維持，普通建置留言／聯絡／分析預設關閉，未建立或變更Cloudflare production、未新增付費。
+- 整合當時noindex維持、服務預設關閉、未建立production；本輪已授權資源建立但仍停用，詳見頂部。
 - 完整留言、聯絡、分析仍是目標；靜態服務關閉版本只是備案，不代表取消留言。
 - 唯一M6操作入口：docs/review/m6/README.md。該報告內「PR待合併」等為準備當時紀錄，最新整合狀態以上表為準。
 

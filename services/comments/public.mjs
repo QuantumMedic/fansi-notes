@@ -10,11 +10,16 @@ export async function verifyTurnstile(token,env,fetcher=fetch){
 export async function handlePublic(req,env,verify=verifyTurnstile){
  const origin=req.headers.get('Origin'),allowed=list(env.ALLOWED_ORIGINS),headers={};
  try{
+  if(env.ENVIRONMENT==='production'&&env.PRODUCTION_SERVICES_ACTIVE!=='true')fail(503,'production_inactive');
   if(origin&&!allowed.includes(origin))fail(403,'origin_denied');
   if(origin){headers['Access-Control-Allow-Origin']=origin;headers.Vary='Origin';}
   if(req.method==='OPTIONS')return new Response(null,{status:204,headers:{...headers,'Access-Control-Allow-Methods':'GET, POST, DELETE','Access-Control-Allow-Headers':'Content-Type, Authorization'}});
   const url=new URL(req.url),path=url.pathname;if(url.searchParams.has('token'))fail(400,'credentials_not_in_url');
-  if(path==='/health')return json({service:'comments',configured:!!baseConfigured(env)},200,headers);
+  if(path==='/health'){
+   const configured=!!baseConfigured(env);
+   const settings=configured&&env.ENVIRONMENT==='production'?await env.DB.prepare('SELECT paused FROM settings WHERE id=1').first():null;
+   return json({service:'comments',configured,...(env.ENVIRONMENT==='production'?{accepting_comments:configured&&settings?.paused===0}:{})},200,headers);
+  }
   if(!baseConfigured(env))fail(503,'not_configured');
   if(path.startsWith('/v1/threads/')&&path.endsWith('/comments')&&req.method==='GET'){
    const thread=canonical(decodeURIComponent(path.slice(12,-9)));return json(await readThread(env.DB,thread,url),200,headers);
