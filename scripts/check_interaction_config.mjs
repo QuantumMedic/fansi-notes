@@ -21,7 +21,14 @@ export function preflight(e,mode='local'){
  const c=interactionConfig({...e,PUBLIC_COMMENTS_ENABLED:'true',PUBLIC_CONTACT_ENABLED:'true',PUBLIC_ANALYTICS_ENABLED:'true',DEV:false,CI:false});
  if(!c.comments.enabled)invalid.push('comments_public_config');if(!c.contact.enabled)invalid.push('contact_public_config');if(!c.analytics.enabled)invalid.push('analytics_public_config');
  const consent=['REMOTE_TEST_DEPLOY_APPROVED','FORMSPREE_RECIPIENT_VERIFIED','ACCESS_POLICY_VERIFIED','GOATCOUNTER_PRIVATE_DASHBOARD_VERIFIED'];
- if(mode==='production')consent.push('M6_DEPLOY_APPROVED','LIVE_COMMENTS_VERIFIED','LIVE_ACCESS_VERIFIED','LIVE_MAIL_RECEIVED','ISOLATED_ANALYTICS_VERIFIED');
+ if(mode==='production')consent.push('M6_DEPLOY_APPROVED','LIVE_COMMENTS_VERIFIED','LIVE_ACCESS_VERIFIED','LIVE_MAIL_RECEIVED','ISOLATED_ANALYTICS_VERIFIED','NON_ALLOWLIST_ADMIN_VERIFIED','INDEPENDENT_BROWSER_DELETE_VERIFIED');
+ if(mode==='production'){
+  if(e.D1_DATABASE_NAME!=='fansi-comments')invalid.push('production_database_name');
+  if(!e.STAGING_D1_DATABASE_ID)missing.push('STAGING_D1_DATABASE_ID');
+  if(e.D1_DATABASE_ID===e.STAGING_D1_DATABASE_ID)invalid.push('separate_production_database');
+  if(e.SITE_ORIGIN!=='https://quantummedic.github.io'||e.SITE_BASE!=='/fansi-notes')invalid.push('production_site');
+  if(e.PUBLIC_GOATCOUNTER_ENDPOINT!=='https://fansi-notes.goatcounter.com/count')invalid.push('production_analytics');
+ }
  for(const k of consent)if(e[k]!=='true')missing.push(k);
  return {mode,ready:missing.length===0&&invalid.length===0,missing:[...new Set(missing)],invalid:[...new Set(invalid)],live_verified:mode==='production'&&missing.length===0};
 }
