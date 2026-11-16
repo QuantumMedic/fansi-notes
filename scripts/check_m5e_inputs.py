@@ -66,6 +66,20 @@ def main():
     check(b'ftypavif' in content[:40], 'Invalid AVIF photo header')
     check(index['requires_chat_attachment'] is False, 'Attachment dependency must be absent')
     check(len(data['external_exceptions']) == 4, 'Keep unresolved external-source exceptions visible')
+    author_source = index['author_copy_source']
+    source_bytes = (ROOT / author_source['path']).read_bytes()
+    source_blob = hashlib.sha1(b'blob ' + str(len(source_bytes)).encode() + b'\0' + source_bytes).hexdigest()
+    check(source_blob == author_source['git_blob_sha'], 'Author source fingerprint mismatch')
+    source = json.loads(source_bytes)
+    runtime = json.loads((ROOT / 'src/data/author.json').read_text(encoding='utf-8'))
+    check(len(source['bio_paragraphs']) == 3 and len(source['timeline']) == 13, 'Expected 3 paragraphs and 13 events')
+    for field in ('name', 'label', 'short_bio'):
+        check(runtime[field] == data['author'][field] == source[field], 'Author copy differs: ' + field)
+    check(runtime['bio'] == data['author']['bio'] == '\n\n'.join(source['bio_paragraphs']), 'Author paragraphs differ')
+    check(runtime['timeline'] == source['timeline'], 'Runtime timeline differs from approved source')
+    input_timeline = [{**{k: v for k, v in t.items() if k != 'text'}, 'event': t['text']} for t in data['author']['timeline']]
+    check(input_timeline == source['timeline'], 'Input timeline differs from approved source')
+    print('PASS: author source fingerprint, 3 exact paragraphs, 13 exact events and source URLs.')
     print('PASS: 7 unique works, 26 URL records including 8 Books direct URLs, 6 remote cover sources, author AVIF hash, and complete display copy.')
     print('NOT CHECKED: live external URLs, remote cover rendering, website implementation or UI acceptance.')
 

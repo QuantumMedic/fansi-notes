@@ -1,0 +1,41 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {authorSchema,groupTimeline} from '../src/lib/author-schema.mjs';
+const json=p=>JSON.parse(readFileSync(p,'utf8'));
+const source=json('docs/review/m5e/AUTHOR_PAGE_COPY_AND_TIMELINE_2026-11-16.json');
+const author=authorSchema.parse(json('src/data/author.json'));
+const strip=s=>s.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();
+test('作者頁三段與13事件精確映射，來源缺省及歷史稱謂完整保留',()=>{
+ assert.equal(author.bio,source.bio_paragraphs.join('\n\n'));
+ assert.deepEqual(author.timeline,source.timeline);
+ assert.equal(author.short_bio,source.short_bio);
+ const html=readFileSync('dist/about/index.html','utf8');
+ const bio=html.match(/<div class="author-bio"[^>]*>([\s\S]*?)<\/div>/)[1];
+ const paragraphs=[...bio.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map(m=>strip(m[1]));
+ assert.deepEqual(paragraphs,source.bio_paragraphs);
+ assert.match(html,/經歷與作品/);assert.doesNotMatch(html,/創作歷程/);
+ const events=[...html.matchAll(/<li class="timeline-event"[^>]*>([\s\S]*?)<\/li>/g)].map(m=>m[1]);
+ assert.equal(events.length,13);
+ source.timeline.forEach((event,i)=>{
+  for(const key of ['title','event','category'])assert.ok(strip(events[i]).includes(event[key]));
+  assert.equal((events[i].match(/<a /g)||[]).length,event.source_url?1:0);
+  if(event.source_url)assert.ok(events[i].includes(`href="${event.source_url.replaceAll('&','&amp;')}"`));
+ });
+ assert.equal(source.timeline.filter(t=>t.source_url).length,11);
+ for(const phrase of ['研究團隊獲Best Poster Award','第一作者','Letter to the Editor','10.1016/j.ajp.2026.105169','曾任花蓮縣政府','第七屆未來科幻大師獎人氣獎','第九屆全球華文科幻星雲獎初選提名'])assert.ok(strip(html).includes(phrase));
+ assert.doesNotMatch(strip(html),/精神科專科醫師/);
+ assert.equal(json('src/data/publications.json').find(b=>b.work_id==='publication-tianqi-1').edition_date,'2019-06');
+ assert.ok(readFileSync('dist/index.html','utf8').includes(source.short_bio));
+ assert.match(html,/src="\/fansi-notes\/images\/author\/jiang-zongfan.avif"/);
+});
+test('年表新至舊、同年份分組但保留起訖字樣與同年順序，不改來源資料',()=>{
+ const rows=[{year:'2024',event:'A'},{year:'2017',event:'B'},{year:'2026',event:'C'},{year:'2024',event:'D'}];
+ const original=JSON.stringify(rows);
+ assert.deepEqual(groupTimeline(rows).map(g=>[g.year,g.events.map(x=>x.event)]),[['2026',['C']],['2024',['A','D']],['2017',['B']]]);
+ assert.equal(JSON.stringify(rows),original);
+ assert.deepEqual(groupTimeline(author.timeline).map(g=>g.year),['2026','2024 起','2024','2023','2020–2021','2020','2019','2018','2017']);
+ const html=readFileSync('dist/about/index.html','utf8');
+ assert.deepEqual([...html.matchAll(/<li class="timeline-year"[^>]*><h3[^>]*>(.*?)<\/h3>/g)].map(m=>m[1]),groupTimeline(author.timeline).map(g=>g.year));
+ assert.throws(()=>authorSchema.parse({...author,timeline:[{year:'2026',event:'x',source_url:'javascript:alert(1)'}]}));
+});

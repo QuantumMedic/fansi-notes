@@ -1,8 +1,11 @@
 ---
 import Main from '../layouts/Main.astro';
 import {author} from '../lib/author';
+import {groupTimeline} from '../lib/author-schema.mjs';
 import {site,url} from '../data/site';
 import Bookshelf from '../components/Bookshelf.astro';
+const timeline=groupTimeline(author.timeline);
+const paragraphs=author.bio?.split(/\n\s*\n/) || [];
 const photo=author.photo && (author.photo.startsWith('https://')?author.photo:url(author.photo));
 ---
 <Main title="關於作者">
@@ -10,10 +13,16 @@ const photo=author.photo && (author.photo.startsWith('https://')?author.photo:ur
   {author.approved && photo && <img src={photo} alt={author.photo_alt || '作者核准照片'} width="640" height="960" />}
   <div><p class="eyebrow">作者的書桌</p><h1>{author.approved&&author.name?author.name:'關於作者'}</h1>
   {author.approved && author.label && <p class="author-label">{author.label}</p>}
-  <p>{author.approved&&author.bio?author.bio:'公開署名與作者簡介整理中。先從文字、聲音與故事，認識這裡的創作。'}</p></div>
+  <div class="author-bio">{author.approved&&paragraphs.length ? paragraphs.map(p=><p>{p}</p>) : <p>公開署名與作者簡介整理中。先從文字、聲音與故事，認識這裡的創作。</p>}</div></div>
 </section>
 <section class="section author-journey">
-{author.approved && author.timeline.length>0 && <><h2>創作歷程</h2><ol>{author.timeline.map(x=><li><strong>{x.year}</strong> {x.event}{x.source_url && <a href={x.source_url} aria-label={`${x.year}年創作歷程來源`}> ↗</a>}</li>)}</ol></>}
+{author.approved && timeline.length>0 && <section aria-labelledby="timeline-heading"><h2 id="timeline-heading">經歷與作品</h2>
+<ol class="timeline">{timeline.map(group=><li class="timeline-year"><h3>{group.year}</h3><ol class="timeline-events">{group.events.map(x=><li class="timeline-event">
+  {x.category && <span class="timeline-category">{x.category}</span>}{x.title && <h4>{x.title}</h4>}
+  <p>{x.event}</p>
+  {x.source_url && <a class="timeline-source" href={x.source_url} aria-label={`${x.year} ${x.title || x.event}：公開來源`}>{x.source_url.startsWith('https://doi.org/') ? `DOI：${x.source_url.slice('https://doi.org/'.length)}` : '公開來源'} ↗</a>}
+</li>)}</ol></li>)}</ol></section>}
+
 <h2>故事與出版</h2><Bookshelf/>
 <h2>繼續探索</h2><p><a href={url('articles/')}>閱讀文章 →</a> · <a href={url('podcast/')}>收聽凡思聲 →</a></p>
 {site.socialLinks.map(x=><p><a href={x.url}>{x.label}</a></p>)}<p><a href={url('contact/')}>來信與合作 →</a></p>
@@ -22,6 +31,17 @@ const photo=author.photo && (author.photo.startsWith('https://')?author.photo:ur
 .author-opening{display:grid;grid-template-columns:minmax(180px,280px) minmax(0,1fr);gap:64px;align-items:center;text-align:left}
 .author-opening img{display:block;width:100%;height:auto;box-shadow:5px 7px 13px #373a391c}
 .author-opening p{line-height:2;max-width:640px}.author-label{color:var(--muted)}
-.author-journey ol{padding-left:24px;line-height:2}.author-journey>h2:not(:first-child){margin-top:48px}
+.author-journey>h2{margin-top:48px}
+.timeline,.timeline-events{list-style:none;padding:0;margin:0}
+.timeline{max-width:850px}
+.timeline-year{display:grid;grid-template-columns:110px minmax(0,1fr);gap:24px;padding:20px 0;border-top:1px solid var(--parchment)}
+.timeline-year h3{font-size:1.15rem;margin:0;line-height:1.8}
+.timeline-events{border-left:1px solid var(--bronze);padding-left:24px}
+.timeline-event+.timeline-event{margin-top:22px}
+.timeline-category{font-size:12px;color:var(--muted);margin-right:12px}
+.timeline-event h4{display:inline;font-size:16px;font-weight:500}
+.timeline-event p{margin:6px 0;line-height:1.9}
+.timeline-source{font-size:12px;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+@media(max-width:760px){.timeline-year{grid-template-columns:1fr;gap:12px;padding:18px 0}.timeline-events{padding-left:16px}.timeline-event+.timeline-event{margin-top:20px}}
 @media(max-width:760px){.author-opening{grid-template-columns:1fr;gap:28px}.author-opening img{max-width:240px;margin:auto}}
 </style>

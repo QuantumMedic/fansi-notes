@@ -79,7 +79,7 @@ test('M5-E 作者資料共用、照片原檔、base path與未核准保護',()=>
  assert.throws(()=>authorSchema.parse({...a,approved:false}));
  assert.throws(()=>authorSchema.parse({...a,photo:'../private.jpg'}));
  const about=readFileSync('dist/about/index.html','utf8'),home=readFileSync('dist/index.html','utf8');
- assert.ok(clean(about).includes(a.bio));assert.ok(clean(home).includes(a.short_bio));
+ assert.ok(clean(about.replaceAll('</p>', '</p> ')).includes(clean(a.bio)));assert.ok(clean(home).includes(a.short_bio));
  assert.match(about,/src="\/fansi-notes\/images\/author\/jiang-zongfan.avif"/);
  for(const page of [about,home])assert.doesNotMatch(page,/署名待確認|封面示意|開發預覽|demo-paper-city/);
  assert.equal(existsSync('dist/works/demo-paper-city/index.html'),false);

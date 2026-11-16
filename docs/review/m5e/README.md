@@ -1,3 +1,32 @@
+# 2026-11-16｜作者簡介與經歷年表
+
+**已實作／本機測試通過／待作者驗收**。接續PR #20最新 `30cf574e84857e87906ece02762a7fdc621e707e`，只更新作者資料、作者頁、輸入指紋及驗證。未合併、未部署、未開始互動服務；GitHub CI請見PR最新HEAD。
+
+- 唯一來源：`AUTHOR_PAGE_COPY_AND_TIMELINE_2026-11-16.json`。三段介紹逐字保留，以既有bio字串的空行儲存並渲染三個自然段落；首頁仍讀同一筆short_bio。
+- 13項事件完整保留，新至舊分為9個年份群組；「2024 起」不混成2024畢業事件。小型類別與標題為schema最小擴充，沒有高聳卡片或彩色徽章。
+- 11個公開來源href與輸入逐筆一致，兩個無URL事件只顯示文字。DOI顯示全文，Tab可移至下一個來源、焦點框可見；本次不重新搜尋履歷或驗證外站內容。
+- 內容保護：人氣獎、星雲初選提名、ASCAPAP研究團隊、第一作者Letter to the Editor、DOI及曾任職務均有精確回歸；《天啟Ⅰ》2017首次出版與書架2019版本分開。
+- `author.json`與輸入包作者部分同步；PACKAGE_INDEX更新input blob與作者來源blob，既有照片hash及其他作品資料完全不變。
+- `python3 scripts/check_m5e_inputs.py`通過；`npm run check`：85檔0 errors／warnings／hints；`npm run build`：114頁；`npm test`：73/73通過（原71項＋新增2項），無跳過。
+- 本輪git差異不含七本小說、26媒介入口、57篇正文／雜湊基準、25集Podcast／25映射、96張內文圖、人氣、分類、首頁五場景、推薦元件、購書入口或照片。輸入包非author部分與父提交逐值一致。
+
+## 作者頁實際畫面
+
+|寬度|實際結果|
+|---|---|
+|1440px|照片與文字並排，三段、13項、11來源完整，無溢出|
+|390px|照片與文字上下排列，年表單欄，來源不溢出|
+|360px|innerWidth360／文件寬345，無main元素右側溢出；來源鍵盤焦點可見|
+
+![作者介紹桌機1440px](screenshots/author-update-desktop.jpg)
+![經歷年表桌機1440px](screenshots/author-timeline-desktop.jpg)
+![作者介紹手機390px](screenshots/author-update-mobile.jpg)
+![經歷年表手機390px](screenshots/author-timeline-mobile.jpg)
+
+以下保留前一批作品頁驗收與外站例外；讀墨官網單冊入口尚未完全核實，不影響本批作者內容接線。
+
+---
+
 # 2026-11-16｜主要展示最後修正
 
 **已實作／本機測試通過／待作者驗收**。接續 `c797cbf51b4058248cf1e3cb94e26d990278ee79` 最新資料，不覆寫七筆文案或26筆入口；同一PR #20，依賴仍為PR #19，未合併、未部署、noindex不變。GitHub CI以本PR最新HEAD檢查為準。

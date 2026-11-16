@@ -5,7 +5,7 @@
   "requires_asset_download_script": false,
   "requires_additional_source_research_by_codex": false,
   "source": "docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json",
-  "input_git_blob_sha": "cb2f1f3d8ce2205815c3e15485ee47b6ffa113b5",
+  "input_git_blob_sha": "d2cae45dd195fb157412074050ade32c938cd3cd",
   "handoff": "docs/review/m5e/CODEX_DISPLAY_HANDOFF.md",
   "offline_validator": "scripts/check_m5e_inputs.py",
   "author_photo": {
@@ -53,5 +53,9 @@
       "E050240249"
     ],
     "other_five": "Author provided direct URLs; independent web fetch was unavailable; do not mark as verified externally without testing."
+  },
+  "author_copy_source": {
+    "path": "docs/review/m5e/AUTHOR_PAGE_COPY_AND_TIMELINE_2026-11-16.json",
+    "git_blob_sha": "3e224d519d54d9b4a727d1d71ee648f75acbebc0"
   }
 }
