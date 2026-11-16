@@ -32,8 +32,8 @@ Access讀取權限403，未建立production Access或填假AUD；兩項真實安
 
 ## 正式啟用前真正剩餘事項
 
-1. 作者另行授權正式發布／production設定；核對Pages Actions來源與github-pages環境審核及main部署限制。
-2. 獨立production D1、Workers、Turnstile、精確Access政策及私人管理書籤；備份、真實接線與完整公開設定再驗證，不能搬staging合成留言。
+1. 作者另行授權正式發布／production啟用；核對Pages Actions來源與github-pages環境審核及main部署限制。
+2. D1、Workers與Turnstile已建立並停用；仍須補足Access權限、設定精確政策與實際AUD，再驗證私人管理書籤、真實接線及完整公開設定。初始空庫已備份，不能搬staging合成留言。
 3. 兩項安全證據仍未完整完成：非白名單真實帳號的私人管理拒絕、獨立瀏覽器讀者自刪權限。作者本輪暫不追加測試；不重建Access Token、不改寫為通過或已接受所有風險。production預檢門檻保留。
 4. 第一次約14:55手機LINE開啟的是一般staging文章，沒有已確認非作者進入管理端證據。後續無OTP不等於拒絕驗收通過；當時authentication logs未取得，未繞過瀏覽器安全限制。
 5. 正式分析切換與隱私、索引／SEO／分享圖用途、發布後檢查及回退確認，均在正式授權時進行。Gmail既已實收，不重寄。
