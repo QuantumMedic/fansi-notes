@@ -75,5 +75,5 @@ test('公開游標分頁有硬上限，未知串與reader假作者／跨串回�
  const other='article:'+crypto.randomUUID();assert.equal((await call('/v1/threads/'+encodeURIComponent(other)+'/comments')).status,404);
  assert.ok((await rt.env.DB.prepare('SELECT count(*) n FROM comments').first()).n>=before.n);
  const statements=Array.from({length:55},()=>rt.env.DB.prepare("INSERT INTO comments(id,thread,nickname,body,status,request_hash,created_at) VALUES(?,?,'合成','分頁','published','test',?)").bind(crypto.randomUUID(),thread,Date.now()));await rt.env.DB.batch(statements);
- const page=await (await call('/v1/threads/'+encodeURIComponent(thread)+'/comments?limit=500')).json();assert.equal(page.comments.length,50);assert.ok(page.next);const next=await (await call('/v1/threads/'+encodeURIComponent(thread)+'/comments?cursor='+page.next)).json();assert.ok(!next.comments.some(x=>page.comments.some(y=>y.id===x.id)));
+ const page=await (await call('/v1/threads/'+encodeURIComponent(thread)+'/comments?limit=500')).json();assert.equal(page.comments.length,10);assert.ok(page.next);const next=await (await call('/v1/threads/'+encodeURIComponent(thread)+'/comments?cursor='+page.next)).json();assert.ok(!next.comments.some(x=>page.comments.some(y=>y.id===x.id)));
 });

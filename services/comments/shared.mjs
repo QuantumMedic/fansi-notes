@@ -1,5 +1,5 @@
 import manifest from './generated/threads.json' with {type:'json'};
-export const LIMITS={body:16384,nickname:40,message:2000,page:20,maxPage:50,window:600,requests:10};
+export const LIMITS={roots:10,replies:10,body:16384,nickname:40,message:2000,page:20,maxPage:50,window:600,requests:10};
 export class HttpError extends Error {constructor(status,code){super(code);this.status=status;}}
 export const fail=(status,code)=>{throw new HttpError(status,code);};
 export const json=(data,status=200,headers={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...headers}});

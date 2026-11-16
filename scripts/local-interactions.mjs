@@ -1,10 +1,12 @@
+import {seedLocal} from './seed-local-comments.mjs';
+import manifest from '../services/comments/generated/threads.json' with {type:'json'};
 // Local-only adapter; never imported by Wrangler entrypoints or website bundles.
 import {createServer} from 'node:http';
 import {runtime} from '../tests/helpers/comments-runtime.mjs';
 import {handlePublic} from '../services/comments/public.mjs';
 import {handleAdmin} from '../services/comments/admin.mjs';
 const rt=await runtime(),servers=[],origin='http://127.0.0.1:4335',issued=new Set();
-const token=await rt.sign();
+const demo=await seedLocal(rt.env.DB,manifest);
 function serve(port,handler){const s=createServer(async(req,res)=>{try{
  if(req.headers.host!==`127.0.0.1:${port}`){res.writeHead(403);res.end();return;}
  const chunks=[];let size=0;for await(const c of req){size+=c.length;if(size>16384){res.writeHead(413);res.end();return;}chunks.push(c);}
@@ -13,6 +15,7 @@ function serve(port,handler){const s=createServer(async(req,res)=>{try{
  }catch{res.writeHead(503);res.end('Local service unavailable');}}).listen(port,'127.0.0.1');servers.push(s);}
 serve(8787,async req=>{
  if(req.method==='OPTIONS')return handlePublic(req,rt.env,rt.verify);
+ if(new URL(req.url).pathname==='/local/demo'&&req.headers.get('Origin')===origin)return Response.json(demo,{headers:{'Access-Control-Allow-Origin':origin,'Cache-Control':'no-store'}});
  if(new URL(req.url).pathname==='/local/token'){
   if(req.headers.get('Origin')!==origin||req.method!=='POST')return new Response(null,{status:403});
   const t='local-'+crypto.randomUUID();issued.add(t);return Response.json({token:t},{headers:{'Access-Control-Allow-Origin':origin,'Cache-Control':'no-store'}});
@@ -21,7 +24,7 @@ serve(8787,async req=>{
 });
 serve(8788,async req=>{
  // Test-only issuer: actual JWT signature still checked by the unchanged admin handler.
- const h=new Headers(req.headers);h.set('Cf-Access-Jwt-Assertion',token);
+ const h=new Headers(req.headers);h.set('Cf-Access-Jwt-Assertion',await rt.sign());
  return handleAdmin(new Request(req,{headers:h}),rt.env,rt.keys);
 });
 serve(8789,async req=>{

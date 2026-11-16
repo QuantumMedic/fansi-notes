@@ -1,7 +1,7 @@
 {
   "schema_version": "m5e-free-interactions-v1",
   "prepared_on": "2026-11-16",
-  "status": "specification_ready_code_and_accounts_not_verified",
+  "status": "local_baseline_complete_reading_management_revision_in_progress",
   "document_role": "planning_input_not_runtime_configuration",
   "repository": "QuantumMedic/fansi-notes",
   "branch": "prep/m5e-free-interactions-20261116",
@@ -12,7 +12,10 @@
     "codex_round_1": "Implement comments, admin, contact, analytics, local integration tests and one configuration checklist; no remote deploy",
     "owner_setup": "One account/settings session; confirm all missing values and test-deployment permissions together",
     "codex_round_2": "Connect verified settings and perform real staging tests in the same PR; do not rebuild or redesign",
-    "after_services": ["M5-F single integrated acceptance", "M6 separately authorized merge/release sequence and launch"],
+    "after_services": [
+      "M5-F single integrated acceptance",
+      "M6 separately authorized merge/release sequence and launch"
+    ],
     "account_setup_may_run_parallel_to_round_1": true,
     "merge_authorized": false,
     "remote_test_deploy_authorized": false,
@@ -31,7 +34,16 @@
     "author_timeline_events": 13,
     "existing_tests": 73,
     "baseline_built_pages": 114,
-    "do_not_change": ["original article bodies and baseline hashes", "existing popularity values and metric definitions", "approved classifications", "publications and author copy", "Canva", "other repositories", "homepage five scenes", "noindex before M6"]
+    "do_not_change": [
+      "original article bodies and baseline hashes",
+      "existing popularity values and metric definitions",
+      "approved classifications",
+      "publications and author copy",
+      "Canva",
+      "other repositories",
+      "homepage five scenes",
+      "noindex before M6"
+    ]
   },
   "cost_policy": {
     "incremental_subscription_budget": 0,
@@ -65,14 +77,22 @@
     "reader_can_delete_own": true,
     "reader_can_edit": false,
     "delete_credential": "per-comment client-generated CSPRNG >=256bit; server stores digest only; preserve on retry; never in URLs or public responses",
-    "browser_storage": "only the visitor's delete credentials and minimal receipt IDs; disclose local persistence; allow manual export/re-entry; handle storage denial",
+    "browser_storage": "automatic per-comment credentials; memory fallback; no copy/download/manual recovery UI",
     "lost_credential": "no insecure automatic recovery; contact owner for review",
     "delete_replies": "deleting parent must not delete others' replies; erase deleted content and preserve minimal tombstone when needed",
     "reply_depth_max": 1,
-    "admin_can": ["review", "reply", "hide", "delete", "toggle_moderation", "pause_writes", "authenticated_export"],
+    "admin_can": [
+      "review",
+      "reply",
+      "hide",
+      "delete",
+      "toggle_moderation",
+      "pause_writes",
+      "authenticated_export"
+    ],
     "new_comment_email_notifications": "deferred_first_version",
-    "pagination_default": 20,
-    "pagination_hard_max": 50,
+    "pagination_default": 10,
+    "pagination_hard_max": 10,
     "load": "after visitor requests comments, no per-card comment counts or polling",
     "antispam": "Turnstile server-side verify + hostname/action + persistent short-lived rate limits",
     "author_badge": "server-set for authenticated admin only",
@@ -84,7 +104,10 @@
       "current_expected_distinct_threads": 64,
       "count_not_permanently_hardcoded": true,
       "manifest": "generated from published catalog/publications; reject unknown IDs server-side; preserve aliases for deliberate later mappings"
-    }
+    },
+    "author_display_name": "宗凡",
+    "replies_per_batch": 10,
+    "persistent_unread": true
   },
   "contact": {
     "provider": "formspree_free",
@@ -93,14 +116,22 @@
     "recipient": "author-specified Gmail from conversation; set and verify privately in provider dashboard",
     "recipient_not_stored_in_public_repo": true,
     "endpoint": null,
-    "form_fields": ["category", "optional nickname", "reply email", "message"],
+    "form_fields": [
+      "category",
+      "optional nickname",
+      "reply email",
+      "message"
+    ],
     "autoresponder": false,
     "attachments": false,
     "spam_protection": "Formspree supported built-in/reCAPTCHA free capabilities; do not assume Turnstile is validated by Formspree",
     "public_email_approved": false,
     "public_email": null,
     "public_email_decision": "confirm during the single setup session; recipient authorization is not automatic public disclosure",
-    "fallback_if_approved": ["mailto", "copy email"],
+    "fallback_if_approved": [
+      "mailto",
+      "copy email"
+    ],
     "no_config_behavior": "honest unavailable state or author-approved email-only contact; never pretend a form was sent",
     "success_wording": "provider accepted submission; actual arrival separately verified by author",
     "failure_behavior": "preserve unsent content, no unbounded automatic retries, show explicit fallback"
@@ -110,32 +141,137 @@
     "dashboard": "private",
     "endpoint": null,
     "enabled_default": false,
-    "non_production_excluded": ["localhost", "127.0.0.1", "CI", "admin", "review routes"],
-    "events": ["page_view", "article_read_more", "outbound_spotify", "outbound_apple", "outbound_vocus", "outbound_instagram", "outbound_bookstore", "comment_submitted", "contact_submitted"],
-    "allowed_context": ["stable work_id", "platform", "approved pathname"],
-    "excluded_payloads": ["email", "message or comment text", "deletion credentials", "search input", "sensitive query strings or fragments"],
+    "non_production_excluded": [
+      "localhost",
+      "127.0.0.1",
+      "CI",
+      "admin",
+      "review routes"
+    ],
+    "events": [
+      "page_view",
+      "article_read_more",
+      "outbound_spotify",
+      "outbound_apple",
+      "outbound_vocus",
+      "outbound_instagram",
+      "outbound_bookstore",
+      "comment_submitted",
+      "contact_submitted"
+    ],
+    "allowed_context": [
+      "stable work_id",
+      "platform",
+      "approved pathname"
+    ],
+    "excluded_payloads": [
+      "email",
+      "message or comment text",
+      "deletion credentials",
+      "search input",
+      "sensitive query strings or fragments"
+    ],
     "does_not_replace_existing_popularity": true,
     "outbound_click_is_not_play_or_purchase": true
   },
   "required_configuration": [
-    {"name": "Cloudflare account + Workers Free + Zero Trust Free", "source": "author-owned account and explicit local login", "visibility": "private account authorization", "value": null, "needed_for": "live staging only"},
-    {"name": "D1 staging and production database IDs", "source": "Codex-assisted provisioning after authorization", "visibility": "deployment config; not secret but do not invent", "value": null, "needed_for": "live staging/production; local D1 works first"},
-    {"name": "public API and admin worker URLs", "source": "actual assigned workers.dev hostnames", "visibility": "public URLs", "value": null, "needed_for": "frontend cloud integration; do not apply /fansi-notes to Worker routes"},
-    {"name": "TURNSTILE_SITE_KEY", "source": "real widget and hostnames", "visibility": "public", "value": null, "needed_for": "real comment submission"},
-    {"name": "TURNSTILE_SECRET_KEY", "source": "Cloudflare widget secret", "visibility": "Worker secret only", "value": null, "needed_for": "backend Siteverify"},
-    {"name": "ACCESS_TEAM_DOMAIN, ACCESS_AUD, ADMIN_EMAIL_ALLOWLIST", "source": "actual Access application/OTP configuration", "visibility": "server-only config; author identity kept private", "value": null, "needed_for": "protected admin, deny when absent"},
-    {"name": "RATE_LIMIT_HMAC_SECRET", "source": "cryptographically generated locally", "visibility": "Worker secret only", "value": null, "needed_for": "short-lived anonymous antiabuse fingerprints"},
-    {"name": "ALLOWED_ORIGINS / hostname allowlists", "source": "existing site configuration and explicit staging origins", "visibility": "public config", "value": null, "needed_for": "CORS and Turnstile validation; no wildcard credentials"},
-    {"name": "FORMSPREE_ENDPOINT and verified recipient", "source": "author-owned Free form; owner verifies the already specified Gmail", "visibility": "endpoint public; recipient only provider settings", "value": null, "needed_for": "real contact submission and mail delivery"},
-    {"name": "GOATCOUNTER_ENDPOINT", "source": "author-created private-dashboard code", "visibility": "public ingestion endpoint, private account token never client-side", "value": null, "needed_for": "real analytics"},
-    {"name": "PUBLIC_CONTACT_EMAIL / explicit permission", "source": "one-time publication decision for backup email", "visibility": "public only if separately approved", "value": null, "needed_for": "email-only fallback; not needed to implement form"}
+    {
+      "name": "Cloudflare account + Workers Free + Zero Trust Free",
+      "source": "author-owned account and explicit local login",
+      "visibility": "private account authorization",
+      "value": null,
+      "needed_for": "live staging only"
+    },
+    {
+      "name": "D1 staging and production database IDs",
+      "source": "Codex-assisted provisioning after authorization",
+      "visibility": "deployment config; not secret but do not invent",
+      "value": null,
+      "needed_for": "live staging/production; local D1 works first"
+    },
+    {
+      "name": "public API and admin worker URLs",
+      "source": "actual assigned workers.dev hostnames",
+      "visibility": "public URLs",
+      "value": null,
+      "needed_for": "frontend cloud integration; do not apply /fansi-notes to Worker routes"
+    },
+    {
+      "name": "TURNSTILE_SITE_KEY",
+      "source": "real widget and hostnames",
+      "visibility": "public",
+      "value": null,
+      "needed_for": "real comment submission"
+    },
+    {
+      "name": "TURNSTILE_SECRET_KEY",
+      "source": "Cloudflare widget secret",
+      "visibility": "Worker secret only",
+      "value": null,
+      "needed_for": "backend Siteverify"
+    },
+    {
+      "name": "ACCESS_TEAM_DOMAIN, ACCESS_AUD, ADMIN_EMAIL_ALLOWLIST",
+      "source": "actual Access application/OTP configuration",
+      "visibility": "server-only config; author identity kept private",
+      "value": null,
+      "needed_for": "protected admin, deny when absent"
+    },
+    {
+      "name": "RATE_LIMIT_HMAC_SECRET",
+      "source": "cryptographically generated locally",
+      "visibility": "Worker secret only",
+      "value": null,
+      "needed_for": "short-lived anonymous antiabuse fingerprints"
+    },
+    {
+      "name": "ALLOWED_ORIGINS / hostname allowlists",
+      "source": "existing site configuration and explicit staging origins",
+      "visibility": "public config",
+      "value": null,
+      "needed_for": "CORS and Turnstile validation; no wildcard credentials"
+    },
+    {
+      "name": "FORMSPREE_ENDPOINT and verified recipient",
+      "source": "author-owned Free form; owner verifies the already specified Gmail",
+      "visibility": "endpoint public; recipient only provider settings",
+      "value": null,
+      "needed_for": "real contact submission and mail delivery"
+    },
+    {
+      "name": "GOATCOUNTER_ENDPOINT",
+      "source": "author-created private-dashboard code",
+      "visibility": "public ingestion endpoint, private account token never client-side",
+      "value": null,
+      "needed_for": "real analytics"
+    },
+    {
+      "name": "PUBLIC_CONTACT_EMAIL / explicit permission",
+      "source": "one-time publication decision for backup email",
+      "visibility": "public only if separately approved",
+      "value": null,
+      "needed_for": "email-only fallback; not needed to implement form"
+    }
   ],
   "configuration_check_output": {
     "must_create_by_codex": "docs/review/m5e-services/ACTIVATION_CHECKLIST.md",
     "show_all_missing_items_at_once": true,
     "do_not_print_secret_values": true,
-    "labels": ["local-ready", "staging-ready", "production-ready", "not-configured", "not-tested"]
+    "labels": [
+      "local-ready",
+      "staging-ready",
+      "production-ready",
+      "not-configured",
+      "not-tested"
+    ]
   },
-  "known_missing_before_development": ["Cloudflare account login/authorization not inspected", "No real database IDs or Worker URLs provisioned", "Turnstile and Access settings not supplied", "Formspree endpoint and Gmail verification not completed", "GoatCounter account code not supplied", "Email-publication and remote-test-deployment consent not yet recorded"],
+  "known_missing_before_development": [
+    "Cloudflare account login/authorization not inspected",
+    "No real database IDs or Worker URLs provisioned",
+    "Turnstile and Access settings not supplied",
+    "Formspree endpoint and Gmail verification not completed",
+    "GoatCounter account code not supplied",
+    "Email-publication and remote-test-deployment consent not yet recorded"
+  ],
   "completion_boundary": "Spec and workflow are complete enough to implement locally; accounts, cloud resources, live delivery and deployed services are NOT already completed. Missing external settings must never stop local code work or be hidden in final acceptance."
 }

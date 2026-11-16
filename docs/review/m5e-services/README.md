@@ -1,3 +1,40 @@
+# 留言閱讀與作者管理調整（最新）
+
+沿用PR #21，基線306c431；本輪尚未啟用任何真實服務。舊管理碼操作介面已取消，以下歷史截圖不再代表現行讀者UI。
+
+## 本輪實作
+
+前台表單在前，主留言最新優先，每批10則；作者回覆歸位、每批10則、手動載入。總數排除待審／隱藏／作者回覆；已刪父留言只有公開回覆時保留匿名位置。有限查詢可直接定位第11則以後留言。
+
+憑證自動保存、記憶體fallback、自刪按鈕隨本人留言顯示；待審本人另有刪除入口。不提供複製、下載或跨裝置恢復。作者固定顯示宗凡、既有照片與server徽章。
+
+管理新增作品標題與原文定位、持久未讀、待審／待回覆真實統計、明確已讀操作、按需回覆欄。兩條入口都由Access JWT驗證；本機使用隔離簽章測試身分。0002是增量SQL，未遠端執行。
+
+## 操作預覽
+
+[反脆弱示範留言](http://127.0.0.1:4335/fansi-notes/articles/antifragile-life/#comments) · [本機管理](http://127.0.0.1:8788/admin/)
+
+1. 網站頁尾「作者登入」進管理首頁。
+2. 主留言「作者回覆（作者專用）」直接定位，填寫後送出。
+3. 管理頁「前往原文留言」返回正確留言位置，包括第11則以後。
+
+seed由scripts/seed-local-comments.mjs生成，僅local adapter使用。13公開、4作者回覆、1待審；重跑不新增重複資料。本機重啟可恢復初始範例，非真實讀者留言。
+
+## 本輪驗證
+
+- 既有86項保障保留；新增真D1閱讀／管理及UI配置測試，88項。check零錯誤，build114頁；輸入檢查、公開清冊與服務預檢通過。CI以本PR最新HEAD為準。
+- 瀏覽器實測10/13→13/13、回覆歸位、本人刪除入口、管理精確定位第13則與返回原文；1440/390截圖，360px無水平溢出，Tab焦點可見，長留言保留段落與正常字級。
+- 原文hash與正式內容資料不變；正式HTML不含示範文字或localhost管理網址。Formspree及GoatCounter未重做。
+- 帳號清單仍為[ACTIVATION_CHECKLIST](ACTIVATION_CHECKLIST.md)，補PUBLIC_COMMENTS_ADMIN_URL、SITE_ORIGIN、SITE_BASE。真Access登入、Gmail實收、線上留言與分析仍待接線。
+
+|1440px|390px|
+|---|---|
+|![閱讀](screenshots/reading-desktop.jpg)|![閱讀](screenshots/reading-mobile.jpg)|
+|![管理](screenshots/management-desktop.jpg)|![管理](screenshots/management-mobile.jpg)|
+
+---
+## 第一輪歷史驗收（管理碼UI已取代）
+
 # M5-E 免費互動｜第一輪本地實作驗收
 
 2026-11-16。**互動程式已實作／本地與CI測試通過／待帳號設定及真實接線**；工程提交 `313d50cada8e8fccde869dedf3b23c67a8284c88` 的 [GitHub CI #121](https://github.com/QuantumMedic/fansi-notes/actions/runs/43796342999) 全綠（輸入檢查、check、build、86項測試）；後續文件提交以PR最新HEAD檢查為準。父提交`8d0819c82d0437c2feeb986f2754c7b14efd3077`，本PR依賴#20，沒有改動#19/#20，沒有合併、部署、解除noindex或啟用服務。

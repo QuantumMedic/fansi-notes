@@ -1,4 +1,5 @@
-import {LIMITS,fail,json,hash,list,canonical,tokenOK,idOK,text,readJSON,rate,erase,publicFields,errorResponse,baseConfigured} from './shared.mjs';
+import {readThread} from './reading.mjs';
+import {LIMITS,fail,json,hash,list,canonical,tokenOK,idOK,text,readJSON,rate,erase,errorResponse,baseConfigured} from './shared.mjs';
 export async function verifyTurnstile(token,env,fetcher=fetch){
  if(typeof token!=='string'||token.length>2048||!token)fail(400,'verification_required');
  const r=await fetcher('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',body:new URLSearchParams({secret:env.TURNSTILE_SECRET_KEY,response:token}),signal:AbortSignal.timeout(8000)});
@@ -16,10 +17,7 @@ export async function handlePublic(req,env,verify=verifyTurnstile){
   if(path==='/health')return json({service:'comments',configured:!!baseConfigured(env)},200,headers);
   if(!baseConfigured(env))fail(503,'not_configured');
   if(path.startsWith('/v1/threads/')&&path.endsWith('/comments')&&req.method==='GET'){
-   const thread=canonical(decodeURIComponent(path.slice(12,-9)));const cursor=Number(url.searchParams.get('cursor')||0),limit=Math.min(LIMITS.maxPage,Number(url.searchParams.get('limit')||LIMITS.page));
-   if(!Number.isSafeInteger(cursor)||cursor<0||!Number.isInteger(limit)||limit<1)fail(400,'invalid_cursor');
-   const result=await env.DB.prepare(`SELECT seq,${publicFields} FROM comments WHERE thread=? AND status IN ('published','deleted') AND seq>? ORDER BY seq LIMIT ?`).bind(thread,cursor,limit+1).all();
-   const more=result.results.length>limit,rows=result.results.slice(0,limit);return json({comments:rows.map(({seq,...r})=>r),next:more?rows.at(-1).seq:null},200,headers);
+   const thread=canonical(decodeURIComponent(path.slice(12,-9)));return json(await readThread(env.DB,thread,url),200,headers);
   }
   if(!origin||!allowed.includes(origin))fail(403,'origin_required');
   if(path==='/v1/comments'&&req.method==='POST'){

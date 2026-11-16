@@ -21,7 +21,7 @@
 |ENVIRONMENT|`staging`或`production`，不可用local/test繞過正式入口|是|
 |D1_DATABASE_NAME、D1_DATABASE_ID|授權後建立`fansi-comments-staging`及另立正式DB；兩個Worker同環境共用binding `DB`|ID不是密鑰，但目前留空，不造值|
 |PUBLIC_COMMENTS_API|實際`fansi-comments-staging`／`fansi-comments`的HTTPS workers.dev origin|是；不加/fansi-notes|
-|ADMIN_WORKER_URL|實際`fansi-comments-admin-staging`／`fansi-comments-admin`，與public不同origin|網址可公開；所有路徑都需Access|
+|ADMIN_WORKER_URL、PUBLIC_COMMENTS_ADMIN_URL|實際`fansi-comments-admin-staging`／`fansi-comments-admin`，與public不同origin|網址可公開；所有路徑都需Access|
 |ALLOWED_ORIGINS|網站完整origin，逗號分隔，不含路徑、萬用字元|是|
 |TURNSTILE_HOSTNAMES|實際前台hostname，逗號分隔|是|
 |PUBLIC_TURNSTILE_SITE_KEY|Turnstile正式widget site key|是|
@@ -79,7 +79,7 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 ## 4. 每項真實驗收
 
 - 公開留言：Turnstile真widget及Siteverify，正確hostname/action；一般讀者免登入發表。跨origin／假token拒絕，雙擊／回應遺失只一筆。
-- 刪除：兩個瀏覽器A不能刪B；保存碼在另一裝置恢復後能刪；父留言刪除不影響回覆。瀏覽器拒絕儲存時誠實提示。
+- 刪除：兩個瀏覽器A不能刪B；同瀏覽器自動憑證可刪，換裝置不提供恢復；父留言刪除不影響回覆。瀏覽器拒絕儲存時誠實提示。
 - 作者管理：未登入、錯Email、偽header、過期JWT拒絕；作者OTP登入後查看待審、回覆、隱藏、刪除、切換審核及暫停。沒有Email通知。
 - Formspree：保留服務後台免費防垃圾設定與蜜罐`_gotcha`，不把留言Turnstile當Formspree驗證。若服務回應挑戰／額度錯誤，前台保留輸入；測試provider成功不代表Gmail實收。由作者核對已授權的合成信收到。
 - GoatCounter：只用隔離測試站點與私人控制台驗證；localhost／CI／review／admin不送，query、來信、Email、管理碼不進事件。點擊不等於購買或收聽。
@@ -96,3 +96,5 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 刪除擦除正文／暱稱／刪除碼hash，保留最小tombstone與冪等摘要；供應商備份保留限制另行確認。私人匯出檔也需由作者管理刪除與保留時間。
 
 **停止點：本輪未建立外部帳號、未部署Worker、未遷移遠端DB、未寄真信、未啟用正式分析。下一次同PR接線，不重做元件。**
+
+本輪補充：公開管理入口使用 PUBLIC_COMMENTS_ADMIN_URL（HTTPS /admin/）；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號與正式接線仍未啟用。

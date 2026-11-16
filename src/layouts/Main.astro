@@ -1,4 +1,5 @@
 ---
+import {interactions} from '../lib/interaction-config.ts';
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
 import {site,nav,url} from '../data/site';
@@ -10,7 +11,7 @@ const {title=site.name,description=site.description}=Astro.props;
 <a class="skip" href="#main">跳至主要內容</a>
 <header class="header"><a class="brand" href={url()}><span class="seal" aria-hidden="true">凡</span><span>凡思筆記<small>{site.author} · 文字與創作</small></span></a><nav class="desktop-nav" aria-label="主要導覽">{nav.map(([p,n])=><a href={url(p)} aria-current={Astro.url.pathname===url(p)?'page':undefined}>{n}</a>)}</nav><a class="search-link" href={url('articles/#search')}>搜尋 ↗</a><details class="mobile-menu"><summary>選單</summary><nav aria-label="手機導覽">{nav.map(([p,n])=><a href={url(p)}>{n}</a>)}<a href={url('contact/')}>聯絡</a></nav></details></header>
 <main id="main"><slot/></main>
-<footer><div><a class="footer-brand" href={url()}>凡思筆記</a><p>文字 · 聲音 · 想像</p></div><div><a href={url('topics/')}>探索主題</a><a href={url('contact/')}>來信與合作</a><a href={url('privacy/')}>隱私說明</a></div><div class="footer-social">{site.socialLinks.map(link => <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`${link.label}（另開新分頁）`}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg><span>{link.label}</span></a>)}</div><p class="muted">作者授權文章<br/>Podcast 為公開 RSS 資料</p></footer>
+<footer><div><a class="footer-brand" href={url()}>凡思筆記</a><p>文字 · 聲音 · 想像</p></div><div><a href={url('topics/')}>探索主題</a><a href={url('contact/')}>來信與合作</a><a href={url('privacy/')}>隱私說明</a></div><div class="footer-social">{site.socialLinks.map(link => <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`${link.label}（另開新分頁）`}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg><span>{link.label}</span></a>)}</div><p class="muted">作者授權文章<br/>Podcast 為公開 RSS 資料</p>{interactions.adminUrl&&<a href={interactions.adminUrl}>作者登入</a>}</footer>
 <Analytics/></body></html>
 
 <style> .footer-social a { display:inline-flex; align-items:center; gap:8px; min-height:44px; } .footer-social svg { flex-shrink:0; } </style>
