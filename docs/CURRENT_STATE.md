@@ -1,16 +1,36 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：M6上線前工程準備（2026-11-16）
+## 目前階段：工程已整合 main，正式上線待授權（2026-11-16）
 
-|階段|現況|下一個條件|
+作者已接受網站、留言與管理操作及PR #23工程準備。此次僅授權程式碼整合；#19→#20→#21→#22→#23均以merge commit完成，未刪分支、未force push。#20／#21已轉Ready；每次先將下一PR base調整main，核對內容樹並等待main CI成功後才繼續。
+
+|PR|merge commit|main CI|
 |---|---|---|
-|M5-E展示／互動|作者已接受操作與視覺；短期Token已確認撤銷|不追加改版或重建Token|
-|M5-F|94項及CI通過；兩項真實安全證據未完成|作者本輪暫不追加測試；不能宣稱安全全通過|
-|M6準備|獨立prep/m6-launch-readiness分支，base PR #22；部署候選、預檢、備份復原與內容檢查工具已實作|正式部署與production啟用待另行授權及條件|
+|#19|56a49243d0d3e7a1e25dffdf3735f1129babf4be|[通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43829334531)|
+|#20|0806d833d660b8ef440e9b7c114f5ba23ba444ee|[通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43829533288)|
+|#21|18af226b0cde7b1cdbc608c2a2d17a1521e6127b|[通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43829749879)|
+|#22|eb87ad5c02076a53d3ba43575a39fd19da014d20|[通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43829954572)|
+|#23|47cf2b41d2777382f45ec1f65936a25071ce19cb|[通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43830150386)|
 
-本輪唯一交付入口：docs/review/m6/README.md。原57篇、25集／映射、96圖、7作品／26入口及作者資料均保留。98項測試通過，check零錯誤與114頁build；未合併、未正式公開、無新增付費。
+**內容樹比較時間點（本文件提交之前）**：整合main `47cf2b41d2777382f45ec1f65936a25071ce19cb`與原PR #23 HEAD `f9e3e173ee853f79257707ac8e7bad2fe8f6e3d5`完整樹均為`55c5cb9479ec9d5cc5850d6ad185aa26f37657a3`，git diff為零。57篇文章、25集與映射、96圖、7作品／26入口、作者資料及互動程式完整保留。其後僅本CURRENT_STATE文件更新，與上述工程樹比較分開記錄；工程版本98項測試／check／build由main CI成功確認。
 
-安全現況：第一次非白名單Email在約14:55手機LINE開啟一般staging文章，不是已確認管理後台入侵；後續無OTP不能當成通過。當時雲端authentication logs未取得，工具安全限制未繞過。非白名單管理存取及獨立瀏覽器讀者自刪仍未完整實測，作者本輪暫不追加測試；不改寫為作者接受全部風險。正式留言／管理啟用仍停止，靜態服務關閉發布僅候選，未授權執行。
+## 發布與服務狀態
+
+- 合併前後均實際讀取GitHub Pages：Source為Deploy from a branch，Branch=None，顯示Pages currently disabled。未按Save或啟用。
+- 先前核查Environments為空，github-pages審核保護尚未建立；正式發布前另行設定。release僅workflow_dispatch，不隨main push執行；本輪只有驗證CI，沒有執行release。
+- noindex維持，普通建置留言／聯絡／分析預設關閉，未建立或變更Cloudflare production、未新增付費。
+- 完整留言、聯絡、分析仍是目標；靜態服務關閉版本只是備案，不代表取消留言。
+- 唯一M6操作入口：docs/review/m6/README.md。該報告內「PR待合併」等為準備當時紀錄，最新整合狀態以上表為準。
+
+## 正式啟用前真正剩餘事項
+
+1. 作者另行授權正式發布／production設定；核對Pages Actions來源與github-pages環境審核及main部署限制。
+2. 獨立production D1、Workers、Turnstile、精確Access政策及私人管理書籤；備份、真實接線與完整公開設定再驗證，不能搬staging合成留言。
+3. 兩項安全證據仍未完整完成：非白名單真實帳號的私人管理拒絕、獨立瀏覽器讀者自刪權限。作者本輪暫不追加測試；不重建Access Token、不改寫為通過或已接受所有風險。production預檢門檻保留。
+4. 第一次約14:55手機LINE開啟的是一般staging文章，沒有已確認非作者進入管理端證據。後續無OTP不等於拒絕驗收通過；當時authentication logs未取得，未繞過瀏覽器安全限制。
+5. 正式分析切換與隱私、索引／SEO／分享圖用途、發布後檢查及回退確認，均在正式授權時進行。Gmail既已實收，不重寄。
+
+## 以下為歷史階段紀錄（未合併／待授權等敘述僅指當時）
 
 ## 真實 staging 接線（2026-11-16，作者已接受／安全補驗保留）
 
