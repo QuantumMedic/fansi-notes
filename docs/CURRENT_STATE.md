@@ -1,12 +1,20 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：production Access已配置並讀回核對／正式入口停用、安全啟用仍待驗（2026-11-16）
+## 目前階段：PR #24已整合main／發布環境保護已設定／正式入口停用（2026-11-16）
 
 本輪從main `37fb883`建立`prep/m6-production-wiring`，只做授權的免費production接線。獨立D1已遷移0001／0002、0留言、paused=1；獨立Turnstile已配置；public與admin Worker已上傳但workers.dev／preview皆關閉，PRODUCTION_SERVICES_ACTIVE=false。尚無可使用的正式管理書籤。私人資源、secret與空庫備份留repo外。
 
-本輪以作者新授權的短期Token完成獨立production管理端Access：精確作者Email、只允許既有OTP、完整hostname所有路徑、一條Allow且無Bypass；讀回確認其他應用未變更。實際AUD已保存私人設定，未部署至Worker，線上仍缺AUD拒絕且全部入口停用。兩項真實安全待驗仍未通過，作者本輪暫不追加測試。短期production Token已提醒作者撤銷，尚未收到撤銷確認。Formspree/Gmail及隔離GoatCounter已完成證據沿用，不重寄。正式發布仍未授權、Pages未啟用、noindex不變，沒有新增付費。
+本輪以作者新授權的短期Token完成獨立production管理端Access：精確作者Email、只允許既有OTP、完整hostname所有路徑、一條Allow且無Bypass；讀回確認其他應用未變更。實際AUD已保存私人設定，未部署至Worker，線上仍缺AUD拒絕且全部入口停用。兩項真實安全待驗仍未通過，作者本輪暫不追加測試。作者已確認撤銷短期production Token `fansi-access-production-setup`；本輪未再使用或要求建立Token。Formspree/Gmail及隔離GoatCounter已完成證據沿用，不重寄。正式發布仍未授權、Pages未啟用、noindex不變，沒有新增付費。
 
 完整網站release已增加full/off模式、獨立服務／索引授權、production預檢、SHA綁定的公開欄位manifest及唯讀health停止條件；不輸出管理網址／秘密。103項本地測試通過、check零錯誤、build114頁；最新CI見本輪PR。唯一操作／資源狀態／集中控制台清單：docs/review/m6/README.md。
+
+## PR #24合併與發布保護（本輪已完成）
+
+- 作者接受PR #24並授權merge commit。合併前重新讀取Pages：Deploy from a branch／Branch=None／currently disabled；PR最新HEAD `1deb0261d4df4570c3531d9229a1061ad767abd5` CI通過、main未被並行更動，正式內容diff為零。
+- merge commit：`745553452f229f359d17989d61dce1c582461e99`；[main CI通過](https://github.com/QuantumMedic/fansi-notes/actions/runs/43845649652)。合併後完整內容樹與PR #24 HEAD同為`6b89a6ae4967ca729d8cfcd174e620b43bbdaad9`。本次現況文件提交在該比較之後，與工程樹核對分開記錄。
+- 已建立並儲存`github-pages` Environment：required reviewer=QuantumMedic、禁止管理員bypass、只允許Branch `main`（1 branch／0 tags）。Prevent self-review維持關閉，讓唯一作者可明確審核自己發起的發布；不等於免審核。沒有加入Environment secrets或variables，尚不填未驗證的RELEASE_SERVICES_JSON。
+- 完成設定後再看Pages，仍停用；未切換Actions Source、未執行release、未解除noindex。Environment保護已實際儲存，但本輪沒有為測試審核而啟動部署。
+- production唯讀核對：兩Worker入口／preview／activation仍關閉；管理Worker已部署AUD仍為空，實際AUD僅在私人設定；D1仍0留言／paused=1／moderation=1。沒有重建資源、覆寫私人設定或部署。
 
 ## 前批整合基線（已完成，非本輪部署授權）
 
@@ -25,14 +33,14 @@
 ## 發布與服務狀態
 
 - 合併前後均實際讀取GitHub Pages：Source為Deploy from a branch，Branch=None，顯示Pages currently disabled。未按Save或啟用。
-- 先前核查Environments為空，github-pages審核保護尚未建立；正式發布前另行設定。release僅workflow_dispatch，不隨main push執行；本輪只有驗證CI，沒有執行release。
+- 本輪已建立github-pages審核保護與main-only規則，詳見上段。release僅workflow_dispatch，不隨main push執行；本輪只有驗證CI，沒有執行release。
 - 整合當時noindex維持、服務預設關閉、未建立production；本輪已授權資源建立但仍停用，詳見頂部。
 - 完整留言、聯絡、分析仍是目標；靜態服務關閉版本只是備案，不代表取消留言。
 - 唯一M6操作入口：docs/review/m6/README.md。該報告內「PR待合併」等為準備當時紀錄，最新整合狀態以上表為準。
 
 ## 正式啟用前真正剩餘事項
 
-1. 作者另行授權正式發布／production啟用；核對Pages Actions來源與github-pages環境審核及main部署限制。
+1. 作者另行授權受控啟用驗證及正式發布。Environment保護已設定；Pages Actions來源仍待正式發布授權時切換，不先啟用。
 2. D1、Workers與Turnstile已建立並停用；Access政策與實際AUD已私下配置及讀回；仍須另行授權將AUD部署至停用的Worker，之後再驗證私人管理書籤、真實接線及完整公開設定。初始空庫已備份，不能搬staging合成留言。
 3. 兩項安全證據仍未完整完成：非白名單真實帳號的私人管理拒絕、獨立瀏覽器讀者自刪權限。作者本輪暫不追加測試；不重建Access Token、不改寫為通過或已接受所有風險。production預檢門檻保留。
 4. 第一次約14:55手機LINE開啟的是一般staging文章，沒有已確認非作者進入管理端證據。後續無OTP不等於拒絕驗收通過；當時authentication logs未取得，未繞過瀏覽器安全限制。

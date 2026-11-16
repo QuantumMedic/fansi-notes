@@ -1,6 +1,6 @@
 # M6 production 接線（2026-11-16）
 
-本輪從已整合main `37fb8838e6cc2b3c4d763ea6a05280474338207d` 建立 `prep/m6-production-wiring`。作者授權免費production資源準備，但未授權公開網站或開放讀者寫入。原網站、文章與視覺不變。
+本輪從已整合main `37fb8838e6cc2b3c4d763ea6a05280474338207d` 建立 `prep/m6-production-wiring`。作者授權免費production資源準備；後續已接受並授權PR #24合併，但仍未授權公開網站或開放讀者寫入。原網站、文章與視覺不變。
 
 ## 實際資源與狀態
 
@@ -29,8 +29,8 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 
 ## 集中設定狀態與後續控制台操作
 
-1. **Cloudflare Access設定已完成**：作者另行提供短期受限Token後，已建立並讀回精確作者Email＋OTP的production管理應用；不重建組織、不修改staging或其他應用，public API與Pages不加作者登入。實際AUD僅保存私人設定，本輪未部署；後續須另行授權將AUD接至Worker並完成真實驗證。設定Token已提醒撤銷，尚待作者確認。
-2. **GitHub Settings → Environments → github-pages**：另外授權後建立，部署分支限制main，指定作者為required reviewer。若只有作者一人，不設定會令自己永遠不能審核的prevent self-review；若要雙人批准須另有指定審核者。此流程prepare與deploy使用同一Environment，可能各要求一次審核。
+1. **Cloudflare Access設定已完成**：作者另行提供短期受限Token後，已建立並讀回精確作者Email＋OTP的production管理應用；不重建組織、不修改staging或其他應用，public API與Pages不加作者登入。實際AUD僅保存私人設定，本輪未部署；後續須另行授權將AUD接至Worker並完成真實驗證。作者已確認撤銷設定Token，本輪沒有再次使用。
+2. **GitHub Settings → Environments → github-pages（已完成）**：本輪已實際建立並儲存，部署只允許Branch main（1 branch／0 tags），required reviewer為QuantumMedic，禁止管理員bypass。Prevent self-review維持關閉，唯一作者仍須明確核准自己的發布。prepare與deploy使用同一Environment，可能各要求一次審核；本輪沒有執行工作流程測試。
 3. 在該Environment建立`RELEASE_SERVICES_JSON` secret，內容來自完成私人預檢後的白名單manifest；不把Cloudflare secrets、白名單或管理網址上傳GitHub。生成：`node scripts/launch/service-release.mjs 私人production設定.json repo外manifest.json`。目前此命令應拒絕，不能手工把待驗旗標改true。
 4. **GitHub Settings → Pages → Build and deployment**：另行發布授權時才切換Source為GitHub Actions，維持既定`https://quantummedic.github.io/fansi-notes/`；不要選main分支式自動發布、不改DNS或買網域。本輪未動設定。
 5. 安全證據與production真實接線完成後，另行授權啟用Workers與DB寫入；先確認管理Access所有可達hostname，再開workers.dev，preview持續關閉。網站公開前依序做正式預檢、備份、manifest、手動workflow與發布後檢查。正式管理書籤需另外驗證後私下交付。
@@ -48,7 +48,17 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 - 前後對比其他Access應用內容一致。原始應用／政策／ID／AUD及白名單證據只在私人目錄，公開報告只記去識別結果。
 - 後續OAuth唯讀核對兩Worker仍workers.dev=false、preview=false、activation=false，綁定獨立production D1；0留言、paused=1、moderation=1。本輪沒有Worker部署、遠端遷移或開入口；線上管理Worker的AUD仍空值、拒絕服務。
 - 私人production預檢invalid=[]，ready=false；尚缺發布授權、production留言／Access真實實測與原兩項安全證據。沒有預填任何live驗證旗標。沒有新UI或程式修改；本次只更新此報告及CURRENT_STATE，CI以最新文件提交為準。
-- 已提醒作者撤銷 `fansi-access-production-setup`，未收到確認前不記為已撤銷。
+- 作者已確認撤銷 `fansi-access-production-setup`。此後不再使用該Token，不重新要求建立。
+
+## PR #24已整合／Environment保護已設定
+
+作者授權後以merge commit `745553452f229f359d17989d61dce1c582461e99` 合併PR #24，[main驗證CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43845649652)。合併工程樹與原PR HEAD完全一致；其後僅現況／驗收文件補記，沒有功能或正式內容變更。
+
+Pages合併前後實際畫面均為Deploy from a branch、Branch=None、currently disabled。Environment已儲存唯一作者審核、禁止bypass與main-only部署規則；沒有secrets／variables。未執行release、未啟用Pages、noindex不變。設定已完成，不要求作者重新操作同一輪控制台。
+
+最後OAuth唯讀核對兩Worker保持所有入口及啟用關閉，D1 0留言且暫停；管理Worker AUD尚未部署，私人實際AUD與Access設定保留。使用者已確認Token撤銷，沒有再次存取該Token。
+
+剩餘最小順序：另行授權將實際AUD接至停用Worker → 受控production接線與真實安全證據驗證（原兩項缺口保留）→ 正式預檢通過後產生綁定SHA的RELEASE_SERVICES_JSON並加入已建立Environment → 另行正式發布授權時切換Pages Actions Source、執行手動workflow並由作者審核。索引開關另有確認；任何門檻缺失即停止，不填假證據。不重寄已確認Gmail驗收信、不重做已接受staging流程。
 
 ## 本輪驗證
 
@@ -106,7 +116,17 @@ canonical／OG URL／sitemap統一既定origin與base，動態robots跟索引開
 - 前後對比其他Access應用內容一致。原始應用／政策／ID／AUD及白名單證據只在私人目錄，公開報告只記去識別結果。
 - 後續OAuth唯讀核對兩Worker仍workers.dev=false、preview=false、activation=false，綁定獨立production D1；0留言、paused=1、moderation=1。本輪沒有Worker部署、遠端遷移或開入口；線上管理Worker的AUD仍空值、拒絕服務。
 - 私人production預檢invalid=[]，ready=false；尚缺發布授權、production留言／Access真實實測與原兩項安全證據。沒有預填任何live驗證旗標。沒有新UI或程式修改；本次只更新此報告及CURRENT_STATE，CI以最新文件提交為準。
-- 已提醒作者撤銷 `fansi-access-production-setup`，未收到確認前不記為已撤銷。
+- 作者已確認撤銷 `fansi-access-production-setup`。此後不再使用該Token，不重新要求建立。
+
+## PR #24已整合／Environment保護已設定
+
+作者授權後以merge commit `745553452f229f359d17989d61dce1c582461e99` 合併PR #24，[main驗證CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43845649652)。合併工程樹與原PR HEAD完全一致；其後僅現況／驗收文件補記，沒有功能或正式內容變更。
+
+Pages合併前後實際畫面均為Deploy from a branch、Branch=None、currently disabled。Environment已儲存唯一作者審核、禁止bypass與main-only部署規則；沒有secrets／variables。未執行release、未啟用Pages、noindex不變。設定已完成，不要求作者重新操作同一輪控制台。
+
+最後OAuth唯讀核對兩Worker保持所有入口及啟用關閉，D1 0留言且暫停；管理Worker AUD尚未部署，私人實際AUD與Access設定保留。使用者已確認Token撤銷，沒有再次存取該Token。
+
+剩餘最小順序：另行授權將實際AUD接至停用Worker → 受控production接線與真實安全證據驗證（原兩項缺口保留）→ 正式預檢通過後產生綁定SHA的RELEASE_SERVICES_JSON並加入已建立Environment → 另行正式發布授權時切換Pages Actions Source、執行手動workflow並由作者審核。索引開關另有確認；任何門檻缺失即停止，不填假證據。不重寄已確認Gmail驗收信、不重做已接受staging流程。
 
 ## 本輪驗證
 
