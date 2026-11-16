@@ -2,15 +2,45 @@
 
 本輪從已整合main `37fb8838e6cc2b3c4d763ea6a05280474338207d` 建立 `prep/m6-production-wiring`。作者授權免費production資源準備；後續已接受並授權PR #24合併，但仍未授權公開網站或開放讀者寫入。原網站、文章與視覺不變。
 
+## 本次AUD接線收尾（最新狀態）
+
+基線main `3d7f0ba`，獨立分支`prep/m6-admin-aud-verification`。本次只有停用設定產生器、精確測試與這兩份進度／驗收文件變更，無UI修改。作者已撤銷Token，沒有再要求Token或使用已撤銷憑證。
+
+- **已實際部署**：從既有私人設定與Access官方讀回證據取得真正AUD，僅部署現有production管理Worker；dry-run及遠端部署成功。部署後OAuth讀回AUD／issuer與配置相同，其他bindings（包含精確作者Email的secret binding與D1）完全保留。公開Worker設定前後相同。
+- **保持停用**：兩Worker `workers.dev=false`、`preview_urls=false`、`PRODUCTION_SERVICES_ACTIVE=false`；D1仍0留言、`paused=1`、`moderation=1`。沒有遷移、寫入留言、改Access政策、改Turnstile、啟用Pages或執行release。部署日誌／前後快照／版本均只存既有私人目錄。
+- **證據界限**：實際AUD與先前保存的官方應用ID、hostname、OTP provider、精確Email Allow政策核對一致。本次OAuth嘗試即時讀Access仍403；不冒稱已重新核實雲端政策現況。未進行真實登入，原兩項安全待驗不變。
+- **修正**：`node scripts/prepare-production-inactive.mjs 私人設定.json 私人access-admin-verified.json`。有AUD時須具匹配的官方讀回資料及已核實旗標；檢查應用、AUD、獨立於staging、hostname全路徑、精確Email、單一Allow及無Bypass。不完整或不匹配會在任何輸出寫入前停止。初始沒有AUD且未宣稱政策已核實時，仍允許產生拒絕服務設定。CLI不印AUD、Email或私有網址。
+
+本輪驗證：106項測試全綠（保留原103項，新增3項AUD保留／拒絕／不覆寫回歸）；輸入、64串清冊、local預檢通過；check 128檔零錯誤／警告、1個既有hint；build 114頁。管理Worker dry-run與實際部署後讀回通過。精準測試第一次受本機sandbox禁止監聽限制，完整套件在允許本機測試程序的環境通過，未放寬斷言。沒有UI改動，不新增重複截圖。最新CI見獨立PR。
+
+## 解除驗證／發布相依循環（下一輪授權後才執行）
+
+**現有依賴確實存在**：full release與啟用設定產生器都要求LIVE_COMMENTS_VERIFIED等真實證據；production API停止、D1暫停且Turnstile只允許正式hostname，所以今天不能透過普通前台取得production發表證據。`check-live-services.mjs`還要求公開API健康且接受留言。不能拿staging結果、合成fixture或設定讀回冒充production通過，也不能為此先公開Pages。
+
+建議一次性授權的最小驗證窗口（本輪只定義契約，尚未建立）：
+
+1. 使用既有受Access保護的HTTPS驗證前台，備份原配置，不重建整站。先確認它的Access為精確作者白名單；先前非作者曾開啟一般staging前台的疑點未釐清前，不能直接假定足夠保護。可由作者一次提供目前政策畫面核對；不要求新的Access Token。政策不符即停止，不能開驗證寫入。
+2. 以前台Worker的**私有HTTP service binding**連至現有production留言Worker；production留言Worker的workers.dev與preview維持關閉，不開公開API。驗證路由必須伺服器驗證真實前台Access JWT（簽章／issuer／AUD／期限／精確作者），只轉發固定留言API路徑／方法；沒有任意代理、secret query或test-bypass。保留真Turnstile、限流、刪除憑證、參數化SQL等後端保障；不能把前台登入當成讀者留言所有權。此小型驗證路由尚待授權後實作及測試。
+3. 作者一次授權後，production Turnstile只暫增該**精確驗證hostname**，production Worker的origin與hostname校驗僅暫增同一來源；保留正式hostname，不用萬用允許、dummy key或偽造hostname。使用真production sitekey／secret取得驗證token。這是受限測試配置，不可把它輸出成正式release manifest。
+4. 只有通道驗證通過後，另行以窗口授權設定production activation=true、D1限時解除暫停；只允許上述受控通道進入，少量明示合成留言按ID記錄。**目前啟用產生器不支援此窗口，不能手改LIVE旗標來通過它**；下一輪須增加獨立的窗口設定／預檢，綁定作者明確授權、實際通道／來源／DB、到期與復原條件，不能讓公開請求打開窗口。這不是production正式啟用授權。
+5. production管理Worker依現有Access保護短暫開啟管理hostname及activation；繼續逐次JWT／精確Email驗證、不共用前台AUD。作者完成一次真實OTP及非白名單拒絕驗證；兩個獨立瀏覽器驗證讀者憑證所有權。這些缺乏真實操作證據時仍阻擋，不要求本輪重做。
+6. 驗證結束或任何失敗：先恢復D1 paused=1，再關閉activation／管理入口；移除驗證service binding與臨時hostname／origin，恢復受控前台配置；讀回所有開關，按記錄清理僅本輪合成資料，不能整庫清空。窗口到期也須自動fail closed，復原不依賴聊天繼續運行。正式與測試資料不混用；不送正式分析、不重寄Formspree信。
+
+**證據與正式hostname分開**：受控窗口可驗證實際production程式／DB／Turnstile／管理權限與持久化，記錄使用的測試hostname、版本及恢復後差異；通過才可填對應LIVE_*，不是證明GitHub Pages正式hostname已實測。正式hostname的TLS／跨來源／Turnstile前台最終相容性只能在日後經授權發布後補測，列為必做冒煙檢查及立即回退條件。若作者要求正式hostname也必須事前實測，必須另行授權真正受限的該hostname驗證設施；本輪沒有此設施，不能聲稱完全等價或解除門檻。
+
+**最終發布順序**：窗口證據與兩項安全證據完成 → 恢復正式精確來源／hostname並重新預檢（不帶臨時來源）→ 作者另行核准production啟用及網站發布 → 備份／版本記錄／產生綁定正式main SHA的manifest → 開production管理及公開留言服務、健康檢查（這一步明確需要公開寫入授權）→ 將manifest置於已保護Environment → Pages改Actions Source、手動full release與作者審核 → 正式hostname冒煙檢查。失敗即暫停留言或停用故障服務、依版本回退；索引解除仍獨立確認。任何政策／權限／證據／健康缺失都停止，不先解鎖Pages來湊證據。
+
+技術依據：[Cloudflare私有Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)允許不對公開網路開放的Worker由指定binding呼叫，但Access context不會自動傳遞，故入口仍需驗JWT；[Turnstile hostname管理](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/)允許明確配置驗證hostname。本方案是在既有服務上的受控驗證設計，**尚未實作或線上驗證，不是本輪已完成項目**。
+
 ## 實際資源與狀態
 
 |項目|本輪實際結果|啟用狀態|
 |---|---|---|
 |production D1 `fansi-comments`|已建立，與staging不同ID；0001／0002遷移成功；讀回0則留言、paused=1、moderation=1；初始空庫備份在repo外|已配置／寫入停用|
 |公開留言Worker `fansi-comments`|已上傳既有程式＋production停用閘門，綁定production DB；secret私下匯入|workers.dev=false、preview_urls=false、PRODUCTION_SERVICES_ACTIVE=false；沒有公開入口|
-|私人管理Worker `fansi-comments-admin`|已上傳，綁定production DB；精確帳號secret私下保存；原JWT簽章／issuer／audience／期限驗證保留|workers.dev=false、preview_urls=false、啟用false；AUD缺失時拒絕，無可用管理頁|
+|私人管理Worker `fansi-comments-admin`|已上傳，綁定production DB；精確帳號secret私下保存；原JWT簽章／issuer／audience／期限驗證保留|workers.dev=false、preview_urls=false、啟用false；真正AUD已部署讀回，無可用管理頁|
 |production Turnstile|獨立widget/site key，精確hostname為quantummedic.github.io，managed模式、no_clearance|已配置，尚未在正式前台驗證|
-|production Access|本次短期受限Token建立獨立管理應用；精確作者Email、只允許既有OTP、完整hostname所有路徑；實際AUD已保存私人設定|設定讀回通過；未部署AUD至Worker、未驗真實登入，管理入口仍關閉|
+|production Access|本次短期受限Token建立獨立管理應用；精確作者Email、只允許既有OTP、完整hostname所有路徑；實際AUD已保存私人設定|既有設定讀回證據匹配、AUD已部署；即時政策重讀403、未驗真實登入，管理入口仍關閉|
 |Formspree|沿用已存在的表單；收件與作者確認Gmail實收證據保留，沒有重寄|網站尚未發布，未新增表單|
 |GoatCounter|正式站點配置契約已接入；測試站／私人控制台證據保留|未送本輪production流量|
 |GitHub Pages|未啟用，沒有執行release或解除noindex|仍待另行授權|
@@ -29,7 +59,7 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 
 ## 集中設定狀態與後續控制台操作
 
-1. **Cloudflare Access設定已完成**：作者另行提供短期受限Token後，已建立並讀回精確作者Email＋OTP的production管理應用；不重建組織、不修改staging或其他應用，public API與Pages不加作者登入。實際AUD僅保存私人設定，本輪未部署；後續須另行授權將AUD接至Worker並完成真實驗證。作者已確認撤銷設定Token，本輪沒有再次使用。
+1. **Cloudflare Access設定已完成**：作者另行提供短期受限Token後，已建立並讀回精確作者Email＋OTP的production管理應用；不重建組織、不修改staging或其他應用，public API與Pages不加作者登入。實際AUD僅保存私人設定，本輪未部署；本輪AUD已接至停用Worker，後續仍須另行授權受控真實驗證。作者已確認撤銷設定Token，本輪沒有再次使用。
 2. **GitHub Settings → Environments → github-pages（已完成）**：本輪已實際建立並儲存，部署只允許Branch main（1 branch／0 tags），required reviewer為QuantumMedic，禁止管理員bypass。Prevent self-review維持關閉，唯一作者仍須明確核准自己的發布。prepare與deploy使用同一Environment，可能各要求一次審核；本輪沒有執行工作流程測試。
 3. 在該Environment建立`RELEASE_SERVICES_JSON` secret，內容來自完成私人預檢後的白名單manifest；不把Cloudflare secrets、白名單或管理網址上傳GitHub。生成：`node scripts/launch/service-release.mjs 私人production設定.json repo外manifest.json`。目前此命令應拒絕，不能手工把待驗旗標改true。
 4. **GitHub Settings → Pages → Build and deployment**：另行發布授權時才切換Source為GitHub Actions，維持既定`https://quantummedic.github.io/fansi-notes/`；不要選main分支式自動發布、不改DNS或買網域。本輪未動設定。
@@ -41,7 +71,7 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 
 非白名單真實管理存取／獨立瀏覽器自刪仍待驗；作者本輪暫不追加操作。第一次其他Email開啟一般staging文章不是已確認管理入侵；無OTP也不是拒絕通過。不能為本輪接線暫時移除限制；Access設定權限阻擋已解除，真實安全及發布門檻仍保留；不能把政策讀回當成登入實測。
 
-## production Access後續設定與讀回
+## production Access前輪設定紀錄（AUD未部署等指當時）
 
 - 新Token以本機隱藏輸入存repo外0600檔案；只用於本專案production管理Access。原OAuth 403是歷史狀態，本次設定成功不代表Wrangler取得額外權限。
 - 核對既有team domain及唯一OTP provider；新增一個獨立production應用。讀回完整hostname、全部路徑、四小時session、HTTP-only cookie、停用preflight bypass／App Launcher；只有一條精確作者Email Allow，沒有Everyone、整個Email網域或Bypass。production AUD與staging不同。
@@ -50,7 +80,7 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 - 私人production預檢invalid=[]，ready=false；尚缺發布授權、production留言／Access真實實測與原兩項安全證據。沒有預填任何live驗證旗標。沒有新UI或程式修改；本次只更新此報告及CURRENT_STATE，CI以最新文件提交為準。
 - 作者已確認撤銷 `fansi-access-production-setup`。此後不再使用該Token，不重新要求建立。
 
-## PR #24已整合／Environment保護已設定
+## PR #24已整合／Environment保護已設定（前輪紀錄）
 
 作者授權後以merge commit `745553452f229f359d17989d61dce1c582461e99` 合併PR #24，[main驗證CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43845649652)。合併工程樹與原PR HEAD完全一致；其後僅現況／驗收文件補記，沒有功能或正式內容變更。
 
@@ -60,7 +90,7 @@ Pages合併前後實際畫面均為Deploy from a branch、Branch=None、currentl
 
 剩餘最小順序：另行授權將實際AUD接至停用Worker → 受控production接線與真實安全證據驗證（原兩項缺口保留）→ 正式預檢通過後產生綁定SHA的RELEASE_SERVICES_JSON並加入已建立Environment → 另行正式發布授權時切換Pages Actions Source、執行手動workflow並由作者審核。索引開關另有確認；任何門檻缺失即停止，不填假證據。不重寄已確認Gmail驗收信、不重做已接受staging流程。
 
-## 本輪驗證
+## PR #24原驗證紀錄（本輪新增驗證見頂部）
 
 既有98項保障保留，新增5項production fail-closed、停用資源設定、SHA與公開欄位白名單、獨立授權及完整網站隔離build測試；共103項通過。真本地SQL驗證有效作者仍無法操作停用production、公開寫入不進DB、paused health不放行。合成full manifest僅存在測試記憶體與臨時建置，測完刪除，不冒充真實安全證據。
 
@@ -109,7 +139,7 @@ canonical／OG URL／sitemap統一既定origin與base，動態robots跟索引開
 |服務故障|三個PUBLIC_*_ENABLED各自false後重新驗證建置；留言緊急先在私人管理暫停寫入。靜態候選全部關閉不影響閱讀。任何正式重發需授權。|
 |回退|先保存現況與備份，不清庫；分別處理靜態SHA、Worker版本及DB recovery，不混為一次git reset。|
 
-## production Access後續設定與讀回
+## production Access前輪設定紀錄（AUD未部署等指當時）
 
 - 新Token以本機隱藏輸入存repo外0600檔案；只用於本專案production管理Access。原OAuth 403是歷史狀態，本次設定成功不代表Wrangler取得額外權限。
 - 核對既有team domain及唯一OTP provider；新增一個獨立production應用。讀回完整hostname、全部路徑、四小時session、HTTP-only cookie、停用preflight bypass／App Launcher；只有一條精確作者Email Allow，沒有Everyone、整個Email網域或Bypass。production AUD與staging不同。
@@ -118,7 +148,7 @@ canonical／OG URL／sitemap統一既定origin與base，動態robots跟索引開
 - 私人production預檢invalid=[]，ready=false；尚缺發布授權、production留言／Access真實實測與原兩項安全證據。沒有預填任何live驗證旗標。沒有新UI或程式修改；本次只更新此報告及CURRENT_STATE，CI以最新文件提交為準。
 - 作者已確認撤銷 `fansi-access-production-setup`。此後不再使用該Token，不重新要求建立。
 
-## PR #24已整合／Environment保護已設定
+## PR #24已整合／Environment保護已設定（前輪紀錄）
 
 作者授權後以merge commit `745553452f229f359d17989d61dce1c582461e99` 合併PR #24，[main驗證CI成功](https://github.com/QuantumMedic/fansi-notes/actions/runs/43845649652)。合併工程樹與原PR HEAD完全一致；其後僅現況／驗收文件補記，沒有功能或正式內容變更。
 
@@ -128,6 +158,6 @@ Pages合併前後實際畫面均為Deploy from a branch、Branch=None、currentl
 
 剩餘最小順序：另行授權將實際AUD接至停用Worker → 受控production接線與真實安全證據驗證（原兩項缺口保留）→ 正式預檢通過後產生綁定SHA的RELEASE_SERVICES_JSON並加入已建立Environment → 另行正式發布授權時切換Pages Actions Source、執行手動workflow並由作者審核。索引開關另有確認；任何門檻缺失即停止，不填假證據。不重寄已確認Gmail驗收信、不重做已接受staging流程。
 
-## 本輪驗證
+## PR #24原驗證紀錄（本輪新增驗證見頂部）
 
 輸入與64串清冊、服務local預檢通過；Astro check 121檔0錯誤／警告／提示，114頁普通build；98項測試通過（原94項保留，新增4項發布門檻／手動workflow／production隔離／真SQLite復原）。第一次沙箱限制本機監聽導致Worker測試EPERM，授權本機執行後98項全過，不修改斷言。另驗證隔離noindex與index候選建置，均未部署。CI以本PR最新HEAD為準。無可見版型變更，不重跑已接受的M5-F手機巡檢；未操作任何遠端DB或寄信。
