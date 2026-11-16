@@ -10,7 +10,7 @@
 |公開留言Worker `fansi-comments`|已上傳既有程式＋production停用閘門，綁定production DB；secret私下匯入|workers.dev=false、preview_urls=false、PRODUCTION_SERVICES_ACTIVE=false；沒有公開入口|
 |私人管理Worker `fansi-comments-admin`|已上傳，綁定production DB；精確帳號secret私下保存；原JWT簽章／issuer／audience／期限驗證保留|workers.dev=false、preview_urls=false、啟用false；AUD缺失時拒絕，無可用管理頁|
 |production Turnstile|獨立widget/site key，精確hostname為quantummedic.github.io，managed模式、no_clearance|已配置，尚未在正式前台驗證|
-|production Access|Wrangler OAuth讀取既有應用403、組織403；沒有假造AUD或冒稱建立成功|阻擋；不開放管理Worker|
+|production Access|本次短期受限Token建立獨立管理應用；精確作者Email、只允許既有OTP、完整hostname所有路徑；實際AUD已保存私人設定|設定讀回通過；未部署AUD至Worker、未驗真實登入，管理入口仍關閉|
 |Formspree|沿用已存在的表單；收件與作者確認Gmail實收證據保留，沒有重寄|網站尚未發布，未新增表單|
 |GoatCounter|正式站點配置契約已接入；測試站／私人控制台證據保留|未送本輪production流量|
 |GitHub Pages|未啟用，沒有執行release或解除noindex|仍待另行授權|
@@ -27,9 +27,9 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 - 普通build／CI保持原先服務關閉與noindex。只有完整manifest驗證成功的候選建置，才將三個adapter輸出；建置本身不跑瀏覽器、不送分析。此受控步驟移除CI環境旗標以避免正式GoatCounter adapter被一般CI防護誤抑制；一般測試／預覽防護不變。
 - `services=off`仍可作另外授權的故障降級；不代表取消完整網站目標。回退指定先前已驗證且具本版工具的main SHA，full需重核綁定舊SHA的manifest；缺工具／缺證據則停止，不偷帶較新設定。靜態回退不自動回退Worker或DB，沿用私人版本與備份流程。
 
-## 一次性控制台操作（本輪不執行）
+## 集中設定狀態與後續控制台操作
 
-1. **Cloudflare最小Access權限**：限現有帳號的Access: Apps and Policies—Edit，以及Access: Organizations, Identity Providers, and Groups—Read。可由作者在控制台完成精確設定，或未來另行授權短期受限Token經私人本機輸入；不索取Global API Key、不重用已撤銷Token。管理應用保護完整hostname所有路徑，精確作者Email＋OTP；不得Everyone或整個Email網域。public API與Pages不加作者登入。
+1. **Cloudflare Access設定已完成**：作者另行提供短期受限Token後，已建立並讀回精確作者Email＋OTP的production管理應用；不重建組織、不修改staging或其他應用，public API與Pages不加作者登入。實際AUD僅保存私人設定，本輪未部署；後續須另行授權將AUD接至Worker並完成真實驗證。設定Token已提醒撤銷，尚待作者確認。
 2. **GitHub Settings → Environments → github-pages**：另外授權後建立，部署分支限制main，指定作者為required reviewer。若只有作者一人，不設定會令自己永遠不能審核的prevent self-review；若要雙人批准須另有指定審核者。此流程prepare與deploy使用同一Environment，可能各要求一次審核。
 3. 在該Environment建立`RELEASE_SERVICES_JSON` secret，內容來自完成私人預檢後的白名單manifest；不把Cloudflare secrets、白名單或管理網址上傳GitHub。生成：`node scripts/launch/service-release.mjs 私人production設定.json repo外manifest.json`。目前此命令應拒絕，不能手工把待驗旗標改true。
 4. **GitHub Settings → Pages → Build and deployment**：另行發布授權時才切換Source為GitHub Actions，維持既定`https://quantummedic.github.io/fansi-notes/`；不要選main分支式自動發布、不改DNS或買網域。本輪未動設定。
@@ -37,9 +37,18 @@ Wrangler 4.162.0 OAuth有效；只操作以上本專案資源，未更動staging
 
 ## 明確停止條件
 
-目前production preflight為not-configured：缺ACCESS_AUD、ACCESS_POLICY_VERIFIED、M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、LIVE_ACCESS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED、INDEPENDENT_BROWSER_DELETE_VERIFIED。未擅自填true。
+目前production preflight為not-configured：缺M6_DEPLOY_APPROVED、LIVE_COMMENTS_VERIFIED、LIVE_ACCESS_VERIFIED、NON_ALLOWLIST_ADMIN_VERIFIED、INDEPENDENT_BROWSER_DELETE_VERIFIED。未擅自填true。
 
-非白名單真實管理存取／獨立瀏覽器自刪仍待驗；作者本輪暫不追加操作。第一次其他Email開啟一般staging文章不是已確認管理入侵；無OTP也不是拒絕通過。不能為本輪接線暫時移除限制；保留Access權限阻擋及安全門檻，其他可安全執行的資源已完成。
+非白名單真實管理存取／獨立瀏覽器自刪仍待驗；作者本輪暫不追加操作。第一次其他Email開啟一般staging文章不是已確認管理入侵；無OTP也不是拒絕通過。不能為本輪接線暫時移除限制；Access設定權限阻擋已解除，真實安全及發布門檻仍保留；不能把政策讀回當成登入實測。
+
+## production Access後續設定與讀回
+
+- 新Token以本機隱藏輸入存repo外0600檔案；只用於本專案production管理Access。原OAuth 403是歷史狀態，本次設定成功不代表Wrangler取得額外權限。
+- 核對既有team domain及唯一OTP provider；新增一個獨立production應用。讀回完整hostname、全部路徑、四小時session、HTTP-only cookie、停用preflight bypass／App Launcher；只有一條精確作者Email Allow，沒有Everyone、整個Email網域或Bypass。production AUD與staging不同。
+- 前後對比其他Access應用內容一致。原始應用／政策／ID／AUD及白名單證據只在私人目錄，公開報告只記去識別結果。
+- 後續OAuth唯讀核對兩Worker仍workers.dev=false、preview=false、activation=false，綁定獨立production D1；0留言、paused=1、moderation=1。本輪沒有Worker部署、遠端遷移或開入口；線上管理Worker的AUD仍空值、拒絕服務。
+- 私人production預檢invalid=[]，ready=false；尚缺發布授權、production留言／Access真實實測與原兩項安全證據。沒有預填任何live驗證旗標。沒有新UI或程式修改；本次只更新此報告及CURRENT_STATE，CI以最新文件提交為準。
+- 已提醒作者撤銷 `fansi-access-production-setup`，未收到確認前不記為已撤銷。
 
 ## 本輪驗證
 
@@ -89,6 +98,15 @@ canonical／OG URL／sitemap統一既定origin與base，動態robots跟索引開
 |分析與收信|私人GoatCounter控制台；Formspree既有通知收件。沒有啟用公開Email備援。|
 |服務故障|三個PUBLIC_*_ENABLED各自false後重新驗證建置；留言緊急先在私人管理暫停寫入。靜態候選全部關閉不影響閱讀。任何正式重發需授權。|
 |回退|先保存現況與備份，不清庫；分別處理靜態SHA、Worker版本及DB recovery，不混為一次git reset。|
+
+## production Access後續設定與讀回
+
+- 新Token以本機隱藏輸入存repo外0600檔案；只用於本專案production管理Access。原OAuth 403是歷史狀態，本次設定成功不代表Wrangler取得額外權限。
+- 核對既有team domain及唯一OTP provider；新增一個獨立production應用。讀回完整hostname、全部路徑、四小時session、HTTP-only cookie、停用preflight bypass／App Launcher；只有一條精確作者Email Allow，沒有Everyone、整個Email網域或Bypass。production AUD與staging不同。
+- 前後對比其他Access應用內容一致。原始應用／政策／ID／AUD及白名單證據只在私人目錄，公開報告只記去識別結果。
+- 後續OAuth唯讀核對兩Worker仍workers.dev=false、preview=false、activation=false，綁定獨立production D1；0留言、paused=1、moderation=1。本輪沒有Worker部署、遠端遷移或開入口；線上管理Worker的AUD仍空值、拒絕服務。
+- 私人production預檢invalid=[]，ready=false；尚缺發布授權、production留言／Access真實實測與原兩項安全證據。沒有預填任何live驗證旗標。沒有新UI或程式修改；本次只更新此報告及CURRENT_STATE，CI以最新文件提交為準。
+- 已提醒作者撤銷 `fansi-access-production-setup`，未收到確認前不記為已撤銷。
 
 ## 本輪驗證
 
