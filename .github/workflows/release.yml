@@ -1,0 +1,66 @@
+name: 手動正式靜態發布（需另行授權）
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: '完整40字元已驗證main歷史SHA（回退也指定舊SHA）'
+        required: true
+      confirmation:
+        description: '作者授權後輸入 PUBLISH_STATIC_PRODUCTION'
+        required: true
+      indexing:
+        type: choice
+        options: [noindex, index]
+        default: noindex
+        description: 'index 僅限另外獲准解除索引限制'
+permissions:
+  contents: read
+concurrency:
+  group: pages-production
+  cancel-in-progress: false
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main' && inputs.confirmation == 'PUBLISH_STATIC_PRODUCTION'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify target is a main ancestor
+        env:
+          RELEASE_SHA: ${{ inputs.commit }}
+        run: |
+          [[ "$RELEASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git merge-base --is-ancestor "$RELEASE_SHA" origin/main
+          git checkout --detach "$RELEASE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: python3 scripts/check_m5e_inputs.py && node scripts/sync-comment-threads.mjs --check && npm run services:preflight && npm run check && npm run build && npm test
+      - name: Prepare isolated release
+        env:
+          INDEXING: ${{ inputs.indexing }}
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; fs.writeFileSync('/tmp/release.json',JSON.stringify({environment:'production',site:'https://quantummedic.github.io/fansi-notes/',indexing:process.env.INDEXING,indexing_authorized:process.env.INDEXING==='index',services:'off'}))"
+          node scripts/launch/release.mjs build /tmp/release.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-manifest
+          path: .release/manifest.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .release/site
+  deploy:
+    needs: prepare
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
