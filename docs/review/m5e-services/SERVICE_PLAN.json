@@ -1,7 +1,7 @@
 {
   "schema_version": "m5e-free-interactions-v1",
   "prepared_on": "2026-11-16",
-  "status": "staging_base_resources_created_access_permission_pending",
+  "status": "staging_connected_live_checks_passed_owner_acceptance_and_second_identity_pending",
   "document_role": "planning_input_not_runtime_configuration",
   "repository": "QuantumMedic/fansi-notes",
   "branch": "prep/m5e-free-interactions-20261116",
@@ -271,27 +271,24 @@
   "known_missing_before_development": [
     "Historical initial gaps superseded by account_setup_status; do not repeat registration."
   ],
-  "completion_boundary": "Spec and workflow are complete enough to implement locally; accounts, cloud resources, live delivery and deployed services are NOT already completed. Missing external settings must never stop local code work or be hidden in final acceptance.",
+  "completion_boundary": "Staging deployed and live author/comment/mail/test-analytics checks evidenced; second real non-allowlisted identity and owner final acceptance remain. Production not enabled.",
   "account_setup_status": {
-    "cloudflare_free": "owner-confirmed Free; official Wrangler device OAuth completed and account verified; D1 and Turnstile staging resources created; Access API write denied",
-    "formspree": "existing form and recipient notification owner-confirmed; synthetic send and receipt pending",
-    "goatcounter": "production and isolated test sites owner-confirmed; both anonymous dashboards show sign-in; test ingestion pending",
+    "cloudflare_free": "Free staging resources and exact Access policies verified; real owner OTP and management succeeded",
+    "formspree": "one synthetic message accepted; owner confirmed Gmail receipt",
+    "goatcounter": "isolated dashboard shows authorized events; both dashboards reject anonymous statistics access",
     "payment": "owner already completed required Free setup; no new paid changes authorized"
   },
   "live_staging_pending": [
-    "Restricted Access Apps and Policies Edit plus Organizations/Identity Providers Read permission",
-    "Protected staging frontend and public/admin Worker deployment after Access policy verification",
-    "Turnstile widget and Access policy configuration",
-    "Real author OTP, persisted comments/self-delete/admin reply",
-    "One synthetic Formspree acceptance and owner Gmail receipt",
-    "Isolated analytics event appearance in private dashboard"
+    "Second real non-allowlisted account login test",
+    "Owner final operation and visual acceptance",
+    "Owner revocation of short-lived Access setup token"
   ],
   "staging_resource_state": {
-    "d1": "created; migrations 0001/0002 applied; zero comments",
+    "d1": "created; 0001/0002 applied; only a few synthetic acceptance comments",
     "turnstile": "created; single staging hostname; secret private",
-    "access": "create denied 403; no application created",
-    "workers": "not deployed",
-    "frontend": "implemented fail-closed wrapper; not deployed",
-    "live_acceptance": "not started"
+    "access": "two full-hostname exact-author apps verified; real owner OTP passed",
+    "workers": "public/admin deployed; preview URLs disabled; production untouched",
+    "frontend": "Access-protected Astro staging deployed; all assets JWT verified; noindex retained",
+    "live_acceptance": "comments, owner management, Gmail receipt, isolated analytics evidenced; limitations in README"
   }
 }

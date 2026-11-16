@@ -1,21 +1,42 @@
 # 真實 staging 接線驗收
 
-## 真實 staging 接線（2026-11-16，進行中）
+## 真實 staging 接線（2026-11-16，已實測／待作者最終驗收）
 
-- 作者已完成 Cloudflare Zero Trust Free、One-time PIN、既有 Formspree 表單及收件通知、GoatCounter 正式／測試兩站的私人控制台設定；不再要求註冊，也不以作者已完成的付款資料步驟作為阻擋。
-- 本輪已授權本專案免費 staging 資源、受控部署與 D1 增量遷移、一封合成來信及隔離分析事件。仍禁止 production、合併、付費升級、公開私人管理網址／白名單／密鑰。
-- 最新分支基線 `d72d6e538a322012fddab66f2e73f10a7789f744`，Wrangler 4.162.0；官方裝置 OAuth 已由作者完成，帳號已核對。已建立本專案免費 staging D1 與 Turnstile；尚未部署 Worker 或前台。
-- 已匿名實測兩個 GoatCounter 控制台，皆顯示登入表單，未顯示統計；本輪未送分析事件。Formspree 收件設定由作者確認，尚未寄驗收信或確認 Gmail 實收。
-- 私人 staging 設定保存在 Repository 外、目錄 0700／檔案 0600；Account ID、D1 ID、workers.dev 子網域與 Turnstile key 皆來自實際 API 結果；Access team domain 仍待補權限核對，未虛構 AUD。
-- 本輪本地 91 項測試全數通過（保留原 90 項）、check 114 檔零錯誤／警告／提示、114 頁 build 成功；正式內容資料與雜湊基準不變。GitHub CI 待本輪提交驗證。新增受控 staging 前台與權限測試；所有資產先驗 JWT、精確帳號及 audience，缺設定拒絕，保持 /fansi-notes/ 與 noindex。本輪真 Turnstile、持久留言、自刪、Access OTP、管理回覆、Gmail 實收與測試統計仍待實測；不宣稱 M5-E 已驗收。
-- D1 僅套用現有 0001／0002 增量遷移，實查留言數為 0；沒有搬入本地示範留言。Turnstile managed widget 僅允許測試前台 hostname，secret 只在私人設定。
-- Access 應用建立回應 403 `auth.forbidden`；現有 Wrangler OAuth 缺 Access Apps and Policies 寫入權限與組織讀取權限。已提供限目前帳號的短期 Token 與本機隱藏輸入方式；未重試繞過、未虛填 ACCESS_POLICY_VERIFIED。
-- `prepare-staging-site.mjs` 將既有 build 放在 Repository 外，逐檔排除私人設定；獨立前台 Worker 要求 run_worker_first／Access 驗證，preview_urls=false。設定產生器仍先要求完整政策預檢；migration 使用限定 DB 的私人設定，不放寬既有 production 要求。
+- 同一 PR #21 接續工程提交 `8bad741`，保留 PR #20 依賴；未合併、未部署正式官網、未解除 noindex、未升級付費。
+- 作者已完成官方 Wrangler OAuth；短期受限 Token 補足 Access 設定權限。實際帳號、既有組織與 One-time PIN 已核對，沒有重建組織。先核對兩個 Access 應用的精確作者允許政策，再部署 staging 前台與私人管理 Worker；公開留言 API 不要求 Access 登入。三個 Worker 均停用 preview URL。
+- 本專案 staging D1 已套用 0001／0002；真 Turnstile、發表、重整持久保存、同瀏覽器自刪、作者回覆與原文定位、待審→公開→隱藏→刪除皆已實測。刪除父留言後保留回覆。只有少量明示合成的驗收資料，沒有搬入本地13則示範或任何真實讀者內容；驗收後先審模式與暫停均恢復關閉。
+- 作者親自完成 OTP，受控前台及私人管理可操作。匿名與偽造憑證對管理頁／列表／設定／匯出及前台資產均被 Access 阻擋；獨立請求錯誤自刪憑證、跨 origin 與無效 Turnstile 均遭拒，公開 API 無管理路由。**第二個真實非白名單帳號尚未操作驗證**；本地錯誤身分／JWT測試與精確政策查核不能代替這一項。
+- 唯一一封「凡思筆記｜接線驗收」合成信已由受控聯絡頁送出，Formspree 接受，**作者已確認 Gmail 實收**；不再重寄。僅增加選填 `PUBLIC_CONTACT_SUBJECT` 隱藏欄位，普通建置未設定即不產生。公開 Email 備援仍關閉。
+- GoatCounter **測試站**控制台已看到文章／聯絡頁瀏覽、留言／來信提交及一次 Vocus 外連事件；只含固定路徑、作品ID與事件名稱。正式與測試控制台匿名均只顯示登入頁；沒有向正式站送驗收流量，也沒有公開統計。
+- 私人設定、資源ID／實際管理書籤、原始操作紀錄與停用方法均在 Repository 外，目錄0700、設定0600；公開文件僅保留去識別驗收。正式 production 仍未設定，普通 build 三服務預設關閉，公開頁面不輸出管理入口。
+- 保留原90項保障，現91項；本輪完整測試、check、build與CI結果見同批README／PR最新HEAD。57篇文章、25集Podcast與配對、96張圖片、7筆出版／26連結、作者資料與人氣均未修改。
+- 待辦只有作者最終操作／視覺確認、第二個真實非白名單帳號驗證，以及撤銷本次短期 Access Token。未宣稱整個M5-E或M5-F完成。
 
+### 本輪驗證與畫面
+
+本輪保留既有互動介面，只補聯絡信件的選填主旨與隔離建置回歸。受控前台沿用Astro正式頁面，並非獨立示意HTML。以下皆為真實staging與合成驗收內容，無管理網址列、白名單或密鑰。
+
+|桌機1440px|手機390px|
+|---|---|
+|![真實留言與作者回覆](screenshots/staging-comments-desktop.jpg)|![真實留言與作者回覆](screenshots/staging-comments-mobile.jpg)|
+|![私人管理與待審](screenshots/staging-admin-desktop.jpg)|![私人管理與待審](screenshots/staging-admin-mobile.jpg)|
+|![Formspree接受](screenshots/staging-contact-desktop.jpg)|![Formspree接受](screenshots/staging-contact-mobile.jpg)|
+
+管理截圖保留測試過程的先審狀態，驗收後已恢復一般模式。手機留言長文字與按鈕可閱讀，管理頁360px檢查無水平溢出（innerWidth360／scrollWidth345）；留言及聯絡390px實際畫面無溢出。鍵盤焦點可見。此次未以失敗的viewport切換冒稱所有頁面360px皆已重新驗收。
+
+- 真實自刪：持有瀏覽器憑證成功；另一個獨立HTTP客戶端無本人憑證403。未另以第二套真實瀏覽器登入測試。
+- 真實留言操作期間產生兩筆公開合成主留言；不能據此聲稱遠端雙擊冪等已獨立驗證。重送／回應遺失保障仍由本地真SQL測試驗證。
+- 匿名／偽造JWT被雲端Access阻擋；錯email、audience、issuer、過期、簽章與來源驗證仍由本地安全測試覆蓋。非作者真實帳號登入仍待補驗。
+- 私人管理回覆、發布、隱藏、刪除、審核開關與返回原文均已操作；沒有啟用留言Email通知或推播。
+- Gmail實收由作者明確確認，不讀取其他私人信件。測試控制台事件已實際可見，不將外連點擊稱為收聽／購買。
+
+作者日常操作：私人書籤登入管理 → 找到留言按「回覆」 → 按「前往原文留言」返回對應位置。實際staging書籤與資源停用清單私下交付，不寫公開PR；這不是production管理網址。
+
+本輪輸入檢查、64串清冊檢查、local／staging預檢通過；Astro check 114檔零錯誤／警告／提示、114頁build、91項測試全部通過。三個Worker已實際staging部署。前一工程提交8bad741的CI #126全綠；本次提交CI結果以PR #21最新HEAD為準。
 
 以下為已完成的本地歷史驗收，不能替代本輪真實服務證據。
 
-# 公開管理入口移除（本輪最新）
+# 公開管理入口移除（歷史）
 
 本輪公開管理入口移除：程式與本地權限測試已完成；90項測試、check零錯誤／警告／提示、114頁build、輸入檢查／服務預檢、兩個Worker dry-run通過。正式Access政策與真實登入尚待接線驗證；GitHub CI以PR #21最新HEAD為準。
 
@@ -33,7 +54,7 @@
 
 以下為前輪歷史驗收；舊截圖曾含公開管理連結，已由本輪取消。
 
-# 留言閱讀與作者管理調整（最新）
+# 留言閱讀與作者管理調整（歷史）
 
 **留言介面與管理體驗已實作／本地及CI測試通過／待作者視覺驗收與免費帳號設定、真實接線。** 工程提交 `e5ef26b3d22a0309a1e538675de6784fb2dba7d2`：[CI #123 全綠](https://github.com/QuantumMedic/fansi-notes/actions/runs/43800453776)，88項測試通過；未合併或部署。
 

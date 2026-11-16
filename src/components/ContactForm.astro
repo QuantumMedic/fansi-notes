@@ -3,9 +3,11 @@ import {interactions} from '../lib/interaction-config.ts';
 import {url} from '../data/site';
 import '../styles/interactions.css';
 const c=interactions.contact;
+// Optional deployment-specific subject, including the isolated acceptance message.
+const subject=(import.meta.env.PUBLIC_CONTACT_SUBJECT||'').trim().slice(0,100);
 ---
 <section class="interaction" data-contact><h2>來信與合作</h2>
-{c.enabled ? <><p>請勿填寫病歷、證件或其他敏感資料。送出後會由收件服務處理。</p>{interactions.local&&<p>隔離本機測試，不會寄送真實信件。</p>}<form data-contact-form data-endpoint={c.endpoint}><fieldset disabled><label>來信類別<select name="category"><option>讀者來信</option><option>合作邀約</option></select></label><label>暱稱（選填）<input name="name" maxlength="80" /></label><label>回覆 Email<input name="email" type="email" required maxlength="254" autocomplete="email" /></label><label>訊息<textarea name="message" required maxlength="5000" rows="6"></textarea></label><label hidden>請留空<input name="_gotcha" tabindex="-1" autocomplete="off" /></label><button type="submit">送出來信</button></fieldset></form><noscript>請啟用 JavaScript 才能使用此表單；若下方有公開聯絡備援，也可使用。</noscript></> : <><p>私人來信服務尚未啟用；目前不會傳送或儲存你輸入的資料。</p><fieldset disabled><label>回覆 Email<input type="email" /></label><label>訊息<textarea rows="4"></textarea></label></fieldset></>}
+{c.enabled ? <><p>請勿填寫病歷、證件或其他敏感資料。送出後會由收件服務處理。</p>{interactions.local&&<p>隔離本機測試，不會寄送真實信件。</p>}<form data-contact-form data-endpoint={c.endpoint}>{subject&&<input type="hidden" name="subject" value={subject} />}<fieldset disabled><label>來信類別<select name="category"><option>讀者來信</option><option>合作邀約</option></select></label><label>暱稱（選填）<input name="name" maxlength="80" /></label><label>回覆 Email<input name="email" type="email" required maxlength="254" autocomplete="email" /></label><label>訊息<textarea name="message" required maxlength="5000" rows="6"></textarea></label><label hidden>請留空<input name="_gotcha" tabindex="-1" autocomplete="off" /></label><button type="submit">送出來信</button></fieldset></form><noscript>請啟用 JavaScript 才能使用此表單；若下方有公開聯絡備援，也可使用。</noscript></> : <><p>私人來信服務尚未啟用；目前不會傳送或儲存你輸入的資料。</p><fieldset disabled><label>回覆 Email<input type="email" /></label><label>訊息<textarea rows="4"></textarea></label></fieldset></>}
 {c.email&&<p><a href={`mailto:${c.email}`}>{c.email}</a> <button type="button" data-copy-email={c.email}>複製 Email</button></p>}
 <p role="status" aria-live="polite" data-contact-status></p><p><a href={url('privacy/')}>隱私說明 →</a></p></section>
 <script>

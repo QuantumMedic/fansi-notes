@@ -1,14 +1,14 @@
 # M5-E 互動服務｜集中啟用清單
 
-本機程式已完成；本輪進入作者授權的免費 staging 接線。帳號存在不代表 CLI 已登入或雲端驗收完成。禁止 production、付費升級、公開 Email 備援及公開私人管理資訊。
+本機程式與本專案免費staging接線已完成，真實驗收結果如下；production尚未啟用。禁止 production、付費升級、公開 Email 備援及公開私人管理資訊。
 
 ## 1. 已有設定與本輪授權
 
 |服務|已完成的準備|仍需驗證|
 |---|---|---|
-|Cloudflare|作者已完成 Zero Trust Free、官方要求的付款資料步驟及 One-time PIN；沿用原組織，不重建。|Wrangler OAuth 與帳號已核對；staging D1／Turnstile 已建立。待 Access 權限、team domain／政策核對及真實作者登入。|
-|Formspree|既有免費表單及指定收件通知已由作者畫面確認。|從受控聯絡頁送一封合成驗收信；服務接受與作者 Gmail 實收分開記錄。|
-|GoatCounter|正式與測試站點已建立，Email 已驗證；兩控制台匿名存取均為登入頁。|只向測試站送授權事件，作者登入確認資料；正式站不送驗收流量。|
+|Cloudflare|作者已完成 Zero Trust Free、官方要求的付款資料步驟及 One-time PIN；沿用原組織，不重建。|OAuth、帳號／組織、D1增量遷移、Turnstile、兩個精確Access政策與三個Worker均已核對；作者OTP及管理實測通過。待非白名單真實帳號補驗。|
+|Formspree|既有免費表單及指定收件通知已由作者畫面確認。|唯一一封合成信已由服務接受，作者確認Gmail實收；不要重寄。|
+|GoatCounter|正式與測試站點已建立，Email 已驗證；兩控制台匿名存取均為登入頁。|測試控制台已看到授權瀏覽／外連事件；兩控制台匿名不顯示統計，正式站未送本輪流量。|
 
 本輪已授權本專案免費 staging D1／Worker／Turnstile／Access、受控 HTTPS 前台及增量遷移。公開 Email 備援仍關閉；不改正式 GitHub Pages 或 noindex。沒有建立外部資源前不寫已建立；Access 政策與真實登入分開驗證，不預填完成旗標。
 
@@ -16,12 +16,12 @@
 
 ## 2. 取得真實設定（全部缺項一次填）
 
-使用Repository外的私人JSON或環境變數；`scripts/check_interaction_config.mjs`只列欄位名稱，不印值。下列資源名稱為程式的建議名稱，**不是已建立的資源**。
+使用Repository外的私人JSON或環境變數；`scripts/check_interaction_config.mjs`只列欄位名稱，不印值。本批staging資源已建立；實際ID、hostname及管理書籤只在私人設定交付。下表仍作日後設定契約，空白範例不是缺少已交付資料。
 
 |欄位|取得處／用途|可公開？|
 |---|---|---|
 |ENVIRONMENT|`staging`或`production`，不可用local/test繞過正式入口|是|
-|D1_DATABASE_NAME、D1_DATABASE_ID|授權後建立`fansi-comments-staging`及另立正式DB；兩個Worker同環境共用binding `DB`|ID不是密鑰，但目前留空，不造值|
+|D1_DATABASE_NAME、D1_DATABASE_ID|授權後建立`fansi-comments-staging`及另立正式DB；兩個Worker同環境共用binding `DB`|ID在私人設定，不填入公開範例|
 |PUBLIC_COMMENTS_API|實際`fansi-comments-staging`／`fansi-comments`的HTTPS workers.dev origin|是；不加/fansi-notes|
 |ADMIN_WORKER_URL|實際`fansi-comments-admin-staging`／`fansi-comments-admin`，與public不同origin|僅私人本地設定及書籤；所有路徑都需Access|
 |ALLOWED_ORIGINS|網站完整origin，逗號分隔，不含路徑、萬用字元|是|
@@ -97,7 +97,7 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 
 刪除擦除正文／暱稱／刪除碼hash，保留最小tombstone與冪等摘要；供應商備份保留限制另行確認。私人匯出檔也需由作者管理刪除與保留時間。
 
-**接線進行中：已建立 staging D1、套用 0001／0002，Turnstile 已建立；尚未部署 Worker、寄驗收信或送統計。接續同 PR 補足 Access 權限及政策查核，不重做元件。**
+**staging已接線並實測：同PR保留現有架構，待作者最後確認與非白名單真實帳號驗證；production仍未啟用。**
 
 本輪補充：公開網站不使用管理URL設定，舊PUBLIC_COMMENTS_ADMIN_URL會被忽略；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號已準備，staging 真實接線尚未完成；production 不在本輪。
 
@@ -129,3 +129,11 @@ npx wrangler deploy --config services/comments/site.staging.private.json
 前台 allowlist 同樣只進 Worker secret，不進 HTML／JS。腳本將 dist 複製到 repo 外並檢查靜態輸出不含私人管理 URL、allowlist、Turnstile secret 或限流 secret。前台 secret 尚未設定時驗證失敗、不能讀資產。上列命令是授權後接續步驟，**不是已部署證明**。
 
 本輪停用清單與實際資源 ID 私下保存：先停止本專案 staging Workers，再依作者決定備份／刪除測試 D1、Turnstile 和本批 Access app；不刪原組織、Identity Provider、帳號子網域、既有 Formspree 或 GoatCounter 站點。
+
+## 本輪收尾與私人交付
+
+- 已核對Access全hostname／全路徑、精確作者帳號、不同前台／管理AUD、preview關閉；公開留言API不套作者登入。匿名與偽造憑證拒絕已實測；第二個非白名單真實帳號仍未操作，不預先標成完成。
+- 作者保存私人staging書籤即可進管理，不依賴GPT或公開GitHub入口。實際URL與停用方法只在私人本機設定；網站沒有反向管理入口。
+- 撤銷本次`fansi-access-staging-setup`短期Token；不必因此重建Access或取消Wrangler既有OAuth。不得把Token貼到聊天或PR。
+- 選填`PUBLIC_CONTACT_SUBJECT`只用作Formspree主旨；本次一封驗收信已送達，不再觸發寄送。公開Email備援繼續false／空。
+- 暫停或刪除本批資源需按私人OPERATIONS清單逐一指定staging資源，不刪其他專案、原組織或正式分析站。未授權production與M6。

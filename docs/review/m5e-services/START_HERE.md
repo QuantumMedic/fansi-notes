@@ -1,6 +1,6 @@
 # M5-E 免費互動服務｜唯一開工與接線規格
 
-2026-11-16。狀態：**作者已選定零訂閱費方向；程式已有本地基線；本輪調整閱讀與管理，雲端尚未接線**。本輪最新授權見 CURRENT_STATE 與 ACTIVATION_CHECKLIST：免費 staging 已授權，帳號已準備，Wrangler 已授權、D1／Turnstile 已建立，等待 Access 額外權限與真實驗收；下列首輪開發授權邊界屬歷史，不再阻擋本輪受控測試。本文件取代舊 Hyvor 年繳建議及會使同一需求反覆開工的流程。正式進度只寫 `docs/CURRENT_STATE.md`。
+2026-11-16。**程式與本地測試已完成；本輪staging已接線並完成作者OTP、真留言、自刪、管理回覆、Gmail實收及隔離統計驗證，待作者最終驗收與非白名單真實帳號補驗。** 現況見CURRENT_STATE與同批README。先前Access權限阻擋已解除，不重新註冊、選型或重建系統。以下首輪開發條款保留流程背景，不能推翻作者本輪受控staging部署授權；production仍未授權。
 
 ## 0. 工作分支、輸入與授權
 
@@ -31,7 +31,7 @@
 - `src/pages/articles/[slug].astro`、`src/pages/works/[slug]/index.astro`、Podcast詳頁現有ServiceState使用處：只調整服務接入與傳入thread key。先在實際目錄確認Podcast詳頁檔名，不因猜錯路徑創建第二條路由。
 - `src/pages/contact.astro`、`src/pages/privacy.astro`、`src/layouts/Main.astro`：聯絡、隱私、分析載入。
 
-建議新增位置（這些是**待Codex建立**，非聲稱已存在）：
+首輪已建立的元件與服務位置：
 - `src/components/Comments.astro`、`src/components/ContactForm.astro`、`src/components/Analytics.astro`。
 - `src/lib/interaction-config.ts`：驗證公開設定並獨立控制各服務，禁止有假值也顯示已啟用。
 - `src/lib/comment-threads.mjs`：可測的唯一thread resolver，供前端及後端允許清單共用。
