@@ -1,8 +1,62 @@
+# M6 正式發布安全收尾（2026-11-17）
+
+## 更正與正式發布判定
+
+作者最新更正：**當次production驗證沒有按下Mac刪除留言**。主留言published與回覆published的00:41:09讀回完全符合實際操作；前版「自刪回報與資料庫不一致」推論撤回，不是待修缺陷。原始讀回不改動，私人作者確認另記更正。後續依ID行政清理不當成讀者自刪。
+
+|項目|實際證據／判定|
+|---|---|
+|受控環境復原|00:41:49提前完成；兩正式Worker入口／preview／activation關閉，管理AUD保留，D1 0留言／paused=1／moderation=1。前台與bindings回原快照、Turnstile回正式hostname，臨時SQL／cron／secret清除。原始備份在repo外。|
+|正式留言與回覆|真Turnstile發表、重整持久化、作者回覆及ID／parent_id已核對。宗凡照片／標示／位置作者親測。|
+|跨瀏覽器所有權|作者手機以同一Access帳號可閱讀，但沒有Mac原留言的本人刪除入口。後端仍要求私密刪除憑證；登入不授予留言所有權。|
+|讀者自刪|production當次未執行，不能宣稱該次DELETE通過。既有staging實測＋正式handler真SQL＋gateway本人／錯憑證及回覆保留回歸通過。相同處理路徑沒有缺陷證據，工程判定足以發布，不再開重複人工測試。|
+|非白名單管理限制|官方已保存精確單一Email Allow／OTP／全路徑政策與獨立AUD，真部署讀回、後端逐次驗簽／issuer／audience／期限／Email，以及全部管理路由拒絕測試；作者實際非白名單無OTP且無管理資料。綜合符合拒絕策略，並非宣稱取得另一真實帳號JWT後完成線上拒絕登入。|
+|未取得的資料|現有OAuth讀Access為403，沒有新取雲端登入紀錄；不把既存政策快照說成這輪新讀回，也不再要求撤銷的Token或重複帳號測試。|
+|網站與資料|文章、圖片、配對、分類、人氣、出版、作者資料與視覺不改。索引仍noindex；本輪完整發布授權須經github-pages作者人工審核，不自行核准。|
+
+### 驗收標準及正式文件依據
+
+[Cloudflare One-time PIN官方文件](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/)的「Log in with OTP／OTP behavior and limits」說明：只寄給Access政策允許的Email；被阻擋者不收信，畫面訊息不揭露是否寄送；只有提交code後才記authentication event。因此「必須看見Access denied」及「必須取得未寄OTP的登入紀錄」不是適當必要條件。這裡不是以無OTP單獨判定，而是結合精確政策、獨立AUD與伺服器授權測試及實際觀察；未改動任何政策／驗簽／來源限制。
+
+- `NON_ALLOWLIST_ADMIN_VERIFIED`：以上綜合安全驗收成立；不代表未發生的第二帳號成功驗證身分後再遭拒事件。
+- `LIVE_COMMENTS_VERIFIED`：真正production發表／持久化／回覆、獨立瀏覽器所有權觀察，加上已有staging自刪及同版正式handler／SQL測試；production瀏覽器自刪仍註明當次未執行。
+- `LIVE_ACCESS_VERIFIED`：指定作者已實際進入正式管理服務並回覆；不聲稱本輪重新輸入一次OTP。
+- 所有旗標須有私人逐項證據索引及本文件定義。缺政策、AUD不符、錯誤身分被接受、刪除授權失守或CI失敗仍立即阻擋。正式hostname發布後另做TLS／CORS／Turnstile及服務冒煙檢查，不把受控hostname當作已驗證正式前台。
+
+本輪本地完整113項測試通過；管理路由矩陣另外同時驗證staging及active production模式，錯帳號／無憑證／錯AUD／過期／假header均拒絕。最新復原唯讀結果再次確認入口關閉、AUD相符、空庫暫停及正式Turnstile hostname。合併前仍等最新GitHub check／build／113項CI完成。
+
+### 本輪發布順序
+
+先核對復原與CI，merge commit PR #26並等待main CI；保存版本／空庫備份，產生只含公開允許欄位且綁定main SHA的manifest；依授權啟用既有production、確認健康與管理拒絕，再設定Pages Actions及手動full/noindex release。兩個github-pages工作（準備與部署）均保留原作者審核，不代為核准。正式前台尚未部署時不能宣稱全站上線；正式URL可用後再驗閱讀／留言連線／聯絡／分析及回退。沒有付費、假ID、staging資料搬入或私人網址公開。
+
+## 工具與精確復原邊界
+
+- `scripts/prepare-verification-window.mjs`：從原私人production／staging設定及官方Access讀回證據生成驗證配置；限制本專案名稱、獨立DB、精確前台hostname／政策、最長4小時，拒絕寬鬆或不匹配資料。不改原設定，不生成LIVE旗標。
+- `scripts/verification-operation.mjs snapshot|prepare|open|readback|restore|watch <repo外plan.json>`：OAuth僅在記憶體使用，不讀撤銷Token。先保存資源／widget／DB快照，驗證原庫空且paused、公開入口關閉；先部署拒絕寫入狀態及雲端到期排程，核對後才開窗口。錯誤嘗試復原，禁止重複使用已開／已復原的計畫。實值、時間、設定、bookmarks及日誌只在私人本地檔案，不放PR。
+- 私人plan欄位：`authorized`、`production`、`productionEvidence`、`staging`、`frontendEvidence`、`siteConfig`（原前台配置）、`assetsDirectory`（已檢查的隔離Astro建置）、`start`／`end`（毫秒）。所有來源都是已存在的真實設定；不含虛構ID。三Worker配置保留正常正式開關false。
+- `services/comments/verification-*.mjs`是驗證專用包裝，不改既有正式public/admin handler。前台只代理固定讀取／發表／自刪路徑，不能代理管理API或任意網址；手動redirect模式拒絕全部3xx。後端再次驗前台JWT，不能只依賴入口或service binding名稱保密。
+- `verification-window.sql`只在指定驗證DB暫時安裝租期表及觸發器；期限到後INSERT／UPDATE／DELETE及解除paused都拒絕，避免慢請求跨期限寫入。雲端cron另設paused=1。驗證包每次請求也檢查期限，無須等cron傳播或本機清理。
+- 私人本機watch到期依序暫停D1、關閉production管理hostname、恢復原Worker／前台及widget、私下備份測試留言、依實際ID先刪回覆再刪主留言並移除臨時SQL、恢復原paused／moderation及移除暫時public allowlist secret。保留第一次備份；發現另一租期、DB或正式啟用旗標改變時停止覆寫。完成後讀回；不把程式內恢復意圖當作已完成證據。
+- **Mac離線的界限**：雲端期限與SQL拒絕仍有效，私人控制台設定（含臨時Turnstile hostname）的完整復原可能延後到本機恢復連線。監督程序有限重試，原始證據私下留存。未讀回`restored`前，此項仍待核實；不宣稱永久雲端憑證自動代管，未新增或上傳控制台Token。
+
+## 實測發現與修復
+
+1. 同一受保護前台切換DB時，舊staging瀏覽器憑證會呈現不存在的待審提示。新增只供驗證建置的`PUBLIC_COMMENTS_STORAGE_SCOPE=verification-<start>`；正常build不設定，既有憑證、pending請求及網站版型不變。新增測試確認不讀取／覆蓋／刪除原憑證。
+2. 真實Workers的Request不支援`redirect:error`（Node mock未暴露此差異）。改成manual並拒絕3xx，新增回歸檢查；修復後真實私有通道health及留言讀取成功。錯誤日誌只保留去識別類型與短訊息，原始tail私下保存並已停止。
+
+## 測試與已收到的作者確認
+
+前輪112項測試、check135檔0錯誤0警告（1既有hint）、114頁build及[CI #146](https://github.com/QuantumMedic/fansi-notes/actions/runs/43908858293)通過。此次補第113項真SQL回歸：建立主留言與作者回覆，經驗證gateway使用錯誤刪除憑證仍403；本人正確憑證可刪除主留言、清除文字及憑證雜湊，原作者回覆及讀取定位保留。前置發表直接走正式handler及隔離Turnstile provider，DELETE與讀取確實經gateway；避免將Node要求串流duplex的環境差異誤認成Workers問題。7項窗口精準測試及本地完整113項測試通過，完整CI見最新PR。沒有改動正式服務程式、原測試斷言或內容雜湊。
+
+此SQL結果證明被測正式處理路徑，不冒稱production瀏覽器自刪。最新作者更正已解釋主留言仍published，前版矛盾推論撤回。已確認實際發表／回覆／跨瀏覽器與作者Access登入；本輪依官方OTP行為採綜合安全判定，保留原始證據及限制，不以不存在的畫面要求阻擋。
+
+## 以下為前輪歷史驗收（停用與待授權描述只指當時）
+
 # M6 production 接線（2026-11-16）
 
 本輪從已整合main `37fb8838e6cc2b3c4d763ea6a05280474338207d` 建立 `prep/m6-production-wiring`。作者授權免費production資源準備；後續已接受並授權PR #24合併，但仍未授權公開網站或開放讀者寫入。原網站、文章與視覺不變。
 
-## 本次AUD接線收尾（最新狀態）
+## PR #25 AUD接線收尾（歷史）
 
 基線main `3d7f0ba`，獨立分支`prep/m6-admin-aud-verification`。本次只有停用設定產生器、精確測試與這兩份進度／驗收文件變更，無UI修改。作者已撤銷Token，沒有再要求Token或使用已撤銷憑證。
 
@@ -13,7 +67,7 @@
 
 本輪驗證：106項測試全綠（保留原103項，新增3項AUD保留／拒絕／不覆寫回歸）；輸入、64串清冊、local預檢通過；check 128檔零錯誤／警告、1個既有hint；build 114頁。管理Worker dry-run與實際部署後讀回通過。精準測試第一次受本機sandbox禁止監聽限制，完整套件在允許本機測試程序的環境通過，未放寬斷言。沒有UI改動，不新增重複截圖。最新CI見獨立PR。
 
-## 解除驗證／發布相依循環（下一輪授權後才執行）
+## PR #25當時的受控驗證契約（歷史；現已授權，實作見上）
 
 **現有依賴確實存在**：full release與啟用設定產生器都要求LIVE_COMMENTS_VERIFIED等真實證據；production API停止、D1暫停且Turnstile只允許正式hostname，所以今天不能透過普通前台取得production發表證據。`check-live-services.mjs`還要求公開API健康且接受留言。不能拿staging結果、合成fixture或設定讀回冒充production通過，也不能為此先公開Pages。
 
