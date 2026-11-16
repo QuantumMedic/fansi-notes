@@ -6,3 +6,11 @@ dist/
 .DS_Store
 
 .local-runtime/
+
+# Private interaction runtime data and credentials
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+services/comments/*.private.json*
+services/comments/local-data/
+*.sqlite*

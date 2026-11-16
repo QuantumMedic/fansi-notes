@@ -12,7 +12,7 @@ export default defineConfig({
         'astro:config:setup': ({ command, updateConfig, injectRoute }) => {
           const review = command === 'dev';
           updateConfig({
-            vite: { define: { 'import.meta.env.FANSI_REVIEW_MODE': JSON.stringify(review) } },
+            vite: { define: { 'import.meta.env.FANSI_REVIEW_MODE': JSON.stringify(review), 'import.meta.env.FANSI_CI': JSON.stringify(!!process.env.CI) } },
           });
           if (review)
             injectRoute({

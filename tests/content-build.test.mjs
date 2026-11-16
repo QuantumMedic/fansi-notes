@@ -20,7 +20,7 @@ const repo = resolve('.');
 test('整合建置：新增、改名、改分類標籤、補平台網址與異名 GUID 配對', () => {
   const root = realpathSync(mkdtempSync(join(tmpdir(), 'fansi-build-')));
   try {
-    for (const path of ['src', 'public', 'astro.config.mjs', 'tsconfig.json', 'package.json'])
+    for (const path of ['src', 'public', 'services/comments/generated', 'astro.config.mjs', 'tsconfig.json', 'package.json'])
       cpSync(join(repo, path), join(root, path), { recursive: true });
     symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
     cpSync(join(repo,'tests/fixtures/platforms.astro.txt'),join(root,'src/pages/platform-fixture.astro'));

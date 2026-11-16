@@ -1,0 +1,6 @@
+import {loopback} from './interaction-config.mjs';
+const events=new Set(['article_read_more','outbound_spotify','outbound_apple','outbound_vocus','outbound_instagram','outbound_bookstore','comment_submitted','contact_submitted']);
+export function analyticsAllowed(config,location){return config.enabled&&!loopback(location.hostname)&&config.hosts.includes(location.hostname)&&!/(^|\/)(admin|review)(\/|$)/.test(location.pathname);}
+export function analyticsEvent(event,workId,knownIds){if(!events.has(event))return null;if(workId&&!knownIds.includes(workId))return null;return {path:event+(workId?'/'+workId:''),title:event,event:true,referrer:''};}
+export function publicPagePath(path){return /^\/fansi-notes\/(?:$|(?:articles|podcast|works|series|topics)\/(?:[a-z0-9-]+\/)?$|(?:about|contact|privacy)\/$)/.test(path)?path:null;}
+export function platformOf(href){try{const u=new URL(href);if(!['https:','http:'].includes(u.protocol))return null;const h=u.hostname;if(h==='open.spotify.com')return 'spotify';if(h==='podcasts.apple.com')return 'apple';if(h==='vocus.cc')return 'vocus';if(['www.instagram.com','instagram.com'].includes(h))return 'instagram';if(['www.books.com.tw','store.showwe.tw','www.eslite.com','www.kingstone.com.tw','www.bookwalker.com.tw','www.kobo.com','www.readmoo.com'].includes(h))return 'bookstore';return null;}catch{return null;}}

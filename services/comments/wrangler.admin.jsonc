@@ -1,0 +1,8 @@
+{
+  "name": "fansi-comments-admin",
+  "main": "admin.mjs",
+  "compatibility_date": "2026-11-16",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": { "ENVIRONMENT": "unconfigured", "ACCESS_TEAM_DOMAIN": "", "ACCESS_AUD": "" }
+}

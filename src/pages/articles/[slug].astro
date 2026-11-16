@@ -111,7 +111,7 @@ const minutes = Math.max(1, Math.ceil((article.body || '').replace(/<[^>]*>/g, '
       )}
     </section>
     <PublicationRelations workId={article.data.work_id} kind="article" />
-    <ServiceState kind="comments" />
+    <ServiceState kind="comments" threadKind="article" threadId={article.data.work_id} />
   </article>
 </Main>
 <style>

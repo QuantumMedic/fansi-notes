@@ -1,0 +1,15 @@
+---
+import {interactions} from '../lib/interaction-config.ts';
+import manifest from '../../services/comments/generated/threads.json';
+const ids=Object.values(manifest.threads).map(x=>x.work_id).filter(Boolean);
+---
+{interactions.analytics.enabled&&<div hidden data-analytics data-config={JSON.stringify(interactions.analytics)} data-work-ids={JSON.stringify(ids)}></div>}
+<script>
+import {analyticsAllowed,analyticsEvent,publicPagePath,platformOf} from '../lib/analytics.mjs';
+const root=document.querySelector<HTMLElement>('[data-analytics]');
+if(root){const config=JSON.parse(root.dataset.config!),ids=JSON.parse(root.dataset.workIds!);const path=publicPagePath(location.pathname);
+if(path&&analyticsAllowed(config,location)){const win=window as any;win.goatcounter={no_onload:true,no_events:true,allow_local:false};const script=document.createElement('script');script.src='https://gc.zgo.at/count.js';script.dataset.goatcounter=config.endpoint;script.async=true;script.onload=()=>win.goatcounter.count({path,title:path,referrer:''});document.head.append(script);
+const send=(event:string,workId?:string)=>{const payload=analyticsEvent(event,workId,ids);if(payload)win.goatcounter?.count?.(payload);};
+document.addEventListener('click',e=>{const a=(e.target as Element).closest('a');if(!a)return;const platform=platformOf(a.href);const thread=document.querySelector<HTMLElement>('[data-comments]')?.dataset.thread;const work=thread?.replace(/^(article|publication):/,'');if(platform)send('outbound_'+platform,ids.includes(work)?work:undefined);else if(a.textContent?.trim().startsWith('Read more'))send('article_read_more');});
+window.addEventListener('fansi:interaction',(e:Event)=>{const d=(e as CustomEvent).detail||{};if(!['comment_submitted','contact_submitted'].includes(d.event))return;const work=d.thread?.replace(/^(article|publication):/,'');send(d.event,ids.includes(work)?work:undefined);});}}
+</script>
