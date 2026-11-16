@@ -1,3 +1,21 @@
+# 公開管理入口移除（本輪最新）
+
+本輪公開管理入口移除：程式與本地權限測試已完成；90項測試、check零錯誤／警告／提示、114頁build、輸入檢查／服務預檢、兩個Worker dry-run通過。正式Access政策與真實登入尚待接線驗證；GitHub CI以PR #21最新HEAD為準。
+
+
+直接移除公開頁尾、留言連結與前端管理URL邏輯，不靠CSS隱藏。作者改用私人書籤→Access驗證→集中管理；管理頁返回原文的單向導航保留。正式管理網址尚未建立，只在私人本地設定交付，不寫公開PR／README。
+
+既有留言10則分批、宗凡照片與徽章、自刪、回覆歸位、管理操作及認證均保留。原有內容資料未修改。本地程式與權限測試不代表正式Access政策／真實登入已驗證。
+
+新增測試：啟用留言並注入舊管理URL的隔離build，掃描HTML、JS、map、XML等輸出；管理所有頁面／API測缺登入、錯Email、偽header、錯audience／issuer、過期與無效Token、缺設定及跨origin。既有88項保留，現在90項。
+
+|桌機1440px|手機390px|
+|---|---|
+|![公開留言](screenshots/private-entry-desktop.jpg)|![公開留言](screenshots/private-entry-mobile.jpg)|
+|![頁尾](screenshots/private-footer-desktop.jpg)|![頁尾](screenshots/private-footer-mobile.jpg)|
+
+以下為前輪歷史驗收；舊截圖曾含公開管理連結，已由本輪取消。
+
 # 留言閱讀與作者管理調整（最新）
 
 **留言介面與管理體驗已實作／本地及CI測試通過／待作者視覺驗收與免費帳號設定、真實接線。** 工程提交 `e5ef26b3d22a0309a1e538675de6784fb2dba7d2`：[CI #123 全綠](https://github.com/QuantumMedic/fansi-notes/actions/runs/43800453776)，88項測試通過；未合併或部署。
@@ -10,14 +28,14 @@
 
 憑證自動保存、記憶體fallback、自刪按鈕隨本人留言顯示；待審本人另有刪除入口。不提供複製、下載或跨裝置恢復。作者固定顯示宗凡、既有照片與server徽章。
 
-管理新增作品標題與原文定位、持久未讀、待審／待回覆真實統計、明確已讀操作、按需回覆欄。兩條入口都由Access JWT驗證；本機使用隔離簽章測試身分。0002是增量SQL，未遠端執行。
+管理新增作品標題與原文定位、持久未讀、待審／待回覆真實統計、明確已讀操作、按需回覆欄。管理頁與所有API都由Access JWT驗證；本機使用隔離簽章測試身分。0002是增量SQL，未遠端執行。
 
 ## 操作預覽
 
 [反脆弱示範留言](http://127.0.0.1:4335/fansi-notes/articles/antifragile-life/#comments) · [本機管理](http://127.0.0.1:8788/admin/)
 
-1. 網站頁尾「作者登入」進管理首頁。
-2. 主留言「作者回覆（作者專用）」直接定位，填寫後送出。
+1. 用私人書籤開啟獨立管理頁，通過Access驗證。
+2. 在集中列表找到作品與留言，按「回覆」填寫後送出。
 3. 管理頁「前往原文留言」返回正確留言位置，包括第11則以後。
 
 seed由scripts/seed-local-comments.mjs生成，僅local adapter使用。13公開、4作者回覆、1待審；重跑不新增重複資料。本機重啟可恢復初始範例，非真實讀者留言。
@@ -27,7 +45,7 @@ seed由scripts/seed-local-comments.mjs生成，僅local adapter使用。13公開
 - 既有86項保障保留；新增真D1閱讀／管理及UI配置測試，88項。check零錯誤，build114頁；輸入檢查、公開清冊與服務預檢通過。CI以本PR最新HEAD為準。
 - 瀏覽器實測10/13→13/13、回覆歸位、本人刪除入口、管理精確定位第13則與返回原文；1440/390截圖，360px無水平溢出，Tab焦點可見，長留言保留段落與正常字級。
 - 原文hash與正式內容資料不變；正式HTML不含示範文字或localhost管理網址。Formspree及GoatCounter未重做。
-- 帳號清單仍為[ACTIVATION_CHECKLIST](ACTIVATION_CHECKLIST.md)，補PUBLIC_COMMENTS_ADMIN_URL、SITE_ORIGIN、SITE_BASE。真Access登入、Gmail實收、線上留言與分析仍待接線。
+- 帳號清單仍為[ACTIVATION_CHECKLIST](ACTIVATION_CHECKLIST.md)，保留私人ADMIN_WORKER_URL、SITE_ORIGIN、SITE_BASE，公開端不使用管理網址。真Access登入、Gmail實收、線上留言與分析仍待接線。
 
 |1440px|390px|
 |---|---|

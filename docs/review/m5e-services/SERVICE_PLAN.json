@@ -107,7 +107,10 @@
     },
     "author_display_name": "宗凡",
     "replies_per_batch": 10,
-    "persistent_unread": true
+    "persistent_unread": true,
+    "public_admin_entrypoints": false,
+    "admin_navigation": "private bookmark -> Cloudflare Access -> central management; one-way return to public comment",
+    "admin_url_delivery": "private local configuration only; no public build or PR/README"
   },
   "contact": {
     "provider": "formspree_free",

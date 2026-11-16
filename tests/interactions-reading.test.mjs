@@ -29,8 +29,7 @@ test('公開UI取消私碼操作、管理設定及訪客作者身分分離',()=>
  const component=readFileSync('src/components/Comments.astro','utf8'),client=readFileSync('src/scripts/comments.ts','utf8');
  assert.doesNotMatch(component,/data-restore|data-receipts|data-saved|保存管理碼/);
  assert.match(client,/r.author===1/);assert.match(client,/receipts.find/);assert.match(client,/shown.set/);assert.match(client,/離開本頁後可能無法自行刪除/);
- assert.equal(interactionConfig({PUBLIC_COMMENTS_ADMIN_URL:'http://127.0.0.1:8788/admin/'}).adminUrl,'');
- assert.equal(interactionConfig({PUBLIC_COMMENTS_ADMIN_URL:'https://admin.test/admin/?token=bad'}).adminUrl,'');
- assert.equal(interactionConfig({PUBLIC_COMMENTS_ADMIN_URL:'https://admin.test/admin/'}).adminUrl,'https://admin.test/admin/');
+ assert.equal(Object.hasOwn(interactionConfig({PUBLIC_COMMENTS_ADMIN_URL:'https://private-admin.invalid/admin/'}),'adminUrl'),false);
+ assert.doesNotMatch(component+client,/data-admin|作者登入|作者回覆（作者專用）|dataset.admin/);
  const html=readFileSync('dist/articles/antifragile-life/index.html','utf8');assert.doesNotMatch(html,/示範讀者13|合成作者回覆 4|127.0.0.1:8788|自己的留言管理碼/);
 });

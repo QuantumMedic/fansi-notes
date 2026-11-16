@@ -6,10 +6,9 @@ export function preflight(e,mode='local'){
   for(const p of ['node_modules/miniflare','node_modules/jose','services/comments/generated/threads.json','services/comments/migrations/0001_comments.sql'])if(!existsSync(p))missing.push(p);
   return {mode:'local',ready:missing.length===0,missing,invalid,live_verified:false};
  }
- for(const k of ['PUBLIC_COMMENTS_ADMIN_URL','SITE_ORIGIN','SITE_BASE','ENVIRONMENT','D1_DATABASE_ID','D1_DATABASE_NAME','PUBLIC_COMMENTS_API','ADMIN_WORKER_URL','PUBLIC_TURNSTILE_SITE_KEY','TURNSTILE_SECRET_KEY','TURNSTILE_HOSTNAMES','RATE_LIMIT_HMAC_SECRET','ALLOWED_ORIGINS','ACCESS_TEAM_DOMAIN','ACCESS_AUD','ADMIN_EMAIL_ALLOWLIST','PUBLIC_FORMSPREE_ENDPOINT','PUBLIC_GOATCOUNTER_ENDPOINT','PUBLIC_ANALYTICS_HOSTS'])requireValue(k);
+ for(const k of ['SITE_ORIGIN','SITE_BASE','ENVIRONMENT','D1_DATABASE_ID','D1_DATABASE_NAME','PUBLIC_COMMENTS_API','ADMIN_WORKER_URL','PUBLIC_TURNSTILE_SITE_KEY','TURNSTILE_SECRET_KEY','TURNSTILE_HOSTNAMES','RATE_LIMIT_HMAC_SECRET','ALLOWED_ORIGINS','ACCESS_TEAM_DOMAIN','ACCESS_AUD','ADMIN_EMAIL_ALLOWLIST','PUBLIC_FORMSPREE_ENDPOINT','PUBLIC_GOATCOUNTER_ENDPOINT','PUBLIC_ANALYTICS_HOSTS'])requireValue(k);
  if(e.ENVIRONMENT!==mode)invalid.push('ENVIRONMENT');
  for(const k of ['PUBLIC_COMMENTS_API','ADMIN_WORKER_URL']){try{const u=new URL(e[k]);if(u.protocol!=='https:'||u.pathname!=='/'||u.search||u.hash||u.username||u.password||/example|localhost/.test(u.hostname))throw Error();}catch{invalid.push(k);}}
- if(!interactionConfig(e).adminUrl||interactionConfig(e).adminUrl!==e.ADMIN_WORKER_URL+'admin/')invalid.push('PUBLIC_COMMENTS_ADMIN_URL');
  try{const u=new URL(e.SITE_ORIGIN);if(u.protocol!=='https:'||u.origin!==e.SITE_ORIGIN)throw Error();}catch{invalid.push('SITE_ORIGIN');}
  if(!/^\/[a-zA-Z0-9/-]*$/.test(e.SITE_BASE||''))invalid.push('SITE_BASE');
  if(e.PUBLIC_COMMENTS_API===e.ADMIN_WORKER_URL)invalid.push('separate_worker_origins');

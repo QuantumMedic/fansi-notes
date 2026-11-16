@@ -21,7 +21,7 @@
 |ENVIRONMENT|`staging`或`production`，不可用local/test繞過正式入口|是|
 |D1_DATABASE_NAME、D1_DATABASE_ID|授權後建立`fansi-comments-staging`及另立正式DB；兩個Worker同環境共用binding `DB`|ID不是密鑰，但目前留空，不造值|
 |PUBLIC_COMMENTS_API|實際`fansi-comments-staging`／`fansi-comments`的HTTPS workers.dev origin|是；不加/fansi-notes|
-|ADMIN_WORKER_URL、PUBLIC_COMMENTS_ADMIN_URL|實際`fansi-comments-admin-staging`／`fansi-comments-admin`，與public不同origin|網址可公開；所有路徑都需Access|
+|ADMIN_WORKER_URL|實際`fansi-comments-admin-staging`／`fansi-comments-admin`，與public不同origin|僅私人本地設定及書籤；所有路徑都需Access|
 |ALLOWED_ORIGINS|網站完整origin，逗號分隔，不含路徑、萬用字元|是|
 |TURNSTILE_HOSTNAMES|實際前台hostname，逗號分隔|是|
 |PUBLIC_TURNSTILE_SITE_KEY|Turnstile正式widget site key|是|
@@ -97,4 +97,12 @@ npx wrangler deploy --config services/comments/admin.staging.private.json
 
 **停止點：本輪未建立外部帳號、未部署Worker、未遷移遠端DB、未寄真信、未啟用正式分析。下一次同PR接線，不重做元件。**
 
-本輪補充：公開管理入口使用 PUBLIC_COMMENTS_ADMIN_URL（HTTPS /admin/）；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號與正式接線仍未啟用。
+本輪補充：公開網站不使用管理URL設定，舊PUBLIC_COMMENTS_ADMIN_URL會被忽略；管理Worker返回網站使用 SITE_ORIGIN 與 SITE_BASE（例如 /fansi-notes），僅拼接公開清冊canonical_path。帳號與正式接線仍未啟用。
+
+## 私人書籤與Access最後驗收
+
+- 正式管理網址尚未建立。帳號接線時只透過私人本地設定交付；作者存瀏覽器書籤，直接登入，不依賴GPT、Codex或公開GitHub入口。
+- Access只放行作者指定精確Email，禁止Everyone及整個gmail.com。保護管理Worker所有頁面、API及全部可達hostname。
+- preview_urls保持false；未來若啟用也須同等保護。公開留言Worker不要求登入。
+- 真實接線以作者與非作者帳號分別驗證允許／拒絕；本地測試簽章不能當作正式登入驗收，測試身分不進正式Worker或公開建置。
+- 公開repo的程式與路徑不承諾保密；知道網址仍須通過伺服器JWT、issuer、audience、有效期、精確Email及寫入origin驗證。

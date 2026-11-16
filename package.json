@@ -19,7 +19,7 @@
     "test:services": "node --test tests/interactions-*.test.mjs",
     "services:local": "node scripts/local-interactions.mjs",
     "services:preflight": "node scripts/check_interaction_config.mjs",
-    "dev:services": "PUBLIC_COMMENTS_ADMIN_URL=http://127.0.0.1:8788/admin/ PUBLIC_INTERACTIONS_LOCAL=true PUBLIC_COMMENTS_ENABLED=true PUBLIC_COMMENTS_API=http://127.0.0.1:8787 PUBLIC_TURNSTILE_SITE_KEY=local-isolated PUBLIC_CONTACT_ENABLED=true PUBLIC_FORMSPREE_ENDPOINT=http://127.0.0.1:8789/success astro dev --host 127.0.0.1 --port 4335"
+    "dev:services": "PUBLIC_INTERACTIONS_LOCAL=true PUBLIC_COMMENTS_ENABLED=true PUBLIC_COMMENTS_API=http://127.0.0.1:8787 PUBLIC_TURNSTILE_SITE_KEY=local-isolated PUBLIC_CONTACT_ENABLED=true PUBLIC_FORMSPREE_ENDPOINT=http://127.0.0.1:8789/success astro dev --host 127.0.0.1 --port 4335"
   },
   "dependencies": {
     "@astrojs/check": "0.9.12",

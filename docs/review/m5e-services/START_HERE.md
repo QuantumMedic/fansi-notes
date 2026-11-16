@@ -158,4 +158,6 @@
 - 開發環境排除：https://www.goatcounter.com/help/skip-dev
 
 ## 最新閱讀與管理決議
-作者顯示「宗凡」與既有核准照片；僅server author欄位授權徽章。頁尾作者登入及主留言作者回覆連同一Access管理頁。未讀持久保存；明確標為已讀，回覆可自動已讀。沒有Email或手機推播。原文定位用清冊canonical_path與合法ID，不按標題或ID猜slug。
+作者顯示「宗凡」與既有核准照片；僅server author欄位授權徽章。公開網站無管理入口；作者使用私人書籤經Access驗證進入同一管理頁。管理頁可返回原文，公開原文不連管理端。未讀持久保存；明確標為已讀，回覆可自動已讀。沒有Email或手機推播。原文定位用清冊canonical_path與合法ID，不按標題或ID猜slug。
+
+正式管理URL僅在私人本地接線設定交付，作者自行保存書籤。不放公開HTML、JavaScript、source map、feed或sitemap，也不寫公開PR／README。程式與路徑可被讀取，安全依靠後端認證而非網址保密。
