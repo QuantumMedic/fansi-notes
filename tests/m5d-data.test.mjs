@@ -32,7 +32,7 @@ test('25 GUID順位精準對應；未知作品最後，並非製造讚數／播�
  const sorted=popularity.articles.map(r=>({...r,date:0})).sort((a,b)=>compareBrowse(a,b,'popular'));
  assert.equal(sorted.at(-1).id,'vocus-6764e586fd89780001056594');assert.equal(sorted.at(-1).rank,null);
  const mappings=json('src/data/podcast-work-map.json');
- assert.equal(mappings.length,25);
+ for(const m of json('docs/review/m5d/final/approved-baseline.json').mapping)assert.deepEqual(mappings.find(x=>x.guid===m.guid),m);
  assert.equal(new Set(mappings.map(m=>m.guid)).size,mappings.length);
  assert.ok(mappings.every(m=>m.approved===true));
 });

@@ -1,3 +1,4 @@
+import { classified } from './helpers/catalog.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -13,7 +14,8 @@ const byClass=new Map(raw.map(r=>[r.guid,r]));
 
 test('25集分類均已按作者委託核准，保留穩定GUID且有有效的系列及主次主題',()=>{
  assert.equal(raw.length,25);
- assert.equal(byGuid.size,25);
+ assert.equal(byGuid.size,episodes.length);
+ for(const r of raw)assert.ok(byGuid.has(r.guid));
  assert.equal(byClass.size,25);
  for(const r of raw){
   assert.ok(byGuid.has(r.guid));
@@ -26,10 +28,12 @@ test('25集分類均已按作者委託核准，保留穩定GUID且有有效的�
 });
 test('25集均有正式文章身分，57個作品不重複',()=>{
  mapSchema.parse(mapping);
- assert.equal(mapping.length,25);
- assert.equal(new Set(mapping.map(x=>x.guid)).size,25);
- assert.equal(new Set(mapping.map(x=>x.work_id)).size,25);
- for(const m of mapping){
+ const original=load('docs/review/m5d/final/approved-baseline.json').mapping;
+ assert.equal(original.length,25);
+ assert.equal(new Set(mapping.map(x=>x.guid)).size,mapping.length);
+ assert.equal(new Set(original.map(x=>x.work_id)).size,25);
+ for(const m of original){
+  assert.deepEqual(mapping.find(x=>x.guid===m.guid),m);
   assert.ok(m.approved);
   assert.ok(byGuid.has(m.guid));
   const a=articles.get(m.work_id);
@@ -63,6 +67,7 @@ test('兩個以相同敘事核對的主題候選已經明確定義作品身分�
 
 test('Podcast列表提示與25集confirmed真實資料一致，不再固定顯示待分類文字',()=>{
  const page=readFileSync('dist/podcast/index.html','utf8');
- assert.match(page,/25 集均已完成系列與主題分類/);
- assert.doesNotMatch(page,/未分類單集仍列在全部/);
+ const unknown=classified.filter(e=>e.classification.status!=='confirmed').length;
+ if(!unknown){assert.match(page,new RegExp(`${episodes.length} 集均已完成系列與主題分類`));assert.doesNotMatch(page,/未分類單集仍列在全部/);}
+ else assert.match(page,/未分類單集仍列在全部/);
 });

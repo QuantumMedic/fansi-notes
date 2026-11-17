@@ -1,6 +1,7 @@
+import { publicArticles, works } from './helpers/catalog.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync,readdirSync} from 'node:fs';
+import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {publicSeries,seriesName,matchesSeries} from '../src/lib/taxonomy.mjs';
 import {prepareSearch,matchesPrepared} from '../src/lib/search.mjs';
@@ -17,9 +18,9 @@ test('三篇授權來源全文雜湊不變，原文內沒有未授權圖片或�
   assert.doesNotMatch(body,/<img|<iframe|<script|<picture/);assert.doesNotMatch(page,/封面插畫示意/); // 正式核准作品映射後，正文外可合法展示 Podcast 播放器
   assert.ok(page.includes(a.source));assert.ok(page.includes(a.title));assert.ok(page.includes('凡思筆記'));
  }
- const real=readdirSync('src/content/articles').filter(f=>/synthetic: false/.test(readFileSync(`src/content/articles/${f}`,'utf8')));assert.equal(real.length,57);
+ for(const a of JSON.parse(readFileSync('docs/review/m5d/final/approved-baseline.json')).articles)assert.ok(publicArticles.some(n=>n.work_id===a.work_id));
  const actualMapping=JSON.parse(readFileSync('src/data/podcast-work-map.json','utf8'));
- assert.equal(actualMapping.length,25); // 作者委託定案後，不再是空的待確認映射
+ for(const m of JSON.parse(readFileSync('docs/review/m5d/final/approved-baseline.json')).mapping)assert.deepEqual(actualMapping.find(n=>n.guid===m.guid),m); // 作者委託定案後，不再是空的待確認映射
 });
 test('兩個前台系列不重複，文章與故事收錄longform與special並保留舊路由',()=>{
  assert.deepEqual(publicSeries.map(s=>s.name),['凡思維','文章與故事']);
@@ -37,12 +38,13 @@ test('合併系列可與正文搜尋及主要／次要主題交叉篩選',()=>{
 import {existsSync} from 'node:fs';
 import {showArticleSummary} from '../src/lib/article-presentation.mjs';
 test('三個入口共用瀏覽介面，正式基線不混入其他系列或合成作品',()=>{
- for(const [path,count] of [['articles',57],['series/fansiwei',1+batch.filter(a=>a.content_type==='fansiwei').length+2],['series/stories',2+batch.filter(a=>a.content_type!=='fansiwei').length+7]]) {
+ for(const [path,count] of [['articles',publicArticles.length],['series/fansiwei',works.filter(w=>w.classification.status==='confirmed'&&w.classification.content_type==='fansiwei').length],['series/stories',publicArticles.filter(a=>a.content_type!=='fansiwei').length]]) {
   const page=html(path);
   assert.match(page,/data-article-browser/);
   assert.equal((page.match(/data-result/g)||[]).length,count);
   assert.match(page,new RegExp(`共 ${count} ${path === 'series/fansiwei' ? '個作品' : '篇文章'}`));
-  assert.doesNotMatch(page,/紙上花園|閱讀之窗|聲音版本|data-work-result/);
+  assert.doesNotMatch(page,/紙上花園|閱讀之窗|data-work-result/);
+  if(path!=='series/fansiwei')assert.doesNotMatch(page,/聲音版本/);
   assert.match(page,/id="sort"/);assert.match(page,/id="topic"/);assert.match(page,/id="query"/);
   if(path!=='articles')assert.doesNotMatch(page,/id="type"/);
  }

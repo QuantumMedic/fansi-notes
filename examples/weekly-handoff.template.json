@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "public_authorization": false,
+  "platforms_published": false,
+  "master": {
+    "kind": "ig-vocus-approved-master",
+    "file": "master.md",
+    "revision": "REPLACE_WITH_APPROVED_REVISION",
+    "sha256": "REPLACE_WITH_SHA256_OF_EXACT_MASTER_FILE"
+  },
+  "metadata": {
+    "work_id": "replace-with-fixed-work-id",
+    "slug": "replace-with-stable-slug",
+    "title": "填入核准標題",
+    "summary": "填入核准摘要或原文預覽，不重寫",
+    "summary_kind": "excerpt",
+    "content_type": "fansiwei",
+    "topics": ["psychology"],
+    "keywords": [],
+    "related_work_ids": [],
+    "aliases": [],
+    "synthetic": false,
+    "publication_status": "published",
+    "approved_revision": "REPLACE_WITH_APPROVED_REVISION",
+    "website_approved": false,
+    "approved_by": "填入可公開的核准者稱呼，不放私人Email",
+    "approved_at": "REPLACE_WITH_ACTUAL_APPROVAL_ISO_DATE",
+    "published_at": "REPLACE_WITH_ACTUAL_PUBLICATION_ISO_DATE",
+    "public_author_name": "填入核准署名",
+    "written_master": "ig-vocus",
+    "platform_urls": {},
+    "sources": []
+  }
+}

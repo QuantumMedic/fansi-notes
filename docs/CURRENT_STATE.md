@@ -1,8 +1,8 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：M6正式上線／本輪上線驗收完成（2026-11-17）
+## 目前階段：M6正式上線／每週同步工程待 PR 驗收（2026-11-17）
 
-正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者已完成prepare及deploy兩次Environment審核；[正式發布 #1](https://github.com/QuantumMedic/fansi-notes/actions/runs/43938300040) completed/success。發布版本為PR #26 merge commit `a6e9cccaae6dfc5109161fdac4b122e3359f41ec`，內容樹與核准PR HEAD完全一致。[main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/43937125750)通過113項測試、check及build。本次僅更新結案文件，不觸發新發布；文件提交SHA與線上版本分開。
+正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者已完成prepare及deploy兩次Environment審核；[正式發布 #1](https://github.com/QuantumMedic/fansi-notes/actions/runs/43938300040) completed/success。發布版本為PR #26 merge commit `a6e9cccaae6dfc5109161fdac4b122e3359f41ec`，內容樹與核准PR HEAD完全一致。[main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/43937125750)通過113項測試、check及build。該次上線驗收僅更新結案文件；本輪每週同步工程也不觸發新發布，分支 SHA 與線上版本分開。
 
 ### 本次正式網址驗收
 
@@ -19,6 +19,14 @@
 |私人資料|逐一掃描已下載的正式HTML／JS／XML等輸出，沒有實際管理網址、白名單、AUD或Worker秘密。|
 
 **結案界限**：M6正式網站已上線，本輪授權範圍內驗收完成，未發現需要重部署的阻擋故障。保留noindex；搜尋引擎索引開放另行授權。非白名單採官方OTP行為＋精確政策＋後端驗簽及實際觀察的綜合判定，並非虛構第二帳號取得JWT後的拒絕事件；詳細依據及production自刪未執行的更正見下方及M6報告。既有尚未獨立核實的讀墨官網等外站入口仍照原紀錄，不影響現有26個已提供入口。正式統計新增數字未在私人控制台重驗，沒有以此要求作者重做流程。
+
+### 每週同步工程收尾（2026-11-17；獨立 PR，尚未合併／發布）
+
+- 已實作私人書面母稿交接驗證與 repo 外變更暫存：版本／SHA256／公開授權／固定 work_id／精確 GUID，保留原文，不從 Vocus 重爬新文章、IG OCR 或 Podcast 逐字稿重建。
+- RSS 仍只備料；新增外部輸出模式，保留已核准單集網址、slug、舊集及獨立人工分類／配對資料。排程不回寫或部署。
+- 動態數量驗證允許新作品加入，原 57 篇 bytes／25 映射及既有 hash 基準不改。隔離單篇＋新 RSS 建置已驗證首頁、系列、主題、搜尋、平台入口及共用討論串，測試副本已清除。
+- 唯一操作入口更新為 [每週更新網站](每週更新網站.md)，保留完整服務發布、Worker 清冊同步與 GitHub Environment 作者核准。私人收件目錄已建立；尚未取得本週核准母稿，並非 ChatGPT 私人專案自動連通。
+- 本次公開 RSS 回應為 25 集，未見本週指定新集；不猜 GUID、不匯入未授權稿。無真實內容／圖片變更、無正式重部署、noindex 不變。本地輸入檢查、清冊檢查、服務 local 預檢通過；Astro check 0 errors／0 warnings、114 頁 build、120 項完整測試通過。GitHub CI 狀態見本 PR，尚未合併或發布。
 
 ### 日後最簡操作
 

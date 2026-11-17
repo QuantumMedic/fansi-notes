@@ -21,7 +21,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run sync:podcast
-      - run: npm run check && npm run build && npm test
+      # Newly discovered RSS episodes are not the frozen historical acceptance corpus.
+      - run: node --test tests/rss.test.mjs tests/weekly-sync.test.mjs && npm run check && npm run build
       - uses: actions/upload-artifact@v4
         with:
           name: podcast-review
