@@ -1,5 +1,34 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
+## 目前階段：M6正式上線／本輪上線驗收完成（2026-11-17）
+
+正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者已完成prepare及deploy兩次Environment審核；[正式發布 #1](https://github.com/QuantumMedic/fansi-notes/actions/runs/43938300040) completed/success。發布版本為PR #26 merge commit `a6e9cccaae6dfc5109161fdac4b122e3359f41ec`，內容樹與核准PR HEAD完全一致。[main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/43937125750)通過113項測試、check及build。本次僅更新結案文件，不觸發新發布；文件提交SHA與線上版本分開。
+
+### 本次正式網址驗收
+
+|項目|實際結果|
+|---|---|
+|公開閱讀與內容完整性|不帶登入Cookie逐檔HTTPS GET：132個發布檔案全200，全部SHA256與核准full/noindex候選一致；114頁包含57篇文章、25集Podcast、7筆出版作品及作者／主題等既有內容。沒有讀者登入要求。|
+|路徑與SEO|內部導覽／資源路徑可對應發布檔案；canonical與OG資料保留正式base，sitemap.xml、feed.xml與404.html可讀。404的/404/ canonical屬metadata，不誤判為導覽破鏈。robots.txt保持Disallow:/，HTML維持noindex，不在本輪開放索引。|
+|手機與瀏覽器|真Chrome檢查390px首頁、文章列表、Podcast、書架、作者、聯絡與文章詳頁，無水平溢出；文章360px亦無溢出。主要頁面觀察無破圖。保留既有版型，代表性截圖存本機驗收目錄。|
+|正式留言|從正式文章按查看留言，成功取得0／0公開留言；正式hostname的Turnstile畫面顯示成功。沿用已通過的production發表／持久化／回覆與跨瀏覽器，以及staging自刪及真SQL回歸；本輪不新增測試留言，也不將未執行的production瀏覽器自刪說成已執行。|
+|私人管理與來源保護|現有管理端匿名及偽造JWT請求302至正確Access；正式Origin可讀API，外來源403，公開API管理路由404。後端精確Email與JWT規則未改，沒有公開管理入口。|
+|Cloudflare與備份|唯讀確認既有production資源已啟用、preview關閉，D1 0留言、paused=0；原空庫匯出、Worker版本及回退配置存repo外私人目錄。本輪沒有重部署、遷移或清理資料。|
+|聯絡|正式聯絡表單可操作，輸出endpoint與已驗證的既有Formspree設定相符；沿用作者已確認Gmail實收，不重寄信或消耗額度。|
+|分析|正式瀏覽器已載入gc.zgo.at/count.js，data-goatcounter指向正式fansi-notes站點；不再指向test。沿用隔離事件及隱私驗收，本輪未登入私人控制台核對新增筆數，不把腳本接線宣稱為控制台數字已人工驗證。|
+|私人資料|逐一掃描已下載的正式HTML／JS／XML等輸出，沒有實際管理網址、白名單、AUD或Worker秘密。|
+
+**結案界限**：M6正式網站已上線，本輪授權範圍內驗收完成，未發現需要重部署的阻擋故障。保留noindex；搜尋引擎索引開放另行授權。非白名單採官方OTP行為＋精確政策＋後端驗簽及實際觀察的綜合判定，並非虛構第二帳號取得JWT後的拒絕事件；詳細依據及production自刪未執行的更正見下方及M6報告。既有尚未獨立核實的讀墨官網等外站入口仍照原紀錄，不影響現有26個已提供入口。正式統計新增數字未在私人控制台重驗，沒有以此要求作者重做流程。
+
+### 日後最簡操作
+
+- 文章：依既有創作SOP核准正文／分類／work_id及公開範圍 → 既有匯入工具新增或更新同一作品 → 檢查差異、討論串清冊、預覽及CI → 經授權手動發布。新增平台版本不新增重複作品。
+- Podcast：沿用RSS預覽同步，保留人工分類與GUID配對；確認新集與作品關係後更新一次資料／清冊，再經授權發布。RSS工作流程不會自動公開網站。
+- 留言：私人書籤 → Access登入 → 集中回覆／隱藏／刪除；可前往原文定位。公開網站不提供作者管理入口。
+- 來信與分析：沿用既有Gmail收件與GoatCounter私人控制台。故障時先使用既有單服務停用及備份回退工具，不刪庫或影響文章閱讀；完整操作入口為docs/review/m6/README.md。
+
+## 以下為PR #26合併前及受控窗口歷史紀錄（停用／待審核均指當時）
+
 ## 目前階段：PR #26發布安全收尾／準備完整網站審核（2026-11-17）
 
 作者已更正：production驗證時**沒有按下Mac的刪除留言**。00:41:09讀回主留言為published符合實際操作，前版「自刪成功但資料庫未刪」判斷撤回；不是待修故障。PR #26仍以最新HEAD驗證後merge commit整合，正式發布須經github-pages作者審核。索引維持noindex，不改內容或視覺。
