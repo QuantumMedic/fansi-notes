@@ -1,12 +1,22 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：M6正式上線／手機書本點選已發布（2026-11-17）
+## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-17）
 
-正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上版本為 PR #28 merge commit `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，[發布 #2](https://github.com/QuantumMedic/fansi-notes/actions/runs/44001395305) attempt 2 completed/success，full／noindex。作者已確認手機預覽並授權合併發布，GitHub Environment 人工審核保留；[main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/44000940874) 通過。相較首次上線版本，發布輸出僅首頁 HTML 與首頁 CSS 改變，其他頁面、內容及服務接線一致。以下正式網址驗收表保留首次上線證據；本次定點檢查見手機場景段落。
+正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
 
-首次發布 [#1](https://github.com/QuantumMedic/fansi-notes/actions/runs/43938300040) 的版本 `a6e9cccaae6dfc5109161fdac4b122e3359f41ec` 保留作回退依據。本結案更新為發布後的僅文件提交，不重新發布。
+### 搜尋索引開放驗收與後續發布規則
 
-### 本次正式網址驗收
+- 與發布 #2 full／noindex 相比，僅 109 個 HTML 的 robots meta 及 robots.txt 變動。標題、摘要、正文、canonical、內連、圖片、CSS／JS、sitemap 與完整服務接線均保持原樣；沒有更新文章或 Podcast、重新部署 Worker、修改 D1／Access／Formspree／GoatCounter。
+- 正式 HTTPS 逐檔比對 **132／132 SHA256 相符**；109 頁為 `index,follow`，無 X-Robots-Tag。5 個舊分類相容轉址（series/longform、series/special、topics/books、topics/history_society、topics/personal）刻意維持 noindex，目的頁正常可索引，不是正式內容遭封鎖。
+- sitemap.xml HTTP 成功，94 個網址皆使用 `https://quantummedic.github.io/fansi-notes/`；canonical／標題檢查通過。專案 robots.txt 為 Allow: /fansi-notes/ 並列正式 sitemap。Google 實際讀取的是 host 根目錄 `/robots.txt`，目前為 404；依[Google 官方規範](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)，此狀態不限制檢索，不能把專案子路徑 robots 誤稱為 host 全域規則。
+- Chrome 390px 正式首頁五場景逐一點入凡思維、凡思聲、文章與故事、小說與出版、作者頁；無溢出、下方五入口保留，頁面捲動不跳頁。沿用既有觸控模擬驗收；本輪沒有宣稱實體 iOS Safari 測試。
+- 發布 prepare 的輸入／清冊／服務預檢、check、build 及既有測試通過；正式 API 唯讀健康檢查通過。服務 manifest 與目標 SHA 原已相符，未更動其設定或安全證據。
+- **持續有效決策：後續獲准的正式內容更新維持 full／index，明確傳入 `AUTHORIZE_INDEXING`；不得因 workflow 的安全預設 noindex 或舊文件而意外關回索引。** 普通本機／CI／staging 預覽仍不索引，發布及 Environment 人工核准照舊。唯一每週操作文件已同步，不改 workflow 或新增 SEO 系統。
+- 本輪未核實 Search Console 帳戶的資源所有權或 Sitemap 提交紀錄；公開 HTML 無 Google 驗證 meta，不據此推定沒有其他驗證方法。尚未宣稱 Google 已檢索或收錄。若未設定：新增 URL-prefix 資源（完整正式網址）→ 依 Google 提供的 HTML 驗證方式完成一次驗證 → 在 Sitemap 報告提交正式 sitemap.xml；驗證檔／標記需另次授權納入部署，不能自行編造。
+
+發布 #2（同 SHA、full／noindex）與首次發布 #1 的紀錄保留作歷史及回退依據；日後回退也須保持現行 index 決策，除非作者另行要求關閉索引。本結案僅更新以下兩份操作文件，不另觸發發布。
+
+### 首次正式網址驗收（歷史：當時尚未開放索引）
 
 |項目|實際結果|
 |---|---|
@@ -20,7 +30,7 @@
 |分析|正式瀏覽器已載入gc.zgo.at/count.js，data-goatcounter指向正式fansi-notes站點；不再指向test。沿用隔離事件及隱私驗收，本輪未登入私人控制台核對新增筆數，不把腳本接線宣稱為控制台數字已人工驗證。|
 |私人資料|逐一掃描已下載的正式HTML／JS／XML等輸出，沒有實際管理網址、白名單、AUD或Worker秘密。|
 
-**結案界限**：M6正式網站已上線，本輪授權範圍內驗收完成，未發現需要重部署的阻擋故障。保留noindex；搜尋引擎索引開放另行授權。非白名單採官方OTP行為＋精確政策＋後端驗簽及實際觀察的綜合判定，並非虛構第二帳號取得JWT後的拒絕事件；詳細依據及production自刪未執行的更正見下方及M6報告。既有尚未獨立核實的讀墨官網等外站入口仍照原紀錄，不影響現有26個已提供入口。正式統計新增數字未在私人控制台重驗，沒有以此要求作者重做流程。
+**首次發布結案界限（歷史）**：M6正式網站已上線，本輪授權範圍內驗收完成，未發現需要重部署的阻擋故障。保留noindex；搜尋引擎索引開放另行授權。非白名單採官方OTP行為＋精確政策＋後端驗簽及實際觀察的綜合判定，並非虛構第二帳號取得JWT後的拒絕事件；詳細依據及production自刪未執行的更正見下方及M6報告。既有尚未獨立核實的讀墨官網等外站入口仍照原紀錄，不影響現有26個已提供入口。正式統計新增數字未在私人控制台重驗，沒有以此要求作者重做流程。
 
 ### 每週同步工程已整合（2026-11-17；PR #27 已合併，未重新發布）
 
