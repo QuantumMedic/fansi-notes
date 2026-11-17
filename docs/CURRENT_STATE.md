@@ -1,14 +1,21 @@
+/opt/homebrew/Library/Homebrew/cmd/shellenv.sh: line 18: /bin/ps: Operation not permitted
 # CURRENT_STATE｜唯一目前有效網站狀態
 
 ## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-17）
 
-正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
+正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上為[發布 #4](https://github.com/QuantumMedic/fansi-notes/actions/runs/44005680857)，full／index，建置 SHA `f0927dc37c9fb19528b42bf2b7fddba635cf5819`；僅新增原始 Google 所有權驗證檔，原網站 132 個輸出檔案不變。
 
-### Google Search Console 驗證檔（本次實作，待發布）
+以下為索引開放發布 #3 的歷史基線：作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
+
+### Google Search Console 驗證檔（已發布，待作者在 Google 按「驗證」）
 
 - 作者提供 `googlee2f2c632a5a88e90.html` 原檔，按 bytes 複製至 `public/`，不重建驗證碼。SHA256：`657f46f8d0eea4175b9b4cfa19e8ff579568a418ea8fc31bf9811d28e4dc5ada`。
 - 驗證檔是純文字 HTML，發布／全站 metadata 檢查僅豁免精確檔名及原始雜湊相符的這份檔案；其他 HTML 與私密網址檢查照舊。測試保護原檔與 build 副本一致，不得刪除或修改，未來每週發布長期保留。
 - 本輪沒有改文章、Podcast、首頁、手機互動或服務設定。沿用 full／index、PR／CI／merge commit 與 prepare／deploy 人工審核；Google 控制台「驗證」由作者在正式網址可讀後完成，不提前宣稱所有權已通過。
+- [PR #29](https://github.com/QuantumMedic/fansi-notes/pull/29) 已依作者授權 merge commit 合併，PR 與 [main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/44005401965) 通過；新增 2 項原檔／精確例外回歸保障，完整 CI 的 check、build、測試成功。本地 check 0 errors／0 warnings（1 項既有 hint）、114 頁 build、5 項受影響測試通過。
+- 發布 #4 prepare／deploy 均經作者人工核准後 success。服務 manifest 僅綁定新 SHA，公開接線及既有證據與前版完全相同，沒有重新部署 Workers 或修改 D1／Access／Formspree／GoatCounter。
+- 發布候選共 133 個檔案：前版 132 個 bytes 全部一致，只增加驗證檔。正式[驗證網址](https://quantummedic.github.io/fansi-notes/googlee2f2c632a5a88e90.html) HTTPS 200、無登入／轉址，下載內容與作者附件 SHA256 完全一致；Chrome 已實際開啟。首頁、代表文章、robots.txt、sitemap.xml 正式內容亦與 full／index 候選相符。
+- 原檔長期保留在 `public/`，每週建置由測試防止誤刪／改動；無需每次重新加入。本紀錄為發布後純文件提交，不另觸發部署。作者可回既有 Search Console URL-prefix 資源按「驗證」；目前尚未取得 Google 驗證成功／收錄結果，不能宣稱已完成 Google 端驗證。
 
 ### 搜尋索引開放驗收與後續發布規則
 
@@ -18,9 +25,9 @@
 - Chrome 390px 正式首頁五場景逐一點入凡思維、凡思聲、文章與故事、小說與出版、作者頁；無溢出、下方五入口保留，頁面捲動不跳頁。沿用既有觸控模擬驗收；本輪沒有宣稱實體 iOS Safari 測試。
 - 發布 prepare 的輸入／清冊／服務預檢、check、build 及既有測試通過；正式 API 唯讀健康檢查通過。服務 manifest 與目標 SHA 原已相符，未更動其設定或安全證據。
 - **持續有效決策：後續獲准的正式內容更新維持 full／index，明確傳入 `AUTHORIZE_INDEXING`；不得因 workflow 的安全預設 noindex 或舊文件而意外關回索引。** 普通本機／CI／staging 預覽仍不索引，發布及 Environment 人工核准照舊。唯一每週操作文件已同步，不改 workflow 或新增 SEO 系統。
-- 本輪未核實 Search Console 帳戶的資源所有權或 Sitemap 提交紀錄；公開 HTML 無 Google 驗證 meta，不據此推定沒有其他驗證方法。尚未宣稱 Google 已檢索或收錄。若未設定：新增 URL-prefix 資源（完整正式網址）→ 依 Google 提供的 HTML 驗證方式完成一次驗證 → 在 Sitemap 報告提交正式 sitemap.xml；驗證檔／標記需另次授權納入部署，不能自行編造。
+- 本輪未核實 Search Console 帳戶的資源所有權或 Sitemap 提交紀錄；公開 HTML 無 Google 驗證 meta，不據此推定沒有其他驗證方法。尚未宣稱 Google 已檢索或收錄。若未設定：新增 URL-prefix 資源（完整正式網址）→ 依 Google 提供的 HTML 驗證方式完成一次驗證 → 在 Sitemap 報告提交正式 sitemap.xml；此段為發布 #3 當時的紀錄；後續作者已交付原始 HTML 並授權發布，進度以上方驗證檔區段為準。
 
-發布 #2（同 SHA、full／noindex）與首次發布 #1 的紀錄保留作歷史及回退依據；日後回退也須保持現行 index 決策，除非作者另行要求關閉索引。本結案僅更新以下兩份操作文件，不另觸發發布。
+發布 #2（同 SHA、full／noindex）與首次發布 #1 的紀錄保留作歷史及回退依據；日後回退也須保持現行 index 決策，除非作者另行要求關閉索引。當時索引開放結案僅更新操作文件；本輪驗證檔發布及結果以上方發布 #4 為準。
 
 ### 首次正式網址驗收（歷史：當時尚未開放索引）
 
