@@ -1,8 +1,10 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：M6正式上線／每週同步工程已合併（2026-11-17）
+## 目前階段：M6正式上線／手機書本點選已發布（2026-11-17）
 
-正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者已完成prepare及deploy兩次Environment審核；[正式發布 #1](https://github.com/QuantumMedic/fansi-notes/actions/runs/43938300040) completed/success。發布版本為PR #26 merge commit `a6e9cccaae6dfc5109161fdac4b122e3359f41ec`，內容樹與核准PR HEAD完全一致。[main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/43937125750)通過113項測試、check及build。該次上線驗收僅更新結案文件；本輪每週同步工程也不觸發新發布，分支 SHA 與線上版本分開。
+正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上版本為 PR #28 merge commit `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，[發布 #2](https://github.com/QuantumMedic/fansi-notes/actions/runs/44001395305) attempt 2 completed/success，full／noindex。作者已確認手機預覽並授權合併發布，GitHub Environment 人工審核保留；[main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/44000940874) 通過。相較首次上線版本，發布輸出僅首頁 HTML 與首頁 CSS 改變，其他頁面、內容及服務接線一致。以下正式網址驗收表保留首次上線證據；本次定點檢查見手機場景段落。
+
+首次發布 [#1](https://github.com/QuantumMedic/fansi-notes/actions/runs/43938300040) 的版本 `a6e9cccaae6dfc5109161fdac4b122e3359f41ec` 保留作回退依據。本結案更新為發布後的僅文件提交，不重新發布。
 
 ### 本次正式網址驗收
 
@@ -28,13 +30,16 @@
 - 唯一操作入口更新為 [每週更新網站](每週更新網站.md)，保留完整服務發布、Worker 清冊同步與 GitHub Environment 作者核准。私人收件目錄已建立；尚未取得本週核准母稿，並非 ChatGPT 私人專案自動連通。
 - 本次公開 RSS 回應為 25 集，未見本週指定新集；不猜 GUID、不匯入未授權稿。無真實內容／圖片變更、無正式重部署、noindex 不變。本地輸入檢查、清冊檢查、服務 local 預檢通過；Astro check 0 errors／0 warnings、114 頁 build、120 項完整測試通過。[PR #27](https://github.com/QuantumMedic/fansi-notes/pull/27) 已經作者授權以 merge commit `9ca28fcb8f5c5e50d968023e1d696982c1917963` 合併；[合併後 main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/43998264201) completed/success。合併時完整內容樹與核准 HEAD `1d543f8815608d94c856eecbe64ea0459f3cdb1e` 一致（tree `06c0956a4cd64fcd2e00fe32c643f9d3796af76f`）。本紀錄另為僅文件提交，與上述內容樹比對時點分開；未執行 release、未公開新文章，線上仍是既有發布版本，noindex 不變。
 
-### 手機書本場景點選（獨立分支預覽，待作者確認）
+### 手機書本場景點選（作者已驗收，PR #28 已合併並發布）
 
 - `feat/mobile-storybook-scenes` 從最新 main 建立；僅在原首頁插畫上增加手機原生連結，五個場景沿用同一份網址資料。原插畫、下方五個入口、桌機互動與內容保持不變。
 - 不使用 touch／pointer 攔截、preventDefault 或滑動偵測；瀏覽器原生區分點選與上下滑動。手機熱區至少 44px，保留鍵盤焦點及既有 reduced-motion 規則。
 - 已驗證：五場景對應頁面、360／390px 無溢出、Tab／Enter、1440px 桌機隱藏手機熱區且下方入口完整。Chrome iPhone 16 觸控模擬從場景向上滑可捲動且未跳頁；尚非實體 iOS Safari 驗收。
 - Astro check：0 errors／0 warnings（1 項既有 hint）；build：114 頁；storybook 3 項針對性測試通過。截圖：[手機](review/mobile-scenes/mobile.jpg)、[桌機](review/mobile-scenes/desktop.jpg)。
-- 本機預覽已啟動；待作者試用後另行確認上線。沒有合併、發布、服務設定或 noindex 變更。
+- 作者試用確認後，[PR #28](https://github.com/QuantumMedic/fansi-notes/pull/28) 已以 merge commit 合併；合併內容樹與核准 HEAD `3467fee13d583665d82e6db07ac6da241d9ff4e3` 相同。PR／main CI 均成功，發布建置通過 120 項測試、check 與 114 頁 build。
+- 發布 #2 第一次由 SHA 綁定檢查安全攔下，沒有部署：GitHub 要求重新確認身分，服務清單尚未更新。作者完成 Confirm access 後已保存本次 SHA 綁定清單；既有 public 設定與 evidence 完全相同，沒有新填驗收旗標。重跑同一 run，prepare／deploy 經作者核准後成功。
+- 正式站 132 個發布檔案逐檔 HTTPS／SHA256 比對全部符合本次 full／noindex 候選。Chrome 正式首頁 390px 五個熱區與下方五入口存在、Podcast 點選正常；360／390px 無溢出。正式 noindex 保留。預覽時已測五場景、滑動及鍵盤，不另冒稱實體 iOS Safari 驗收。
+- 只更新 Pages 靜態輸出與 SHA 綁定發布清單；沒有重新部署 Cloudflare Worker、修改 D1、寄信、改服務功能或解除 noindex。截圖及發布前後雜湊紀錄留本機發布驗收目錄。
 
 ### 日後最簡操作
 
