@@ -4,6 +4,12 @@
 
 正式網址：**https://quantummedic.github.io/fansi-notes/** 。作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
 
+### Google Search Console 驗證檔（本次實作，待發布）
+
+- 作者提供 `googlee2f2c632a5a88e90.html` 原檔，按 bytes 複製至 `public/`，不重建驗證碼。SHA256：`657f46f8d0eea4175b9b4cfa19e8ff579568a418ea8fc31bf9811d28e4dc5ada`。
+- 驗證檔是純文字 HTML，發布／全站 metadata 檢查僅豁免精確檔名及原始雜湊相符的這份檔案；其他 HTML 與私密網址檢查照舊。測試保護原檔與 build 副本一致，不得刪除或修改，未來每週發布長期保留。
+- 本輪沒有改文章、Podcast、首頁、手機互動或服務設定。沿用 full／index、PR／CI／merge commit 與 prepare／deploy 人工審核；Google 控制台「驗證」由作者在正式網址可讀後完成，不提前宣稱所有權已通過。
+
 ### 搜尋索引開放驗收與後續發布規則
 
 - 與發布 #2 full／noindex 相比，僅 109 個 HTML 的 robots meta 及 robots.txt 變動。標題、摘要、正文、canonical、內連、圖片、CSS／JS、sitemap 與完整服務接線均保持原樣；沒有更新文章或 Podcast、重新部署 Worker、修改 D1／Access／Formspree／GoatCounter。

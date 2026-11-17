@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import json
+from hashlib import sha256
 import xml.etree.ElementTree as ET
 
 ROOT = Path('dist')
@@ -44,6 +45,9 @@ def run():
         for image in p.images:
             images += 1
             if 'alt' not in image: failures.append(f'{file}: missing image alt')
+        # The exact author-provided Google proof is a raw file, not a reading page.
+        if file.relative_to(ROOT).as_posix() == 'googlee2f2c632a5a88e90.html' and sha256(file.read_bytes()).hexdigest() == '657f46f8d0eea4175b9b4cfa19e8ff579568a418ea8fc31bf9811d28e4dc5ada':
+            continue
         # Compatibility redirects are not normal reading pages.
         html = file.read_text()
         if 'http-equiv="refresh"' not in html:

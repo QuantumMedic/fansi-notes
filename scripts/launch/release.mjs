@@ -22,6 +22,9 @@ export function audit(dir,indexing,allowedApi=''){
  const s=readFileSync(p,'utf8');
  const scanned=allowedApi?s.replaceAll(allowedApi,'APPROVED_PRODUCTION_API'):s;
  if(/https?:\/\/(?:localhost|127\.0\.0\.1|[^\s"'<>]*staging[^\s"'<>]*\.workers\.dev|fansi-comments-admin\.[^\s"'<>]*)/i.test(scanned))errors.push(relative(dir,p)+': nonproduction URL');
+ // Google ownership proof is an immutable raw file, not an Astro reading page.
+ // Only this author-provided filename AND original byte hash are exempt from page metadata.
+ if(relative(dir,p)==='googlee2f2c632a5a88e90.html'&&createHash('sha256').update(readFileSync(p)).digest('hex')==='657f46f8d0eea4175b9b4cfa19e8ff579568a418ea8fc31bf9811d28e4dc5ada')continue;
  if(p.endsWith('.html')){
  const canonical=s.match(/rel="canonical" href="([^"]+)"/);
  if(!canonical||!canonical[1].toLowerCase().startsWith(target))errors.push(relative(dir,p)+': canonical');
