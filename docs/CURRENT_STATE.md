@@ -28,6 +28,14 @@
 - 唯一操作入口更新為 [每週更新網站](每週更新網站.md)，保留完整服務發布、Worker 清冊同步與 GitHub Environment 作者核准。私人收件目錄已建立；尚未取得本週核准母稿，並非 ChatGPT 私人專案自動連通。
 - 本次公開 RSS 回應為 25 集，未見本週指定新集；不猜 GUID、不匯入未授權稿。無真實內容／圖片變更、無正式重部署、noindex 不變。本地輸入檢查、清冊檢查、服務 local 預檢通過；Astro check 0 errors／0 warnings、114 頁 build、120 項完整測試通過。[PR #27](https://github.com/QuantumMedic/fansi-notes/pull/27) 已經作者授權以 merge commit `9ca28fcb8f5c5e50d968023e1d696982c1917963` 合併；[合併後 main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/43998264201) completed/success。合併時完整內容樹與核准 HEAD `1d543f8815608d94c856eecbe64ea0459f3cdb1e` 一致（tree `06c0956a4cd64fcd2e00fe32c643f9d3796af76f`）。本紀錄另為僅文件提交，與上述內容樹比對時點分開；未執行 release、未公開新文章，線上仍是既有發布版本，noindex 不變。
 
+### 手機書本場景點選（獨立分支預覽，待作者確認）
+
+- `feat/mobile-storybook-scenes` 從最新 main 建立；僅在原首頁插畫上增加手機原生連結，五個場景沿用同一份網址資料。原插畫、下方五個入口、桌機互動與內容保持不變。
+- 不使用 touch／pointer 攔截、preventDefault 或滑動偵測；瀏覽器原生區分點選與上下滑動。手機熱區至少 44px，保留鍵盤焦點及既有 reduced-motion 規則。
+- 已驗證：五場景對應頁面、360／390px 無溢出、Tab／Enter、1440px 桌機隱藏手機熱區且下方入口完整。Chrome iPhone 16 觸控模擬從場景向上滑可捲動且未跳頁；尚非實體 iOS Safari 驗收。
+- Astro check：0 errors／0 warnings（1 項既有 hint）；build：114 頁；storybook 3 項針對性測試通過。截圖：[手機](review/mobile-scenes/mobile.jpg)、[桌機](review/mobile-scenes/desktop.jpg)。
+- 本機預覽已啟動；待作者試用後另行確認上線。沒有合併、發布、服務設定或 noindex 變更。
+
 ### 日後最簡操作
 
 - 文章：依既有創作SOP核准正文／分類／work_id及公開範圍 → 既有匯入工具新增或更新同一作品 → 檢查差異、討論串清冊、預覽及CI → 經授權手動發布。新增平台版本不新增重複作品。
