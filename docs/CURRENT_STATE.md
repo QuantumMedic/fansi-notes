@@ -1,4 +1,3 @@
-/opt/homebrew/Library/Homebrew/cmd/shellenv.sh: line 18: /bin/ps: Operation not permitted
 # CURRENT_STATE｜唯一目前有效網站狀態
 
 ## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-17）
