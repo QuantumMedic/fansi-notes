@@ -1,3 +1,4 @@
+import { threads as expectedThreads } from './helpers/catalog.mjs';
 import {test} from 'node:test';import assert from 'node:assert/strict';
 import {interactionConfig} from '../src/lib/interaction-config.mjs';
 import {newReceipt,storeReceipt,readReceipts,sendContact} from '../src/lib/interaction-client.mjs';
@@ -7,7 +8,7 @@ import {readFileSync} from 'node:fs';
 import manifest from '../services/comments/generated/threads.json' with {type:'json'};
 test('唯一討論resolver：配對共串、未配對GUID、冊別獨立、未知拒絕',()=>{
  const a={work_id:'a',title:'x',publication_status:'published'},b={work_id:'b',title:'y',website_approved:true};const m=makeThreads([a],[{guid:'g'},{guid:'u'}],[{guid:'g',work_id:'a',approved:true}],[b]);
- assert.equal(resolveThread(m,'podcast','g'),resolveThread(m,'article','a'));assert.equal(resolveThread(m,'podcast','u'),'podcast:u');assert.equal(resolveThread(m,'publication','b'),'publication:b');assert.equal(resolveThread(m,'article','unknown'),null);assert.equal(Object.keys(manifest.threads).length,64);assert.equal(Object.keys(manifest.aliases).length,25);
+ assert.equal(resolveThread(m,'podcast','g'),resolveThread(m,'article','a'));assert.equal(resolveThread(m,'podcast','u'),'podcast:u');assert.equal(resolveThread(m,'publication','b'),'publication:b');assert.equal(resolveThread(m,'article','unknown'),null);assert.deepEqual(manifest,expectedThreads);
  const proposed=makeThreads([a],[{guid:'g'}],[{guid:'g',work_id:'a',approved:false}],[]);assert.equal(resolveThread(proposed,'podcast','g'),'podcast:g');
 });
 test('私碼CSPRNG、儲存拒絕有結果、恢復格式，不持久存留言正文',()=>{

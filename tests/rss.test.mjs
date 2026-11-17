@@ -107,3 +107,16 @@ test('RSS 失敗完整保留快取；成功去重、保留舊集及補填 Spotif
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test('RSS external preview seeds existing cache without modifying repository source', async()=>{
+ const {mkdtemp,readFile,writeFile,rm}=await import('node:fs/promises');
+ const {tmpdir}=await import('node:os');const {join}=await import('node:path');
+ const root=await mkdtemp(join(tmpdir(),'rss-external-'));
+ try{
+  const previousFile=join(root,'old.json'),output=join(root,'preview.json');
+  const old=parseFeed(xml([{guid:'old-only',link:'https://open.spotify.com/episode/0123456789012345678901'}]));
+  const raw=JSON.stringify(old);await writeFile(previousFile,raw);
+  const rows=await syncFeed({url:'https://anchor.fm/feed',hosts:['anchor.fm'],previousFile,output,fetchImpl:async()=>new Response(xml([{guid:'new-guid'}]))});
+  assert.equal(rows.length,2);assert.equal(await readFile(previousFile,'utf8'),raw);assert.equal(JSON.parse(await readFile(output,'utf8')).length,2);
+ }finally{await rm(root,{recursive:true,force:true});}
+});

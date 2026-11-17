@@ -1,3 +1,4 @@
+import { works as currentWorks } from './helpers/catalog.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -86,7 +87,7 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     writeFileSync(classificationsFile, before);
     build();
     const mixed=html('series/fansiwei/index.html');
-    assert.match(mixed,/last-pass-audio-only/);assert.match(mixed,/共 10 個作品/);
+    assert.match(mixed,/last-pass-audio-only/);assert.match(mixed,new RegExp(`共 ${currentWorks.filter(w=>w.classification.status==='confirmed'&&w.classification.content_type==='fansiwei').length+2} 個作品`));
     assert.doesNotMatch(mixed,/last-pass-other-series|last-pass-proposed-only/);
     assert.doesNotMatch(html('articles/index.html'),/last-pass-audio-only/);
     assert.equal(existsSync(join(root,'dist/articles/last-pass-audio-only/index.html')),false);

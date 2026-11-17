@@ -89,30 +89,15 @@ export async function fetchFeed(url, { hosts, fetchImpl = fetch, timeout = 15000
   }
   throw last;
 }
-export async function syncFeed({ url, hosts, output, fetchImpl = fetch }) {
+export async function syncFeed({ url, hosts, output, previousFile = output, fetchImpl = fetch }) {
   const incoming = await fetchFeed(url, { hosts, fetchImpl });
   let previous = [];
   try {
-    previous = JSON.parse(await readFile(output, 'utf8')).map((e) => episodeSchema.parse(e));
+    previous = JSON.parse(await readFile(previousFile, 'utf8')).map((e) => episodeSchema.parse(e));
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
-  // RSS 可能只保留最近數集；保留先前已同步的正式單集，更新以 GUID 為準。
-  const merged = new Map(previous.filter((e) => !e.synthetic).map((e) => [e.guid, e]));
-  for (const item of incoming) {
-    const old = merged.get(item.guid);
-    merged.set(item.guid, {
-      ...old,
-      ...item,
-      slug: old?.slug ?? item.slug,
-      ...(old?.spotify_episode_url && !item.spotify_episode_url
-        ? { spotify_episode_url: old.spotify_episode_url }
-        : {}),
-    });
-  }
-  const result = [...merged.values()].sort(
-    (a, b) => Date.parse(b.published_at) - Date.parse(a.published_at),
-  );
+  const result = mergeEpisodes(previous, incoming);
   const temp = `${output}.${process.pid}.tmp`;
   try {
     await writeFile(temp, JSON.stringify(result, null, 2) + '\n');
@@ -121,4 +106,27 @@ export async function syncFeed({ url, hosts, output, fetchImpl = fetch }) {
     await unlink(temp).catch(() => {});
   }
   return result;
+}
+
+export function mergeEpisodes(previous, incoming) {
+  previous = previous.map((e) => episodeSchema.parse(e));
+  incoming = incoming.map((e) => episodeSchema.parse(e));
+  if (new Set(incoming.map((e) => e.guid)).size !== incoming.length)
+    throw Error('Duplicate incoming GUID');
+  // RSS 可能只保留最近數集；保留先前已同步的正式單集，更新以 GUID 為準。
+  const merged = new Map(previous.filter((e) => !e.synthetic).map((e) => [e.guid, e]));
+  for (const item of incoming) {
+    const old = merged.get(item.guid);
+    merged.set(item.guid, {
+      ...old,
+      ...item,
+      slug: old?.slug ?? item.slug,
+      ...(old?.url ? { url: old.url } : {}),
+      ...(old?.apple_episode_url ? { apple_episode_url: old.apple_episode_url } : {}),
+      ...(old?.spotify_episode_url ? { spotify_episode_url: old.spotify_episode_url } : {}),
+    });
+  }
+  return [...merged.values()].sort(
+    (a, b) => Date.parse(b.published_at) - Date.parse(a.published_at),
+  );
 }
