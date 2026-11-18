@@ -51,6 +51,11 @@
       "title": "會說話的影子",
       "canonical_path": "/articles/talking-shadow/"
     },
+    "article:vocus-6afbad5bfd89780001804ea8": {
+      "work_id": "vocus-6afbad5bfd89780001804ea8",
+      "title": "《三個傻瓜》：十七年後，才懂那些煩惱",
+      "canonical_path": "/articles/three-idiots-seventeen-years-later/"
+    },
     "article:vocus-671f43ddfd89780001d85d12": {
       "work_id": "vocus-671f43ddfd89780001d85d12",
       "title": "開始提筆｜誤打誤撞開啟的創作之旅",
@@ -323,6 +328,7 @@
     }
   },
   "aliases": {
+    "podcast:e3a6f416-b462-403a-857d-50dd72648617": "article:vocus-6afbad5bfd89780001804ea8",
     "podcast:8dfe039a-7fb5-4bdf-9134-9fcdf76bb2e0": "article:ig-dvnhptok8yt",
     "podcast:c2fc0ec4-1e7a-4808-828a-2681658b0fb7": "article:vocus-69a000cbfd897800012961e9",
     "podcast:d973015a-d1d4-42a4-b959-d1f61c691397": "article:ig-dvbkyqok9e",

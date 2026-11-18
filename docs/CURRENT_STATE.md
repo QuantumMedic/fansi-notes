@@ -4,11 +4,13 @@
 
 正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上為[發布 #4](https://github.com/QuantumMedic/fansi-notes/actions/runs/44005680857)，full／index，建置 SHA `f0927dc37c9fb19528b42bf2b7fddba635cf5819`；僅新增原始 Google 所有權驗證檔，原網站 132 個輸出檔案不變。
 
-### 2026-11-18 每週同步（分支備料，尚未發布）
+### 2026-11-18 每週同步（PR #30；待正式發布）
 
-首頁已在分支套用作者指定的搜尋／分享標題及描述，作者頁只更新完整簡介第二段；正式站仍是上方發布 #4。RSS 新單集與 Spotify、Apple 單集紀錄已依相同 GUID 核對，IG 與 Vocus 公開來源已備妥。核准書面母稿、固定作品 ID 及最終分類尚未交接，未匯入文章、未建立書音映射或新討論串。待交接後在同一 PR 完成一次 full／index 更新。
+作者已明確核准本次以公開 Vocus 完整正文作一次性書面母稿交接，網站標題為《三個傻瓜》：十七年後，才懂那些煩惱。深度內容／影視與動畫／哲學與人生，以及指定 GUID 關聯均已核准。既有清冊沒有同一作品，固定 ID 採 `vocus-6afbad5bfd89780001804ea8`；全文、版本及雜湊已依既有每週工具匯入，來源文字逐字一致。原文兩個錯誤宣傳 href 僅在呈現層依核准單集收合，正文不改；兩個圖片位置保留，本次不下載圖片。
 
-本地：作者輸入與討論串清冊檢查通過，Astro check 無錯誤或警告，建置 114 頁、123 項測試通過。390px Chrome 觸控模擬逐一點選五個書本入口，垂直滑動正常且不觸發跳頁。原有 57 篇文章、25 集單集與搜尋驗證檔保持不變。
+分支包含 58 篇文章、26 集 Podcast、26 組核准書音映射及更新留言清冊；原有 57 篇正文、25 集、人氣、圖片與書架不變，新作人氣未知。首頁搜尋／分享 metadata 與作者完整簡介第二段依授權更新，五場景及手機互動保留。Google 所有權驗證檔不變。私人交接與原始來源檔不提交公開儲存庫。
+
+目前仍為上方發布 #4；本次須完成 CI、merge commit、同 SHA 留言清冊與服務 manifest 核對，再送出 full／index，由作者核准 Environment prepare／deploy。不將備料或合併寫成已部署。
 
 以下為索引開放發布 #3 的歷史基線：作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
 

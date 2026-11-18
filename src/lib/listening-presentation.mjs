@@ -54,6 +54,16 @@ export function importedListeningPresentation(body = '', episodes = []) {
       for (const destination of targets) if (!confirmed.has(destination.key)) links.set(destination.key, links.get(destination.key) || destination);
       return `<${tag} hidden data-original-podcast-link="${encodedHref}">${text}</${tag}>`;
     });
+  // A published source can encode a broken href while printing the exact episode URL.
+  // Only relocate these labelled CTAs when the author-approved mapping confirms it.
+  html = html.replace(/<p><span>(Apple Podcasts?: |Spotify: )<\/span><a href="https:\/\/">(?:<span>)?(https:\/\/[^<]+)(?:<\/span>)?<\/a><\/p>/g,
+    (original, label, encodedUrl) => {
+      const target = listeningDestination(encodedUrl.replaceAll('&amp;', '&'));
+      return target && confirmed.has(target.key)
+        ? `<p hidden data-original-podcast-link="${encodedUrl}">${original.slice(3, -4)}</p>` : original;
+    });
+  if (confirmed.size) html = html.replace(/<h3([^>]*)><span>歡迎收聽完整Podcast<\/span><\/h3>(?=<p hidden data-original-podcast-link=)/g,
+    '<h3$1 hidden data-original-podcast-heading><span>歡迎收聽完整Podcast</span></h3>');
   // This exact imported CTA heading belongs to the relocated source link,
   // not to the article's narrative. Preserve its text in hidden provenance.
   if (links.size || confirmed.size) html = html.replace(
