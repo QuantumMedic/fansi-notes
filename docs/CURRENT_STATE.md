@@ -4,6 +4,12 @@
 
 正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上為[發布 #4](https://github.com/QuantumMedic/fansi-notes/actions/runs/44005680857)，full／index，建置 SHA `f0927dc37c9fb19528b42bf2b7fddba635cf5819`；僅新增原始 Google 所有權驗證檔，原網站 132 個輸出檔案不變。
 
+### 2026-11-18 每週同步（分支備料，尚未發布）
+
+首頁已在分支套用作者指定的搜尋／分享標題及描述，作者頁只更新完整簡介第二段；正式站仍是上方發布 #4。RSS 新單集與 Spotify、Apple 單集紀錄已依相同 GUID 核對，IG 與 Vocus 公開來源已備妥。核准書面母稿、固定作品 ID 及最終分類尚未交接，未匯入文章、未建立書音映射或新討論串。待交接後在同一 PR 完成一次 full／index 更新。
+
+本地：作者輸入與討論串清冊檢查通過，Astro check 無錯誤或警告，建置 114 頁、123 項測試通過。390px Chrome 觸控模擬逐一點選五個書本入口，垂直滑動正常且不觸發跳頁。原有 57 篇文章、25 集單集與搜尋驗證檔保持不變。
+
 以下為索引開放發布 #3 的歷史基線：作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
 
 ### Google Search Console 驗證檔（已發布，待作者在 Google 按「驗證」）
