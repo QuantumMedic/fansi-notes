@@ -5,7 +5,7 @@
   "requires_asset_download_script": false,
   "requires_additional_source_research_by_codex": false,
   "source": "docs/review/m5e/PUBLICATION_DISPLAY_INPUT.json",
-  "input_git_blob_sha": "d2cae45dd195fb157412074050ade32c938cd3cd",
+  "input_git_blob_sha": "a72ddefb03bcdad394822dc64573e4b8b3c663a8",
   "handoff": "docs/review/m5e/CODEX_DISPLAY_HANDOFF.md",
   "offline_validator": "scripts/check_m5e_inputs.py",
   "author_photo": {
@@ -56,6 +56,6 @@
   },
   "author_copy_source": {
     "path": "docs/review/m5e/AUTHOR_PAGE_COPY_AND_TIMELINE_2026-11-16.json",
-    "git_blob_sha": "3e224d519d54d9b4a727d1d71ee648f75acbebc0"
+    "git_blob_sha": "aaf8993382f962760ce0f599990e259638c3dc95"
   }
 }
