@@ -10,7 +10,9 @@
 
 分支包含 58 篇文章、26 集 Podcast、26 組核准書音映射及更新留言清冊；原有 57 篇正文、25 集、人氣、圖片與書架不變，新作人氣未知。首頁搜尋／分享 metadata 與作者完整簡介第二段依授權更新，五場景及手機互動保留。Google 所有權驗證檔不變。私人交接與原始來源檔不提交公開儲存庫。
 
-目前仍為上方發布 #4；本次須完成 CI、merge commit、同 SHA 留言清冊與服務 manifest 核對，再送出 full／index，由作者核准 Environment prepare／deploy。不將備料或合併寫成已部署。
+[PR #30](https://github.com/QuantumMedic/fansi-notes/pull/30) 已轉 Ready 並以 merge commit `ad844ee45fe1aa6b424a2458246608f7900864ee` 合併；PR CI 與 [main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/44315312126) 通過。本地 125 項測試通過、check 0 errors／0 warnings、116 頁 build；1440px／390px 新文章與手機五場景實測通過。兩項合成建置各自隔離快取，原有斷言保留。
+
+本專案 D1 已私下備份，兩個既有 production Worker 的留言允許清冊已更新並實際讀回，bindings／Access AUD／來源限制／preview 關閉狀態未變；健康與新 thread 唯讀檢查皆成功。既有服務 manifest 的公開設定與歷次驗收證據均不變，僅綁定此次 SHA。GitHub 更新 Environment secret 時要求作者 Confirm access，尚待帳號本人完成；尚未送出 release。線上仍是發布 #4，不能將合併或 Worker 更新寫成新頁已上線。後續保留 full／index 及作者 prepare／deploy 審核。
 
 以下為索引開放發布 #3 的歷史基線：作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
 
