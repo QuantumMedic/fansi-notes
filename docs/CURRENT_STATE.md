@@ -1,10 +1,10 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-17）
+## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-18）
 
-正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上為[發布 #4](https://github.com/QuantumMedic/fansi-notes/actions/runs/44005680857)，full／index，建置 SHA `f0927dc37c9fb19528b42bf2b7fddba635cf5819`；僅新增原始 Google 所有權驗證檔，原網站 132 個輸出檔案不變。
+正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上為[發布 #6](https://github.com/QuantumMedic/fansi-notes/actions/runs/44316672955)，full／index，建置 SHA `ad844ee45fe1aa6b424a2458246608f7900864ee`。本次新增《三個傻瓜》及其 Podcast，並依授權更新首頁 SEO 與作者完整簡介第二段；Google 驗證原檔、手機五場景及既有成果保留。
 
-### 2026-11-18 每週同步（PR #30；待正式發布）
+### 2026-11-18 每週同步（PR #30 已合併／發布 #6 成功）
 
 作者已明確核准本次以公開 Vocus 完整正文作一次性書面母稿交接，網站標題為《三個傻瓜》：十七年後，才懂那些煩惱。深度內容／影視與動畫／哲學與人生，以及指定 GUID 關聯均已核准。既有清冊沒有同一作品，固定 ID 採 `vocus-6afbad5bfd89780001804ea8`；全文、版本及雜湊已依既有每週工具匯入，來源文字逐字一致。原文兩個錯誤宣傳 href 僅在呈現層依核准單集收合，正文不改；兩個圖片位置保留，本次不下載圖片。
 
@@ -12,7 +12,11 @@
 
 [PR #30](https://github.com/QuantumMedic/fansi-notes/pull/30) 已轉 Ready 並以 merge commit `ad844ee45fe1aa6b424a2458246608f7900864ee` 合併；PR CI 與 [main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/44315312126) 通過。本地 125 項測試通過、check 0 errors／0 warnings、116 頁 build；1440px／390px 新文章與手機五場景實測通過。兩項合成建置各自隔離快取，原有斷言保留。
 
-本專案 D1 已私下備份，兩個既有 production Worker 的留言允許清冊已更新並實際讀回，bindings／Access AUD／來源限制／preview 關閉狀態未變；健康與新 thread 唯讀檢查皆成功。既有服務 manifest 的公開設定與歷次驗收證據均不變，僅綁定此次 SHA。GitHub 更新 Environment secret 時要求作者 Confirm access，尚待帳號本人完成；尚未送出 release。線上仍是發布 #4，不能將合併或 Worker 更新寫成新頁已上線。後續保留 full／index 及作者 prepare／deploy 審核。
+本專案 D1 已私下備份，兩個既有 production Worker 的留言允許清冊已更新並實際讀回，bindings／Access AUD／來源限制／preview 關閉狀態未變；健康與新 thread 唯讀檢查皆成功。既有服務 manifest 的公開設定與歷次驗收證據均不變，僅綁定此次 SHA。作者已完成 GitHub Confirm access 及本次 prepare／deploy 兩次 Environment 人工核准；發布 #6 completed/success，並非仍待密碼確認。
+
+發布後 HTTPS 實測：首頁、新文章、新單集、作者頁、sitemap.xml、robots.txt 及 Google 驗證檔均 200；首頁、新文章、新單集與作者頁皆 index,follow 且 canonical 正確。新文章完整來源文字與 repository 核准母稿一致，四平台網址及 Podcast 回到文章的連結正確；Sitemap 已包含兩個新路由。首頁 title／description／OG 及作者第二段逐字符合授權，Google 驗證檔 SHA256 與原檔一致。Chrome 390px 新文章及首頁無水平溢出，五個手機場景連結可見且目的地不變；觸控點選／滑動沿用本輪部署前已完成的真 Chrome 觸控模擬驗收。正式文章按「查看留言」成功顯示 0／0，未建立測試留言。既有 Formspree／GoatCounter 接線不變，不重寄信或聲稱重新驗證私人控制台。
+
+正式新文章：[《三個傻瓜》：十七年後，才懂那些煩惱](https://quantummedic.github.io/fansi-notes/articles/three-idiots-seventeen-years-later/)；[凡思聲單集](https://quantummedic.github.io/fansi-notes/podcast/episode-6bd355141bcc71b6597a/)。本段為成功發布後的純文件提交，不觸發再次發布；workflow 起始 main 為 `0ebb388…`，實際建置目標為上述 `ad844ee…`，兩者不可混淆。新作人氣未知、兩個原文圖片位置尚無本次授權圖檔；其他私人待發表作品未匯入。
 
 以下為索引開放發布 #3 的歷史基線：作者明確授權解除 noindex；[發布 #3](https://github.com/QuantumMedic/fansi-notes/actions/runs/44003350268) prepare／deploy 經作者人工審核後 completed/success，使用 **full／index**。實際建置版本仍為含手機書本點選的 `36d0d4ae3accad11c495eba8b31b7c7b4d1233c2`，不是舊版 `a6e9ccc…`。workflow 從 main 文件版 `c393be7…` 啟動，再依輸入 checkout 指定發布 SHA；兩者不可混淆。
 
