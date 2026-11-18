@@ -24,6 +24,9 @@ test('整合建置：新增、改名、改分類標籤、補平台網址與異�
     for (const path of ['src', 'public', 'services/comments/generated', 'astro.config.mjs', 'tsconfig.json', 'package.json'])
       cpSync(join(repo, path), join(root, path), { recursive: true });
     symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
+    // Each parallel fixture owns its Astro/Vite content cache.
+    const configPath = join(root, 'astro.config.mjs');
+    writeFileSync(configPath, readFileSync(configPath, 'utf8').replace('defineConfig({', "defineConfig({cacheDir: './.astro-cache/', vite: {cacheDir: './.vite-cache/'},"));
     cpSync(join(repo,'tests/fixtures/platforms.astro.txt'),join(root,'src/pages/platform-fixture.astro'));
     cpSync(join(repo,'tests/fixtures/image-state.astro.txt'),join(root,'src/pages/image-fixture.astro'));
     const file = join(root, 'src/content/articles/demo-new.md');

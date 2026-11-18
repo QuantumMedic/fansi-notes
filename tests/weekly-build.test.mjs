@@ -34,6 +34,9 @@ test('single private master packet rebuilds homepage/series/topic/search and GUI
     ])
       cpSync(join(repo, p), join(root, p), { recursive: true });
     symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
+    // Each parallel fixture owns its Astro/Vite content cache.
+    const configPath = join(root, 'astro.config.mjs');
+    writeFileSync(configPath, readFileSync(configPath, 'utf8').replace('defineConfig({', "defineConfig({cacheDir: './.astro-cache/', vite: {cacheDir: './.vite-cache/'},"));
     const json = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
     const paths = readdirSync(join(root, 'src/content/articles')).filter((f) => f.endsWith('.md'));
     const old = paths.map((f) =>
