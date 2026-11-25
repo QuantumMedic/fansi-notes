@@ -1,12 +1,16 @@
 # CURRENT_STATE｜唯一目前有效網站狀態
 
-## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-18）
+## 目前階段：正式上線／搜尋引擎索引已開放（2026-11-25）
 
-### 2026-11-25 每週同步（黑密契篇，正式發布前）
+正式網站為 [凡思筆記](https://quantummedic.github.io/fansi-notes/)，目前使用 [發布 #7](https://github.com/QuantumMedic/fansi-notes/actions/runs/45621660851) 的 full／index 版本，建置 SHA `9aad51064540a8728492953cde85ee7e9fd29c7d`。
+
+### 2026-11-25 每週同步（黑密契篇，PR #33 已合併／發布 #7 成功）
 
 - 作者確認本週作品已公開並授權同步。實際讀取私人 Drive 核准書面母稿，與本機核准版本逐字相符。核對 Vocus 與 IG 公開入口後，依分批發布規則只匯入黑密契篇。Vocus 公開版有局部措辭差異，網站正文採用核准書面母稿。
 - 新作固定 work_id `vocus-6b03c7e4fd89780001346ba4`，深度內容（前台文章與故事），主題為影視與動畫、歷史與社會。以官方 RSS GUID `41c85aa8-dd7e-4c74-8715-5929fa232f9d` 關聯單集，兩頁共用留言串。匯入後共 59 篇文章、27 集 Podcast、27 組映射。既有文章、單集與人氣資料保持原樣。
-- 本機型別檢查 0 錯誤、0 警告，118 頁建置、125 項測試通過。確認新頁、主題、雙向連結、四平台入口、Sitemap 與討論串清冊。正式站仍以上一次已驗證的發布為準，本次經 CI、留言清冊更新與 GitHub Environment 本人核准後發布。
+- 本機型別檢查 0 錯誤、0 警告，118 頁建置、125 項測試通過。確認新頁、主題、雙向連結、四平台入口、Sitemap 與討論串清冊。[PR #33](https://github.com/QuantumMedic/fansi-notes/pull/33) 已以 merge commit 合併，PR 與 [main CI](https://github.com/QuantumMedic/fansi-notes/actions/runs/45619918601) 皆通過。
+- D1 備份已留在私人目錄，兩個 production Worker 已更新討論串清冊並讀回，綁定與預覽設定未變。發布設定沿用既有服務證據，僅更新核准 SHA。作者完成 GitHub Environment 兩次核准，prepare 與 deploy 皆成功。
+- 已以正式 HTTPS 核對[黑密契篇](https://quantummedic.github.io/fansi-notes/articles/hunger-games-haymitch-resistance/)與[凡思聲單集](https://quantummedic.github.io/fansi-notes/podcast/episode-2c29ed3ea799ba9ea87a/)。核准正文、四平台入口、雙向連結、兩頁的共用留言讀取、Sitemap、robots 與原始 Google 驗證檔均已驗證。此發布後紀錄為純文件提交，線上建置仍以發布 #7 的 SHA 為準。
 
 ### 2026-11-22 每週跨對話交接流程更新（當時的文件與私人備料狀態）
 
@@ -15,7 +19,7 @@
 - **尚待實測**：Codex 端與本 ChatGPT 對話是否能存取同一份私人 Google Drive 文件。真正首次成功讀回後才算完全接通；如不通，使用作者明確核准的公開 Vocus 原文作一次性備援或其他私有傳遞方式。GitHub Environment 的本人核准仍維持。
 
 
-正式網址：**https://quantummedic.github.io/fansi-notes/** 。目前線上為[發布 #6](https://github.com/QuantumMedic/fansi-notes/actions/runs/44316672955)，full／index，建置 SHA `ad844ee45fe1aa6b424a2458246608f7900864ee`。本次新增《三個傻瓜》及其 Podcast，並依授權更新首頁 SEO 與作者完整簡介第二段；Google 驗證原檔、手機五場景及既有成果保留。
+前次正式版本為[發布 #6](https://github.com/QuantumMedic/fansi-notes/actions/runs/44316672955)，full／index，建置 SHA `ad844ee45fe1aa6b424a2458246608f7900864ee`。本次新增《三個傻瓜》及其 Podcast，並依授權更新首頁 SEO 與作者完整簡介第二段；Google 驗證原檔、手機五場景及既有成果保留。
 
 ### 2026-11-18 每週同步（PR #30 已合併／發布 #6 成功）
 
