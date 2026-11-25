@@ -5,5 +5,12 @@
     "sha256": "fd2ef9d67e996e778109175e48fad4e7359952b1e23b90e591b4145b845479be",
     "approved_by": "江宗凡",
     "approved_at": "2026-11-18T13:28:15.188121Z"
+  },
+  "vocus-6b03c7e4fd89780001346ba4": {
+    "kind": "ig-vocus-approved-master",
+    "revision": "2026-11-22-approved-ig-vocus-master-01",
+    "sha256": "fcae9b97f0b3219c1aae7dbef9be3ea3c4e9534a1d32aac9cbd3fbd41219f70f",
+    "approved_by": "江宗凡",
+    "approved_at": "2026-11-25T12:58:09.809566+00:00"
   }
 }

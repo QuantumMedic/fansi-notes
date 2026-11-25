@@ -6,6 +6,11 @@
       "title": "從《反脆弱》看人生設計：擁抱不確定性，在衝擊中持續成長",
       "canonical_path": "/articles/antifragile-life/"
     },
+    "article:vocus-6b03c7e4fd89780001346ba4": {
+      "work_id": "vocus-6b03c7e4fd89780001346ba4",
+      "title": "《飢餓遊戲》：當反抗成為制度的宣傳",
+      "canonical_path": "/articles/hunger-games-haymitch-resistance/"
+    },
     "article:ig-dq3v8ste0kl": {
       "work_id": "ig-dq3v8ste0kl",
       "title": "《活出意義來》：當人被奪走一切，還能選擇什麼？",
@@ -328,6 +333,7 @@
     }
   },
   "aliases": {
+    "podcast:41c85aa8-dd7e-4c74-8715-5929fa232f9d": "article:vocus-6b03c7e4fd89780001346ba4",
     "podcast:e3a6f416-b462-403a-857d-50dd72648617": "article:vocus-6afbad5bfd89780001804ea8",
     "podcast:8dfe039a-7fb5-4bdf-9134-9fcdf76bb2e0": "article:ig-dvnhptok8yt",
     "podcast:c2fc0ec4-1e7a-4808-828a-2681658b0fb7": "article:vocus-69a000cbfd897800012961e9",
